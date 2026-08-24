@@ -57,10 +57,10 @@ function DashboardPage() {
       {/* KPI Summary Grid */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
         {[
-          { title: 'Total Leads', count: metrics ? metrics.totalLeads : '128', change: '+12% this week', color: 'border-[#FBCFE8]' },
-          { title: 'Active Customers', count: metrics ? metrics.totalCustomers : '45', change: '+5 new accounts', color: 'border-[#FBCFE8]' },
-          { title: 'Pending Follow-ups', count: metrics ? metrics.pendingFollowups : '18', change: '4 overdue', color: 'border-[#FBCFE8]' },
-          { title: 'Conversion Rate', count: metrics ? `${metrics.conversionRate}%` : '35.2%', change: '+3.1% vs last month', color: 'border-[#FBCFE8]' },
+          { title: 'Total Leads', count: loading ? '...' : (metrics ? metrics.totalLeads : 0), change: 'Live Pipeline Count', color: 'border-[#FBCFE8]' },
+          { title: 'Active Customers', count: loading ? '...' : (metrics ? metrics.totalCustomers : 0), change: 'Converted Accounts', color: 'border-[#FBCFE8]' },
+          { title: 'Pending Follow-ups', count: loading ? '...' : (metrics ? metrics.pendingFollowups : 0), change: 'Active Schedule', color: 'border-[#FBCFE8]' },
+          { title: 'Conversion Rate', count: loading ? '...' : (metrics ? `${metrics.conversionRate}%` : '0%'), change: 'Calculated Rate', color: 'border-[#FBCFE8]' },
         ].map((kpi, idx) => (
           <div key={idx} className={`bg-white border ${kpi.color} rounded-xl p-5 shadow-sm`}>
             <p className="text-xs font-semibold text-slate-500 uppercase tracking-wider">{kpi.title}</p>
