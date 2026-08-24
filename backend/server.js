@@ -3,6 +3,7 @@ const express = require('express');
 const cors = require('cors');
 const connectDB = require('./config/db');
 
+const authRoutes = require('./routes/authRoutes');
 const healthRoutes = require('./routes/healthRoutes');
 const dashboardRoutes = require('./routes/dashboardRoutes');
 const leadRoutes = require('./routes/leadRoutes');
@@ -25,6 +26,7 @@ app.use(cors({
 app.use(express.json());
 
 // API Routes Mounting
+app.use('/api/auth', authRoutes);
 app.use('/api/health', healthRoutes);
 app.use('/api/dashboard', dashboardRoutes);
 app.use('/api/leads', leadRoutes);
