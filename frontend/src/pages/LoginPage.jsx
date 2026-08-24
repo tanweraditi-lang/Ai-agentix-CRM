@@ -28,18 +28,18 @@ function LoginPage() {
   };
 
   return (
-    <div className="max-w-md mx-auto mt-12 bg-slate-800 border border-slate-700 rounded-xl p-8 shadow-xl">
+    <div className="max-w-md mx-auto mt-12 bg-white border border-[#FBCFE8] rounded-xl p-8 shadow-xl text-[#111827]">
       <div className="text-center mb-6">
-        <h1 className="text-2xl font-bold text-white mb-2">Sign In</h1>
-        <p className="text-sm text-slate-400">Enter your credentials to access AI-Agentix CRM.</p>
+        <h1 className="text-2xl font-bold text-[#111827] mb-2">Sign In</h1>
+        <p className="text-sm text-slate-500">Enter your credentials to access AI-Agentix CRM.</p>
       </div>
 
       {alert && (
         <div
           className={`p-3 rounded-lg text-xs font-medium mb-4 ${
             alert.type === 'success'
-              ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20'
-              : 'bg-rose-500/10 text-rose-400 border border-rose-500/20'
+              ? 'bg-emerald-50 text-emerald-700 border border-emerald-200'
+              : 'bg-rose-50 text-rose-700 border border-rose-200'
           }`}
         >
           {alert.message}
@@ -48,35 +48,35 @@ function LoginPage() {
 
       <form className="space-y-4" onSubmit={handleSubmit}>
         <div>
-          <label className="block text-sm font-medium text-slate-300 mb-1">Email Address</label>
+          <label className="block text-sm font-medium text-slate-700 mb-1">Email Address</label>
           <input
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder="admin@agentix.com"
             required
-            className="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-2.5 text-white placeholder-slate-500 focus:outline-none focus:border-sky-500 text-sm"
+            className="w-full bg-[#FCE7F3]/30 border border-[#FBCFE8] rounded-lg px-4 py-2.5 text-[#111827] placeholder-slate-400 focus:outline-none focus:border-[#EC4899] text-sm"
           />
         </div>
         <div>
-          <label className="block text-sm font-medium text-slate-300 mb-1">Password</label>
+          <label className="block text-sm font-medium text-slate-700 mb-1">Password</label>
           <input
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             placeholder="••••••••"
             required
-            className="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-2.5 text-white placeholder-slate-500 focus:outline-none focus:border-sky-500 text-sm"
+            className="w-full bg-[#FCE7F3]/30 border border-[#FBCFE8] rounded-lg px-4 py-2.5 text-[#111827] placeholder-slate-400 focus:outline-none focus:border-[#EC4899] text-sm"
           />
         </div>
         <button
           type="submit"
           disabled={loading}
-          className="w-full bg-sky-500 hover:bg-sky-400 text-slate-950 font-semibold py-2.5 rounded-lg transition-colors shadow-md text-sm flex items-center justify-center gap-2"
+          className="w-full bg-[#EC4899] hover:bg-[#BE185D] text-white font-semibold py-2.5 rounded-lg transition-colors shadow-md text-sm flex items-center justify-center gap-2"
         >
           {loading ? (
             <>
-              <span className="h-4 w-4 border-2 border-slate-950 border-t-transparent rounded-full animate-spin"></span>
+              <span className="h-4 w-4 border-2 border-white border-t-transparent rounded-full animate-spin"></span>
               Authenticating...
             </>
           ) : (

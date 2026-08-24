@@ -7,26 +7,26 @@ function FollowupsPage() {
   ];
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 text-[#111827]">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-bold text-white tracking-tight">Follow-ups Scheduler</h1>
-          <p className="text-sm text-slate-400">Track tasks, calls, and reminder schedules</p>
+          <h1 className="text-3xl font-bold text-[#111827] tracking-tight">Follow-ups Scheduler</h1>
+          <p className="text-sm text-slate-500">Track tasks, calls, and reminder schedules</p>
         </div>
-        <button className="bg-sky-500 hover:bg-sky-400 text-slate-950 font-semibold px-4 py-2 rounded-lg text-sm transition-colors shadow-md">
+        <button className="bg-[#EC4899] hover:bg-[#BE185D] text-white font-semibold px-4 py-2 rounded-lg text-sm transition-colors shadow-md">
           + Schedule Task
         </button>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {followups.map((item) => (
-          <div key={item.id} className="bg-slate-800 border border-slate-700 rounded-xl p-5 shadow-md flex justify-between items-start">
+          <div key={item.id} className="bg-white border border-[#FBCFE8] rounded-xl p-5 shadow-sm flex justify-between items-start">
             <div className="space-y-1">
-              <h3 className="font-semibold text-white">{item.task}</h3>
-              <p className="text-xs text-slate-400">Client: <span className="text-slate-200">{item.client}</span></p>
-              <p className="text-xs text-sky-400 font-medium">{item.due}</p>
+              <h3 className="font-semibold text-[#111827]">{item.task}</h3>
+              <p className="text-xs text-slate-500">Client: <span className="text-slate-800 font-medium">{item.client}</span></p>
+              <p className="text-xs text-[#BE185D] font-semibold">{item.due}</p>
             </div>
-            <span className="bg-amber-500/10 text-amber-400 border border-amber-500/20 px-2.5 py-1 rounded-full text-xs font-medium">
+            <span className="bg-[#FCE7F3] text-[#BE185D] border border-[#FBCFE8] px-2.5 py-1 rounded-full text-xs font-bold">
               {item.status}
             </span>
           </div>

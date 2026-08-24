@@ -8,11 +8,12 @@ export default {
     extend: {
       colors: {
         crm: {
-          dark: '#0f172a',
-          card: '#1e293b',
-          border: '#334155',
-          primary: '#38bdf8',
-          hover: '#0284c7',
+          primary: '#EC4899',       // Primary Pink
+          bg: '#FCE7F3',            // Light Pink Background
+          card: '#FFFFFF',          // White Background
+          text: '#111827',          // Text Dark Color
+          accent: '#BE185D',        // Accent Deep Pink
+          border: '#FBCFE8',        // Soft Pink Border
         }
       }
     },
