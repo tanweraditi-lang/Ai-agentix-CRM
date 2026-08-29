@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const User = require('../models/User');
 const Lead = require('../models/Lead');
 const Followup = require('../models/Followup');
+const { logActivity } = require('../utils/activityLogger');
 
 // Seed in-memory leads array for graceful fallback when DB is offline
 const inMemoryLeads = [
@@ -223,6 +224,13 @@ const createLead = async (req, res) => {
       inMemoryLeads.unshift(newLead);
     }
 
+    // Automatically log Lead Created activity
+    await logActivity(
+      newLead.id || newLead._id,
+      'Lead Created',
+      `Lead "${name}" added to pipeline in ${leadStatus} stage`
+    );
+
     return res.status(201).json({
       success: true,
       message: 'Lead created successfully',
@@ -268,6 +276,9 @@ const updateLead = async (req, res) => {
           // ignore
         }
 
+        const actionText = status ? `Status changed to ${status}` : 'Lead profile details updated';
+        await logActivity(id, status ? 'Status Changed' : 'Lead Updated', actionText);
+
         const leadObj = updatedLead.toObject ? updatedLead.toObject() : updatedLead;
         return res.status(200).json({
           success: true,
@@ -285,6 +296,9 @@ const updateLead = async (req, res) => {
       if (company !== undefined) inMemoryLeads[leadIndex].company = company;
       if (serviceInterested) inMemoryLeads[leadIndex].serviceInterested = serviceInterested;
       if (status) inMemoryLeads[leadIndex].status = status;
+
+      const actionText = status ? `Status changed to ${status}` : 'Lead profile details updated';
+      await logActivity(id, status ? 'Status Changed' : 'Lead Updated', actionText);
 
       return res.status(200).json({
         success: true,
@@ -317,16 +331,15 @@ const deleteLead = async (req, res) => {
 
     if (isDbConnected && mongoose.Types.ObjectId.isValid(id)) {
       const lead = await Lead.findByIdAndDelete(id);
-      if (!lead) {
-        return res.status(404).json({
-          success: false,
-          message: 'Lead not found',
-        });
+      if (lead) {
+        await logActivity(id, 'Lead Deleted', `Lead "${lead.name}" removed from pipeline`);
       }
     } else {
       const leadIndex = inMemoryLeads.findIndex(l => l.id === id || l._id === id);
       if (leadIndex !== -1) {
+        const leadName = inMemoryLeads[leadIndex].name;
         inMemoryLeads.splice(leadIndex, 1);
+        await logActivity(id, 'Lead Deleted', `Lead "${leadName}" removed from pipeline`);
       }
     }
 

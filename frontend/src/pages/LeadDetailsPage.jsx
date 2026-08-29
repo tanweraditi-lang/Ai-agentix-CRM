@@ -1,12 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { getLeadById, updateLead } from '../services/leadService';
+import {
+  getLeadNotes,
+  createNote,
+  updateNote,
+  deleteNote,
+  getLeadActivity,
+} from '../services/noteService';
 
 function LeadDetailsPage() {
   const { id } = useParams();
   const navigate = useNavigate();
+
   const [lead, setLead] = useState(null);
-  const [followups, setFollowups] = useState([]);
   const [loading, setLoading] = useState(true);
   const [updating, setUpdating] = useState(false);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
@@ -20,6 +27,21 @@ function LeadDetailsPage() {
   });
   const [alert, setAlert] = useState(null);
 
+  // Tabs state: 'notes' | 'activity'
+  const [activeTab, setActiveTab] = useState('notes');
+
+  // Notes state
+  const [notes, setNotes] = useState([]);
+  const [newNoteText, setNewNoteText] = useState('');
+  const [notesLoading, setNotesLoading] = useState(false);
+  const [addingNote, setAddingNote] = useState(false);
+  const [editingNoteId, setEditingNoteId] = useState(null);
+  const [editingNoteText, setEditingNoteText] = useState('');
+
+  // Activity Timeline state
+  const [activities, setActivities] = useState([]);
+  const [activityLoading, setActivityLoading] = useState(false);
+
   const statuses = ['New', 'Contacted', 'Qualified', 'In Negotiation', 'Converted', 'Lost'];
 
   const fetchDetails = async () => {
@@ -29,7 +51,6 @@ function LeadDetailsPage() {
       const leadItem = data?.lead || data?.data?.lead || (data?.success ? data.lead : null);
       if (leadItem) {
         setLead(leadItem);
-        setFollowups(data.followups || []);
       } else {
         setLead(null);
       }
@@ -41,8 +62,38 @@ function LeadDetailsPage() {
     }
   };
 
+  const fetchNotesData = async () => {
+    try {
+      setNotesLoading(true);
+      const res = await getLeadNotes(id);
+      if (res?.success) {
+        setNotes(res.notes || []);
+      }
+    } catch (err) {
+      console.error('Error fetching notes:', err);
+    } finally {
+      setNotesLoading(false);
+    }
+  };
+
+  const fetchActivitiesData = async () => {
+    try {
+      setActivityLoading(true);
+      const res = await getLeadActivity(id);
+      if (res?.success) {
+        setActivities(res.activities || []);
+      }
+    } catch (err) {
+      console.error('Error fetching activities:', err);
+    } finally {
+      setActivityLoading(false);
+    }
+  };
+
   useEffect(() => {
     fetchDetails();
+    fetchNotesData();
+    fetchActivitiesData();
   }, [id]);
 
   const handleOpenEditModal = () => {
@@ -63,10 +114,11 @@ function LeadDetailsPage() {
     e.preventDefault();
     try {
       setUpdating(true);
-      const res = await updateLead(id, formData);
+      await updateLead(id, formData);
       setLead(prev => ({ ...prev, ...formData }));
       setIsEditModalOpen(false);
       setAlert({ type: 'success', message: 'Lead updated successfully!' });
+      fetchActivitiesData();
       setTimeout(() => {
         navigate('/leads');
       }, 500);
@@ -82,22 +134,106 @@ function LeadDetailsPage() {
       setUpdating(true);
       await updateLead(id, { status: newStatus });
       setLead(prev => ({ ...prev, status: newStatus }));
+      setAlert({ type: 'success', message: `Lead status updated to ${newStatus}` });
+      fetchActivitiesData();
     } catch (err) {
       console.error('Error updating status:', err);
+      setAlert({ type: 'error', message: 'Failed to update status' });
     } finally {
       setUpdating(false);
     }
   };
 
+  const handleAddNoteSubmit = async (e) => {
+    e.preventDefault();
+    if (!newNoteText.trim()) return;
+
+    try {
+      setAddingNote(true);
+      await createNote(id, { note: newNoteText, createdBy: 'System Admin' });
+      setNewNoteText('');
+      setAlert({ type: 'success', message: 'Note added successfully!' });
+      fetchNotesData();
+      fetchActivitiesData();
+    } catch (err) {
+      setAlert({ type: 'error', message: err.message || 'Failed to add note' });
+    } finally {
+      setAddingNote(false);
+    }
+  };
+
+  const handleStartEditNote = (n) => {
+    setEditingNoteId(n.id || n._id);
+    setEditingNoteText(n.note || '');
+  };
+
+  const handleSaveEditNote = async (noteId) => {
+    if (!editingNoteText.trim()) return;
+
+    try {
+      await updateNote(noteId, { note: editingNoteText.trim() });
+      setEditingNoteId(null);
+      setEditingNoteText('');
+      setAlert({ type: 'success', message: 'Note updated successfully!' });
+      fetchNotesData();
+      fetchActivitiesData();
+    } catch (err) {
+      setAlert({ type: 'error', message: err.message || 'Failed to update note' });
+    }
+  };
+
+  const handleDeleteNoteItem = async (noteId) => {
+    try {
+      await deleteNote(noteId);
+      setAlert({ type: 'success', message: 'Note deleted successfully!' });
+      fetchNotesData();
+      fetchActivitiesData();
+    } catch (err) {
+      setAlert({ type: 'error', message: err.message || 'Failed to delete note' });
+    }
+  };
+
+  const formatDate = (dateStr) => {
+    if (!dateStr) return 'N/A';
+    const d = new Date(dateStr);
+    if (isNaN(d.getTime())) return dateStr;
+    return d.toLocaleString('en-GB', {
+      day: '2-digit',
+      month: 'short',
+      year: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit',
+      hour12: true,
+    });
+  };
+
+  const getActivityBadge = (action) => {
+    const act = (action || '').toLowerCase();
+    if (act.includes('created')) {
+      return { bg: 'bg-indigo-100 text-indigo-700 border-indigo-200', icon: '✨' };
+    } else if (act.includes('status')) {
+      return { bg: 'bg-amber-100 text-amber-700 border-amber-200', icon: '🔄' };
+    } else if (act.includes('note')) {
+      return { bg: 'bg-emerald-100 text-emerald-700 border-emerald-200', icon: '📝' };
+    } else {
+      return { bg: 'bg-orange-100 text-[#F26522] border-[#FFDCD0]', icon: '⚡' };
+    }
+  };
+
   if (loading) {
-    return <div className="p-12 text-center text-slate-500 text-sm">Loading lead profile details...</div>;
+    return (
+      <div className="p-12 text-center text-slate-500 text-sm space-y-2">
+        <div className="inline-block w-6 h-6 border-2 border-[#F26522] border-t-transparent rounded-full animate-spin"></div>
+        <p>Loading lead profile & timeline...</p>
+      </div>
+    );
   }
 
   if (!lead) {
     return (
       <div className="text-center py-12 space-y-4">
-        <p className="text-[#475569]">Lead profile not found.</p>
-        <Link to="/leads" className="text-[#F26522] hover:underline text-sm font-semibold">
+        <p className="text-[#475569] font-medium">Lead profile not found.</p>
+        <Link to="/leads" className="text-[#F26522] hover:underline text-sm font-semibold inline-block">
           &larr; Back to Leads Pipeline
         </Link>
       </div>
@@ -109,7 +245,10 @@ function LeadDetailsPage() {
       {/* Top Header & Navigation */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white p-6 rounded-2xl border border-[#FFDCD0] shadow-xs">
         <div className="flex items-center space-x-4">
-          <Link to="/leads" className="text-[#475569] hover:text-[#F26522] text-xs font-semibold transition-colors flex items-center gap-1 bg-[#FFF6F1] px-3 py-1.5 rounded-xl border border-[#FFDCD0]">
+          <Link
+            to="/leads"
+            className="text-[#475569] hover:text-[#F26522] text-xs font-semibold transition-colors flex items-center gap-1 bg-[#FFF6F1] px-3 py-1.5 rounded-xl border border-[#FFDCD0]"
+          >
             &larr; Back to Leads
           </Link>
           <h1 className="text-2xl font-bold text-[#111111]">{lead.name}</h1>
@@ -121,7 +260,7 @@ function LeadDetailsPage() {
         <div className="flex items-center space-x-3">
           <button
             onClick={handleOpenEditModal}
-            className="bg-orange-50 hover:bg-[#FFF6F1] text-[#F26522] border border-[#FFDCD0] font-semibold px-4 py-1.5 rounded-xl text-xs transition-colors"
+            className="bg-orange-50 hover:bg-[#FFF6F1] text-[#F26522] border border-[#FFDCD0] font-semibold px-4 py-1.5 rounded-xl text-xs transition-colors cursor-pointer"
           >
             Edit Profile
           </button>
@@ -192,24 +331,161 @@ function LeadDetailsPage() {
             </div>
           </div>
 
-          {/* Activity / Follow-ups Timeline */}
-          <div>
-            <h2 className="text-lg font-semibold text-[#111111] border-b border-[#FFDCD0] pb-2 mb-4">
-              Follow-ups & Outreach Timeline
-            </h2>
-            {followups.length === 0 ? (
-              <p className="text-xs text-[#475569] italic">No scheduled follow-ups recorded yet for this lead.</p>
-            ) : (
-              <div className="space-y-3">
-                {followups.map((f, idx) => (
-                  <div key={idx} className="bg-[#FFF6F1]/30 border border-[#FFDCD0] rounded-xl p-3.5 text-xs space-y-1">
-                    <div className="flex items-center justify-between text-[#475569]">
-                      <span>Date: {f.date}</span>
-                      <span className="text-emerald-700 font-semibold">{f.status}</span>
-                    </div>
-                    <p className="text-[#111111] font-medium">{f.notes}</p>
+          {/* Interactive Notes & Activity Tabs Section */}
+          <div className="border-t border-[#FFDCD0] pt-6 space-y-4">
+            {/* Tab Control Buttons */}
+            <div className="flex items-center space-x-2 border-b border-[#FFDCD0] pb-2">
+              <button
+                onClick={() => setActiveTab('notes')}
+                className={`px-4 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer ${
+                  activeTab === 'notes'
+                    ? 'bg-gradient-to-r from-[#F26522] to-[#D9531E] text-white shadow-xs'
+                    : 'bg-[#FFF6F1] text-[#F26522] hover:bg-orange-100'
+                }`}
+              >
+                Notes ({notes.length})
+              </button>
+              <button
+                onClick={() => setActiveTab('activity')}
+                className={`px-4 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer ${
+                  activeTab === 'activity'
+                    ? 'bg-gradient-to-r from-[#F26522] to-[#D9531E] text-white shadow-xs'
+                    : 'bg-[#FFF6F1] text-[#F26522] hover:bg-orange-100'
+                }`}
+              >
+                Activity Timeline ({activities.length})
+              </button>
+            </div>
+
+            {/* Tab 1: Notes Section */}
+            {activeTab === 'notes' && (
+              <div className="space-y-4">
+                {/* Add Note Form */}
+                <form onSubmit={handleAddNoteSubmit} className="space-y-2">
+                  <label className="block text-xs font-semibold text-slate-700">Add New Note</label>
+                  <textarea
+                    rows="3"
+                    value={newNoteText}
+                    onChange={(e) => setNewNoteText(e.target.value)}
+                    placeholder="Type call notes, client feedback, or follow-up details..."
+                    className="w-full bg-[#FFF6F1]/30 border border-[#FFDCD0] rounded-xl p-3 text-xs text-[#111111] placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#F26522]/30 focus:border-[#F26522]"
+                  ></textarea>
+                  <div className="flex justify-end">
+                    <button
+                      type="submit"
+                      disabled={addingNote || !newNoteText.trim()}
+                      className="bg-gradient-to-r from-[#F26522] to-[#D9531E] hover:opacity-95 text-white font-semibold px-4 py-1.5 rounded-xl text-xs transition-all shadow-xs disabled:opacity-50 cursor-pointer"
+                    >
+                      {addingNote ? 'Saving Note...' : 'Save Note'}
+                    </button>
                   </div>
-                ))}
+                </form>
+
+                {/* Notes List */}
+                {notesLoading ? (
+                  <div className="py-6 text-center text-xs text-slate-400">Loading notes...</div>
+                ) : notes.length === 0 ? (
+                  <div className="p-6 text-center text-slate-400 text-xs bg-[#FFF6F1]/20 rounded-xl border border-dashed border-[#FFDCD0]">
+                    <p className="font-medium text-slate-700">No notes recorded yet</p>
+                    <p className="text-[11px] text-slate-400 mt-1">Use the box above to add your first note for this lead.</p>
+                  </div>
+                ) : (
+                  <div className="space-y-3">
+                    {notes.map((n) => (
+                      <div key={n.id || n._id} className="bg-[#FFF6F1]/30 border border-[#FFDCD0] rounded-xl p-4 text-xs space-y-2 shadow-2xs">
+                        <div className="flex items-center justify-between text-[#475569]">
+                          <span className="font-bold text-[#111111]">{n.createdBy || 'System Admin'}</span>
+                          <span className="text-[11px] text-slate-500">{formatDate(n.createdAt)}</span>
+                        </div>
+
+                        {editingNoteId === (n.id || n._id) ? (
+                          <div className="space-y-2 pt-1">
+                            <textarea
+                              rows="2"
+                              value={editingNoteText}
+                              onChange={(e) => setEditingNoteText(e.target.value)}
+                              className="w-full bg-white border border-[#F26522] rounded-xl p-2 text-xs text-[#111111] focus:outline-none"
+                            ></textarea>
+                            <div className="flex justify-end space-x-2">
+                              <button
+                                type="button"
+                                onClick={() => setEditingNoteId(null)}
+                                className="px-3 py-1 rounded-lg text-slate-600 hover:bg-slate-100 text-[11px] font-semibold"
+                              >
+                                Cancel
+                              </button>
+                              <button
+                                type="button"
+                                onClick={() => handleSaveEditNote(n.id || n._id)}
+                                className="bg-[#F26522] text-white px-3 py-1 rounded-lg text-[11px] font-semibold"
+                              >
+                                Save Changes
+                              </button>
+                            </div>
+                          </div>
+                        ) : (
+                          <p className="text-[#111111] leading-relaxed whitespace-pre-wrap">{n.note}</p>
+                        )}
+
+                        {editingNoteId !== (n.id || n._id) && (
+                          <div className="flex justify-end space-x-3 pt-1 border-t border-[#FFDCD0]/40">
+                            <button
+                              onClick={() => handleStartEditNote(n)}
+                              className="text-[#F26522] hover:underline font-semibold text-[11px]"
+                            >
+                              Edit Note
+                            </button>
+                            <button
+                              onClick={() => handleDeleteNoteItem(n.id || n._id)}
+                              className="text-rose-600 hover:underline font-semibold text-[11px]"
+                            >
+                              Delete
+                            </button>
+                          </div>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+            )}
+
+            {/* Tab 2: Activity Timeline Section */}
+            {activeTab === 'activity' && (
+              <div className="space-y-3">
+                {activityLoading ? (
+                  <div className="py-6 text-center text-xs text-slate-400">Loading timeline...</div>
+                ) : activities.length === 0 ? (
+                  <div className="p-6 text-center text-slate-400 text-xs bg-[#FFF6F1]/20 rounded-xl border border-dashed border-[#FFDCD0]">
+                    <p className="font-medium text-slate-700">No activity history</p>
+                    <p className="text-[11px] text-slate-400 mt-1">Activities will log automatically when status, notes, or profile change.</p>
+                  </div>
+                ) : (
+                  <div className="relative pl-6 space-y-4 before:absolute before:left-2.5 before:top-2 before:bottom-2 before:w-0.5 before:bg-[#FFDCD0]">
+                    {activities.map((act, idx) => {
+                      const badge = getActivityBadge(act.action);
+                      return (
+                        <div key={idx} className="relative flex items-start space-x-3">
+                          <div className={`absolute -left-6 top-0.5 w-5 h-5 rounded-full border text-xs flex items-center justify-center bg-white shadow-2xs`}>
+                            {badge.icon}
+                          </div>
+                          <div className="bg-[#FFF6F1]/30 border border-[#FFDCD0] rounded-xl p-3 text-xs w-full space-y-1">
+                            <div className="flex items-center justify-between">
+                              <span className={`px-2 py-0.5 rounded-md font-bold text-[10px] border ${badge.bg}`}>
+                                {act.action}
+                              </span>
+                              <span className="text-[11px] text-slate-500 font-medium">
+                                {formatDate(act.createdAt || act.timestamp)}
+                              </span>
+                            </div>
+                            <p className="text-[#111111] font-medium pt-0.5">{act.description}</p>
+                            <p className="text-[10px] text-slate-400">By {act.user || 'System Admin'}</p>
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                )}
               </div>
             )}
           </div>
@@ -339,4 +615,3 @@ function LeadDetailsPage() {
 }
 
 export default LeadDetailsPage;
-
