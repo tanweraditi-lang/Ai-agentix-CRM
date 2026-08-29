@@ -25,7 +25,7 @@ const getLeads = async (req, res) => {
         query.status = new RegExp(`^${status.trim()}$`, 'i');
       }
 
-      if (assignedUser) {
+      if (assignedUser && mongoose.Types.ObjectId.isValid(assignedUser)) {
         query.assignedUser = assignedUser;
       }
 
@@ -41,46 +41,60 @@ const getLeads = async (req, res) => {
         ];
       }
 
-      const leads = await Lead.find(query)
-        .populate('assignedUser', 'name email role')
-        .sort({ createdAt: -1 });
+      try {
+        let leads;
+        try {
+          leads = await Lead.find(query)
+            .populate('assignedUser', 'name email role')
+            .sort({ createdAt: -1 });
+        } catch (popErr) {
+          console.warn('Populate failed, fetching unpopulated leads:', popErr.message);
+          leads = await Lead.find(query).sort({ createdAt: -1 });
+        }
 
-      const mappedLeads = leads.map(l => ({
-        ...l.toObject(),
-        id: l._id.toString(),
-        score: l.score || 85,
-      }));
+        const mappedLeads = leads.map(l => {
+          const obj = l.toObject ? l.toObject() : l;
+          return {
+            ...obj,
+            id: (l._id || l.id || '').toString(),
+            score: l.score || 85,
+          };
+        });
 
-      return res.status(200).json({
-        success: true,
-        count: mappedLeads.length,
-        leads: mappedLeads,
-      });
-    } else {
-      let result = [...inMemoryLeads];
-
-      if (status && status !== 'All' && status !== 'all') {
-        result = result.filter(l => l.status.toLowerCase() === status.toLowerCase());
+        return res.status(200).json({
+          success: true,
+          count: mappedLeads.length,
+          leads: mappedLeads,
+        });
+      } catch (dbErr) {
+        console.error('MongoDB query error in getLeads:', dbErr.message);
       }
-
-      if (search && search.trim() !== '') {
-        const s = search.trim().toLowerCase();
-        result = result.filter(
-          l =>
-            (l.name && l.name.toLowerCase().includes(s)) ||
-            (l.company && l.company.toLowerCase().includes(s)) ||
-            (l.email && l.email.toLowerCase().includes(s)) ||
-            (l.phone && l.phone.toLowerCase().includes(s)) ||
-            (l.serviceInterested && l.serviceInterested.toLowerCase().includes(s))
-        );
-      }
-
-      return res.status(200).json({
-        success: true,
-        count: result.length,
-        leads: result,
-      });
     }
+
+    // Graceful fallback when DB is offline or query fails
+    let result = [...inMemoryLeads];
+
+    if (status && status !== 'All' && status !== 'all') {
+      result = result.filter(l => l.status && l.status.toLowerCase() === status.toLowerCase());
+    }
+
+    if (search && search.trim() !== '') {
+      const s = search.trim().toLowerCase();
+      result = result.filter(
+        l =>
+          (l.name && l.name.toLowerCase().includes(s)) ||
+          (l.company && l.company.toLowerCase().includes(s)) ||
+          (l.email && l.email.toLowerCase().includes(s)) ||
+          (l.phone && l.phone.toLowerCase().includes(s)) ||
+          (l.serviceInterested && l.serviceInterested.toLowerCase().includes(s))
+      );
+    }
+
+    return res.status(200).json({
+      success: true,
+      count: result.length,
+      leads: result,
+    });
   } catch (error) {
     console.error('Error fetching leads:', error);
     return res.status(500).json({
