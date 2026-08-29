@@ -28,10 +28,10 @@ function LoginPage() {
   };
 
   return (
-    <div className="max-w-md mx-auto mt-12 bg-white border border-[#FBCFE8] rounded-xl p-8 shadow-xl text-[#111827]">
+    <div className="max-w-md mx-auto mt-12 bg-white border border-[#FFDCD0] rounded-xl p-8 shadow-xl text-[#111111]">
       <div className="text-center mb-6">
-        <h1 className="text-2xl font-bold text-[#111827] mb-2">Sign In</h1>
-        <p className="text-sm text-slate-500">Enter your credentials to access AI-Agentix CRM.</p>
+        <h1 className="text-2xl font-bold text-[#111111] mb-2">Sign In</h1>
+        <p className="text-sm text-[#475569]">Enter your credentials to access AI-Agentix CRM.</p>
       </div>
 
       {alert && (
@@ -55,7 +55,7 @@ function LoginPage() {
             onChange={(e) => setEmail(e.target.value)}
             placeholder="admin@agentix.com"
             required
-            className="w-full bg-[#FCE7F3]/30 border border-[#FBCFE8] rounded-lg px-4 py-2.5 text-[#111827] placeholder-slate-400 focus:outline-none focus:border-[#EC4899] text-sm"
+            className="w-full bg-[#FFF6F1]/30 border border-[#FFDCD0] rounded-lg px-4 py-2.5 text-[#111111] placeholder-slate-400 focus:outline-none focus:border-[#F26522] text-sm"
           />
         </div>
         <div>
@@ -66,13 +66,13 @@ function LoginPage() {
             onChange={(e) => setPassword(e.target.value)}
             placeholder="••••••••"
             required
-            className="w-full bg-[#FCE7F3]/30 border border-[#FBCFE8] rounded-lg px-4 py-2.5 text-[#111827] placeholder-slate-400 focus:outline-none focus:border-[#EC4899] text-sm"
+            className="w-full bg-[#FFF6F1]/30 border border-[#FFDCD0] rounded-lg px-4 py-2.5 text-[#111111] placeholder-slate-400 focus:outline-none focus:border-[#F26522] text-sm"
           />
         </div>
         <button
           type="submit"
           disabled={loading}
-          className="w-full bg-[#EC4899] hover:bg-[#BE185D] text-white font-semibold py-2.5 rounded-lg transition-colors shadow-md text-sm flex items-center justify-center gap-2"
+          className="w-full bg-[#F26522] hover:bg-[#D9531E] text-white font-semibold py-2.5 rounded-lg transition-colors shadow-md text-sm flex items-center justify-center gap-2"
         >
           {loading ? (
             <>

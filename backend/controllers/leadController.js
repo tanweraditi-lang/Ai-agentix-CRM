@@ -4,9 +4,9 @@ const Followup = require('../models/Followup');
 
 // Seed in-memory leads array for graceful fallback when DB is offline
 const inMemoryLeads = [
-  { id: '1', _id: '1', name: 'John Doe', email: 'john.doe@acme.com', phone: '+1 (555) 234-5678', company: 'Acme Corp', serviceInterested: 'CRM System Integration', status: 'New', score: 85, createdAt: new Date() },
-  { id: '2', _id: '2', name: 'Sarah Smith', email: 'sarah@technova.io', phone: '+1 (555) 876-5432', company: 'TechNova', serviceInterested: 'AI Lead Scoring Engine', status: 'Contacted', score: 92, createdAt: new Date() },
-  { id: '3', _id: '3', name: 'Michael Brown', email: 'mbrown@globallogistics.com', phone: '+1 (555) 345-6789', company: 'Global Logistics', serviceInterested: 'Enterprise Automation', status: 'Qualified', score: 78, createdAt: new Date() },
+  { id: '1', _id: '1', name: 'Rohan Gupta', email: 'rohan.gupta@apextech.in', phone: '+91 98765 43210', company: 'Apex Tech Solutions (Bengaluru)', serviceInterested: 'CRM System Integration', status: 'New', score: 85, assignedUser: { name: 'Priya Patel', email: 'priya.patel@minicrm.in', role: 'sales_rep' }, createdAt: new Date() },
+  { id: '2', _id: '2', name: 'Ananya Iyer', email: 'ananya.iyer@brightmedia.in', phone: '+91 98123 45678', company: 'Bright Media Works (Mumbai)', serviceInterested: 'AI Lead Scoring Engine', status: 'Contacted', score: 92, assignedUser: { name: 'Priya Patel', email: 'priya.patel@minicrm.in', role: 'sales_rep' }, createdAt: new Date() },
+  { id: '3', _id: '3', name: 'Vikram Malhotra', email: 'vmalhotra@cloudnet.co.in', phone: '+91 97111 22334', company: 'CloudNet Systems (Gurugram)', serviceInterested: 'Enterprise Automation', status: 'Qualified', score: 78, assignedUser: { name: 'Amit Verma', email: 'amit.verma@minicrm.in', role: 'sales_rep' }, createdAt: new Date() },
 ];
 
 // @desc    Get all leads (with search & status filter)

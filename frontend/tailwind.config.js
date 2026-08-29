@@ -8,12 +8,12 @@ export default {
     extend: {
       colors: {
         crm: {
-          primary: '#EC4899',       // Primary Pink
-          bg: '#FCE7F3',            // Light Pink Background
-          card: '#FFFFFF',          // White Background
-          text: '#111827',          // Text Dark Color
-          accent: '#BE185D',        // Accent Deep Pink
-          border: '#FBCFE8',        // Soft Pink Border
+          primary: '#F26522',       // AI-Agentix Primary Orange
+          bg: '#FFF6F1',            // Light Orange Background
+          card: '#FFFFFF',          // White Card Background
+          text: '#111111',          // Dark Text
+          accent: '#D9531E',        // Deep Orange Accent
+          border: '#FFDCD0',        // Soft Orange Border
         }
       }
     },
