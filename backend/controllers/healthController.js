@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const connectDB = require('../config/db');
 
 // Health Controller exposing dynamic Mongoose DB connection state
 const getHealthStatus = (req, res) => {
@@ -11,6 +12,11 @@ const getHealthStatus = (req, res) => {
 
   const dbStateCode = mongoose.connection.readyState;
   const dbStatus = dbStates[dbStateCode] || 'unknown';
+
+  // Trigger connectDB retry if currently disconnected and database URI exists
+  if (dbStateCode === 0 && (process.env.MONGODB_URI || process.env.MONGO_URI || process.env.DATABASE_URL)) {
+    connectDB();
+  }
 
   res.status(200).json({
     status: 'ok',
