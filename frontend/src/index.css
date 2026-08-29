@@ -26,3 +26,18 @@
     color: #F26522 !important;
   }
 }
+
+@layer components {
+  .crm-card {
+    @apply bg-white border border-[#FFDCD0] rounded-2xl shadow-sm p-5 sm:p-6 transition-all;
+  }
+  .crm-input {
+    @apply h-10 w-full bg-[#FFF6F1]/30 border border-[#FFDCD0] rounded-xl px-3.5 text-xs text-[#111111] placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#F26522]/30 focus:border-[#F26522] transition-all;
+  }
+  .crm-button-primary {
+    @apply h-10 bg-gradient-to-r from-[#F26522] to-[#D9531E] hover:opacity-95 text-white font-semibold px-4 rounded-xl text-xs transition-all shadow-sm flex items-center justify-center gap-2 cursor-pointer active:scale-[0.99];
+  }
+  .crm-button-secondary {
+    @apply h-10 bg-[#FFF6F1] text-[#F26522] border border-[#FFDCD0] hover:bg-orange-100 font-semibold px-4 rounded-xl text-xs transition-all flex items-center justify-center gap-2 cursor-pointer;
+  }
+}

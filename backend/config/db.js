@@ -7,10 +7,10 @@ const connectDB = async () => {
     return mongoose.connection;
   }
 
-  const connString = 
-    process.env.MONGODB_URI || 
-    process.env.MONGO_URI || 
-    process.env.DATABASE_URL || 
+  const connString =
+    process.env.MONGODB_URI ||
+    process.env.MONGO_URI ||
+    process.env.DATABASE_URL ||
     'mongodb://127.0.0.1:27017/ai-agentix-crm';
 
   isConnecting = true;
@@ -28,7 +28,7 @@ const connectDB = async () => {
     const sanitizedUri = connString.replace(/:([^@]+)@/, ':****@');
     console.warn(`[Database Warning] Unable to connect to MongoDB at ${sanitizedUri}: ${error.message}`);
     console.warn('[Database Warning] Retrying connection in 5 seconds...');
-    
+
     // Automatically retry connection in background
     setTimeout(connectDB, 5000);
     return null;

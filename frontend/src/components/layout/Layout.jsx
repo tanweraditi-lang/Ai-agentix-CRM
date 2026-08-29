@@ -274,11 +274,11 @@ function Layout() {
                 placeholder="Search leads..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-8 sm:pl-9 pr-2 sm:pr-12 py-1.5 bg-[#FFF6F1]/40 border border-[#FFDCD0] rounded-xl text-xs text-[#111111] placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#F26522]/30 focus:border-[#F26522] transition-all"
+                className="w-full pl-8 sm:pl-9 pr-2 sm:pr-12 h-10 bg-[#FFF6F1]/40 border border-[#FFDCD0] rounded-xl text-xs text-[#111111] placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#F26522]/30 focus:border-[#F26522] transition-all"
               />
               <kbd
                 onClick={() => searchInputRef.current?.focus()}
-                className="hidden sm:inline-block absolute right-2 top-1.5 px-1.5 py-0.5 text-[10px] font-mono text-slate-400 bg-white border border-[#FFDCD0] rounded shadow-2xs cursor-pointer select-none"
+                className="hidden sm:inline-block absolute right-2.5 top-2.5 px-1.5 py-0.5 text-[10px] font-mono text-slate-400 bg-white border border-[#FFDCD0] rounded shadow-2xs cursor-pointer select-none"
               >
                 ⌘K
               </kbd>

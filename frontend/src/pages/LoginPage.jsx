@@ -48,31 +48,31 @@ function LoginPage() {
 
       <form className="space-y-4" onSubmit={handleSubmit}>
         <div>
-          <label className="block text-sm font-medium text-slate-700 mb-1">Email Address</label>
+          <label className="block text-xs font-semibold text-slate-700 mb-1">Email Address</label>
           <input
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder="admin@agentix.com"
             required
-            className="w-full bg-[#FFF6F1]/30 border border-[#FFDCD0] rounded-lg px-4 py-2.5 text-[#111111] placeholder-slate-400 focus:outline-none focus:border-[#F26522] text-sm"
+            className="crm-input"
           />
         </div>
         <div>
-          <label className="block text-sm font-medium text-slate-700 mb-1">Password</label>
+          <label className="block text-xs font-semibold text-slate-700 mb-1">Password</label>
           <input
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             placeholder="••••••••"
             required
-            className="w-full bg-[#FFF6F1]/30 border border-[#FFDCD0] rounded-lg px-4 py-2.5 text-[#111111] placeholder-slate-400 focus:outline-none focus:border-[#F26522] text-sm"
+            className="crm-input"
           />
         </div>
         <button
           type="submit"
           disabled={loading}
-          className="w-full bg-[#F26522] hover:bg-[#D9531E] text-white font-semibold py-2.5 rounded-lg transition-colors shadow-md text-sm flex items-center justify-center gap-2"
+          className="crm-button-primary w-full"
         >
           {loading ? (
             <>
