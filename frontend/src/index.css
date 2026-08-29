@@ -6,4 +6,23 @@
   body {
     @apply bg-[#FFF6F1] text-[#111111] min-h-screen font-sans antialiased;
   }
+
+  /* Custom dropdown styling for brand consistency across all browsers & OS */
+  select {
+    color: #F26522 !important;
+    background-color: #FFFFFF !important;
+  }
+
+  select option {
+    color: #111111;
+    background-color: #FFFFFF;
+  }
+
+  select option:hover,
+  select option:focus,
+  select option:active,
+  select option:checked {
+    background-color: #FFF6F1 !important;
+    color: #F26522 !important;
+  }
 }

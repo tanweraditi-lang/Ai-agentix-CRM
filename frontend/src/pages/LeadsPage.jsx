@@ -270,12 +270,13 @@ function LeadsPage() {
                       <select
                         value={lead.status}
                         onChange={(e) => handleStatusChange(lead.id || lead._id, e.target.value)}
-                        className={`text-xs font-semibold px-3 py-1 rounded-full border focus:outline-none cursor-pointer ${getBadgeStyle(
+                        style={{ color: '#F26522', backgroundColor: '#FFFFFF' }}
+                        className={`text-xs font-bold px-3 py-1 rounded-full border focus:outline-none cursor-pointer ${getBadgeStyle(
                           lead.status
                         )}`}
                       >
                         {formStatuses.map(st => (
-                          <option key={st} value={st} className="bg-white text-[#111111]">
+                          <option key={st} value={st} style={{ color: '#111111', backgroundColor: '#FFFFFF' }} className="bg-white text-[#111111] hover:bg-[#FFF6F1]">
                             {st}
                           </option>
                         ))}
@@ -379,10 +380,11 @@ function LeadsPage() {
                   <select
                     value={formData.status}
                     onChange={(e) => setFormData({ ...formData, status: e.target.value })}
+                    style={{ color: '#F26522', backgroundColor: '#FFFFFF' }}
                     className="w-full bg-white text-[#F26522] border border-[#FFDCD0] rounded-xl px-3.5 py-2 text-xs font-bold hover:bg-[#FFF6F1] focus:outline-none focus:ring-2 focus:ring-[#F26522]/30 focus:border-[#F26522] transition-colors cursor-pointer"
                   >
                     {formStatuses.map(st => (
-                      <option key={st} value={st} className="bg-white text-[#111111] hover:bg-[#FFF6F1] font-medium">
+                      <option key={st} value={st} style={{ color: '#111111', backgroundColor: '#FFFFFF' }} className="bg-white text-[#111111] hover:bg-[#FFF6F1] font-medium">
                         {st}
                       </option>
                     ))}
