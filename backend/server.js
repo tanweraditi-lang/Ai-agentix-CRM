@@ -11,14 +11,15 @@ const leadRoutes = require('./routes/leadRoutes');
 const app = express();
 const PORT = process.env.PORT || 5000;
 const NODE_ENV = process.env.NODE_ENV || 'development';
-const CLIENT_URL = process.env.CLIENT_URL || 'http://localhost:3000';
+const CLIENT_URL = process.env.CLIENT_URL || 'https://agentix-crm-mocha.vercel.app';
 
 // Connect to Database
 connectDB();
 
-// CORS configuration supporting frontend origin (including localhost:3001, 3000, 5173)
+// CORS configuration supporting frontend origin (including Vercel & local environments)
 const allowedOrigins = [
   CLIENT_URL,
+  'https://agentix-crm-mocha.vercel.app',
   'http://localhost:3000',
   'http://localhost:3001',
   'http://localhost:5173',
@@ -32,7 +33,7 @@ app.use(cors({
     if (NODE_ENV === 'development' && /^http:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/.test(origin)) {
       return callback(null, true);
     }
-    if (allowedOrigins.includes(origin)) {
+    if (allowedOrigins.includes(origin) || /\.vercel\.app$/.test(origin)) {
       return callback(null, true);
     }
     return callback(null, false);
