@@ -2,10 +2,21 @@ const mongoose = require('mongoose');
 
 const followupSchema = new mongoose.Schema(
   {
+    task: {
+      type: String,
+      required: [true, 'Task title is required'],
+      trim: true,
+    },
+    clientName: {
+      type: String,
+      trim: true,
+      default: 'General Client',
+    },
     leadId: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Lead',
-      required: [true, 'Associated lead ID is required'],
+      required: false,
+      default: null,
     },
     assignedUser: {
       type: mongoose.Schema.Types.ObjectId,
@@ -14,11 +25,11 @@ const followupSchema = new mongoose.Schema(
     },
     date: {
       type: Date,
-      required: [true, 'Follow-up date is required'],
+      default: Date.now,
     },
     time: {
       type: String,
-      required: [true, 'Follow-up time is required'],
+      default: '10:00 AM',
       trim: true,
     },
     notes: {
@@ -28,7 +39,7 @@ const followupSchema = new mongoose.Schema(
     status: {
       type: String,
       enum: {
-        values: ['Pending', 'Completed', 'Cancelled'],
+        values: ['Pending', 'Upcoming', 'Completed', 'Cancelled'],
         message: '{VALUE} is not a valid follow-up status',
       },
       default: 'Pending',
