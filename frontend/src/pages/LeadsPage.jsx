@@ -145,7 +145,7 @@ function LeadsPage() {
   };
 
   const getBadgeStyle = (status) => {
-    return 'bg-white text-[#F26522] border-[#FFDCD0] font-bold hover:bg-[#FFF6F1] focus:outline-none focus:ring-2 focus:ring-[#F26522]/30 focus:border-[#F26522] transition-colors shadow-2xs';
+    return 'bg-white text-[#F26522] border border-slate-200 font-bold hover:bg-[#FFF6F1] focus:outline-none focus:ring-2 focus:ring-[#F26522]/30 focus:border-[#F26522] transition-colors shadow-2xs';
   };
 
   return (
@@ -276,7 +276,7 @@ function LeadsPage() {
                         )}`}
                       >
                         {formStatuses.map(st => (
-                          <option key={st} value={st} style={{ color: '#111111', backgroundColor: '#FFFFFF' }} className="bg-white text-[#111111] hover:bg-[#FFF6F1]">
+                          <option key={st} value={st} style={{ color: '#F26522', backgroundColor: '#FFFFFF' }} className="bg-white text-[#F26522] hover:bg-[#FFF6F1] font-medium">
                             {st}
                           </option>
                         ))}
@@ -381,10 +381,10 @@ function LeadsPage() {
                     value={formData.status}
                     onChange={(e) => setFormData({ ...formData, status: e.target.value })}
                     style={{ color: '#F26522', backgroundColor: '#FFFFFF' }}
-                    className="w-full bg-white text-[#F26522] border border-[#FFDCD0] rounded-xl px-3.5 py-2 text-xs font-bold hover:bg-[#FFF6F1] focus:outline-none focus:ring-2 focus:ring-[#F26522]/30 focus:border-[#F26522] transition-colors cursor-pointer"
+                    className="w-full bg-white text-[#F26522] border border-slate-200 rounded-xl px-3.5 py-2 text-xs font-bold hover:bg-[#FFF6F1] focus:outline-none focus:ring-2 focus:ring-[#F26522]/30 focus:border-[#F26522] transition-colors cursor-pointer"
                   >
                     {formStatuses.map(st => (
-                      <option key={st} value={st} style={{ color: '#111111', backgroundColor: '#FFFFFF' }} className="bg-white text-[#111111] hover:bg-[#FFF6F1] font-medium">
+                      <option key={st} value={st} style={{ color: '#F26522', backgroundColor: '#FFFFFF' }} className="bg-white text-[#F26522] hover:bg-[#FFF6F1] font-medium">
                         {st}
                       </option>
                     ))}

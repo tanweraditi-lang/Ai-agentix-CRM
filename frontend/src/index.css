@@ -14,8 +14,8 @@
   }
 
   select option {
-    color: #111111;
-    background-color: #FFFFFF;
+    color: #F26522 !important;
+    background-color: #FFFFFF !important;
   }
 
   select option:hover,
