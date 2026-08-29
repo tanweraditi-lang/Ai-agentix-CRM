@@ -15,7 +15,7 @@ function CustomersPage() {
         </div>
       </div>
 
-      <div className="bg-white border border-[#FFDCD0] rounded-xl overflow-hidden shadow-sm">
+      <div className="bg-white border border-[#FFDCD0] rounded-2xl overflow-x-auto shadow-sm">
         <table className="w-full text-left text-sm text-[#111111]">
           <thead className="bg-[#FFF6F1]/50 text-slate-700 uppercase text-xs border-b border-[#FFDCD0]">
             <tr>

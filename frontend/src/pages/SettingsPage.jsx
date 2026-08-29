@@ -3,12 +3,12 @@ import React from 'react';
 function SettingsPage() {
   return (
     <div className="max-w-3xl space-y-6 text-[#111111]">
-      <div>
-        <h1 className="text-3xl font-bold text-[#111111] tracking-tight">Account Settings</h1>
-        <p className="text-sm text-[#475569]">Manage your profile, preferences, and notifications</p>
+      <div className="bg-white p-5 rounded-2xl border border-[#FFDCD0] shadow-xs">
+        <h1 className="text-2xl sm:text-3xl font-bold text-[#111111] tracking-tight">Account Settings</h1>
+        <p className="text-xs sm:text-sm text-[#475569]">Manage your profile, preferences, and notifications</p>
       </div>
 
-      <div className="bg-white border border-[#FFDCD0] rounded-xl p-6 shadow-sm space-y-6">
+      <div className="bg-white border border-[#FFDCD0] rounded-2xl p-4 sm:p-6 shadow-xs space-y-6">
         <div>
           <h2 className="text-lg font-semibold text-[#111111] border-b border-[#FFDCD0] pb-2 mb-4">Profile Information</h2>
           <div className="space-y-4">

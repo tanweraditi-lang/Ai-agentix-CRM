@@ -243,21 +243,21 @@ function LeadDetailsPage() {
   return (
     <div className="space-y-6 text-[#111111]">
       {/* Top Header & Navigation */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white p-6 rounded-2xl border border-[#FFDCD0] shadow-xs">
-        <div className="flex items-center space-x-4">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white p-4 sm:p-6 rounded-2xl border border-[#FFDCD0] shadow-xs">
+        <div className="flex flex-wrap items-center gap-2 sm:gap-4">
           <Link
             to="/leads"
             className="text-[#475569] hover:text-[#F26522] text-xs font-semibold transition-colors flex items-center gap-1 bg-[#FFF6F1] px-3 py-1.5 rounded-xl border border-[#FFDCD0]"
           >
             &larr; Back to Leads
           </Link>
-          <h1 className="text-2xl font-bold text-[#111111]">{lead.name}</h1>
+          <h1 className="text-xl sm:text-2xl font-bold text-[#111111]">{lead.name}</h1>
           <span className="bg-[#FFF6F1] text-[#F26522] border border-[#FFDCD0] px-3 py-1 rounded-full text-xs font-bold">
             {lead.status}
           </span>
         </div>
 
-        <div className="flex items-center space-x-3">
+        <div className="flex items-center space-x-3 self-start sm:self-auto">
           <button
             onClick={handleOpenEditModal}
             className="bg-orange-50 hover:bg-[#FFF6F1] text-[#F26522] border border-[#FFDCD0] font-semibold px-4 py-1.5 rounded-xl text-xs transition-colors cursor-pointer"
@@ -296,12 +296,12 @@ function LeadDetailsPage() {
       {/* Main Details Grid */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {/* Left Column: Contact & Service Info */}
-        <div className="md:col-span-2 bg-white border border-[#FFDCD0] rounded-2xl p-6 shadow-xs space-y-6">
+        <div className="md:col-span-2 bg-white border border-[#FFDCD0] rounded-2xl p-4 sm:p-6 shadow-xs space-y-6">
           <div>
             <h2 className="text-lg font-semibold text-[#111111] border-b border-[#FFDCD0] pb-2 mb-4">
               Prospect Profile
             </h2>
-            <div className="grid grid-cols-2 gap-4 text-sm">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
               <div>
                 <p className="text-xs text-[#475569]">Full Name</p>
                 <p className="font-semibold text-[#111111]">{lead.name}</p>

@@ -8,12 +8,12 @@ function FollowupsPage() {
 
   return (
     <div className="space-y-6 text-[#111111]">
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white p-5 rounded-2xl border border-[#FFDCD0] shadow-xs">
         <div>
-          <h1 className="text-3xl font-bold text-[#111111] tracking-tight">Follow-ups Scheduler</h1>
-          <p className="text-sm text-[#475569]">Track tasks, calls, and reminder schedules</p>
+          <h1 className="text-2xl sm:text-3xl font-bold text-[#111111] tracking-tight">Follow-ups Scheduler</h1>
+          <p className="text-xs sm:text-sm text-[#475569]">Track tasks, calls, and reminder schedules</p>
         </div>
-        <button className="bg-[#F26522] hover:bg-[#D9531E] text-white font-semibold px-4 py-2 rounded-lg text-sm transition-colors shadow-md">
+        <button className="bg-[#F26522] hover:bg-[#D9531E] text-white font-semibold px-4 py-2 rounded-xl text-xs sm:text-sm transition-colors shadow-sm self-start sm:self-auto cursor-pointer">
           + Schedule Task
         </button>
       </div>

@@ -28,7 +28,7 @@ function LoginPage() {
   };
 
   return (
-    <div className="max-w-md mx-auto mt-12 bg-white border border-[#FFDCD0] rounded-xl p-8 shadow-xl text-[#111111]">
+    <div className="max-w-md mx-auto my-4 sm:my-12 bg-white border border-[#FFDCD0] rounded-2xl p-5 sm:p-8 shadow-xl text-[#111111]">
       <div className="text-center mb-6">
         <h1 className="text-2xl font-bold text-[#111111] mb-2">Sign In</h1>
         <p className="text-sm text-[#475569]">Enter your credentials to access AI-Agentix CRM.</p>

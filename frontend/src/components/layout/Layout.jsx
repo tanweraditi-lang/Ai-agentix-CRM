@@ -13,6 +13,7 @@ function Layout() {
     e.preventDefault();
     if (searchQuery.trim()) {
       navigate(`/leads?search=${encodeURIComponent(searchQuery.trim())}`);
+      setMobileOpen(false);
     }
   };
 
@@ -147,31 +148,31 @@ function Layout() {
   ];
 
   return (
-    <div className="min-h-screen flex flex-col md:flex-row bg-[#FFF6F1] text-[#111111]">
+    <div className="min-h-screen flex flex-col md:flex-row bg-[#FFF6F1] text-[#111111] overflow-x-hidden">
       {/* Mobile Drawer Backdrop */}
       {mobileOpen && (
         <div
-          className="fixed inset-0 bg-black/40 z-30 md:hidden backdrop-blur-xs"
+          className="fixed inset-0 bg-black/50 z-40 md:hidden backdrop-blur-xs transition-opacity"
           onClick={() => setMobileOpen(false)}
         />
       )}
 
       {/* Professional Vertical Left Sidebar Navigation */}
       <aside
-        className={`fixed md:sticky top-0 z-40 h-screen w-64 bg-white border-r border-[#FFDCD0] flex flex-col justify-between shrink-0 shadow-sm transition-transform duration-300 ${
+        className={`fixed md:sticky top-0 z-50 h-screen w-64 bg-white border-r border-[#FFDCD0] flex flex-col justify-between shrink-0 shadow-lg md:shadow-sm transition-transform duration-300 ease-in-out ${
           mobileOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'
         }`}
       >
         {/* Sidebar Top: Brand & Menu */}
-        <div className="flex flex-col flex-1">
+        <div className="flex flex-col flex-1 min-h-0">
           {/* Brand Logo Header */}
-          <div className="p-5 border-b border-[#FFDCD0] flex items-center justify-between">
+          <div className="p-4 sm:p-5 border-b border-[#FFDCD0] flex items-center justify-between">
             <div className="flex items-center space-x-3">
-              <div className="h-10 w-10 rounded-xl bg-gradient-to-tr from-[#F26522] to-[#D9531E] flex items-center justify-center font-bold text-white text-2xl shadow-md shadow-orange-500/20">
+              <div className="h-9 w-9 sm:h-10 sm:w-10 rounded-xl bg-gradient-to-tr from-[#F26522] to-[#D9531E] flex items-center justify-center font-bold text-white text-xl sm:text-2xl shadow-md shadow-orange-500/20">
                 A
               </div>
               <div>
-                <h1 className="font-bold text-lg tracking-tight text-[#111111]">
+                <h1 className="font-bold text-base sm:text-lg tracking-tight text-[#111111]">
                   AI-Agentix <span className="text-[#F26522]">CRM</span>
                 </h1>
                 <p className="text-[10px] uppercase font-semibold text-[#475569] tracking-wider">Enterprise Suite</p>
@@ -181,6 +182,7 @@ function Layout() {
             <button
               onClick={() => setMobileOpen(false)}
               className="md:hidden p-1.5 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-orange-50"
+              aria-label="Close menu"
             >
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
@@ -189,7 +191,7 @@ function Layout() {
           </div>
 
           {/* Vertical Menu Items */}
-          <div className="px-3 py-6 flex-1 overflow-y-auto">
+          <div className="px-3 py-4 sm:py-6 flex-1 overflow-y-auto">
             <p className="px-3 text-[11px] font-bold uppercase tracking-wider text-[#475569] mb-3">
               Main Menu
             </p>
@@ -246,12 +248,12 @@ function Layout() {
       {/* Main Content Container */}
       <div className="flex-1 flex flex-col min-w-0 min-h-screen">
         {/* Top Navbar */}
-        <header className="bg-white border-b border-[#FFDCD0] sticky top-0 z-20 shadow-xs px-4 md:px-8 py-3.5 flex items-center justify-between gap-4">
-          <div className="flex items-center gap-3 flex-1 max-w-md">
+        <header className="bg-white border-b border-[#FFDCD0] sticky top-0 z-20 shadow-xs px-3 sm:px-6 md:px-8 py-3 flex items-center justify-between gap-2 sm:gap-4">
+          <div className="flex items-center gap-2 sm:gap-3 flex-1 max-w-md">
             {/* Mobile Sidebar Toggle Button */}
             <button
               onClick={() => setMobileOpen(true)}
-              className="md:hidden p-2 rounded-xl text-slate-700 hover:bg-[#FFF6F1] border border-[#FFDCD0]"
+              className="md:hidden p-2 rounded-xl text-slate-700 hover:bg-[#FFF6F1] border border-[#FFDCD0] shrink-0"
               aria-label="Toggle navigation menu"
             >
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -260,19 +262,19 @@ function Layout() {
             </button>
 
             {/* Top Bar Search Input */}
-            <form onSubmit={handleSearchSubmit} className="relative w-full max-w-xs sm:max-w-sm">
-              <span className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-slate-400">
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <form onSubmit={handleSearchSubmit} className="relative w-full max-w-[150px] xs:max-w-[200px] sm:max-w-xs">
+              <span className="absolute inset-y-0 left-0 flex items-center pl-2.5 pointer-events-none text-slate-400">
+                <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                 </svg>
               </span>
               <input
                 ref={searchInputRef}
                 type="text"
-                placeholder="Search leads, customers..."
+                placeholder="Search leads..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-9 pr-12 py-1.5 bg-[#FFF6F1]/40 border border-[#FFDCD0] rounded-xl text-xs text-[#111111] placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#F26522]/30 focus:border-[#F26522] transition-all"
+                className="w-full pl-8 sm:pl-9 pr-2 sm:pr-12 py-1.5 bg-[#FFF6F1]/40 border border-[#FFDCD0] rounded-xl text-xs text-[#111111] placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#F26522]/30 focus:border-[#F26522] transition-all"
               />
               <kbd
                 onClick={() => searchInputRef.current?.focus()}
@@ -284,7 +286,7 @@ function Layout() {
           </div>
 
           {/* Right Header Actions */}
-          <div className="flex items-center gap-2 sm:gap-4">
+          <div className="flex items-center gap-1.5 sm:gap-3">
             {/* Quick Status Pill */}
             <div className="hidden lg:flex items-center gap-1.5 bg-orange-50 border border-[#FFDCD0] px-3 py-1 rounded-full text-xs text-[#F26522] font-medium">
               <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse"></span>
@@ -292,16 +294,16 @@ function Layout() {
             </div>
 
             {/* Notification Bell */}
-            <button className="relative p-2 rounded-xl text-slate-600 hover:text-[#F26522] hover:bg-orange-50 border border-transparent hover:border-[#FFDCD0] transition-all">
+            <button className="relative p-1.5 sm:p-2 rounded-xl text-slate-600 hover:text-[#F26522] hover:bg-orange-50 border border-transparent hover:border-[#FFDCD0] transition-all">
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
               </svg>
-              <span className="absolute top-1.5 right-1.5 w-2 h-2 bg-[#F26522] rounded-full ring-2 ring-white"></span>
+              <span className="absolute top-1 right-1 sm:top-1.5 sm:right-1.5 w-2 h-2 bg-[#F26522] rounded-full ring-2 ring-white"></span>
             </button>
 
             {/* User Profile Avatar / Action */}
-            <div className="flex items-center gap-3 pl-2 border-l border-[#FFDCD0]">
-              <div className="h-9 w-9 rounded-xl bg-[#FFF6F1] border border-[#FFDCD0] text-[#F26522] font-bold flex items-center justify-center text-sm shadow-2xs">
+            <div className="flex items-center gap-2 sm:gap-3 pl-1.5 sm:pl-2 border-l border-[#FFDCD0]">
+              <div className="h-8 w-8 sm:h-9 sm:w-9 rounded-xl bg-[#FFF6F1] border border-[#FFDCD0] text-[#F26522] font-bold flex items-center justify-center text-xs sm:text-sm shadow-2xs">
                 {isAuthenticated ? getUserInitials(user) : 'GU'}
               </div>
               <div className="hidden sm:block text-left">
@@ -317,12 +319,12 @@ function Layout() {
         </header>
 
         {/* Page Content */}
-        <main className="flex-1 p-4 md:p-8 max-w-7xl w-full mx-auto">
+        <main className="flex-1 p-3 sm:p-6 md:p-8 max-w-7xl w-full mx-auto">
           <Outlet />
         </main>
 
         {/* Footer */}
-        <footer className="bg-white border-t border-[#FFDCD0] py-4 px-8 text-center text-xs text-[#475569]">
+        <footer className="bg-white border-t border-[#FFDCD0] py-3 sm:py-4 px-4 sm:px-8 text-center text-xs text-[#475569]">
           AI-Agentix-CRM &copy; {new Date().getFullYear()} — Enterprise Orange Edition
         </footer>
       </div>
@@ -331,4 +333,3 @@ function Layout() {
 }
 
 export default Layout;
-
