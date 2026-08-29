@@ -18,19 +18,22 @@ const getLeads = async (req, res) => {
     const { status, search, assignedUser } = req.query;
     const isDbConnected = mongoose.connection.readyState === 1;
 
+    const safeStatus = typeof status === 'string' ? status.trim() : '';
+    const safeSearch = typeof search === 'string' ? search.trim() : '';
+
     if (isDbConnected) {
       let query = {};
 
-      if (status && status !== 'All' && status !== 'all') {
-        query.status = new RegExp(`^${status.trim()}$`, 'i');
+      if (safeStatus && safeStatus !== 'All' && safeStatus !== 'all') {
+        query.status = new RegExp(`^${safeStatus}$`, 'i');
       }
 
-      if (assignedUser && mongoose.Types.ObjectId.isValid(assignedUser)) {
+      if (typeof assignedUser === 'string' && mongoose.Types.ObjectId.isValid(assignedUser)) {
         query.assignedUser = assignedUser;
       }
 
-      if (search && search.trim() !== '') {
-        const cleanSearch = search.trim().replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      if (safeSearch !== '') {
+        const cleanSearch = safeSearch.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
         const searchRegex = new RegExp(cleanSearch, 'i');
         query.$or = [
           { name: searchRegex },
@@ -74,12 +77,12 @@ const getLeads = async (req, res) => {
     // Graceful fallback when DB is offline or query fails
     let result = [...inMemoryLeads];
 
-    if (status && status !== 'All' && status !== 'all') {
-      result = result.filter(l => l.status && l.status.toLowerCase() === status.toLowerCase());
+    if (safeStatus && safeStatus !== 'All' && safeStatus !== 'all') {
+      result = result.filter(l => l.status && l.status.toLowerCase() === safeStatus.toLowerCase());
     }
 
-    if (search && search.trim() !== '') {
-      const s = search.trim().toLowerCase();
+    if (safeSearch !== '') {
+      const s = safeSearch.toLowerCase();
       result = result.filter(
         l =>
           (l.name && l.name.toLowerCase().includes(s)) ||
