@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import { getLeadById, updateLead } from '../services/leadService';
 
 function LeadDetailsPage() {
   const { id } = useParams();
+  const navigate = useNavigate();
   const [lead, setLead] = useState(null);
   const [followups, setFollowups] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -25,12 +26,16 @@ function LeadDetailsPage() {
     try {
       setLoading(true);
       const data = await getLeadById(id);
-      if (data?.success) {
-        setLead(data.lead);
+      const leadItem = data?.lead || data?.data?.lead || (data?.success ? data.lead : null);
+      if (leadItem) {
+        setLead(leadItem);
         setFollowups(data.followups || []);
+      } else {
+        setLead(null);
       }
     } catch (err) {
       console.error('Error fetching lead details:', err);
+      setLead(null);
     } finally {
       setLoading(false);
     }
@@ -58,10 +63,13 @@ function LeadDetailsPage() {
     e.preventDefault();
     try {
       setUpdating(true);
-      await updateLead(id, formData);
+      const res = await updateLead(id, formData);
       setLead(prev => ({ ...prev, ...formData }));
       setIsEditModalOpen(false);
       setAlert({ type: 'success', message: 'Lead updated successfully!' });
+      setTimeout(() => {
+        navigate('/leads');
+      }, 500);
     } catch (err) {
       setAlert({ type: 'error', message: err.message || 'Failed to update lead' });
     } finally {

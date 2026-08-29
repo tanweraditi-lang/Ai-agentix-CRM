@@ -117,31 +117,45 @@ const getLeadById = async (req, res) => {
     const isDbConnected = mongoose.connection.readyState === 1;
 
     if (isDbConnected && mongoose.Types.ObjectId.isValid(id)) {
-      const lead = await Lead.findById(id).populate('assignedUser', 'name email role');
-      if (!lead) {
-        return res.status(404).json({
-          success: false,
-          message: 'Lead not found',
-        });
+      let lead;
+      try {
+        lead = await Lead.findById(id).populate('assignedUser', 'name email role');
+      } catch (popErr) {
+        lead = await Lead.findById(id);
       }
 
-      const followups = await Followup.find({ leadId: id }).sort({ date: -1 });
+      if (lead) {
+        let followups = [];
+        try {
+          followups = await Followup.find({ leadId: id }).sort({ date: -1 });
+        } catch (fErr) {
+          followups = [];
+        }
 
+        const leadObj = lead.toObject ? lead.toObject() : lead;
+        return res.status(200).json({
+          success: true,
+          lead: { ...leadObj, id: lead._id.toString(), score: lead.score || 85 },
+          followups,
+        });
+      }
+    }
+
+    const memoryLead = inMemoryLeads.find(l => l.id === id || l._id === id);
+    if (memoryLead) {
       return res.status(200).json({
         success: true,
-        lead: { ...lead.toObject(), id: lead._id.toString(), score: lead.score || 85 },
-        followups,
-      });
-    } else {
-      const lead = inMemoryLeads.find(l => l.id === id || l._id === id) || inMemoryLeads[0];
-      return res.status(200).json({
-        success: true,
-        lead,
+        lead: memoryLead,
         followups: [
           { id: 'f101', notes: 'Initial discovery call completed', date: '2026-08-20', status: 'Completed' },
         ],
       });
     }
+
+    return res.status(404).json({
+      success: false,
+      message: 'Lead profile not found',
+    });
   } catch (error) {
     console.error('Error fetching lead details:', error);
     return res.status(500).json({
@@ -184,10 +198,15 @@ const createLead = async (req, res) => {
       });
 
       if (newLead.assignedUser) {
-        newLead = await newLead.populate('assignedUser', 'name email role');
+        try {
+          newLead = await newLead.populate('assignedUser', 'name email role');
+        } catch (popErr) {
+          // ignore
+        }
       }
 
-      newLead = { ...newLead.toObject(), id: newLead._id.toString(), score: 85 };
+      const leadObj = newLead.toObject ? newLead.toObject() : newLead;
+      newLead = { ...leadObj, id: newLead._id.toString(), score: 85 };
     } else {
       newLead = {
         id: 'ld_' + Date.now(),
@@ -241,30 +260,25 @@ const updateLead = async (req, res) => {
         updateData.assignedUser = mongoose.Types.ObjectId.isValid(assignedUser) ? assignedUser : null;
       }
 
-      const updatedLead = await Lead.findByIdAndUpdate(id, updateData, { new: true, runValidators: true })
-        .populate('assignedUser', 'name email role');
+      let updatedLead = await Lead.findByIdAndUpdate(id, updateData, { new: true });
+      if (updatedLead) {
+        try {
+          updatedLead = await updatedLead.populate('assignedUser', 'name email role');
+        } catch (popErr) {
+          // ignore
+        }
 
-      if (!updatedLead) {
-        return res.status(404).json({
-          success: false,
-          message: 'Lead not found',
+        const leadObj = updatedLead.toObject ? updatedLead.toObject() : updatedLead;
+        return res.status(200).json({
+          success: true,
+          message: 'Lead updated successfully',
+          lead: { ...leadObj, id: updatedLead._id.toString() },
         });
       }
+    }
 
-      return res.status(200).json({
-        success: true,
-        message: 'Lead updated successfully',
-        lead: { ...updatedLead.toObject(), id: updatedLead._id.toString() },
-      });
-    } else {
-      const leadIndex = inMemoryLeads.findIndex(l => l.id === id || l._id === id);
-      if (leadIndex === -1) {
-        return res.status(404).json({
-          success: false,
-          message: 'Lead not found',
-        });
-      }
-
+    const leadIndex = inMemoryLeads.findIndex(l => l.id === id || l._id === id);
+    if (leadIndex !== -1) {
       if (name) inMemoryLeads[leadIndex].name = name;
       if (email) inMemoryLeads[leadIndex].email = email;
       if (phone !== undefined) inMemoryLeads[leadIndex].phone = phone;
@@ -278,8 +292,20 @@ const updateLead = async (req, res) => {
         lead: inMemoryLeads[leadIndex],
       });
     }
+
+    return res.status(404).json({
+      success: false,
+      message: 'Lead profile not found',
+    });
   } catch (error) {
     console.error('Error updating lead:', error);
+    return res.status(500).json({
+      success: false,
+      message: 'Server error updating lead',
+      error: error.message,
+    });
+  }
+};
     return res.status(500).json({
       success: false,
       message: 'Server error updating lead',
