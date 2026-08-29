@@ -145,15 +145,7 @@ function LeadsPage() {
   };
 
   const getBadgeStyle = (status) => {
-    switch (status) {
-      case 'New': return 'bg-indigo-50 text-indigo-700 border-indigo-200';
-      case 'Contacted': return 'bg-amber-50 text-amber-700 border-amber-200';
-      case 'Qualified': return 'bg-emerald-50 text-emerald-700 border-emerald-200';
-      case 'In Negotiation': return 'bg-purple-50 text-purple-700 border-purple-200';
-      case 'Converted': return 'bg-orange-50 text-[#F26522] border-[#FFDCD0] font-bold';
-      case 'Lost': return 'bg-rose-50 text-rose-700 border-rose-200';
-      default: return 'bg-slate-100 text-slate-700';
-    }
+    return 'bg-white text-[#F26522] border-[#FFDCD0] font-bold hover:bg-[#FFF6F1] focus:outline-none focus:ring-2 focus:ring-[#F26522]/30 focus:border-[#F26522] transition-colors shadow-2xs';
   };
 
   return (
@@ -387,10 +379,12 @@ function LeadsPage() {
                   <select
                     value={formData.status}
                     onChange={(e) => setFormData({ ...formData, status: e.target.value })}
-                    className="w-full bg-[#FFF6F1]/30 border border-[#FFDCD0] rounded-xl px-3.5 py-2 text-xs text-[#111111] focus:outline-none focus:ring-2 focus:ring-[#F26522]/30 focus:border-[#F26522]"
+                    className="w-full bg-white text-[#F26522] border border-[#FFDCD0] rounded-xl px-3.5 py-2 text-xs font-bold hover:bg-[#FFF6F1] focus:outline-none focus:ring-2 focus:ring-[#F26522]/30 focus:border-[#F26522] transition-colors cursor-pointer"
                   >
                     {formStatuses.map(st => (
-                      <option key={st} value={st}>{st}</option>
+                      <option key={st} value={st} className="bg-white text-[#111111] hover:bg-[#FFF6F1] font-medium">
+                        {st}
+                      </option>
                     ))}
                   </select>
                 </div>

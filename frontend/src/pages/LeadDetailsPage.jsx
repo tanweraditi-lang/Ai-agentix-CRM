@@ -270,10 +270,10 @@ function LeadDetailsPage() {
               value={lead.status}
               onChange={(e) => handleStatusChange(e.target.value)}
               disabled={updating}
-              className="bg-white border border-[#FFDCD0] rounded-xl px-3 py-1.5 text-xs text-[#111111] focus:outline-none focus:border-[#F26522] cursor-pointer shadow-xs font-semibold"
+              className="bg-white text-[#F26522] border border-[#FFDCD0] rounded-xl px-3 py-1.5 text-xs font-bold hover:bg-[#FFF6F1] focus:outline-none focus:ring-2 focus:ring-[#F26522]/30 focus:border-[#F26522] transition-colors cursor-pointer shadow-2xs"
             >
               {statuses.map(st => (
-                <option key={st} value={st}>{st}</option>
+                <option key={st} value={st} className="bg-white text-[#111111] hover:bg-[#FFF6F1] font-medium">{st}</option>
               ))}
             </select>
           </div>
@@ -570,10 +570,10 @@ function LeadDetailsPage() {
                   <select
                     value={formData.status}
                     onChange={(e) => setFormData({ ...formData, status: e.target.value })}
-                    className="w-full bg-[#FFF6F1]/30 border border-[#FFDCD0] rounded-xl px-3.5 py-2 text-xs text-[#111111] focus:outline-none focus:ring-2 focus:ring-[#F26522]/30 focus:border-[#F26522]"
+                    className="w-full bg-white text-[#F26522] border border-[#FFDCD0] rounded-xl px-3.5 py-2 text-xs font-bold hover:bg-[#FFF6F1] focus:outline-none focus:ring-2 focus:ring-[#F26522]/30 focus:border-[#F26522] transition-colors cursor-pointer"
                   >
                     {statuses.map(st => (
-                      <option key={st} value={st}>{st}</option>
+                      <option key={st} value={st} className="bg-white text-[#111111] hover:bg-[#FFF6F1] font-medium">{st}</option>
                     ))}
                   </select>
                 </div>
