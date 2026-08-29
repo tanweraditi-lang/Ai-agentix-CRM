@@ -16,6 +16,10 @@ function LeadsPage() {
     if (q !== null) {
       setSearch(q);
     }
+    const st = searchParams.get('status');
+    if (st !== null && st !== '') {
+      setStatusFilter(st);
+    }
   }, [searchParams]);
   
   // Modal state for Add/Edit
@@ -43,12 +47,20 @@ function LeadsPage() {
   const fetchLeadsData = async () => {
     try {
       setLoading(true);
-      const data = await getLeads({ search, status: statusFilter });
-      if (data?.success) {
-        setLeads(data.leads);
-      }
+      const params = {};
+      if (search && search.trim()) params.search = search.trim();
+      if (statusFilter && statusFilter !== 'All') params.status = statusFilter;
+
+      const data = await getLeads(params);
+      
+      const leadsList = Array.isArray(data) 
+        ? data 
+        : (data?.leads || data?.data || []);
+
+      setLeads(leadsList);
     } catch (err) {
       console.error('Error fetching leads:', err);
+      setLeads([]);
     } finally {
       setLoading(false);
     }

@@ -20,16 +20,17 @@ const getLeads = async (req, res) => {
     if (isDbConnected) {
       let query = {};
 
-      if (status && status !== 'All') {
-        query.status = status;
+      if (status && status !== 'All' && status !== 'all') {
+        query.status = new RegExp(`^${status.trim()}$`, 'i');
       }
 
       if (assignedUser) {
         query.assignedUser = assignedUser;
       }
 
-      if (search) {
-        const searchRegex = new RegExp(search, 'i');
+      if (search && search.trim() !== '') {
+        const cleanSearch = search.trim().replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+        const searchRegex = new RegExp(cleanSearch, 'i');
         query.$or = [
           { name: searchRegex },
           { company: searchRegex },
@@ -43,31 +44,33 @@ const getLeads = async (req, res) => {
         .populate('assignedUser', 'name email role')
         .sort({ createdAt: -1 });
 
+      const mappedLeads = leads.map(l => ({
+        ...l.toObject(),
+        id: l._id.toString(),
+        score: l.score || 85,
+      }));
+
       return res.status(200).json({
         success: true,
-        count: leads.length,
-        leads: leads.map(l => ({
-          ...l.toObject(),
-          id: l._id.toString(),
-          score: l.score || 85,
-        })),
+        count: mappedLeads.length,
+        leads: mappedLeads,
       });
     } else {
       let result = [...inMemoryLeads];
 
-      if (status && status !== 'All') {
-        result = result.filter(l => l.status === status);
+      if (status && status !== 'All' && status !== 'all') {
+        result = result.filter(l => l.status.toLowerCase() === status.toLowerCase());
       }
 
-      if (search) {
-        const s = search.toLowerCase();
+      if (search && search.trim() !== '') {
+        const s = search.trim().toLowerCase();
         result = result.filter(
           l =>
-            l.name.toLowerCase().includes(s) ||
+            (l.name && l.name.toLowerCase().includes(s)) ||
             (l.company && l.company.toLowerCase().includes(s)) ||
-            l.email.toLowerCase().includes(s) ||
+            (l.email && l.email.toLowerCase().includes(s)) ||
             (l.phone && l.phone.toLowerCase().includes(s)) ||
-            l.serviceInterested.toLowerCase().includes(s)
+            (l.serviceInterested && l.serviceInterested.toLowerCase().includes(s))
         );
       }
 
