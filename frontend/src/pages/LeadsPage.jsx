@@ -205,7 +205,7 @@ function LeadsPage() {
             type="text"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            placeholder="Search leads by name, company, email, or service..."
+            placeholder="Search leads by name, email, company, or phone..."
             className="w-full pl-9 pr-4 py-2 bg-[#FFF6F1]/40 border border-[#FFDCD0] rounded-xl text-xs text-[#111111] placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#F26522]/30 focus:border-[#F26522] transition-all"
           />
         </div>

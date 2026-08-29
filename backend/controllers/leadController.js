@@ -34,6 +34,7 @@ const getLeads = async (req, res) => {
           { name: searchRegex },
           { company: searchRegex },
           { email: searchRegex },
+          { phone: searchRegex },
           { serviceInterested: searchRegex },
         ];
       }
@@ -63,8 +64,9 @@ const getLeads = async (req, res) => {
         result = result.filter(
           l =>
             l.name.toLowerCase().includes(s) ||
-            l.company.toLowerCase().includes(s) ||
+            (l.company && l.company.toLowerCase().includes(s)) ||
             l.email.toLowerCase().includes(s) ||
+            (l.phone && l.phone.toLowerCase().includes(s)) ||
             l.serviceInterested.toLowerCase().includes(s)
         );
       }
