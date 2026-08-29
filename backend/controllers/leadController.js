@@ -306,13 +306,6 @@ const updateLead = async (req, res) => {
     });
   }
 };
-    return res.status(500).json({
-      success: false,
-      message: 'Server error updating lead',
-      error: error.message,
-    });
-  }
-};
 
 // @desc    Delete a lead
 // @route   DELETE /api/leads/:id
