@@ -1,4 +1,5 @@
 import React from 'react';
+import { Building2 } from 'lucide-react';
 
 function CustomersPage() {
   const customers = [
@@ -9,9 +10,14 @@ function CustomersPage() {
   return (
     <div className="space-y-6 text-[#111111]">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white p-6 rounded-2xl border border-[#FFDCD0] shadow-xs">
-        <div>
-          <h1 className="text-2xl sm:text-3xl font-bold text-[#111111] tracking-tight">Active Customers</h1>
-          <p className="text-xs sm:text-sm text-[#475569] font-medium">Directory of converted clients and accounts</p>
+        <div className="flex items-center gap-3">
+          <div className="p-3 bg-[#FFF6F1] border border-[#FFDCD0] rounded-xl text-[#F26522] shadow-xs">
+            <Building2 className="w-6 h-6" />
+          </div>
+          <div>
+            <h1 className="text-2xl sm:text-3xl font-bold text-[#111111] tracking-tight">Active Customers</h1>
+            <p className="text-xs sm:text-sm text-[#475569] font-medium">Directory of converted clients and accounts</p>
+          </div>
         </div>
       </div>
 

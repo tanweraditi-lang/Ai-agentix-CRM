@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { getFollowups, createFollowup, deleteFollowup } from '../services/followupService';
+import { CalendarClock, Plus, Clock, Trash2, X, CalendarCheck } from 'lucide-react';
 
 function FollowupsPage() {
   const [followups, setFollowups] = useState([]);
@@ -97,15 +98,21 @@ function FollowupsPage() {
     <div className="space-y-6 text-[#111111]">
       {/* Header Banner */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white p-6 rounded-2xl border border-[#FFDCD0] shadow-xs">
-        <div>
-          <h1 className="text-2xl sm:text-3xl font-bold text-[#111111] tracking-tight">Follow-ups Scheduler</h1>
-          <p className="text-xs sm:text-sm text-[#475569] font-medium">Track tasks, calls, and reminder schedules</p>
+        <div className="flex items-center gap-3">
+          <div className="p-3 bg-[#FFF6F1] border border-[#FFDCD0] rounded-xl text-[#F26522] shadow-xs">
+            <CalendarClock className="w-6 h-6" />
+          </div>
+          <div>
+            <h1 className="text-2xl sm:text-3xl font-bold text-[#111111] tracking-tight">Follow-ups Scheduler</h1>
+            <p className="text-xs sm:text-sm text-[#475569] font-medium">Track tasks, calls, and reminder schedules</p>
+          </div>
         </div>
         <button
           onClick={handleOpenModal}
           className="crm-button-primary self-start sm:self-auto cursor-pointer"
         >
-          + Schedule Task
+          <Plus className="w-4 h-4" />
+          <span>Schedule Task</span>
         </button>
       </div>
 
@@ -142,9 +149,7 @@ function FollowupsPage() {
                 <h3 className="font-bold text-sm text-[#111111]">{item.task}</h3>
                 <p className="text-xs text-[#475569]">Client: <span className="text-slate-800 font-semibold">{item.clientName || item.client || 'General Client'}</span></p>
                 <p className="text-xs text-[#F26522] font-semibold flex items-center gap-1">
-                  <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
+                  <Clock className="w-3.5 h-3.5" />
                   <span>{item.time || item.due || (item.date ? new Date(item.date).toLocaleDateString() : 'Scheduled')}</span>
                 </p>
               </div>
@@ -155,9 +160,10 @@ function FollowupsPage() {
                 {item._id && !item._id.startsWith('f') && (
                   <button
                     onClick={() => handleDeleteTask(item._id)}
-                    className="text-[11px] text-rose-500 hover:text-rose-700 font-medium cursor-pointer"
+                    className="text-[11px] text-rose-500 hover:text-rose-700 font-medium cursor-pointer flex items-center gap-1"
                   >
-                    Remove
+                    <Trash2 className="w-3 h-3" />
+                    <span>Remove</span>
                   </button>
                 )}
               </div>
@@ -174,9 +180,9 @@ function FollowupsPage() {
               <h2 className="text-lg font-bold text-[#111111]">Schedule Follow-up Task</h2>
               <button
                 onClick={() => setIsModalOpen(false)}
-                className="p-1 rounded-lg text-slate-400 hover:text-[#111111] hover:bg-orange-50 text-lg font-bold cursor-pointer"
+                className="p-1 rounded-lg text-slate-400 hover:text-[#111111] hover:bg-orange-50 cursor-pointer"
               >
-                &times;
+                <X className="w-5 h-5" />
               </button>
             </div>
 

@@ -3,6 +3,19 @@ import { useNavigate } from 'react-router-dom';
 import { config } from '../utils/config';
 import { getHealthStatus } from '../services/healthService';
 import { getDashboardMetrics } from '../services/dashboardService';
+import {
+  Users,
+  UserPlus,
+  Award,
+  TrendingUp,
+  RefreshCw,
+  Activity,
+  BarChart3,
+  ChevronRight,
+  Zap,
+  Calendar,
+  Sparkles,
+} from 'lucide-react';
 
 function DashboardPage() {
   const [health, setHealth] = useState(null);
@@ -53,33 +66,25 @@ function DashboardPage() {
       case 'lead_created':
         return (
           <div className="p-2.5 rounded-xl bg-orange-100 text-[#F26522] border border-[#FFDCD0] shadow-xs">
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z" />
-            </svg>
+            <UserPlus className="w-5 h-5" />
           </div>
         );
       case 'followup_scheduled':
         return (
           <div className="p-2.5 rounded-xl bg-amber-100 text-amber-700 border border-amber-200 shadow-xs">
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-            </svg>
+            <Calendar className="w-5 h-5" />
           </div>
         );
       case 'customer_converted':
         return (
           <div className="p-2.5 rounded-xl bg-emerald-100 text-emerald-700 border border-emerald-200 shadow-xs">
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
-            </svg>
+            <Award className="w-5 h-5" />
           </div>
         );
       default:
         return (
           <div className="p-2.5 rounded-xl bg-[#FFF6F1] text-[#F26522] border border-[#FFDCD0] shadow-xs">
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
-            </svg>
+            <Zap className="w-5 h-5" />
           </div>
         );
     }
@@ -90,11 +95,7 @@ function DashboardPage() {
       title: 'Total Leads',
       count: loading ? '...' : (metrics ? metrics.totalLeads : 0),
       change: 'Live Pipeline Count',
-      icon: (
-        <svg className="w-5 h-5 text-[#F26522]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-        </svg>
-      ),
+      icon: <Users className="w-5 h-5 text-[#F26522]" />,
       bgAccent: 'from-orange-500/10 to-amber-500/5',
       borderColor: 'border-[#FFDCD0]'
     },
@@ -102,11 +103,7 @@ function DashboardPage() {
       title: 'New Leads',
       count: loading ? '...' : (metrics ? (metrics.newLeads !== undefined ? metrics.newLeads : (metrics.totalLeads > 0 ? Math.ceil(metrics.totalLeads * 0.4) : 0)) : 0),
       change: 'Pending Outreach',
-      icon: (
-        <svg className="w-5 h-5 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-        </svg>
-      ),
+      icon: <UserPlus className="w-5 h-5 text-amber-600" />,
       bgAccent: 'from-amber-500/10 to-yellow-500/5',
       borderColor: 'border-[#FFDCD0]'
     },
@@ -114,11 +111,7 @@ function DashboardPage() {
       title: 'Won',
       count: loading ? '...' : (metrics ? metrics.totalCustomers : 0),
       change: 'Converted Clients',
-      icon: (
-        <svg className="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
-        </svg>
-      ),
+      icon: <Award className="w-5 h-5 text-emerald-600" />,
       bgAccent: 'from-emerald-500/10 to-teal-500/5',
       borderColor: 'border-[#FFDCD0]'
     },
@@ -126,11 +119,7 @@ function DashboardPage() {
       title: 'Conversion',
       count: loading ? '...' : (metrics ? `${metrics.conversionRate}%` : '0%'),
       change: 'Won vs Total Ratio',
-      icon: (
-        <svg className="w-5 h-5 text-[#D9531E]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
-        </svg>
-      ),
+      icon: <TrendingUp className="w-5 h-5 text-[#D9531E]" />,
       bgAccent: 'from-orange-600/10 to-amber-500/5',
       borderColor: 'border-[#FFDCD0]'
     },
@@ -144,7 +133,7 @@ function DashboardPage() {
   ];
 
   return (
-    <div className="space-y-4 text-[#111111]">
+    <div className="space-y-6 text-[#111111]">
       {/* Header Banner */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-white p-5 rounded-2xl border border-[#FFDCD0] shadow-xs">
         <div>
@@ -163,9 +152,7 @@ function DashboardPage() {
             disabled={refreshing}
             className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-xl text-slate-700 bg-orange-50 hover:bg-[#FFF6F1] border border-[#FFDCD0] transition-all cursor-pointer disabled:opacity-50"
           >
-            <svg className={`w-3.5 h-3.5 text-[#F26522] ${refreshing ? 'animate-spin' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
-            </svg>
+            <RefreshCw className={`w-3.5 h-3.5 text-[#F26522] ${refreshing ? 'animate-spin' : ''}`} />
             <span>{refreshing ? 'Refreshing...' : 'Refresh'}</span>
           </button>
 
@@ -226,9 +213,7 @@ function DashboardPage() {
             <div className="flex items-center justify-between border-b border-[#FFDCD0] pb-3 mb-3">
               <div className="flex items-center gap-2">
                 <div className="p-1.5 rounded-xl bg-[#FFF6F1] text-[#F26522] border border-[#FFDCD0]">
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
+                  <Activity className="w-4 h-4" />
                 </div>
                 <div>
                   <h2 className="text-base font-bold text-[#111111]">Recent Activities</h2>
@@ -272,9 +257,7 @@ function DashboardPage() {
                       <span className="text-[10px] font-semibold text-[#475569] whitespace-nowrap bg-white px-2 py-0.5 rounded-lg border border-[#FFDCD0]">
                         {act.time}
                       </span>
-                      <svg className="w-3.5 h-3.5 text-slate-400 group-hover:text-[#F26522] group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
-                      </svg>
+                      <ChevronRight className="w-3.5 h-3.5 text-slate-400 group-hover:text-[#F26522] group-hover:translate-x-1 transition-all" />
                     </div>
                   </div>
                 ))}
@@ -294,9 +277,7 @@ function DashboardPage() {
             <div className="flex items-center justify-between border-b border-[#FFDCD0] pb-3 mb-3">
               <div className="flex items-center gap-2">
                 <div className="p-1.5 rounded-xl bg-[#FFF6F1] text-[#F26522] border border-[#FFDCD0]">
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-                  </svg>
+                  <BarChart3 className="w-4 h-4" />
                 </div>
                 <div>
                   <h2 className="text-base font-bold text-[#111111]">Lead Pipeline</h2>
@@ -341,4 +322,3 @@ function DashboardPage() {
 }
 
 export default DashboardPage;
-

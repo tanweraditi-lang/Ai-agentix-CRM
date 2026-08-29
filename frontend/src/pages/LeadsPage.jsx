@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import { getLeads, createLead, updateLead, deleteLead } from '../services/leadService';
+import { Users, Plus, Search, Eye, Edit3, Trash2, X, Check } from 'lucide-react';
 
 function LeadsPage() {
   const [searchParams] = useSearchParams();
@@ -154,9 +155,7 @@ function LeadsPage() {
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white p-6 rounded-2xl border border-[#FFDCD0] shadow-sm">
         <div className="flex items-center gap-3">
           <div className="p-3 bg-[#FFF6F1] border border-[#FFDCD0] rounded-xl text-[#F26522] shadow-xs">
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-            </svg>
+            <Users className="w-6 h-6" />
           </div>
           <div>
             <div className="flex items-center gap-2">
@@ -176,9 +175,7 @@ function LeadsPage() {
           onClick={handleOpenAddModal}
           className="bg-gradient-to-r from-[#F26522] to-[#D9531E] hover:opacity-95 text-white font-semibold px-5 py-2.5 rounded-xl text-xs sm:text-sm transition-all shadow-sm hover:shadow-md flex items-center gap-2 self-start sm:self-auto cursor-pointer"
         >
-          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 4v16m8-8H4" />
-          </svg>
+          <Plus className="w-4 h-4" />
           <span>Add New Lead</span>
         </button>
       </div>
@@ -201,9 +198,7 @@ function LeadsPage() {
         {/* Search Input */}
         <div className="relative flex-1">
           <span className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-slate-400">
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-            </svg>
+            <Search className="w-4 h-4" />
           </span>
           <input
             type="text"
@@ -283,25 +278,30 @@ function LeadsPage() {
                       </select>
                     </td>
                     <td className="px-6 py-4 font-bold text-[#F26522]">{lead.score || 85}/100</td>
-                    <td className="px-6 py-4 text-right space-x-3">
-                      <Link
-                        to={`/leads/${lead.id || lead._id}`}
-                        className="text-slate-600 hover:text-[#F26522] text-xs font-semibold"
-                      >
-                        View
-                      </Link>
-                      <button
-                        onClick={() => handleOpenEditModal(lead)}
-                        className="text-[#F26522] hover:text-[#D9531E] text-xs font-semibold"
-                      >
-                        Edit
-                      </button>
-                      <button
-                        onClick={() => setDeletingLead(lead)}
-                        className="text-rose-600 hover:text-rose-800 text-xs font-semibold"
-                      >
-                        Delete
-                      </button>
+                    <td className="px-6 py-4 text-right">
+                      <div className="flex items-center justify-end space-x-3">
+                        <Link
+                          to={`/leads/${lead.id || lead._id}`}
+                          className="text-slate-600 hover:text-[#F26522] text-xs font-semibold flex items-center gap-1"
+                        >
+                          <Eye className="w-3.5 h-3.5" />
+                          <span>View</span>
+                        </Link>
+                        <button
+                          onClick={() => handleOpenEditModal(lead)}
+                          className="text-[#F26522] hover:text-[#D9531E] text-xs font-semibold flex items-center gap-1 cursor-pointer"
+                        >
+                          <Edit3 className="w-3.5 h-3.5" />
+                          <span>Edit</span>
+                        </button>
+                        <button
+                          onClick={() => setDeletingLead(lead)}
+                          className="text-rose-600 hover:text-rose-800 text-xs font-semibold flex items-center gap-1 cursor-pointer"
+                        >
+                          <Trash2 className="w-3.5 h-3.5" />
+                          <span>Delete</span>
+                        </button>
+                      </div>
                     </td>
                   </tr>
                 ))}

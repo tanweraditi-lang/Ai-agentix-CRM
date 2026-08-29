@@ -8,6 +8,23 @@ import {
   deleteNote,
   getLeadActivity,
 } from '../services/noteService';
+import {
+  ArrowLeft,
+  Edit3,
+  FileText,
+  Clock,
+  UserPlus,
+  RefreshCw,
+  Zap,
+  Trash2,
+  X,
+  Check,
+  Building2,
+  Mail,
+  Phone,
+  User,
+  Sparkles,
+} from 'lucide-react';
 
 function LeadDetailsPage() {
   const { id } = useParams();
@@ -66,11 +83,11 @@ function LeadDetailsPage() {
     try {
       setNotesLoading(true);
       const res = await getLeadNotes(id);
-      if (res?.success) {
-        setNotes(res.notes || []);
-      }
+      const items = Array.isArray(res) ? res : (res.notes || res.data || []);
+      setNotes(items);
     } catch (err) {
-      console.error('Error fetching notes:', err);
+      console.error('Error fetching lead notes:', err);
+      setNotes([]);
     } finally {
       setNotesLoading(false);
     }
@@ -80,20 +97,22 @@ function LeadDetailsPage() {
     try {
       setActivityLoading(true);
       const res = await getLeadActivity(id);
-      if (res?.success) {
-        setActivities(res.activities || []);
-      }
+      const items = Array.isArray(res) ? res : (res.activity || res.activities || res.data || []);
+      setActivities(items);
     } catch (err) {
-      console.error('Error fetching activities:', err);
+      console.error('Error fetching lead activities:', err);
+      setActivities([]);
     } finally {
       setActivityLoading(false);
     }
   };
 
   useEffect(() => {
-    fetchDetails();
-    fetchNotesData();
-    fetchActivitiesData();
+    if (id) {
+      fetchDetails();
+      fetchNotesData();
+      fetchActivitiesData();
+    }
   }, [id]);
 
   const handleOpenEditModal = () => {
@@ -115,13 +134,10 @@ function LeadDetailsPage() {
     try {
       setUpdating(true);
       await updateLead(id, formData);
-      setLead(prev => ({ ...prev, ...formData }));
+      setAlert({ type: 'success', message: 'Lead details updated successfully!' });
       setIsEditModalOpen(false);
-      setAlert({ type: 'success', message: 'Lead updated successfully!' });
+      fetchDetails();
       fetchActivitiesData();
-      setTimeout(() => {
-        navigate('/leads');
-      }, 500);
     } catch (err) {
       setAlert({ type: 'error', message: err.message || 'Failed to update lead' });
     } finally {
@@ -133,12 +149,12 @@ function LeadDetailsPage() {
     try {
       setUpdating(true);
       await updateLead(id, { status: newStatus });
-      setLead(prev => ({ ...prev, status: newStatus }));
-      setAlert({ type: 'success', message: `Lead status updated to ${newStatus}` });
+      setAlert({ type: 'success', message: `Status updated to ${newStatus}` });
+      fetchDetails();
       fetchActivitiesData();
     } catch (err) {
       console.error('Error updating status:', err);
-      setAlert({ type: 'error', message: 'Failed to update status' });
+      setAlert({ type: 'error', message: err.message || 'Failed to update status' });
     } finally {
       setUpdating(false);
     }
@@ -150,7 +166,7 @@ function LeadDetailsPage() {
 
     try {
       setAddingNote(true);
-      await createNote(id, { note: newNoteText, createdBy: 'System Admin' });
+      await createNote(id, { note: newNoteText.trim() });
       setNewNoteText('');
       setAlert({ type: 'success', message: 'Note added successfully!' });
       fetchNotesData();
@@ -176,7 +192,6 @@ function LeadDetailsPage() {
       setEditingNoteText('');
       setAlert({ type: 'success', message: 'Note updated successfully!' });
       fetchNotesData();
-      fetchActivitiesData();
     } catch (err) {
       setAlert({ type: 'error', message: err.message || 'Failed to update note' });
     }
@@ -210,13 +225,13 @@ function LeadDetailsPage() {
   const getActivityBadge = (action) => {
     const act = (action || '').toLowerCase();
     if (act.includes('created')) {
-      return { bg: 'bg-indigo-100 text-indigo-700 border-indigo-200', icon: '✨' };
+      return { bg: 'bg-indigo-100 text-indigo-700 border-indigo-200', icon: <UserPlus className="w-3 h-3 text-indigo-600" /> };
     } else if (act.includes('status')) {
-      return { bg: 'bg-amber-100 text-amber-700 border-amber-200', icon: '🔄' };
+      return { bg: 'bg-amber-100 text-amber-700 border-amber-200', icon: <RefreshCw className="w-3 h-3 text-amber-600" /> };
     } else if (act.includes('note')) {
-      return { bg: 'bg-emerald-100 text-emerald-700 border-emerald-200', icon: '📝' };
+      return { bg: 'bg-emerald-100 text-emerald-700 border-emerald-200', icon: <FileText className="w-3 h-3 text-emerald-600" /> };
     } else {
-      return { bg: 'bg-orange-100 text-[#F26522] border-[#FFDCD0]', icon: '⚡' };
+      return { bg: 'bg-orange-100 text-[#F26522] border-[#FFDCD0]', icon: <Zap className="w-3 h-3 text-[#F26522]" /> };
     }
   };
 
@@ -247,9 +262,10 @@ function LeadDetailsPage() {
         <div className="flex flex-wrap items-center gap-2 sm:gap-4">
           <Link
             to="/leads"
-            className="text-[#475569] hover:text-[#F26522] text-xs font-semibold transition-colors flex items-center gap-1 bg-[#FFF6F1] px-3 py-1.5 rounded-xl border border-[#FFDCD0]"
+            className="text-[#475569] hover:text-[#F26522] text-xs font-semibold transition-colors flex items-center gap-1.5 bg-[#FFF6F1] px-3 py-1.5 rounded-xl border border-[#FFDCD0]"
           >
-            &larr; Back to Leads
+            <ArrowLeft className="w-3.5 h-3.5" />
+            <span>Back to Leads</span>
           </Link>
           <h1 className="text-xl sm:text-2xl font-bold text-[#111111]">{lead.name}</h1>
           <span className="bg-[#FFF6F1] text-[#F26522] border border-[#FFDCD0] px-3 py-1 rounded-full text-xs font-bold">
@@ -260,9 +276,10 @@ function LeadDetailsPage() {
         <div className="flex items-center space-x-3 self-start sm:self-auto">
           <button
             onClick={handleOpenEditModal}
-            className="bg-orange-50 hover:bg-[#FFF6F1] text-[#F26522] border border-[#FFDCD0] font-semibold px-4 py-1.5 rounded-xl text-xs transition-colors cursor-pointer"
+            className="bg-orange-50 hover:bg-[#FFF6F1] text-[#F26522] border border-[#FFDCD0] font-semibold px-4 py-1.5 rounded-xl text-xs transition-colors cursor-pointer flex items-center gap-1.5"
           >
-            Edit Profile
+            <Edit3 className="w-3.5 h-3.5" />
+            <span>Edit Profile</span>
           </button>
           <div className="flex items-center space-x-2">
             <label className="text-xs text-slate-600 font-medium">Stage:</label>
