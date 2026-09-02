@@ -10,6 +10,9 @@ const dashboardRoutes = require('./routes/dashboardRoutes');
 const leadRoutes = require('./routes/leadRoutes');
 const noteRoutes = require('./routes/noteRoutes');
 const followupRoutes = require('./routes/followupRoutes');
+const chatbotRoutes = require('./routes/chatbotRoutes');
+const conversationRoutes = require('./routes/conversationRoutes');
+const analyticsRoutes = require('./routes/analyticsRoutes');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -56,7 +59,11 @@ app.use('/api/health', healthRoutes);
 app.use('/api/dashboard', dashboardRoutes);
 app.use('/api/leads', leadRoutes);
 app.use('/api/followups', followupRoutes);
+app.use('/api/chatbots', chatbotRoutes);
+app.use('/api/conversations', conversationRoutes);
+app.use('/api/analytics', analyticsRoutes);
 app.use('/api', noteRoutes);
+
 
 // Start server
 app.listen(PORT, '0.0.0.0', () => {

@@ -5,6 +5,9 @@ import {
   LayoutDashboard,
   Users,
   Building2,
+  Bot,
+  MessageSquare,
+  BarChart2,
   CalendarClock,
   Settings,
   LogOut,
@@ -112,6 +115,7 @@ function Layout() {
     return name.substring(0, 2).toUpperCase();
   };
 
+  // PART 6 Requirements: 8 Menu Items
   const navItems = [
     {
       path: '/',
@@ -129,8 +133,23 @@ function Layout() {
       icon: <Building2 className="w-5 h-5" />,
     },
     {
+      path: '/chatbots',
+      label: 'Chatbots',
+      icon: <Bot className="w-5 h-5" />,
+    },
+    {
+      path: '/conversations',
+      label: 'Conversations',
+      icon: <MessageSquare className="w-5 h-5" />,
+    },
+    {
+      path: '/analytics',
+      label: 'Analytics',
+      icon: <BarChart2 className="w-5 h-5" />,
+    },
+    {
       path: '/followups',
-      label: 'Follow Up',
+      label: 'Follow-ups',
       icon: <CalendarClock className="w-5 h-5" />,
     },
     {
@@ -139,6 +158,7 @@ function Layout() {
       icon: <Settings className="w-5 h-5" />,
     },
   ];
+
 
   return (
     <div className="min-h-screen flex flex-col md:flex-row bg-[#FFF6F1] text-[#111111] overflow-x-hidden">

@@ -1,4 +1,5 @@
 const jwt = require('jsonwebtoken');
+const mongoose = require('mongoose');
 const User = require('../models/User');
 
 // Middleware to protect routes & verify JWT token from Authorization Bearer header
@@ -13,32 +14,44 @@ const protect = async (req, res, next) => {
       // Verify JWT token signature and expiration
       const decoded = jwt.verify(token, secret);
 
-      // Attempt to fetch fresh user details from database using User model
-      let dbUser = await User.findById(decoded.id);
+      let dbUser = null;
+      if (mongoose.connection.readyState === 1 && mongoose.Types.ObjectId.isValid(decoded.id)) {
+        dbUser = await User.findById(decoded.id).select('-password_hash');
+      }
 
       if (dbUser) {
         req.user = {
-          id: dbUser.id,
+          id: dbUser._id.toString(),
           first_name: dbUser.first_name,
           last_name: dbUser.last_name,
           email: dbUser.email,
-          role: dbUser.role,
+          role: dbUser.role || 'agent',
+          lastLogin: dbUser.lastLogin,
         };
       } else {
-        // Fallback to decoded payload data if user record is unavailable
+        // Fallback to decoded payload data
         req.user = {
           id: decoded.id,
           email: decoded.email,
-          role: decoded.role,
+          role: decoded.role || 'agent',
           name: decoded.name,
+          lastLogin: decoded.lastLogin || null,
         };
       }
 
       return next();
     } catch (error) {
+      if (error.name === 'TokenExpiredError') {
+        return res.status(401).json({
+          success: false,
+          code: 'TOKEN_EXPIRED',
+          message: 'Token has expired. Please login again.',
+        });
+      }
       return res.status(401).json({
         success: false,
-        message: 'Not authorized, invalid or expired token',
+        code: 'TOKEN_INVALID',
+        message: 'Not authorized, invalid token',
         error: error.message,
       });
     }
@@ -47,12 +60,13 @@ const protect = async (req, res, next) => {
   if (!token) {
     return res.status(401).json({
       success: false,
+      code: 'NO_TOKEN',
       message: 'Not authorized, no token provided',
     });
   }
 };
 
-// Role-Based Access Control (RBAC) middleware for Admin & Sales Rep roles
+// Role-Based Access Control (RBAC) middleware for Admin & Agent roles
 const authorizeRoles = (...allowedRoles) => {
   return (req, res, next) => {
     if (!req.user || !req.user.role) {
@@ -62,14 +76,25 @@ const authorizeRoles = (...allowedRoles) => {
       });
     }
 
-    // Normalize roles for comparison (e.g., 'admin', 'sales_rep')
-    const userRole = req.user.role.toLowerCase().replace(/\s+/g, '_');
+    // Normalize roles ('admin', 'agent', 'sales_rep' -> 'agent')
+    let userRole = req.user.role.toLowerCase().replace(/\s+/g, '_');
+    if (userRole === 'sales_rep') userRole = 'agent';
+
     const normalizedAllowedRoles = allowedRoles.map(r => r.toLowerCase().replace(/\s+/g, '_'));
+
+    if (!normalizedAllowedRoles.includes(userRole) && !normalizedAllowedRoles.includes('admin') === false && userRole !== 'admin') {
+      return res.status(403).json({
+        success: false,
+        code: 'UNAUTHORIZED_ROLE',
+        message: `Access denied. Role [${req.user.role}] cannot perform this action.`,
+      });
+    }
 
     if (!normalizedAllowedRoles.includes(userRole)) {
       return res.status(403).json({
         success: false,
-        message: `Access denied. Role [${req.user.role}] is not authorized to access this resource`,
+        code: 'UNAUTHORIZED_ROLE',
+        message: `Access denied. Role [${req.user.role}] cannot perform this action.`,
       });
     }
 
@@ -81,3 +106,4 @@ module.exports = {
   protect,
   authorizeRoles,
 };
+

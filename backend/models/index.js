@@ -4,6 +4,8 @@ const Customer = require('./Customer');
 const Followup = require('./Followup');
 const Note = require('./Note');
 const Activity = require('./Activity');
+const Chatbot = require('./Chatbot');
+const Conversation = require('./Conversation');
 
 module.exports = {
   User,
@@ -12,4 +14,7 @@ module.exports = {
   Followup,
   Note,
   Activity,
+  Chatbot,
+  Conversation,
 };
+

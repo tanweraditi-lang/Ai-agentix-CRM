@@ -39,16 +39,26 @@ export const logout = async () => {
   }
 };
 
+export const validateSession = async () => {
+  try {
+    const response = await api.get('/auth/validate-session');
+    return response.data;
+  } catch (error) {
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+    return { valid: false };
+  }
+};
+
 export const getMe = async () => {
   try {
     const token = localStorage.getItem('token');
     if (!token) return null;
 
-    const response = await api.get('/auth/me', {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
+    const response = await api.get('/auth/me');
+    if (response.data?.user) {
+      localStorage.setItem('user', JSON.stringify(response.data.user));
+    }
     return response.data.user;
   } catch (error) {
     localStorage.removeItem('token');
@@ -56,3 +66,4 @@ export const getMe = async () => {
     return null;
   }
 };
+

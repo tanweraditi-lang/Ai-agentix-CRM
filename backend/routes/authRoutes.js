@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { loginUser, logoutUser, getMe } = require('../controllers/authController');
+const { loginUser, logoutUser, validateSession, getMe } = require('../controllers/authController');
 const { protect, authorizeRoles } = require('../middleware/authMiddleware');
 
 // @route   POST /api/auth/login
@@ -12,6 +12,11 @@ router.post('/login', loginUser);
 // @desc    Logout user & invalidate session/token state
 // @access  Public
 router.post('/logout', logoutUser);
+
+// @route   GET /api/auth/validate-session
+// @desc    Validate session token & user status
+// @access  Private (Protected)
+router.get('/validate-session', protect, validateSession);
 
 // @route   GET /api/auth/me
 // @desc    Get currently authenticated user details
@@ -29,15 +34,16 @@ router.get('/admin-only', protect, authorizeRoles('admin'), (req, res) => {
   });
 });
 
-// @route   GET /api/auth/sales-only
-// @desc    Role-based test endpoint for Sales Representatives & Admins
-// @access  Private (Sales Rep & Admin)
-router.get('/sales-only', protect, authorizeRoles('sales_rep', 'admin'), (req, res) => {
+// @route   GET /api/auth/agent-only
+// @desc    Role-based endpoint for Agents & Admins
+// @access  Private (Agent & Admin)
+router.get('/agent-only', protect, authorizeRoles('agent', 'admin'), (req, res) => {
   return res.status(200).json({
     success: true,
-    message: 'Welcome Sales Rep! Access granted to sales-restricted endpoint.',
+    message: 'Welcome Agent! Access granted.',
     user: req.user,
   });
 });
 
 module.exports = router;
+

@@ -1,69 +1,73 @@
+const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
-const db = require('../config/db'); // MySQL connection pool or fallback
 
-class User {
-  // Find a user by email from the Users table
-  static async findByEmail(email) {
-    const cleanEmail = email.toLowerCase().trim();
-    
+const userSchema = new mongoose.Schema(
+  {
+    first_name: {
+      type: String,
+      trim: true,
+      default: '',
+    },
+    last_name: {
+      type: String,
+      trim: true,
+      default: '',
+    },
+    email: {
+      type: String,
+      required: [true, 'User email is required'],
+      unique: true,
+      trim: true,
+      lowercase: true,
+    },
+    password_hash: {
+      type: String,
+      required: [true, 'Password hash is required'],
+    },
+    role: {
+      type: String,
+      enum: {
+        values: ['admin', 'agent', 'sales_rep'],
+        message: '{VALUE} is not a valid user role',
+      },
+      default: 'agent',
+    },
+    lastLogin: {
+      type: Date,
+      default: null,
+    },
+  },
+  {
+    timestamps: true,
+  }
+);
+
+// Mongoose method to compare passwords
+userSchema.methods.matchPassword = async function (enteredPassword) {
+  if (!enteredPassword || !this.password_hash) return false;
+  return await bcrypt.compare(enteredPassword, this.password_hash);
+};
+
+// Static helper to find by email
+userSchema.statics.findByEmail = async function (email) {
+  const cleanEmail = (email || '').toLowerCase().trim();
+  if (mongoose.connection.readyState === 1) {
     try {
-      if (db && typeof db.query === 'function') {
-        const [rows] = await db.query('SELECT * FROM Users WHERE email = ? LIMIT 1', [cleanEmail]);
-        return rows.length > 0 ? rows[0] : null;
-      }
-    } catch (error) {
-      console.warn('[User Model] Database query error:', error.message);
+      const user = await this.findOne({ email: cleanEmail });
+      if (user) return user;
+    } catch (err) {
+      console.warn('[User Model] MongoDB findByEmail query error:', err.message);
     }
-    
-    return null;
   }
+  return null;
+};
 
-  // Find a user by ID (excluding sensitive password hash)
-  static async findById(id) {
-    try {
-      if (db && typeof db.query === 'function') {
-        const [rows] = await db.query(
-          'SELECT id, first_name, last_name, email, role, created_at, updated_at FROM Users WHERE id = ? LIMIT 1',
-          [id]
-        );
-        return rows.length > 0 ? rows[0] : null;
-      }
-    } catch (error) {
-      console.warn('[User Model] Database query error:', error.message);
-    }
+// Static helper to compare raw candidate password with stored bcrypt hash
+userSchema.statics.comparePassword = async function (candidatePassword, hashedPassword) {
+  if (!candidatePassword || !hashedPassword) return false;
+  return await bcrypt.compare(candidatePassword, hashedPassword);
+};
 
-    return null;
-  }
-
-  // Create a new user record in Users table
-  static async create({ firstName, lastName, email, password, role = 'sales_rep' }) {
-    const salt = await bcrypt.genSalt(10);
-    const passwordHash = await bcrypt.hash(password, salt);
-    const cleanEmail = email.toLowerCase().trim();
-
-    if (db && typeof db.query === 'function') {
-      const [result] = await db.query(
-        'INSERT INTO Users (first_name, last_name, email, password_hash, role) VALUES (?, ?, ?, ?, ?)',
-        [firstName, lastName, cleanEmail, passwordHash, role]
-      );
-      
-      return {
-        id: result.insertId,
-        first_name: firstName,
-        last_name: lastName,
-        email: cleanEmail,
-        role,
-      };
-    }
-
-    throw new Error('Database connection unavailable');
-  }
-
-  // Compare raw candidate password with stored bcrypt hash
-  static async comparePassword(candidatePassword, hashedPassword) {
-    if (!candidatePassword || !hashedPassword) return false;
-    return await bcrypt.compare(candidatePassword, hashedPassword);
-  }
-}
-
+const User = mongoose.model('User', userSchema);
 module.exports = User;
+

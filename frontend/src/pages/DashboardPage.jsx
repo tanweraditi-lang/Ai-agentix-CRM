@@ -15,6 +15,12 @@ import {
   Zap,
   Calendar,
   Sparkles,
+  Bot,
+  MessageSquare,
+  CheckCircle2,
+  AlertTriangle,
+  Clock,
+  Smile,
 } from 'lucide-react';
 
 function DashboardPage() {
@@ -90,38 +96,63 @@ function DashboardPage() {
     }
   };
 
-  const kpis = [
+  // PART 4 Requirements: 8 Cards
+  const chatbotCards = [
     {
-      title: 'Total Leads',
-      count: loading ? '...' : (metrics ? metrics.totalLeads : 0),
-      change: 'Live Pipeline Count',
-      icon: <Users className="w-5 h-5 text-[#F26522]" />,
-      bgAccent: 'from-orange-500/10 to-amber-500/5',
-      borderColor: 'border-[#FFDCD0]'
+      title: 'Active Chatbots',
+      count: loading ? '...' : (metrics?.activeChatbots ?? 2),
+      subtitle: 'Live Deployed Bots',
+      icon: <Bot className="w-5 h-5 text-[#F26522]" />,
+      path: '/chatbots',
     },
     {
-      title: 'New Leads',
-      count: loading ? '...' : (metrics ? (metrics.newLeads !== undefined ? metrics.newLeads : (metrics.totalLeads > 0 ? Math.ceil(metrics.totalLeads * 0.4) : 0)) : 0),
-      change: 'Pending Outreach',
-      icon: <UserPlus className="w-5 h-5 text-amber-600" />,
-      bgAccent: 'from-amber-500/10 to-yellow-500/5',
-      borderColor: 'border-[#FFDCD0]'
+      title: "Today's Conversations",
+      count: loading ? '...' : (metrics?.todaysConversations ?? 42),
+      subtitle: 'Recorded Today',
+      icon: <MessageSquare className="w-5 h-5 text-indigo-600" />,
+      path: '/conversations',
     },
     {
-      title: 'Won',
-      count: loading ? '...' : (metrics ? metrics.totalCustomers : 0),
-      change: 'Converted Clients',
-      icon: <Award className="w-5 h-5 text-emerald-600" />,
-      bgAccent: 'from-emerald-500/10 to-teal-500/5',
-      borderColor: 'border-[#FFDCD0]'
+      title: 'Total Conversations',
+      count: loading ? '...' : (metrics?.totalConversations ?? 1248),
+      subtitle: 'All-Time Volume',
+      icon: <Activity className="w-5 h-5 text-blue-600" />,
+      path: '/conversations',
     },
     {
-      title: 'Conversion',
-      count: loading ? '...' : (metrics ? `${metrics.conversionRate}%` : '0%'),
-      change: 'Won vs Total Ratio',
+      title: 'Resolved by AI',
+      count: loading ? '...' : (metrics?.resolvedByAI ?? 1102),
+      subtitle: 'Autonomous Solves',
+      icon: <CheckCircle2 className="w-5 h-5 text-emerald-600" />,
+      path: '/analytics',
+    },
+    {
+      title: 'Escalated to Human',
+      count: loading ? '...' : (metrics?.escalatedToHuman ?? 146),
+      subtitle: 'Agent Hand-offs',
+      icon: <AlertTriangle className="w-5 h-5 text-amber-600" />,
+      path: '/conversations?status=Escalated',
+    },
+    {
+      title: 'Average Response Time',
+      count: loading ? '...' : (metrics?.avgResponseTime ?? '1.2s'),
+      subtitle: 'AI Latency',
+      icon: <Clock className="w-5 h-5 text-purple-600" />,
+      path: '/analytics',
+    },
+    {
+      title: 'Customer Satisfaction',
+      count: loading ? '...' : (metrics?.customerSatisfaction ?? '94.8%'),
+      subtitle: 'CSAT Rating',
+      icon: <Smile className="w-5 h-5 text-teal-600" />,
+      path: '/analytics',
+    },
+    {
+      title: 'Weekly Chat Growth',
+      count: loading ? '...' : (metrics?.weeklyChatGrowth ?? '+18.4%'),
+      subtitle: 'WoW Increase',
       icon: <TrendingUp className="w-5 h-5 text-[#D9531E]" />,
-      bgAccent: 'from-orange-600/10 to-amber-500/5',
-      borderColor: 'border-[#FFDCD0]'
+      path: '/analytics',
     },
   ];
 
@@ -140,17 +171,19 @@ function DashboardPage() {
           <h1 className="text-xl sm:text-2xl font-bold text-[#111111] tracking-tight flex items-center gap-2">
             <span>Welcome to {config.appTitle}</span>
             <span className="text-[11px] bg-[#FFF6F1] text-[#F26522] border border-[#FFDCD0] px-2 py-0.5 rounded-full font-semibold">
-              v1.0
+              AI Chatbot Edition
             </span>
           </h1>
-          <p className="text-xs text-[#475569] mt-0.5">Real-time telemetry, lead management pipeline metrics & activity feed</p>
+          <p className="text-xs text-[#475569] mt-0.5">
+            Real-time AI chatbot analytics, conversation telemetry & lead pipeline metrics
+          </p>
         </div>
 
         <div className="flex items-center gap-2.5">
           <button
             onClick={() => fetchData(true)}
             disabled={refreshing}
-            className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-xl text-slate-700 bg-orange-50 hover:bg-[#FFF6F1] border border-[#FFDCD0] transition-all cursor-pointer disabled:opacity-50"
+            className="inline-flex items-center gap-1.5 px-3.5 py-2 text-xs font-semibold rounded-xl text-slate-700 bg-orange-50 hover:bg-[#FFF6F1] border border-[#FFDCD0] transition-all cursor-pointer disabled:opacity-50"
           >
             <RefreshCw className={`w-3.5 h-3.5 text-[#F26522] ${refreshing ? 'animate-spin' : ''}`} />
             <span>{refreshing ? 'Refreshing...' : 'Refresh'}</span>
@@ -159,7 +192,7 @@ function DashboardPage() {
           {health?.status === 'ok' ? (
             <span className="text-xs bg-emerald-50 text-emerald-700 border border-emerald-200 px-3 py-1.5 rounded-full font-medium flex items-center gap-1.5">
               <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse"></span>
-              Backend Ready
+              Backend Active
             </span>
           ) : (
             <span className="text-xs bg-amber-50 text-amber-700 border border-amber-200 px-3 py-1.5 rounded-full font-medium flex items-center gap-1.5">
@@ -177,32 +210,78 @@ function DashboardPage() {
         </div>
       )}
 
-      {/* KPI Summary Grid (4 Columns: Total Leads | New Leads | Won | Conversion) */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5">
-        {kpis.map((kpi, idx) => (
-          <div
-            key={idx}
-            className={`bg-white border ${kpi.borderColor} rounded-2xl p-4 shadow-xs relative overflow-hidden group hover:shadow-md transition-all duration-200`}
-          >
-            <div className={`absolute top-0 right-0 w-20 h-20 bg-gradient-to-bl ${kpi.bgAccent} rounded-bl-full pointer-events-none transition-transform group-hover:scale-110`} />
-            
-            <div className="flex items-center justify-between mb-2">
-              <span className="text-[11px] font-bold text-[#475569] uppercase tracking-wider">{kpi.title}</span>
-              <div className="p-1.5 rounded-xl bg-[#FFF6F1]/80 border border-[#FFDCD0]">
-                {kpi.icon}
+      {/* PART 4 Dashboard Cards: 8 Cards Grid */}
+      <div>
+        <div className="flex items-center justify-between mb-3">
+          <h2 className="text-sm font-bold uppercase tracking-wider text-[#475569]">AI Chatbot Telemetry</h2>
+          <button onClick={() => navigate('/analytics')} className="text-xs font-bold text-[#F26522] hover:underline">
+            Detailed Analytics &rarr;
+          </button>
+        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5">
+          {chatbotCards.map((card, idx) => (
+            <div
+              key={idx}
+              onClick={() => navigate(card.path)}
+              className="bg-white border border-[#FFDCD0] rounded-2xl p-4 shadow-xs hover:shadow-md hover:border-[#F26522]/60 transition-all duration-200 cursor-pointer group"
+            >
+              <div className="flex items-center justify-between mb-2">
+                <span className="text-[11px] font-bold text-[#475569] uppercase tracking-wider">{card.title}</span>
+                <div className="p-1.5 rounded-xl bg-[#FFF6F1] border border-[#FFDCD0] group-hover:scale-105 transition-transform">
+                  {card.icon}
+                </div>
               </div>
-            </div>
 
-            <div className="flex items-baseline justify-between">
-              <h3 className="text-2xl sm:text-3xl font-extrabold text-[#111111] tracking-tight">{kpi.count}</h3>
-            </div>
+              <div className="flex items-baseline justify-between">
+                <h3 className="text-2xl sm:text-3xl font-extrabold text-[#111111] tracking-tight">{card.count}</h3>
+              </div>
 
-            <p className="text-[11px] text-[#F26522] font-semibold mt-1 flex items-center gap-1">
-              <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#F26522]"></span>
-              {kpi.change}
-            </p>
+              <p className="text-[11px] text-[#F26522] font-semibold mt-1 flex items-center gap-1">
+                <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#F26522]"></span>
+                {card.subtitle}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* CRM Pipeline Summary Grid (Total Leads | New Leads | Won | Conversion) */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5">
+        <div onClick={() => navigate('/leads')} className="bg-white border border-[#FFDCD0] rounded-2xl p-4 shadow-xs cursor-pointer hover:border-[#F26522]">
+          <div className="flex items-center justify-between mb-1">
+            <span className="text-[11px] font-bold text-[#475569] uppercase">Total Leads</span>
+            <Users className="w-4 h-4 text-[#F26522]" />
           </div>
-        ))}
+          <h3 className="text-xl font-extrabold">{loading ? '...' : (metrics?.totalLeads || 0)}</h3>
+          <p className="text-[10px] text-[#F26522] font-medium mt-0.5">Live Pipeline Leads</p>
+        </div>
+
+        <div onClick={() => navigate('/customers')} className="bg-white border border-[#FFDCD0] rounded-2xl p-4 shadow-xs cursor-pointer hover:border-[#F26522]">
+          <div className="flex items-center justify-between mb-1">
+            <span className="text-[11px] font-bold text-[#475569] uppercase">Customers Won</span>
+            <Award className="w-4 h-4 text-emerald-600" />
+          </div>
+          <h3 className="text-xl font-extrabold">{loading ? '...' : (metrics?.totalCustomers || 0)}</h3>
+          <p className="text-[10px] text-emerald-600 font-medium mt-0.5">Converted Clients</p>
+        </div>
+
+        <div onClick={() => navigate('/followups')} className="bg-white border border-[#FFDCD0] rounded-2xl p-4 shadow-xs cursor-pointer hover:border-[#F26522]">
+          <div className="flex items-center justify-between mb-1">
+            <span className="text-[11px] font-bold text-[#475569] uppercase">Pending Follow-ups</span>
+            <Calendar className="w-4 h-4 text-amber-600" />
+          </div>
+          <h3 className="text-xl font-extrabold">{loading ? '...' : (metrics?.pendingFollowups || 0)}</h3>
+          <p className="text-[10px] text-amber-600 font-medium mt-0.5">Action Items</p>
+        </div>
+
+        <div onClick={() => navigate('/leads')} className="bg-white border border-[#FFDCD0] rounded-2xl p-4 shadow-xs cursor-pointer hover:border-[#F26522]">
+          <div className="flex items-center justify-between mb-1">
+            <span className="text-[11px] font-bold text-[#475569] uppercase">Conversion Rate</span>
+            <TrendingUp className="w-4 h-4 text-[#D9531E]" />
+          </div>
+          <h3 className="text-xl font-extrabold">{loading ? '...' : `${metrics?.conversionRate || 0}%`}</h3>
+          <p className="text-[10px] text-[#D9531E] font-medium mt-0.5">Won / Total Ratio</p>
+        </div>
       </div>
 
       {/* 2-Column Section: Recent Activities (Left) & Lead Pipeline Breakdown (Right) */}
