@@ -1,38 +1,47 @@
 const Activity = require('../models/Activity');
 const mongoose = require('mongoose');
 
-// In-memory activity fallback store when DB is offline
-const inMemoryActivities = [];
-
-const logActivity = async (leadId, action, description, user = 'System Admin') => {
+const logActivity = async (leadId, action, description, user = 'System Admin', type = 'crm_event') => {
   try {
     const isDbConnected = mongoose.connection.readyState === 1;
 
-    if (isDbConnected && mongoose.Types.ObjectId.isValid(leadId)) {
+    if (isDbConnected) {
+      const validLeadId = mongoose.Types.ObjectId.isValid(leadId) ? leadId : null;
       const act = await Activity.create({
-        leadId,
+        leadId: validLeadId,
         action,
         description,
+        type,
         user,
       });
       return act;
-    } else {
-      const memoryAct = {
-        id: 'act_' + Date.now() + Math.random().toString(36).substring(2, 5),
-        _id: 'act_' + Date.now(),
-        leadId: leadId ? leadId.toString() : 'general',
-        action,
-        description,
-        user,
-        createdAt: new Date(),
-      };
-      inMemoryActivities.unshift(memoryAct);
-      return memoryAct;
     }
   } catch (err) {
     console.error('[Activity Logger Error]:', err.message);
-    return null;
   }
+  return null;
+};
+
+const getRecentActivities = async (limit = 10) => {
+  try {
+    const isDbConnected = mongoose.connection.readyState === 1;
+    if (isDbConnected) {
+      const dbActivities = await Activity.find().sort({ createdAt: -1 }).limit(limit);
+      return dbActivities.map(a => ({
+        id: a._id.toString(),
+        type: a.type || 'crm_event',
+        title: a.action,
+        description: a.description,
+        user: a.user,
+        leadId: a.leadId ? a.leadId.toString() : null,
+        time: a.createdAt ? new Date(a.createdAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) : 'Recently',
+        date: a.createdAt,
+      }));
+    }
+  } catch (err) {
+    console.error('[Get Recent Activities Error]:', err.message);
+  }
+  return [];
 };
 
 const getLeadActivities = async (leadId) => {
@@ -45,18 +54,15 @@ const getLeadActivities = async (leadId) => {
         ...a.toObject(),
         id: a._id.toString(),
       }));
-    } else {
-      const filtered = inMemoryActivities.filter(a => a.leadId === leadId || a.leadId === 'general');
-      return filtered;
     }
   } catch (err) {
-    console.error('[Get Activities Error]:', err.message);
-    return [];
+    console.error('[Get Lead Activities Error]:', err.message);
   }
+  return [];
 };
 
 module.exports = {
   logActivity,
+  getRecentActivities,
   getLeadActivities,
-  inMemoryActivities,
 };

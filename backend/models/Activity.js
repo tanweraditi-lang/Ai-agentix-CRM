@@ -5,7 +5,7 @@ const activitySchema = new mongoose.Schema(
     leadId: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Lead',
-      required: [true, 'Associated lead ID is required'],
+      default: null,
     },
     action: {
       type: String,
@@ -16,6 +16,10 @@ const activitySchema = new mongoose.Schema(
       type: String,
       required: [true, 'Description is required'],
       trim: true,
+    },
+    type: {
+      type: String,
+      default: 'crm_event',
     },
     user: {
       type: String,

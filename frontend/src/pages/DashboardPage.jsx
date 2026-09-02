@@ -14,13 +14,13 @@ import {
   ChevronRight,
   Zap,
   Calendar,
-  Sparkles,
   Bot,
   MessageSquare,
   CheckCircle2,
   AlertTriangle,
   Clock,
   Smile,
+  FileText,
 } from 'lucide-react';
 
 function DashboardPage() {
@@ -47,7 +47,7 @@ function DashboardPage() {
         setMetrics(dashboardRes.data);
       }
     } catch (err) {
-      setError('Failed to fetch data from backend service');
+      setError('Failed to fetch live dashboard telemetry from backend service');
     } finally {
       setLoading(false);
       setRefreshing(false);
@@ -58,109 +58,113 @@ function DashboardPage() {
     fetchData();
   }, []);
 
-  const handleActivityClick = (activity) => {
-    const targetId = activity.leadId || activity.id || activity._id;
-    if (targetId) {
-      navigate(`/leads/${targetId}`);
-    } else {
-      navigate('/leads');
-    }
+  const handleCardClick = (path) => {
+    navigate(path);
   };
 
   const getActivityIcon = (type) => {
     switch (type) {
       case 'lead_created':
+      case 'lead_activity':
         return (
-          <div className="p-2.5 rounded-xl bg-orange-100 text-[#F26522] border border-[#FFDCD0] shadow-xs">
-            <UserPlus className="w-5 h-5" />
+          <div className="p-2 rounded-xl bg-orange-100 text-[#F26522] border border-[#FFDCD0] shrink-0">
+            <UserPlus className="w-4 h-4" />
           </div>
         );
+      case 'followup_created':
       case 'followup_scheduled':
         return (
-          <div className="p-2.5 rounded-xl bg-amber-100 text-amber-700 border border-amber-200 shadow-xs">
-            <Calendar className="w-5 h-5" />
+          <div className="p-2 rounded-xl bg-amber-100 text-amber-700 border border-amber-200 shrink-0">
+            <Calendar className="w-4 h-4" />
+          </div>
+        );
+      case 'chatbot_created':
+      case 'chatbot_updated':
+        return (
+          <div className="p-2 rounded-xl bg-purple-100 text-purple-700 border border-purple-200 shrink-0">
+            <Bot className="w-4 h-4" />
+          </div>
+        );
+      case 'conversation_logged':
+      case 'conversation_updated':
+        return (
+          <div className="p-2 rounded-xl bg-blue-100 text-blue-700 border border-blue-200 shrink-0">
+            <MessageSquare className="w-4 h-4" />
           </div>
         );
       case 'customer_converted':
         return (
-          <div className="p-2.5 rounded-xl bg-emerald-100 text-emerald-700 border border-emerald-200 shadow-xs">
-            <Award className="w-5 h-5" />
+          <div className="p-2 rounded-xl bg-emerald-100 text-emerald-700 border border-emerald-200 shrink-0">
+            <Award className="w-4 h-4" />
           </div>
         );
       default:
         return (
-          <div className="p-2.5 rounded-xl bg-[#FFF6F1] text-[#F26522] border border-[#FFDCD0] shadow-xs">
-            <Zap className="w-5 h-5" />
+          <div className="p-2 rounded-xl bg-[#FFF6F1] text-[#F26522] border border-[#FFDCD0] shrink-0">
+            <Zap className="w-4 h-4" />
           </div>
         );
     }
   };
 
-  // PART 4 Requirements: 8 Cards
-  const chatbotCards = [
+  // Real Dashboard Cards Grid
+  const dashboardCards = [
+    {
+      title: 'Total Leads',
+      count: loading ? '...' : (metrics?.totalLeads ?? 0),
+      subtitle: 'Live Pipeline Count',
+      icon: <Users className="w-5 h-5 text-[#F26522]" />,
+      path: '/leads',
+    },
+    {
+      title: 'Total Customers',
+      count: loading ? '...' : (metrics?.totalCustomers ?? 0),
+      subtitle: 'Converted Clients',
+      icon: <Award className="w-5 h-5 text-emerald-600" />,
+      path: '/customers',
+    },
     {
       title: 'Active Chatbots',
-      count: loading ? '...' : (metrics?.activeChatbots ?? 2),
-      subtitle: 'Live Deployed Bots',
+      count: loading ? '...' : (metrics?.activeChatbots ?? 0),
+      subtitle: 'Live AI Bots',
       icon: <Bot className="w-5 h-5 text-[#F26522]" />,
       path: '/chatbots',
     },
     {
       title: "Today's Conversations",
-      count: loading ? '...' : (metrics?.todaysConversations ?? 42),
+      count: loading ? '...' : (metrics?.todaysConversations ?? 0),
       subtitle: 'Recorded Today',
-      icon: <MessageSquare className="w-5 h-5 text-indigo-600" />,
+      icon: <Clock className="w-5 h-5 text-indigo-600" />,
       path: '/conversations',
     },
     {
       title: 'Total Conversations',
-      count: loading ? '...' : (metrics?.totalConversations ?? 1248),
+      count: loading ? '...' : (metrics?.totalConversations ?? 0),
       subtitle: 'All-Time Volume',
-      icon: <Activity className="w-5 h-5 text-blue-600" />,
+      icon: <MessageSquare className="w-5 h-5 text-blue-600" />,
       path: '/conversations',
     },
     {
-      title: 'Resolved by AI',
-      count: loading ? '...' : (metrics?.resolvedByAI ?? 1102),
+      title: 'AI Resolved',
+      count: loading ? '...' : (metrics?.resolvedByAI ?? 0),
       subtitle: 'Autonomous Solves',
       icon: <CheckCircle2 className="w-5 h-5 text-emerald-600" />,
-      path: '/analytics',
+      path: '/conversations?status=Resolved',
     },
     {
       title: 'Escalated to Human',
-      count: loading ? '...' : (metrics?.escalatedToHuman ?? 146),
+      count: loading ? '...' : (metrics?.escalatedToHuman ?? 0),
       subtitle: 'Agent Hand-offs',
       icon: <AlertTriangle className="w-5 h-5 text-amber-600" />,
       path: '/conversations?status=Escalated',
     },
     {
-      title: 'Average Response Time',
-      count: loading ? '...' : (metrics?.avgResponseTime ?? '1.2s'),
-      subtitle: 'AI Latency',
-      icon: <Clock className="w-5 h-5 text-purple-600" />,
-      path: '/analytics',
+      title: 'Pending Follow-ups',
+      count: loading ? '...' : (metrics?.pendingFollowups ?? 0),
+      subtitle: 'Scheduled Tasks',
+      icon: <Calendar className="w-5 h-5 text-purple-600" />,
+      path: '/followups',
     },
-    {
-      title: 'Customer Satisfaction',
-      count: loading ? '...' : (metrics?.customerSatisfaction ?? '94.8%'),
-      subtitle: 'CSAT Rating',
-      icon: <Smile className="w-5 h-5 text-teal-600" />,
-      path: '/analytics',
-    },
-    {
-      title: 'Weekly Chat Growth',
-      count: loading ? '...' : (metrics?.weeklyChatGrowth ?? '+18.4%'),
-      subtitle: 'WoW Increase',
-      icon: <TrendingUp className="w-5 h-5 text-[#D9531E]" />,
-      path: '/analytics',
-    },
-  ];
-
-  const pipelineStages = [
-    { name: 'New', count: metrics?.totalLeads ? Math.ceil(metrics.totalLeads * 0.4) : 1, color: 'bg-indigo-500', percent: '40%' },
-    { name: 'Contacted', count: metrics?.totalLeads ? Math.ceil(metrics.totalLeads * 0.3) : 1, color: 'bg-amber-500', percent: '30%' },
-    { name: 'Qualified', count: metrics?.totalLeads ? Math.ceil(metrics.totalLeads * 0.2) : 1, color: 'bg-emerald-500', percent: '20%' },
-    { name: 'Won / Converted', count: metrics?.totalCustomers || 1, color: 'bg-[#F26522]', percent: '10%' },
   ];
 
   return (
@@ -169,13 +173,13 @@ function DashboardPage() {
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-white p-5 rounded-2xl border border-[#FFDCD0] shadow-xs">
         <div>
           <h1 className="text-xl sm:text-2xl font-bold text-[#111111] tracking-tight flex items-center gap-2">
-            <span>Welcome to {config.appTitle}</span>
-            <span className="text-[11px] bg-[#FFF6F1] text-[#F26522] border border-[#FFDCD0] px-2 py-0.5 rounded-full font-semibold">
-              AI Chatbot Edition
+            <span>{config.appTitle} Live Dashboard</span>
+            <span className="text-[11px] bg-[#FFF6F1] text-[#F26522] border border-[#FFDCD0] px-2.5 py-0.5 rounded-full font-semibold">
+              Real MongoDB Telemetry
             </span>
           </h1>
           <p className="text-xs text-[#475569] mt-0.5">
-            Real-time AI chatbot analytics, conversation telemetry & lead pipeline metrics
+            Live metrics queried directly from MongoDB Atlas collection stores
           </p>
         </div>
 
@@ -186,13 +190,13 @@ function DashboardPage() {
             className="inline-flex items-center gap-1.5 px-3.5 py-2 text-xs font-semibold rounded-xl text-slate-700 bg-orange-50 hover:bg-[#FFF6F1] border border-[#FFDCD0] transition-all cursor-pointer disabled:opacity-50"
           >
             <RefreshCw className={`w-3.5 h-3.5 text-[#F26522] ${refreshing ? 'animate-spin' : ''}`} />
-            <span>{refreshing ? 'Refreshing...' : 'Refresh'}</span>
+            <span>{refreshing ? 'Refreshing...' : 'Refresh Live Data'}</span>
           </button>
 
           {health?.status === 'ok' ? (
             <span className="text-xs bg-emerald-50 text-emerald-700 border border-emerald-200 px-3 py-1.5 rounded-full font-medium flex items-center gap-1.5">
               <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse"></span>
-              Backend Active
+              MongoDB Active
             </span>
           ) : (
             <span className="text-xs bg-amber-50 text-amber-700 border border-amber-200 px-3 py-1.5 rounded-full font-medium flex items-center gap-1.5">
@@ -204,26 +208,24 @@ function DashboardPage() {
       </div>
 
       {error && (
-        <div className="p-3 rounded-xl bg-rose-50 border border-rose-200 text-rose-700 text-xs flex items-center justify-between">
-          <span className="font-medium">{error}</span>
-          <button onClick={() => fetchData()} className="underline font-semibold text-rose-800">Retry</button>
+        <div className="p-3.5 rounded-xl bg-rose-50 border border-rose-200 text-rose-800 text-xs font-semibold flex items-center justify-between">
+          <span>{error}</span>
+          <button onClick={() => fetchData()} className="underline font-bold text-rose-900">Retry</button>
         </div>
       )}
 
-      {/* PART 4 Dashboard Cards: 8 Cards Grid */}
+      {/* Real Live Dashboard Cards Grid */}
       <div>
         <div className="flex items-center justify-between mb-3">
-          <h2 className="text-sm font-bold uppercase tracking-wider text-[#475569]">AI Chatbot Telemetry</h2>
-          <button onClick={() => navigate('/analytics')} className="text-xs font-bold text-[#F26522] hover:underline">
-            Detailed Analytics &rarr;
-          </button>
+          <h2 className="text-xs font-bold uppercase tracking-wider text-[#475569]">Live CRM & AI Chatbot Telemetry</h2>
+          <span className="text-[11px] text-[#F26522] font-semibold">100% Real Database Queries</span>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5">
-          {chatbotCards.map((card, idx) => (
+          {dashboardCards.map((card, idx) => (
             <div
               key={idx}
-              onClick={() => navigate(card.path)}
-              className="bg-white border border-[#FFDCD0] rounded-2xl p-4 shadow-xs hover:shadow-md hover:border-[#F26522]/60 transition-all duration-200 cursor-pointer group"
+              onClick={() => handleCardClick(card.path)}
+              className="bg-white border border-[#FFDCD0] rounded-2xl p-4 shadow-xs hover:shadow-md hover:border-[#F26522] transition-all duration-200 cursor-pointer group"
             >
               <div className="flex items-center justify-between mb-2">
                 <span className="text-[11px] font-bold text-[#475569] uppercase tracking-wider">{card.title}</span>
@@ -245,156 +247,88 @@ function DashboardPage() {
         </div>
       </div>
 
-      {/* CRM Pipeline Summary Grid (Total Leads | New Leads | Won | Conversion) */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5">
-        <div onClick={() => navigate('/leads')} className="bg-white border border-[#FFDCD0] rounded-2xl p-4 shadow-xs cursor-pointer hover:border-[#F26522]">
-          <div className="flex items-center justify-between mb-1">
-            <span className="text-[11px] font-bold text-[#475569] uppercase">Total Leads</span>
-            <Users className="w-4 h-4 text-[#F26522]" />
-          </div>
-          <h3 className="text-xl font-extrabold">{loading ? '...' : (metrics?.totalLeads || 0)}</h3>
-          <p className="text-[10px] text-[#F26522] font-medium mt-0.5">Live Pipeline Leads</p>
+      {/* Calculated Ratios Grid */}
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5">
+        <div className="bg-white border border-[#FFDCD0] rounded-2xl p-4 shadow-xs">
+          <span className="text-[11px] font-bold text-[#475569] uppercase">Conversion Rate</span>
+          <h4 className="text-xl font-extrabold text-[#111111] mt-1">{loading ? '...' : `${metrics?.conversionRate ?? 0}%`}</h4>
+          <p className="text-[10px] text-slate-500 mt-0.5">Calculated ratio from live converted leads</p>
         </div>
 
-        <div onClick={() => navigate('/customers')} className="bg-white border border-[#FFDCD0] rounded-2xl p-4 shadow-xs cursor-pointer hover:border-[#F26522]">
-          <div className="flex items-center justify-between mb-1">
-            <span className="text-[11px] font-bold text-[#475569] uppercase">Customers Won</span>
-            <Award className="w-4 h-4 text-emerald-600" />
-          </div>
-          <h3 className="text-xl font-extrabold">{loading ? '...' : (metrics?.totalCustomers || 0)}</h3>
-          <p className="text-[10px] text-emerald-600 font-medium mt-0.5">Converted Clients</p>
+        <div className="bg-white border border-[#FFDCD0] rounded-2xl p-4 shadow-xs">
+          <span className="text-[11px] font-bold text-[#475569] uppercase">Average Response Time</span>
+          <h4 className="text-xl font-extrabold text-[#111111] mt-1">
+            {metrics?.avgResponseTime ? metrics.avgResponseTime : 'Not enough data'}
+          </h4>
+          <p className="text-[10px] text-slate-500 mt-0.5">Requires real timing metrics from bot logs</p>
         </div>
 
-        <div onClick={() => navigate('/followups')} className="bg-white border border-[#FFDCD0] rounded-2xl p-4 shadow-xs cursor-pointer hover:border-[#F26522]">
-          <div className="flex items-center justify-between mb-1">
-            <span className="text-[11px] font-bold text-[#475569] uppercase">Pending Follow-ups</span>
-            <Calendar className="w-4 h-4 text-amber-600" />
-          </div>
-          <h3 className="text-xl font-extrabold">{loading ? '...' : (metrics?.pendingFollowups || 0)}</h3>
-          <p className="text-[10px] text-amber-600 font-medium mt-0.5">Action Items</p>
-        </div>
-
-        <div onClick={() => navigate('/leads')} className="bg-white border border-[#FFDCD0] rounded-2xl p-4 shadow-xs cursor-pointer hover:border-[#F26522]">
-          <div className="flex items-center justify-between mb-1">
-            <span className="text-[11px] font-bold text-[#475569] uppercase">Conversion Rate</span>
-            <TrendingUp className="w-4 h-4 text-[#D9531E]" />
-          </div>
-          <h3 className="text-xl font-extrabold">{loading ? '...' : `${metrics?.conversionRate || 0}%`}</h3>
-          <p className="text-[10px] text-[#D9531E] font-medium mt-0.5">Won / Total Ratio</p>
+        <div className="bg-white border border-[#FFDCD0] rounded-2xl p-4 shadow-xs">
+          <span className="text-[11px] font-bold text-[#475569] uppercase">Customer Satisfaction</span>
+          <h4 className="text-xl font-extrabold text-[#111111] mt-1">
+            {metrics?.customerSatisfaction ? metrics.customerSatisfaction : 'Not enough data'}
+          </h4>
+          <p className="text-[10px] text-slate-500 mt-0.5">Requires real feedback ratings</p>
         </div>
       </div>
 
-      {/* 2-Column Section: Recent Activities (Left) & Lead Pipeline Breakdown (Right) */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
-        {/* Recent Activities Section (2 Columns on Desktop) */}
-        <div className="lg:col-span-2 bg-white border border-[#FFDCD0] rounded-2xl p-5 shadow-xs flex flex-col justify-between">
-          <div>
-            <div className="flex items-center justify-between border-b border-[#FFDCD0] pb-3 mb-3">
-              <div className="flex items-center gap-2">
-                <div className="p-1.5 rounded-xl bg-[#FFF6F1] text-[#F26522] border border-[#FFDCD0]">
-                  <Activity className="w-4 h-4" />
-                </div>
-                <div>
-                  <h2 className="text-base font-bold text-[#111111]">Recent Activities</h2>
-                  <p className="text-[11px] text-[#475569]">Live stream of CRM pipeline updates and events</p>
-                </div>
-              </div>
-              <span className="text-[11px] font-semibold text-[#F26522] bg-[#FFF6F1] px-2.5 py-0.5 rounded-full border border-[#FFDCD0]">
-                {metrics?.recentActivities?.length || 0} Events
-              </span>
+      {/* Real Activity Stream Section */}
+      <div className="bg-white border border-[#FFDCD0] rounded-2xl p-5 shadow-xs">
+        <div className="flex items-center justify-between border-b border-[#FFDCD0] pb-3 mb-4">
+          <div className="flex items-center gap-2">
+            <div className="p-1.5 rounded-xl bg-[#FFF6F1] text-[#F26522] border border-[#FFDCD0]">
+              <Activity className="w-4 h-4" />
             </div>
-
-            {loading ? (
-              <div className="py-6 text-center text-slate-400 text-xs space-y-2">
-                <div className="inline-block w-5 h-5 border-2 border-[#F26522] border-t-transparent rounded-full animate-spin"></div>
-                <p>Loading recent activities...</p>
-              </div>
-            ) : metrics?.recentActivities && metrics.recentActivities.length > 0 ? (
-              <div className="space-y-2.5">
-                {metrics.recentActivities.map((act) => (
-                  <div
-                    key={act.id || act._id}
-                    onClick={() => handleActivityClick(act)}
-                    className="flex items-center justify-between p-3 rounded-xl bg-[#FFF6F1]/30 border border-[#FFDCD0] hover:border-[#F26522]/60 hover:bg-[#FFF6F1]/80 hover:shadow-xs transition-all duration-200 cursor-pointer group"
-                  >
-                    <div className="flex items-center gap-3">
-                      {getActivityIcon(act.type)}
-                      <div>
-                        <p className="text-xs font-bold text-[#111111] group-hover:text-[#F26522] transition-colors">
-                          {act.title}
-                        </p>
-                        <div className="flex items-center gap-2 mt-0.5 text-[10px] text-[#475569]">
-                          <span className="font-semibold px-2 py-0.5 rounded-full bg-white border border-[#FFDCD0] capitalize text-slate-700">
-                            {act.type.replace('_', ' ')}
-                          </span>
-                          <span>•</span>
-                          <span className="text-[#F26522] font-medium group-hover:underline">Click to view details &rarr;</span>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <span className="text-[10px] font-semibold text-[#475569] whitespace-nowrap bg-white px-2 py-0.5 rounded-lg border border-[#FFDCD0]">
-                        {act.time}
-                      </span>
-                      <ChevronRight className="w-3.5 h-3.5 text-slate-400 group-hover:text-[#F26522] group-hover:translate-x-1 transition-all" />
-                    </div>
-                  </div>
-                ))}
-              </div>
-            ) : (
-              <div className="py-8 text-center text-slate-400 text-xs bg-[#FFF6F1]/20 rounded-xl border border-dashed border-[#FFDCD0]">
-                <p className="font-medium">No recent activities recorded</p>
-                <p className="text-[11px] text-slate-400 mt-1">Activities will populate automatically when leads or follow-ups change.</p>
-              </div>
-            )}
+            <div>
+              <h2 className="text-base font-bold text-[#111111]">Real Activity Feed</h2>
+              <p className="text-[11px] text-[#475569]">Actual stored event logs from MongoDB Activity collection</p>
+            </div>
           </div>
+          <span className="text-[11px] font-semibold text-[#F26522] bg-[#FFF6F1] px-2.5 py-0.5 rounded-full border border-[#FFDCD0]">
+            {metrics?.recentActivities?.length || 0} Stored Events
+          </span>
         </div>
 
-        {/* Lead Pipeline Visual Breakdown Card (1 Column on Desktop) */}
-        <div className="bg-white border border-[#FFDCD0] rounded-2xl p-5 shadow-xs flex flex-col justify-between space-y-4">
-          <div>
-            <div className="flex items-center justify-between border-b border-[#FFDCD0] pb-3 mb-3">
-              <div className="flex items-center gap-2">
-                <div className="p-1.5 rounded-xl bg-[#FFF6F1] text-[#F26522] border border-[#FFDCD0]">
-                  <BarChart3 className="w-4 h-4" />
-                </div>
-                <div>
-                  <h2 className="text-base font-bold text-[#111111]">Lead Pipeline</h2>
-                  <p className="text-[11px] text-[#475569]">Deal stage distribution</p>
-                </div>
-              </div>
-              <button
-                onClick={() => navigate('/leads')}
-                className="text-[11px] font-bold text-[#F26522] hover:underline"
+        {loading ? (
+          <div className="py-8 text-center text-slate-400 text-xs space-y-2">
+            <div className="inline-block w-5 h-5 border-2 border-[#F26522] border-t-transparent rounded-full animate-spin"></div>
+            <p>Fetching real MongoDB activity logs...</p>
+          </div>
+        ) : metrics?.recentActivities && metrics.recentActivities.length > 0 ? (
+          <div className="space-y-2.5">
+            {metrics.recentActivities.map((act) => (
+              <div
+                key={act.id || act._id}
+                onClick={() => {
+                  if (act.leadId) navigate(`/leads/${act.leadId}`);
+                }}
+                className="flex items-center justify-between p-3.5 rounded-xl bg-[#FFF6F1]/30 border border-[#FFDCD0] hover:border-[#F26522]/60 hover:bg-[#FFF6F1]/80 transition-all duration-200 cursor-pointer group"
               >
-                View Pipeline &rarr;
-              </button>
-            </div>
-
-            <div className="space-y-3 pt-1">
-              {pipelineStages.map((st, i) => (
-                <div
-                  key={i}
-                  onClick={() => navigate(`/leads?status=${st.name}`)}
-                  className="space-y-1 p-2 rounded-xl hover:bg-[#FFF6F1]/50 transition-colors cursor-pointer"
-                >
-                  <div className="flex items-center justify-between text-xs font-semibold">
-                    <span className="text-[#111111]">{st.name}</span>
-                    <span className="text-[#475569]">{st.count} leads</span>
-                  </div>
-                  <div className="w-full h-2 bg-slate-100 rounded-full overflow-hidden border border-[#FFDCD0]/50">
-                    <div className={`h-full ${st.color} rounded-full transition-all duration-500`} style={{ width: st.percent }}></div>
+                <div className="flex items-center gap-3">
+                  {getActivityIcon(act.type)}
+                  <div>
+                    <p className="text-xs font-bold text-[#111111] group-hover:text-[#F26522] transition-colors">
+                      {act.title || act.action}
+                    </p>
+                    <p className="text-[11px] text-slate-600 mt-0.5">{act.description}</p>
                   </div>
                 </div>
-              ))}
-            </div>
+                <div className="flex items-center gap-2">
+                  <span className="text-[10px] font-semibold text-[#475569] whitespace-nowrap bg-white px-2.5 py-1 rounded-lg border border-[#FFDCD0]">
+                    {act.time}
+                  </span>
+                </div>
+              </div>
+            ))}
           </div>
-
-          <div className="pt-3 border-t border-[#FFDCD0] text-[11px] text-[#475569] flex items-center justify-between">
-            <span>Overall Conversion Rate:</span>
-            <span className="font-bold text-[#F26522]">{metrics?.conversionRate || 0}%</span>
+        ) : (
+          <div className="py-8 text-center text-slate-400 text-xs bg-[#FFF6F1]/20 rounded-xl border border-dashed border-[#FFDCD0] space-y-1">
+            <p className="font-bold text-slate-700">No real activities recorded yet</p>
+            <p className="text-[11px] text-slate-400">
+              Activity events will populate automatically when leads, follow-ups, chatbots, or conversations are updated in MongoDB.
+            </p>
           </div>
-        </div>
+        )}
       </div>
     </div>
   );

@@ -1,51 +1,6 @@
 const mongoose = require('mongoose');
 const Chatbot = require('../models/Chatbot');
-
-// Seed in-memory chatbots fallback array
-let inMemoryChatbots = [
-  {
-    id: 'bot_101',
-    _id: 'bot_101',
-    name: 'Customer Support Bot',
-    clientName: 'Apex Tech Solutions',
-    website: 'https://agentix.ai/support',
-    aiModel: 'Gemini 1.5 Pro',
-    description: 'Handles 24/7 tier-1 customer inquiries, FAQs, and ticket routing',
-    version: 'v2.4',
-    status: 'Active',
-    totalConversations: 842,
-    todaysConversations: 28,
-    createdAt: new Date('2026-07-15T09:30:00Z'),
-  },
-  {
-    id: 'bot_102',
-    _id: 'bot_102',
-    name: 'Sales Qualifier Bot',
-    clientName: 'Bright Media Works',
-    website: 'https://agentix.ai/sales',
-    aiModel: 'GPT-4o Enterprise',
-    description: 'Engages website visitors, captures leads, and schedules demo calls',
-    version: 'v1.8',
-    status: 'Active',
-    totalConversations: 406,
-    todaysConversations: 14,
-    createdAt: new Date('2026-08-01T14:15:00Z'),
-  },
-  {
-    id: 'bot_103',
-    _id: 'bot_103',
-    name: 'E-commerce Assistant',
-    clientName: 'CloudNet Systems',
-    website: 'https://store.agentix.ai',
-    aiModel: 'Claude 3.5 Sonnet',
-    description: 'Assists customers with order tracking, product recommendations, and refunds',
-    version: 'v1.1',
-    status: 'Inactive',
-    totalConversations: 120,
-    todaysConversations: 0,
-    createdAt: new Date('2026-08-10T11:00:00Z'),
-  },
-];
+const { logActivity } = require('../utils/activityLogger');
 
 // @desc    Get all chatbots (with search & status filter)
 // @route   GET /api/chatbots
@@ -75,88 +30,26 @@ const getChatbots = async (req, res) => {
         ];
       }
 
-      try {
-        let bots = await Chatbot.find(query).sort({ createdAt: -1 });
+      const bots = await Chatbot.find(query).sort({ createdAt: -1 });
+      const mappedBots = bots.map(b => {
+        const obj = b.toObject ? b.toObject() : b;
+        return {
+          ...obj,
+          id: (b._id || b.id).toString(),
+        };
+      });
 
-        // Seed DB if empty
-        if (bots.length === 0 && !safeStatus && !safeSearch) {
-          const seeded = await Chatbot.insertMany([
-            {
-              name: 'Customer Support Bot',
-              clientName: 'Apex Tech Solutions',
-              website: 'https://agentix.ai/support',
-              aiModel: 'Gemini 1.5 Pro',
-              description: 'Handles 24/7 tier-1 customer inquiries, FAQs, and ticket routing',
-              version: 'v2.4',
-              status: 'Active',
-              totalConversations: 842,
-              todaysConversations: 28,
-            },
-            {
-              name: 'Sales Qualifier Bot',
-              clientName: 'Bright Media Works',
-              website: 'https://agentix.ai/sales',
-              aiModel: 'GPT-4o Enterprise',
-              description: 'Engages website visitors, captures leads, and schedules demo calls',
-              version: 'v1.8',
-              status: 'Active',
-              totalConversations: 406,
-              todaysConversations: 14,
-            },
-            {
-              name: 'E-commerce Assistant',
-              clientName: 'CloudNet Systems',
-              website: 'https://store.agentix.ai',
-              aiModel: 'Claude 3.5 Sonnet',
-              description: 'Assists customers with order tracking, product recommendations, and refunds',
-              version: 'v1.1',
-              status: 'Inactive',
-              totalConversations: 120,
-              todaysConversations: 0,
-            },
-          ]);
-          bots = seeded;
-        }
-
-        const mappedBots = bots.map(b => {
-          const obj = b.toObject ? b.toObject() : b;
-          return {
-            ...obj,
-            id: (b._id || b.id).toString(),
-          };
-        });
-
-        return res.status(200).json({
-          success: true,
-          count: mappedBots.length,
-          chatbots: mappedBots,
-        });
-      } catch (dbErr) {
-        console.error('MongoDB query error in getChatbots:', dbErr.message);
-      }
-    }
-
-    // Fallback logic
-    let result = [...inMemoryChatbots];
-    if (safeStatus && safeStatus.toLowerCase() !== 'all') {
-      result = result.filter(b => b.status.toLowerCase() === safeStatus.toLowerCase());
-    }
-    if (safeSearch) {
-      const s = safeSearch.toLowerCase();
-      result = result.filter(
-        b =>
-          b.name.toLowerCase().includes(s) ||
-          (b.clientName && b.clientName.toLowerCase().includes(s)) ||
-          b.website.toLowerCase().includes(s) ||
-          (b.aiModel && b.aiModel.toLowerCase().includes(s)) ||
-          b.version.toLowerCase().includes(s)
-      );
+      return res.status(200).json({
+        success: true,
+        count: mappedBots.length,
+        chatbots: mappedBots,
+      });
     }
 
     return res.status(200).json({
       success: true,
-      count: result.length,
-      chatbots: result,
+      count: 0,
+      chatbots: [],
     });
   } catch (error) {
     console.error('Error fetching chatbots:', error);
@@ -187,14 +80,6 @@ const getChatbotById = async (req, res) => {
       }
     }
 
-    const memoryBot = inMemoryChatbots.find(b => b.id === id || b._id === id);
-    if (memoryBot) {
-      return res.status(200).json({
-        success: true,
-        chatbot: memoryBot,
-      });
-    }
-
     return res.status(404).json({
       success: false,
       message: 'Chatbot not found',
@@ -223,39 +108,36 @@ const createChatbot = async (req, res) => {
     }
 
     const isDbConnected = mongoose.connection.readyState === 1;
-    let newBot;
-
-    if (isDbConnected) {
-      const created = await Chatbot.create({
-        name: name.trim(),
-        clientName: (clientName || 'Apex Tech Solutions').trim(),
-        website: website.trim(),
-        aiModel: aiModel || 'Gemini 1.5 Pro',
-        description: (description || '').trim(),
-        version: version || 'v1.0',
-        status: status || 'Active',
-        totalConversations: totalConversations !== undefined ? Number(totalConversations) : 0,
-        todaysConversations: todaysConversations !== undefined ? Number(todaysConversations) : 0,
+    if (!isDbConnected) {
+      return res.status(503).json({
+        success: false,
+        message: 'Database connection unavailable',
       });
-      const obj = created.toObject ? created.toObject() : created;
-      newBot = { ...obj, id: created._id.toString() };
-    } else {
-      newBot = {
-        id: 'bot_' + Date.now(),
-        _id: 'bot_' + Date.now(),
-        name: name.trim(),
-        clientName: (clientName || 'Apex Tech Solutions').trim(),
-        website: website.trim(),
-        aiModel: aiModel || 'Gemini 1.5 Pro',
-        description: (description || '').trim(),
-        version: version || 'v1.0',
-        status: status || 'Active',
-        totalConversations: totalConversations !== undefined ? Number(totalConversations) : 0,
-        todaysConversations: todaysConversations !== undefined ? Number(todaysConversations) : 0,
-        createdAt: new Date(),
-      };
-      inMemoryChatbots.unshift(newBot);
     }
+
+    const created = await Chatbot.create({
+      name: name.trim(),
+      clientName: (clientName || 'Enterprise Client').trim(),
+      website: website.trim(),
+      aiModel: aiModel || 'Gemini 1.5 Pro',
+      description: (description || '').trim(),
+      version: version || 'v1.0',
+      status: status || 'Active',
+      totalConversations: totalConversations !== undefined ? Number(totalConversations) : 0,
+      todaysConversations: todaysConversations !== undefined ? Number(todaysConversations) : 0,
+    });
+
+    const obj = created.toObject ? created.toObject() : created;
+    const newBot = { ...obj, id: created._id.toString() };
+
+    // Log real activity event to MongoDB
+    await logActivity(
+      null,
+      'Chatbot Created',
+      `New AI Chatbot "${name}" created for client "${newBot.clientName}"`,
+      req.user?.name || 'System Admin',
+      'chatbot_created'
+    );
 
     return res.status(201).json({
       success: true,
@@ -297,31 +179,21 @@ const updateChatbot = async (req, res) => {
       const updated = await Chatbot.findByIdAndUpdate(id, updateData, { new: true });
       if (updated) {
         const obj = updated.toObject ? updated.toObject() : updated;
+
+        await logActivity(
+          null,
+          'Chatbot Updated',
+          `Chatbot "${updated.name}" updated`,
+          req.user?.name || 'System Admin',
+          'chatbot_updated'
+        );
+
         return res.status(200).json({
           success: true,
           message: 'Chatbot updated successfully',
           chatbot: { ...obj, id: updated._id.toString() },
         });
       }
-    }
-
-    const idx = inMemoryChatbots.findIndex(b => b.id === id || b._id === id);
-    if (idx !== -1) {
-      if (name) inMemoryChatbots[idx].name = name.trim();
-      if (clientName) inMemoryChatbots[idx].clientName = clientName.trim();
-      if (website) inMemoryChatbots[idx].website = website.trim();
-      if (aiModel) inMemoryChatbots[idx].aiModel = aiModel.trim();
-      if (description !== undefined) inMemoryChatbots[idx].description = description.trim();
-      if (version) inMemoryChatbots[idx].version = version;
-      if (status) inMemoryChatbots[idx].status = status;
-      if (totalConversations !== undefined) inMemoryChatbots[idx].totalConversations = Number(totalConversations);
-      if (todaysConversations !== undefined) inMemoryChatbots[idx].todaysConversations = Number(todaysConversations);
-
-      return res.status(200).json({
-        success: true,
-        message: 'Chatbot updated successfully',
-        chatbot: inMemoryChatbots[idx],
-      });
     }
 
     return res.status(404).json({
@@ -347,12 +219,16 @@ const deleteChatbot = async (req, res) => {
     const isDbConnected = mongoose.connection.readyState === 1;
 
     if (isDbConnected && mongoose.Types.ObjectId.isValid(id)) {
-      await Chatbot.findByIdAndDelete(id);
-    }
-
-    const idx = inMemoryChatbots.findIndex(b => b.id === id || b._id === id);
-    if (idx !== -1) {
-      inMemoryChatbots.splice(idx, 1);
+      const bot = await Chatbot.findByIdAndDelete(id);
+      if (bot) {
+        await logActivity(
+          null,
+          'Chatbot Deleted',
+          `Chatbot "${bot.name}" deleted`,
+          req.user?.name || 'System Admin',
+          'chatbot_deleted'
+        );
+      }
     }
 
     return res.status(200).json({
