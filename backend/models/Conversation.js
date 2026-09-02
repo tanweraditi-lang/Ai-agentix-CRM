@@ -13,9 +13,13 @@ const conversationSchema = new mongoose.Schema(
       trim: true,
       lowercase: true,
     },
+    message: {
+      type: String,
+      trim: true,
+    },
     question: {
       type: String,
-      required: [true, 'Visitor question is required'],
+      required: [true, 'Visitor question/message is required'],
       trim: true,
     },
     botResponse: {
@@ -39,6 +43,15 @@ const conversationSchema = new mongoose.Schema(
     chatbotId: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Chatbot',
+      default: null,
+    },
+    isConvertedToLead: {
+      type: Boolean,
+      default: false,
+    },
+    convertedLeadId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Lead',
       default: null,
     },
     conversationTime: {

@@ -40,6 +40,16 @@ export const updateConversation = async (id, data) => {
   }
 };
 
+export const convertConversationToLead = async (id) => {
+  try {
+    const response = await api.post(`/conversations/${id}/convert-lead`);
+    return response.data;
+  } catch (error) {
+    const message = error.response?.data?.message || 'Failed to convert conversation to lead';
+    throw new Error(message);
+  }
+};
+
 export const deleteConversation = async (id) => {
   try {
     const response = await api.delete(`/conversations/${id}`);

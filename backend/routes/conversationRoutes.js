@@ -5,6 +5,7 @@ const {
   getConversationById,
   createConversation,
   updateConversation,
+  convertToLead,
   deleteConversation,
 } = require('../controllers/conversationController');
 const { protect } = require('../middleware/authMiddleware');
@@ -20,6 +21,10 @@ router.get('/:id', getConversationById);
 // @route   POST /api/conversations
 // @access  Public / Private
 router.post('/', createConversation);
+
+// @route   POST /api/conversations/:id/convert-lead
+// @access  Private (Protected)
+router.post('/:id/convert-lead', protect, convertToLead);
 
 // @route   PUT /api/conversations/:id
 // @access  Private (Protected)

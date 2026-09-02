@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Conversation = require('../models/Conversation');
+const Lead = require('../models/Lead');
 const { logActivity } = require('../utils/activityLogger');
 
 // @desc    Get all conversations (with status & search filter)
@@ -25,6 +26,7 @@ const getConversations = async (req, res) => {
           { visitorName: searchRegex },
           { visitorEmail: searchRegex },
           { question: searchRegex },
+          { message: searchRegex },
           { botResponse: searchRegex },
           { assignedAgent: searchRegex },
         ];
@@ -36,6 +38,7 @@ const getConversations = async (req, res) => {
         return {
           ...obj,
           id: (c._id || c.id).toString(),
+          message: obj.message || obj.question,
         };
       });
 
@@ -75,7 +78,11 @@ const getConversationById = async (req, res) => {
         const obj = conv.toObject ? conv.toObject() : conv;
         return res.status(200).json({
           success: true,
-          conversation: { ...obj, id: conv._id.toString() },
+          conversation: {
+            ...obj,
+            id: conv._id.toString(),
+            message: obj.message || obj.question,
+          },
         });
       }
     }
@@ -98,12 +105,15 @@ const getConversationById = async (req, res) => {
 // @access  Public / Private
 const createConversation = async (req, res) => {
   try {
-    const { visitorName, visitorEmail, question, botResponse, status, assignedAgent, chatbotId } = req.body;
+    const { visitorName, visitorEmail, message, question, botResponse, status, assignedAgent, chatbotId } = req.body;
 
-    if (!visitorName || !visitorEmail || !question || !botResponse) {
+    const userMessage = (message || question || '').trim();
+    const botReply = (botResponse || '').trim();
+
+    if (!visitorName || !visitorEmail || !userMessage || !botReply) {
       return res.status(400).json({
         success: false,
-        message: 'Please fill in Visitor Name, Email, Question, and Bot Response',
+        message: 'Please fill in Visitor Name, Email, Message/Question, and Bot Response',
       });
     }
 
@@ -118,8 +128,9 @@ const createConversation = async (req, res) => {
     const created = await Conversation.create({
       visitorName: visitorName.trim(),
       visitorEmail: visitorEmail.toLowerCase().trim(),
-      question: question.trim(),
-      botResponse: botResponse.trim(),
+      message: userMessage,
+      question: userMessage,
+      botResponse: botReply,
       status: status || 'Pending',
       assignedAgent: assignedAgent || 'AI Bot Agent',
       chatbotId: mongoose.Types.ObjectId.isValid(chatbotId) ? chatbotId : null,
@@ -199,6 +210,77 @@ const updateConversation = async (req, res) => {
   }
 };
 
+// @desc    Convert conversation into a Lead
+// @route   POST /api/conversations/:id/convert-lead
+// @access  Private
+const convertToLead = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const isDbConnected = mongoose.connection.readyState === 1;
+
+    if (!isDbConnected || !mongoose.Types.ObjectId.isValid(id)) {
+      return res.status(400).json({
+        success: false,
+        message: 'Invalid conversation ID or DB disconnected',
+      });
+    }
+
+    const conv = await Conversation.findById(id);
+    if (!conv) {
+      return res.status(404).json({
+        success: false,
+        message: 'Conversation not found',
+      });
+    }
+
+    if (conv.isConvertedToLead) {
+      return res.status(400).json({
+        success: false,
+        message: 'Conversation is already converted into a Lead',
+      });
+    }
+
+    // Create lead in Lead collection
+    const newLead = await Lead.create({
+      name: conv.visitorName,
+      email: conv.visitorEmail,
+      company: 'Inquired via Chatbot',
+      serviceInterested: 'AI Solutions',
+      leadScore: 75,
+      status: 'New',
+      assignedUser: req.user?.name || 'System Admin',
+    });
+
+    // Update conversation state
+    conv.isConvertedToLead = true;
+    conv.convertedLeadId = newLead._id;
+    await conv.save();
+
+    // Log Activity in MongoDB
+    await logActivity(
+      newLead._id,
+      'Lead Converted from Chat',
+      `Visitor "${conv.visitorName}" converted from AI Chatbot conversation into a Lead`,
+      req.user?.name || 'System Admin',
+      'lead_created'
+    );
+
+    return res.status(200).json({
+      success: true,
+      message: `Conversation successfully converted into Lead "${newLead.name}"`,
+      lead: newLead,
+      conversation: conv,
+    });
+  } catch (error) {
+    console.error('Error converting conversation to lead:', error);
+    return res.status(500).json({
+      success: false,
+      message: 'Server error converting conversation to lead',
+      error: error.message,
+    });
+  }
+};
+
 // @desc    Delete conversation
 // @route   DELETE /api/conversations/:id
 // @access  Private
@@ -239,5 +321,6 @@ module.exports = {
   getConversationById,
   createConversation,
   updateConversation,
+  convertToLead,
   deleteConversation,
 };
