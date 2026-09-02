@@ -10,8 +10,7 @@ import {
   TrendingUp,
   RefreshCw,
   Activity,
-  BarChart3,
-  ChevronRight,
+  BarChart2,
   Zap,
   Calendar,
   Bot,
@@ -19,8 +18,7 @@ import {
   CheckCircle2,
   AlertTriangle,
   Clock,
-  Smile,
-  FileText,
+  XCircle,
 } from 'lucide-react';
 
 function DashboardPage() {
@@ -107,40 +105,54 @@ function DashboardPage() {
     }
   };
 
-  // Real Dashboard Cards Grid
+  // Requirement 3: Show Total Leads, New Leads, Converted Leads, Lost Leads + AI Chatbot cards
   const dashboardCards = [
     {
       title: 'Total Leads',
       count: loading ? '...' : (metrics?.totalLeads ?? 0),
-      subtitle: 'Live Pipeline Count',
+      subtitle: 'All Pipeline Prospects',
       icon: <Users className="w-5 h-5 text-[#F26522]" />,
       path: '/leads',
     },
     {
-      title: 'Total Customers',
-      count: loading ? '...' : (metrics?.totalCustomers ?? 0),
-      subtitle: 'Converted Clients',
+      title: 'New Leads',
+      count: loading ? '...' : (metrics?.newLeads ?? 0),
+      subtitle: 'Uncontacted Inquiries',
+      icon: <UserPlus className="w-5 h-5 text-indigo-600" />,
+      path: '/leads?status=New',
+    },
+    {
+      title: 'Converted Leads',
+      count: loading ? '...' : (metrics?.convertedLeads ?? 0),
+      subtitle: 'Successfully Closed Deals',
       icon: <Award className="w-5 h-5 text-emerald-600" />,
-      path: '/customers',
+      path: '/leads?status=Converted',
+    },
+    {
+      title: 'Lost Leads',
+      count: loading ? '...' : (metrics?.lostLeads ?? 0),
+      subtitle: 'Closed Unsuccessful',
+      icon: <XCircle className="w-5 h-5 text-rose-600" />,
+      path: '/leads?status=Lost',
     },
     {
       title: 'Active Chatbots',
       count: loading ? '...' : (metrics?.activeChatbots ?? 0),
-      subtitle: 'Live AI Bots',
+      subtitle: 'Live Deployed AI Bots',
       icon: <Bot className="w-5 h-5 text-[#F26522]" />,
       path: '/chatbots',
     },
     {
       title: "Today's Conversations",
       count: loading ? '...' : (metrics?.todaysConversations ?? 0),
-      subtitle: 'Recorded Today',
+      subtitle: 'Visitor Chats Today',
       icon: <Clock className="w-5 h-5 text-indigo-600" />,
       path: '/conversations',
     },
     {
       title: 'Total Conversations',
       count: loading ? '...' : (metrics?.totalConversations ?? 0),
-      subtitle: 'All-Time Volume',
+      subtitle: 'All-Time Transcripts',
       icon: <MessageSquare className="w-5 h-5 text-blue-600" />,
       path: '/conversations',
     },
@@ -151,21 +163,10 @@ function DashboardPage() {
       icon: <CheckCircle2 className="w-5 h-5 text-emerald-600" />,
       path: '/conversations?status=Resolved',
     },
-    {
-      title: 'Escalated to Human',
-      count: loading ? '...' : (metrics?.escalatedToHuman ?? 0),
-      subtitle: 'Agent Hand-offs',
-      icon: <AlertTriangle className="w-5 h-5 text-amber-600" />,
-      path: '/conversations?status=Escalated',
-    },
-    {
-      title: 'Pending Follow-ups',
-      count: loading ? '...' : (metrics?.pendingFollowups ?? 0),
-      subtitle: 'Scheduled Tasks',
-      icon: <Calendar className="w-5 h-5 text-purple-600" />,
-      path: '/followups',
-    },
   ];
+
+  const monthlyChartData = metrics?.monthlyLeadsChart || [];
+  const maxMonthlyCount = Math.max(...monthlyChartData.map(m => m.count), 1);
 
   return (
     <div className="space-y-6 text-[#111111]">
@@ -175,11 +176,11 @@ function DashboardPage() {
           <h1 className="text-xl sm:text-2xl font-bold text-[#111111] tracking-tight flex items-center gap-2">
             <span>{config.appTitle} Live Dashboard</span>
             <span className="text-[11px] bg-[#FFF6F1] text-[#F26522] border border-[#FFDCD0] px-2.5 py-0.5 rounded-full font-semibold">
-              Real MongoDB Telemetry
+              Real MongoDB Analytics
             </span>
           </h1>
           <p className="text-xs text-[#475569] mt-0.5">
-            Live metrics queried directly from MongoDB Atlas collection stores
+            Real-time metrics computed directly from MongoDB Atlas Lead collection stores
           </p>
         </div>
 
@@ -214,11 +215,11 @@ function DashboardPage() {
         </div>
       )}
 
-      {/* Real Live Dashboard Cards Grid */}
+      {/* Requirement 3: Real MongoDB Lead & Chatbot Telemetry Grid */}
       <div>
         <div className="flex items-center justify-between mb-3">
-          <h2 className="text-xs font-bold uppercase tracking-wider text-[#475569]">Live CRM & AI Chatbot Telemetry</h2>
-          <span className="text-[11px] text-[#F26522] font-semibold">100% Real Database Queries</span>
+          <h2 className="text-xs font-bold uppercase tracking-wider text-[#475569]">Real Lead Pipeline Metrics</h2>
+          <span className="text-[11px] text-[#F26522] font-semibold">100% MongoDB Real-time Queries</span>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5">
           {dashboardCards.map((card, idx) => (
@@ -245,6 +246,65 @@ function DashboardPage() {
             </div>
           ))}
         </div>
+      </div>
+
+      {/* Requirement 4: Monthly Leads Chart using Lead createdAt */}
+      <div className="bg-white border border-[#FFDCD0] rounded-2xl p-5 shadow-xs space-y-4">
+        <div className="flex items-center justify-between border-b border-[#FFDCD0] pb-3">
+          <div className="flex items-center gap-2">
+            <div className="p-1.5 rounded-xl bg-[#FFF6F1] text-[#F26522] border border-[#FFDCD0]">
+              <TrendingUp className="w-4 h-4" />
+            </div>
+            <div>
+              <h2 className="text-base font-bold text-[#111111]">Monthly Leads Creation Chart</h2>
+              <p className="text-[11px] text-[#475569]">
+                Aggregated in real-time from MongoDB Lead createdAt timestamps
+              </p>
+            </div>
+          </div>
+          <span className="text-xs font-bold text-[#F26522] bg-orange-50 border border-[#FFDCD0] px-2.5 py-1 rounded-full">
+            MongoDB Aggregation
+          </span>
+        </div>
+
+        {loading ? (
+          <div className="py-8 text-center text-slate-400 text-xs space-y-2">
+            <div className="inline-block w-5 h-5 border-2 border-[#F26522] border-t-transparent rounded-full animate-spin"></div>
+            <p>Computing monthly lead aggregation...</p>
+          </div>
+        ) : monthlyChartData.length > 0 ? (
+          <div className="pt-2">
+            <div className="h-56 flex items-end gap-3 sm:gap-6 px-2 pb-2 border-b border-[#FFDCD0]/60">
+              {monthlyChartData.map((item, idx) => {
+                const heightPct = Math.round((item.count / maxMonthlyCount) * 100);
+                return (
+                  <div key={idx} className="flex-1 flex flex-col items-center gap-2 h-full justify-end group">
+                    <div className="text-center opacity-90 group-hover:opacity-100 transition-opacity">
+                      <span className="block text-[11px] font-extrabold text-[#F26522]">
+                        {item.count} leads
+                      </span>
+                      <span className="block text-[9px] text-emerald-600 font-bold">
+                        {item.converted} converted
+                      </span>
+                    </div>
+                    <div
+                      className="w-full max-w-[48px] bg-gradient-to-t from-[#F26522] to-[#D9531E] rounded-t-xl transition-all duration-500 group-hover:opacity-90 shadow-2xs relative"
+                      style={{ height: `${Math.max(heightPct, 15)}%` }}
+                    />
+                    <span className="text-[10px] font-bold text-[#475569]">{item.month}</span>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        ) : (
+          <div className="py-10 text-center text-slate-400 text-xs bg-[#FFF6F1]/20 rounded-xl border border-dashed border-[#FFDCD0] space-y-1">
+            <p className="font-bold text-slate-700">No monthly leads aggregated yet</p>
+            <p className="text-[11px] text-slate-400">
+              New leads created in the CRM will populate this chart automatically using their createdAt dates.
+            </p>
+          </div>
+        )}
       </div>
 
       {/* Calculated Ratios Grid */}
