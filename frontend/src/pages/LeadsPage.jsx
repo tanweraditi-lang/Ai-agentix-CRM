@@ -1,31 +1,46 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import { getLeads, createLead, updateLead, deleteLead } from '../services/leadService';
-import { Users, Plus, Search, Eye, Edit3, Trash2, X, Check } from 'lucide-react';
+import {
+  Users,
+  Plus,
+  Search,
+  Eye,
+  Edit3,
+  Trash2,
+  Calendar,
+  ArrowUpDown,
+  Filter,
+  RefreshCw,
+} from 'lucide-react';
 
 function LeadsPage() {
   const [searchParams] = useSearchParams();
   const urlSearchParam = searchParams.get('search') || '';
+  const urlStatusParam = searchParams.get('status') || 'All';
 
   const [leads, setLeads] = useState([]);
   const [loading, setLoading] = useState(true);
+
+  // Filter & Search Controls
   const [search, setSearch] = useState(urlSearchParam);
-  const [statusFilter, setStatusFilter] = useState('All');
+  const [statusFilter, setStatusFilter] = useState(urlStatusParam);
+  const [dateFilter, setDateFilter] = useState('all'); // 'all' | 'today' | 'last7days' | 'last30days' | 'custom'
+  const [startDate, setStartDate] = useState('');
+  const [endDate, setEndDate] = useState('');
+  const [sortBy, setSortBy] = useState('newest'); // 'newest' | 'oldest' | 'name_asc' | 'name_desc'
 
   useEffect(() => {
     const q = searchParams.get('search');
-    if (q !== null) {
-      setSearch(q);
-    }
+    if (q !== null) setSearch(q);
+
     const st = searchParams.get('status');
-    if (st !== null && st !== '') {
-      setStatusFilter(st);
-    }
+    if (st !== null && st !== '') setStatusFilter(st);
   }, [searchParams]);
-  
+
   // Modal state for Add/Edit
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [editingLeadId, setEditingLeadId] = useState(null); // null = Create mode, ID = Edit mode
+  const [editingLeadId, setEditingLeadId] = useState(null);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -34,7 +49,7 @@ function LeadsPage() {
     serviceInterested: '',
     status: 'New',
   });
-  
+
   const [submitting, setSubmitting] = useState(false);
   const [alert, setAlert] = useState(null);
 
@@ -51,11 +66,17 @@ function LeadsPage() {
       const params = {};
       if (search && search.trim()) params.search = search.trim();
       if (statusFilter && statusFilter !== 'All') params.status = statusFilter;
+      if (dateFilter && dateFilter !== 'all') params.dateFilter = dateFilter;
+      if (dateFilter === 'custom') {
+        if (startDate) params.startDate = startDate;
+        if (endDate) params.endDate = endDate;
+      }
+      if (sortBy) params.sortBy = sortBy;
 
       const data = await getLeads(params);
-      
-      const leadsList = Array.isArray(data) 
-        ? data 
+
+      const leadsList = Array.isArray(data)
+        ? data
         : (data?.leads || data?.data || []);
 
       setLeads(leadsList);
@@ -69,7 +90,7 @@ function LeadsPage() {
 
   useEffect(() => {
     fetchLeadsData();
-  }, [search, statusFilter]);
+  }, [search, statusFilter, dateFilter, startDate, endDate, sortBy]);
 
   const handleOpenAddModal = () => {
     setEditingLeadId(null);
@@ -145,8 +166,17 @@ function LeadsPage() {
     }
   };
 
-  const getBadgeStyle = (status) => {
+  const getBadgeStyle = () => {
     return 'bg-white text-[#F26522] border border-slate-200 font-bold hover:bg-[#FFF6F1] focus:outline-none focus:ring-2 focus:ring-[#F26522]/30 focus:border-[#F26522] transition-colors shadow-2xs';
+  };
+
+  const handleResetFilters = () => {
+    setSearch('');
+    setStatusFilter('All');
+    setDateFilter('all');
+    setStartDate('');
+    setEndDate('');
+    setSortBy('newest');
   };
 
   return (
@@ -163,21 +193,30 @@ function LeadsPage() {
                 Lead Management
               </h1>
               <span className="text-xs bg-[#FFF6F1] text-[#F26522] border border-[#FFDCD0] px-3 py-1 rounded-full font-bold shadow-xs">
-                {leads.length} Active
+                {leads.length} Filtered Leads
               </span>
             </div>
             <p className="text-xs sm:text-sm text-[#475569] mt-0.5 font-medium">
-              Track, qualify, update deal stages, and manage prospect pipelines efficiently
+              Advanced MongoDB search, date range filters, sorting, and deal pipeline management
             </p>
           </div>
         </div>
-        <button
-          onClick={handleOpenAddModal}
-          className="bg-gradient-to-r from-[#F26522] to-[#D9531E] hover:opacity-95 text-white font-semibold px-5 py-2.5 rounded-xl text-xs sm:text-sm transition-all shadow-sm hover:shadow-md flex items-center gap-2 self-start sm:self-auto cursor-pointer"
-        >
-          <Plus className="w-4 h-4" />
-          <span>Add New Lead</span>
-        </button>
+        <div className="flex items-center gap-2">
+          <button
+            onClick={() => fetchLeadsData()}
+            className="p-2.5 rounded-xl bg-orange-50 border border-[#FFDCD0] text-[#F26522] hover:bg-[#FFF6F1] transition-all cursor-pointer"
+            title="Refresh list"
+          >
+            <RefreshCw className={`w-4 h-4 ${loading ? 'animate-spin' : ''}`} />
+          </button>
+          <button
+            onClick={handleOpenAddModal}
+            className="bg-gradient-to-r from-[#F26522] to-[#D9531E] hover:opacity-95 text-white font-semibold px-5 py-2.5 rounded-xl text-xs sm:text-sm transition-all shadow-sm hover:shadow-md flex items-center gap-2 cursor-pointer"
+          >
+            <Plus className="w-4 h-4" />
+            <span>Add New Lead</span>
+          </button>
+        </div>
       </div>
 
       {alert && (
@@ -193,55 +232,135 @@ function LeadsPage() {
         </div>
       )}
 
-      {/* Filter & Search Bar Controls */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-white p-4 rounded-2xl border border-[#FFDCD0] shadow-xs">
-        {/* Search Input */}
-        <div className="relative flex-1">
-          <span className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-slate-400">
-            <Search className="w-4 h-4" />
-          </span>
-          <input
-            type="text"
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-            placeholder="Search leads by name, email, company, or phone..."
-            className="w-full pl-9 pr-4 py-2 bg-[#FFF6F1]/40 border border-[#FFDCD0] rounded-xl text-xs text-[#111111] placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#F26522]/30 focus:border-[#F26522] transition-all"
-          />
+      {/* Advanced Filter, Search & Sorting Panel */}
+      <div className="bg-white p-5 rounded-2xl border border-[#FFDCD0] shadow-xs space-y-4">
+        {/* Row 1: Search Input & Status Pills */}
+        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+          {/* Search Bar across Name, Email, Company, Phone, Service */}
+          <div className="relative flex-1 min-w-[240px]">
+            <span className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-slate-400">
+              <Search className="w-4 h-4" />
+            </span>
+            <input
+              type="text"
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              placeholder="Search by name, email, company, phone, or service..."
+              className="w-full pl-9 pr-4 py-2 bg-[#FFF6F1]/40 border border-[#FFDCD0] rounded-xl text-xs text-[#111111] placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#F26522]/30 focus:border-[#F26522] transition-all"
+            />
+          </div>
+
+          {/* Status Filter Tabs */}
+          <div className="flex items-center space-x-1.5 overflow-x-auto pb-1 lg:pb-0 scrollbar-none">
+            {statuses.map((st) => (
+              <button
+                key={st}
+                onClick={() => setStatusFilter(st)}
+                className={`px-3 py-1.5 rounded-xl text-xs font-medium whitespace-nowrap transition-all cursor-pointer ${
+                  statusFilter === st
+                    ? 'bg-gradient-to-r from-[#F26522] to-[#D9531E] text-white font-bold shadow-xs'
+                    : 'bg-[#FFF6F1] text-[#F26522] hover:bg-orange-100 border border-[#FFDCD0]/40'
+                }`}
+              >
+                {st}
+              </button>
+            ))}
+          </div>
         </div>
 
-        {/* Status Filter Pills */}
-        <div className="flex items-center space-x-1.5 overflow-x-auto pb-1 md:pb-0 scrollbar-none">
-          {statuses.map((st) => (
-            <button
-              key={st}
-              onClick={() => setStatusFilter(st)}
-              className={`px-3 py-1.5 rounded-xl text-xs font-medium whitespace-nowrap transition-all ${
-                statusFilter === st
-                  ? 'bg-gradient-to-r from-[#F26522] to-[#D9531E] text-white font-semibold shadow-xs'
-                  : 'bg-[#FFF6F1] text-[#F26522] hover:bg-orange-100'
-              }`}
-            >
-              {st}
-            </button>
-          ))}
+        {/* Row 2: Date Filters & Sorting Controls */}
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-3 border-t border-[#FFDCD0]/60 text-xs">
+          <div className="flex flex-wrap items-center gap-3">
+            {/* Date Range Selector */}
+            <div className="flex items-center gap-2">
+              <span className="font-bold text-slate-600 flex items-center gap-1">
+                <Calendar className="w-3.5 h-3.5 text-[#F26522]" /> Date:
+              </span>
+              <select
+                value={dateFilter}
+                onChange={(e) => setDateFilter(e.target.value)}
+                className="bg-white border border-[#FFDCD0] rounded-xl px-3 py-1.5 text-xs font-semibold text-slate-800 focus:ring-2 focus:ring-[#F26522]/30 focus:border-[#F26522] cursor-pointer"
+              >
+                <option value="all">All Time</option>
+                <option value="today">Created Today</option>
+                <option value="last7days">Last 7 Days</option>
+                <option value="last30days">Last 30 Days</option>
+                <option value="custom">Custom Date Range</option>
+              </select>
+            </div>
+
+            {/* Custom Date Inputs */}
+            {dateFilter === 'custom' && (
+              <div className="flex items-center gap-2 bg-[#FFF6F1] p-1.5 rounded-xl border border-[#FFDCD0]">
+                <input
+                  type="date"
+                  value={startDate}
+                  onChange={(e) => setStartDate(e.target.value)}
+                  className="bg-white border border-[#FFDCD0] rounded-lg px-2 py-1 text-[11px] text-slate-800"
+                />
+                <span className="text-slate-400 font-bold">to</span>
+                <input
+                  type="date"
+                  value={endDate}
+                  onChange={(e) => setEndDate(e.target.value)}
+                  className="bg-white border border-[#FFDCD0] rounded-lg px-2 py-1 text-[11px] text-slate-800"
+                />
+              </div>
+            )}
+          </div>
+
+          {/* Sorting Control */}
+          <div className="flex items-center justify-between sm:justify-end gap-3">
+            <div className="flex items-center gap-2">
+              <span className="font-bold text-slate-600 flex items-center gap-1">
+                <ArrowUpDown className="w-3.5 h-3.5 text-[#F26522]" /> Sort By:
+              </span>
+              <select
+                value={sortBy}
+                onChange={(e) => setSortBy(e.target.value)}
+                className="bg-white border border-[#FFDCD0] rounded-xl px-3 py-1.5 text-xs font-semibold text-slate-800 focus:ring-2 focus:ring-[#F26522]/30 focus:border-[#F26522] cursor-pointer"
+              >
+                <option value="newest">Newest First</option>
+                <option value="oldest">Oldest First</option>
+                <option value="name_asc">Name (A-Z)</option>
+                <option value="name_desc">Name (Z-A)</option>
+              </select>
+            </div>
+
+            {(search || statusFilter !== 'All' || dateFilter !== 'all' || sortBy !== 'newest') && (
+              <button
+                onClick={handleResetFilters}
+                className="text-[#F26522] hover:underline font-bold text-xs"
+              >
+                Reset Filters
+              </button>
+            )}
+          </div>
         </div>
       </div>
 
       {/* Leads Data Table */}
       <div className="bg-white border border-[#FFDCD0] rounded-2xl overflow-hidden shadow-xs">
         {loading ? (
-          <div className="p-12 text-center text-slate-400 text-sm space-y-2">
+          <div className="p-12 text-center text-slate-400 text-xs space-y-2">
             <div className="inline-block w-6 h-6 border-2 border-[#F26522] border-t-transparent rounded-full animate-spin"></div>
-            <p>Loading leads dataset...</p>
+            <p>Loading matching leads from MongoDB...</p>
           </div>
         ) : leads.length === 0 ? (
-          <div className="p-12 text-center text-slate-400 text-sm bg-[#FFF6F1]/20">
-            <p className="font-semibold text-slate-700">No leads found</p>
-            <p className="text-xs text-slate-400 mt-1">Try adjusting your search terms or filter selection.</p>
+          <div className="p-12 text-center text-slate-400 text-xs bg-[#FFF6F1]/20 space-y-1">
+            <Filter className="w-8 h-8 text-[#F26522]/40 mx-auto" />
+            <p className="font-bold text-slate-700">No leads match your filter parameters</p>
+            <p className="text-slate-400">Try broadening your search term or date range.</p>
+            <button
+              onClick={handleResetFilters}
+              className="mt-2 inline-block px-3 py-1 bg-[#F26522] text-white rounded-lg text-xs font-bold"
+            >
+              Reset Filters
+            </button>
           </div>
         ) : (
           <div className="overflow-x-auto">
-            <table className="w-full text-left text-sm text-[#111111]">
+            <table className="w-full text-left text-xs text-[#111111]">
               <thead className="bg-[#FFF6F1]/60 text-slate-700 uppercase text-[11px] font-bold tracking-wider border-b border-[#FFDCD0]">
                 <tr>
                   <th className="px-6 py-4 font-semibold">Lead Details</th>
@@ -256,19 +375,17 @@ function LeadsPage() {
                 {leads.map((lead) => (
                   <tr key={lead.id || lead._id} className="hover:bg-orange-50/50 transition-colors">
                     <td className="px-6 py-4 font-medium text-[#111111]">
-                      <div className="font-semibold text-sm">{lead.name}</div>
-                      <div className="text-xs text-[#475569] font-normal">{lead.email} {lead.phone ? `• ${lead.phone}` : ''}</div>
+                      <div className="font-bold text-xs">{lead.name}</div>
+                      <div className="text-[11px] text-[#475569] font-normal">{lead.email} {lead.phone ? `• ${lead.phone}` : ''}</div>
                     </td>
-                    <td className="px-6 py-4 text-slate-700 font-medium">{lead.company || 'N/A'}</td>
+                    <td className="px-6 py-4 text-slate-700 font-semibold">{lead.company || 'N/A'}</td>
                     <td className="px-6 py-4 text-slate-700">{lead.serviceInterested}</td>
                     <td className="px-6 py-4">
                       <select
                         value={lead.status}
                         onChange={(e) => handleStatusChange(lead.id || lead._id, e.target.value)}
                         style={{ color: '#F26522', backgroundColor: '#FFFFFF' }}
-                        className={`text-xs font-bold px-3 py-1 rounded-full border focus:outline-none cursor-pointer ${getBadgeStyle(
-                          lead.status
-                        )}`}
+                        className={`text-xs font-bold px-3 py-1 rounded-full border focus:outline-none cursor-pointer ${getBadgeStyle()}`}
                       >
                         {formStatuses.map(st => (
                           <option key={st} value={st} style={{ color: '#F26522', backgroundColor: '#FFFFFF' }} className="bg-white text-[#F26522] hover:bg-[#FFF6F1] font-medium">
@@ -327,7 +444,7 @@ function LeadsPage() {
               </button>
             </div>
 
-            <form onSubmit={handleFormSubmit} className="space-y-4 text-sm">
+            <form onSubmit={handleFormSubmit} className="space-y-4 text-xs">
               <div>
                 <label className="block text-xs font-semibold text-slate-700 mb-1">Lead Name *</label>
                 <input
@@ -431,9 +548,7 @@ function LeadsPage() {
           <div className="bg-white border border-rose-200 rounded-2xl p-6 w-full max-w-md shadow-2xl space-y-4 text-[#111111]">
             <div className="flex items-center gap-3 text-rose-600">
               <div className="p-2.5 rounded-full bg-rose-100">
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-                </svg>
+                <Trash2 className="w-6 h-6" />
               </div>
               <div>
                 <h3 className="font-bold text-lg text-[#111111]">Confirm Lead Removal</h3>
@@ -470,4 +585,3 @@ function LeadsPage() {
 }
 
 export default LeadsPage;
-
