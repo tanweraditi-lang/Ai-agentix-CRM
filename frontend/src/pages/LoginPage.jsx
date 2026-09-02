@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { login } from '../services/authService';
+import { useAuth } from '../context/AuthContext';
 import { ShieldCheck, LogIn, UserCheck, Lock, Sparkles } from 'lucide-react';
 
 function LoginPage() {
@@ -11,6 +12,7 @@ function LoginPage() {
   const [alert, setAlert] = useState(null);
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
+  const { loginSuccess, isAuthenticated } = useAuth();
 
   useEffect(() => {
     if (searchParams.get('expired') === '1') {
@@ -18,8 +20,10 @@ function LoginPage() {
         type: 'error',
         message: 'Your session token has expired. Please sign in again.',
       });
+    } else if (isAuthenticated) {
+      navigate('/', { replace: true });
     }
-  }, [searchParams]);
+  }, [searchParams, isAuthenticated, navigate]);
 
   const handleRoleSelect = (role) => {
     setSelectedRole(role);
@@ -39,7 +43,11 @@ function LoginPage() {
 
     try {
       const data = await login({ email, password });
-      const userName = data.user?.first_name || data.user?.name || 'User';
+      if (data?.token && data?.user) {
+        loginSuccess(data.token, data.user);
+      }
+      
+      const userName = data.user?.name || data.user?.first_name || 'User';
       const userRole = data.user?.role || 'Agent';
 
       setAlert({
@@ -48,8 +56,8 @@ function LoginPage() {
       });
 
       setTimeout(() => {
-        navigate('/');
-      }, 800);
+        navigate('/', { replace: true });
+      }, 500);
     } catch (err) {
       setAlert({ type: 'error', message: err.message || 'Authentication failed' });
     } finally {

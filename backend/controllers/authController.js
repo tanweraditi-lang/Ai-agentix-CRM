@@ -8,7 +8,7 @@ const generateToken = (user) => {
   const secret = process.env.JWT_SECRET || 'super-secret-jwt-key-agentix-crm-2026';
   const expiresIn = process.env.JWT_EXPIRES_IN || '30d';
 
-  const fullName = [user.first_name, user.last_name].filter(Boolean).join(' ') || user.name || 'User';
+  const fullName = [user.first_name, user.last_name].filter(Boolean).join(' ') || user.name || 'Admin User';
 
   return jwt.sign(
     {
@@ -126,6 +126,7 @@ const loginUser = async (req, res) => {
 
     // Issue JWT token
     const token = generateToken(user);
+    const fullName = [user.first_name, user.last_name].filter(Boolean).join(' ') || user.name || 'Admin User';
 
     return res.status(200).json({
       success: true,
@@ -135,6 +136,7 @@ const loginUser = async (req, res) => {
         id: (user._id || user.id).toString(),
         first_name: user.first_name,
         last_name: user.last_name,
+        name: fullName,
         email: user.email,
         role: user.role || 'agent',
         lastLogin: user.lastLogin,

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { NavLink, Outlet, useLocation, useNavigate } from 'react-router-dom';
-import { logout } from '../../services/authService';
+import { useAuth } from '../../context/AuthContext';
 import {
   LayoutDashboard,
   Users,
@@ -17,6 +17,9 @@ import {
   Search,
   Bell,
   Sparkles,
+  User,
+  ShieldCheck,
+  UserCheck,
 } from 'lucide-react';
 
 function Layout() {
@@ -25,6 +28,8 @@ function Layout() {
   const location = useLocation();
   const navigate = useNavigate();
   const searchInputRef = useRef(null);
+
+  const { isAuthenticated, user, logout } = useAuth();
 
   const handleSearchSubmit = (e) => {
     e.preventDefault();
@@ -45,69 +50,30 @@ function Layout() {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, []);
 
-  const checkAuthStatus = () => {
-    const token = localStorage.getItem('token');
-    const savedUserStr = localStorage.getItem('user');
-    if (token || savedUserStr) {
-      let parsedUser = null;
-      try {
-        parsedUser = savedUserStr ? JSON.parse(savedUserStr) : null;
-      } catch {
-        parsedUser = null;
-      }
-      setUser(parsedUser || { name: 'Admin User', role: 'admin' });
-      setIsAuthenticated(true);
-    } else {
-      setUser(null);
-      setIsAuthenticated(false);
-    }
-  };
-
-  const [isAuthenticated, setIsAuthenticated] = useState(() => {
-    return Boolean(localStorage.getItem('token') || localStorage.getItem('user'));
-  });
-
-  const [user, setUser] = useState(() => {
-    try {
-      const savedUserStr = localStorage.getItem('user');
-      return savedUserStr
-        ? JSON.parse(savedUserStr)
-        : localStorage.getItem('token')
-        ? { name: 'Admin User', role: 'admin' }
-        : null;
-    } catch {
-      return null;
-    }
-  });
-
-  useEffect(() => {
-    checkAuthStatus();
-  }, [location.pathname]);
-
-  useEffect(() => {
-    window.addEventListener('storage', checkAuthStatus);
-    return () => window.removeEventListener('storage', checkAuthStatus);
-  }, []);
-
-  const handleLogout = async () => {
+  const handleLogoutClick = async () => {
     await logout();
-    setIsAuthenticated(false);
-    setUser(null);
     setMobileOpen(false);
-    navigate('/login');
+    navigate('/login', { replace: true });
   };
 
-  const getUserName = (usr) => {
-    if (!usr) return 'Admin User';
-    if (usr.name) return usr.name;
-    if (usr.first_name || usr.last_name) {
-      return [usr.first_name, usr.last_name].filter(Boolean).join(' ');
+  const getUserName = () => {
+    if (!user) return 'System Admin';
+    if (user.name) return user.name;
+    if (user.first_name || user.last_name) {
+      return [user.first_name, user.last_name].filter(Boolean).join(' ');
     }
-    return usr.email || 'Admin User';
+    return user.email || 'System Admin';
   };
 
-  const getUserInitials = (usr) => {
-    const name = getUserName(usr);
+  const getUserRole = () => {
+    if (!user || !user.role) return 'Admin';
+    const roleStr = user.role.toLowerCase();
+    if (roleStr === 'admin' || roleStr === 'administrator') return 'Admin';
+    return 'Agent';
+  };
+
+  const getUserInitials = () => {
+    const name = getUserName();
     const parts = name.trim().split(' ');
     if (parts.length >= 2) {
       return (parts[0][0] + parts[1][0]).toUpperCase();
@@ -115,7 +81,16 @@ function Layout() {
     return name.substring(0, 2).toUpperCase();
   };
 
-  // PART 6 Requirements: 8 Menu Items
+  const formatLastLogin = () => {
+    if (!user || !user.lastLogin) return null;
+    try {
+      const d = new Date(user.lastLogin);
+      return d.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    } catch {
+      return null;
+    }
+  };
+
   const navItems = [
     {
       path: '/',
@@ -158,7 +133,6 @@ function Layout() {
       icon: <Settings className="w-5 h-5" />,
     },
   ];
-
 
   return (
     <div className="min-h-screen flex flex-col md:flex-row bg-[#FFF6F1] text-[#111111] overflow-x-hidden">
@@ -229,21 +203,32 @@ function Layout() {
           </div>
         </div>
 
-        {/* Sidebar Bottom: Sign In or Logout */}
-        <div className="p-4 border-t border-[#FFDCD0] bg-orange-50/40">
+        {/* Sidebar Bottom: Profile & Logout */}
+        <div className="p-4 border-t border-[#FFDCD0] bg-orange-50/40 space-y-2">
           {isAuthenticated ? (
-            <button
-              onClick={handleLogout}
-              className="flex items-center justify-center space-x-2 w-full py-2.5 px-4 rounded-xl text-sm font-semibold text-white bg-gradient-to-r from-[#F26522] to-[#D9531E] hover:opacity-95 transition-all duration-200 shadow-sm cursor-pointer"
-            >
-              <LogOut className="w-4 h-4" />
-              <span>Logout</span>
-            </button>
+            <>
+              <NavLink
+                to="/settings"
+                onClick={() => setMobileOpen(false)}
+                className="flex items-center justify-center space-x-2 w-full py-2 px-3 rounded-xl text-xs font-semibold text-slate-700 bg-white border border-[#FFDCD0] hover:bg-orange-50 hover:text-[#F26522] transition-all cursor-pointer"
+              >
+                <User className="w-4 h-4 text-[#F26522]" />
+                <span>Profile & Settings</span>
+              </NavLink>
+
+              <button
+                onClick={handleLogoutClick}
+                className="flex items-center justify-center space-x-2 w-full py-2.5 px-4 rounded-xl text-xs font-bold text-white bg-gradient-to-r from-[#F26522] to-[#D9531E] hover:opacity-95 transition-all shadow-xs cursor-pointer"
+              >
+                <LogOut className="w-4 h-4" />
+                <span>Logout</span>
+              </button>
+            </>
           ) : (
             <NavLink
               to="/login"
               onClick={() => setMobileOpen(false)}
-              className="flex items-center justify-center space-x-2 w-full py-2.5 px-4 rounded-xl text-sm font-semibold text-white bg-gradient-to-r from-[#F26522] to-[#D9531E] hover:opacity-95 transition-all duration-200 shadow-sm"
+              className="flex items-center justify-center space-x-2 w-full py-2.5 px-4 rounded-xl text-xs font-bold text-white bg-gradient-to-r from-[#F26522] to-[#D9531E] hover:opacity-95 transition-all shadow-xs"
             >
               <LogIn className="w-4 h-4" />
               <span>Sign In</span>
@@ -302,18 +287,38 @@ function Layout() {
               <span className="absolute top-1 right-1 sm:top-1.5 sm:right-1.5 w-2 h-2 bg-[#F26522] rounded-full ring-2 ring-white"></span>
             </button>
 
-            {/* User Profile Avatar / Action */}
-            <div className="flex items-center gap-2 sm:gap-3 pl-1.5 sm:pl-2 border-l border-[#FFDCD0]">
-              <div className="h-8 w-8 sm:h-9 sm:w-9 rounded-xl bg-[#FFF6F1] border border-[#FFDCD0] text-[#F26522] font-bold flex items-center justify-center text-xs sm:text-sm shadow-2xs">
-                {isAuthenticated ? getUserInitials(user) : 'GU'}
+            {/* User Profile Header - Requirements 1, 2, 3, 9, 10 */}
+            <div className="flex items-center gap-2 sm:gap-3 pl-1.5 sm:pl-3 border-l border-[#FFDCD0]">
+              <div className="h-8 w-8 sm:h-9 sm:w-9 rounded-xl bg-gradient-to-tr from-[#F26522] to-[#D9531E] text-white font-extrabold flex items-center justify-center text-xs sm:text-sm shadow-xs border border-[#FFDCD0]">
+                {isAuthenticated ? getUserInitials() : 'AG'}
               </div>
-              <div className="hidden sm:block text-left">
-                <p className="text-xs font-semibold text-[#111111] leading-tight">
-                  {isAuthenticated ? getUserName(user) : 'Guest User'}
-                </p>
-                <p className="text-[10px] text-[#475569] leading-tight capitalize">
-                  {isAuthenticated ? (user?.role || 'CRM Manager') : 'Not Logged In'}
-                </p>
+              <div className="hidden sm:block text-left space-y-0.5">
+                <div className="flex items-center gap-1.5">
+                  <span className="text-xs font-bold text-[#111111] leading-tight">
+                    {isAuthenticated ? getUserName() : 'AI-Agentix User'}
+                  </span>
+                  {/* Role Badge */}
+                  {isAuthenticated && (
+                    getUserRole() === 'Admin' ? (
+                      <span className="inline-flex items-center gap-0.5 px-2 py-0.5 rounded-full text-[10px] font-extrabold bg-orange-100 text-[#F26522] border border-[#FFDCD0]">
+                        <ShieldCheck className="w-3 h-3 text-[#F26522]" />
+                        Admin
+                      </span>
+                    ) : (
+                      <span className="inline-flex items-center gap-0.5 px-2 py-0.5 rounded-full text-[10px] font-extrabold bg-blue-50 text-blue-700 border border-blue-200">
+                        <UserCheck className="w-3 h-3 text-blue-600" />
+                        Agent
+                      </span>
+                    )
+                  )}
+                </div>
+
+                <div className="text-[10px] text-[#475569] flex items-center gap-2">
+                  <span>{user?.email || 'crm@agentix.com'}</span>
+                  {formatLastLogin() && (
+                    <span className="text-slate-400">· Logged in: {formatLastLogin()}</span>
+                  )}
+                </div>
               </div>
             </div>
           </div>
