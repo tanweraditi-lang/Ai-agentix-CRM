@@ -74,35 +74,65 @@ const getDashboardMetrics = async (req, res) => {
         : 0;
 
       // 5. Real Monthly Leads Aggregation using Lead.createdAt in MongoDB
-      const monthlyAggregation = await Lead.aggregate([
-        {
-          $group: {
-            _id: {
-              year: { $year: '$createdAt' },
-              month: { $month: '$createdAt' },
-            },
-            count: { $sum: 1 },
-            converted: {
-              $sum: { $cond: [{ $eq: ['$status', 'Converted'] }, 1, 0] }
-            },
-            lost: {
-              $sum: { $cond: [{ $eq: ['$status', 'Lost'] }, 1, 0] }
+      try {
+        const monthlyAggregation = await Lead.aggregate([
+          {
+            $project: {
+              status: 1,
+              createdAtDate: { $ifNull: ['$createdAt', '$$NOW'] }
             }
-          }
-        },
-        { $sort: { '_id.year': 1, '_id.month': 1 } }
-      ]);
+          },
+          {
+            $group: {
+              _id: {
+                year: { $year: '$createdAtDate' },
+                month: { $month: '$createdAtDate' },
+              },
+              count: { $sum: 1 },
+              converted: {
+                $sum: { $cond: [{ $eq: ['$status', 'Converted'] }, 1, 0] }
+              },
+              lost: {
+                $sum: { $cond: [{ $eq: ['$status', 'Lost'] }, 1, 0] }
+              }
+            }
+          },
+          { $sort: { '_id.year': 1, '_id.month': 1 } }
+        ]);
 
-      const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-      monthlyLeadsChart = monthlyAggregation.map(item => {
-        const mIdx = item._id.month - 1;
-        return {
-          month: `${monthNames[mIdx]} ${item._id.year}`,
-          count: item.count,
-          converted: item.converted,
-          lost: item.lost,
-        };
-      });
+        const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+        monthlyLeadsChart = monthlyAggregation.map(item => {
+          const mIdx = item._id.month - 1;
+          return {
+            month: `${monthNames[mIdx]} ${item._id.year}`,
+            count: item.count,
+            converted: item.converted,
+            lost: item.lost,
+          };
+        });
+      } catch (aggErr) {
+        console.warn('MongoDB aggregation warning in getDashboardMetrics:', aggErr.message);
+      }
+
+      // Guaranteed fallback grouping if documents exist
+      if (monthlyLeadsChart.length === 0 && totalLeads > 0) {
+        const allLeads = await Lead.find({}, 'createdAt status');
+        const monthMap = {};
+        const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+        allLeads.forEach(l => {
+          const d = l.createdAt ? new Date(l.createdAt) : new Date();
+          const key = `${monthNames[d.getMonth()]} ${d.getFullYear()}`;
+          if (!monthMap[key]) {
+            monthMap[key] = { month: key, count: 0, converted: 0, lost: 0, year: d.getFullYear(), mIdx: d.getMonth() };
+          }
+          monthMap[key].count += 1;
+          if (l.status === 'Converted') monthMap[key].converted += 1;
+          if (l.status === 'Lost') monthMap[key].lost += 1;
+        });
+
+        monthlyLeadsChart = Object.values(monthMap).sort((a, b) => (a.year - b.year) || (a.mIdx - b.mIdx));
+      }
 
       // 6. Fetch real recent activities from Activity collection
       recentActivities = await getRecentActivities(10);
