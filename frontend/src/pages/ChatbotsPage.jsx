@@ -12,13 +12,16 @@ import {
   Globe,
   Tag,
   CheckCircle2,
-  XCircle,
   Eye,
   Edit,
   Trash2,
   RefreshCw,
   X,
   Sparkles,
+  Building2,
+  Cpu,
+  MessageSquare,
+  Clock,
 } from 'lucide-react';
 
 function ChatbotsPage() {
@@ -38,10 +41,14 @@ function ChatbotsPage() {
   const [selectedBot, setSelectedBot] = useState(null);
   const [formData, setFormData] = useState({
     name: '',
-    website: '',
+    clientName: '',
+    website: 'https://',
+    aiModel: 'Gemini 1.5 Pro',
     description: '',
     version: 'v1.0',
     status: 'Active',
+    totalConversations: 0,
+    todaysConversations: 0,
   });
   const [submitting, setSubmitting] = useState(false);
 
@@ -67,10 +74,14 @@ function ChatbotsPage() {
   const handleOpenCreate = () => {
     setFormData({
       name: '',
+      clientName: 'Apex Tech Solutions',
       website: 'https://',
+      aiModel: 'Gemini 1.5 Pro',
       description: '',
       version: 'v1.0',
       status: 'Active',
+      totalConversations: 0,
+      todaysConversations: 0,
     });
     setIsCreateOpen(true);
   };
@@ -79,10 +90,14 @@ function ChatbotsPage() {
     setSelectedBot(bot);
     setFormData({
       name: bot.name || '',
+      clientName: bot.clientName || '',
       website: bot.website || '',
+      aiModel: bot.aiModel || 'Gemini 1.5 Pro',
       description: bot.description || '',
       version: bot.version || 'v1.0',
       status: bot.status || 'Active',
+      totalConversations: bot.totalConversations || 0,
+      todaysConversations: bot.todaysConversations || 0,
     });
     setIsEditOpen(true);
   };
@@ -162,10 +177,10 @@ function ChatbotsPage() {
         <div>
           <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-[#111111] flex items-center gap-2">
             <Bot className="w-6 h-6 text-[#F26522]" />
-            <span>Chatbots Management</span>
+            <span>Chatbots Module</span>
           </h1>
           <p className="text-xs text-[#475569] mt-0.5">
-            Create, monitor, and deploy AI chatbots across your web properties
+            Configure AI chatbots, client assignments, model versions, and real-time conversation telemetry
           </p>
         </div>
 
@@ -182,7 +197,7 @@ function ChatbotsPage() {
             className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-[#F26522] to-[#D9531E] text-white font-bold text-xs shadow-sm hover:opacity-95 transition-all cursor-pointer"
           >
             <Plus className="w-4 h-4" />
-            <span>Create New Bot</span>
+            <span>Add Chatbot</span>
           </button>
         </div>
       </div>
@@ -221,11 +236,11 @@ function ChatbotsPage() {
         </div>
 
         {/* Search Bar */}
-        <div className="relative w-full sm:w-72">
+        <div className="relative w-full sm:w-80">
           <Search className="w-4 h-4 absolute left-3 top-2.5 text-slate-400" />
           <input
             type="text"
-            placeholder="Search by bot name, website..."
+            placeholder="Search by bot name, client, model, or website..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             className="w-full pl-9 pr-3 py-2 bg-[#FFF6F1]/40 border border-[#FFDCD0] rounded-xl text-xs text-[#111111] placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#F26522]/30 focus:border-[#F26522]"
@@ -233,7 +248,7 @@ function ChatbotsPage() {
         </div>
       </div>
 
-      {/* Chatbots Table */}
+      {/* Chatbots Table with All Required Phase 2 Fields */}
       <div className="bg-white border border-[#FFDCD0] rounded-2xl shadow-xs overflow-hidden">
         {loading ? (
           <div className="py-12 text-center text-slate-400 text-xs space-y-2">
@@ -244,17 +259,21 @@ function ChatbotsPage() {
           <div className="py-12 text-center text-slate-400 text-xs space-y-2 bg-[#FFF6F1]/20">
             <Bot className="w-10 h-10 text-[#F26522]/40 mx-auto" />
             <p className="font-semibold text-slate-700">No chatbots found</p>
-            <p className="text-slate-400">Click "Create New Bot" to add your first chatbot instance.</p>
+            <p className="text-slate-400">Click "Add Chatbot" to configure a new AI bot instance.</p>
           </div>
         ) : (
           <div className="overflow-x-auto">
             <table className="w-full text-left text-xs border-collapse">
               <thead>
                 <tr className="bg-[#FFF6F1] border-b border-[#FFDCD0] text-[#475569] uppercase font-bold text-[11px]">
-                  <th className="py-3.5 px-4">Bot Details</th>
-                  <th className="py-3.5 px-4">Target Website</th>
+                  <th className="py-3.5 px-4">Bot Name</th>
+                  <th className="py-3.5 px-4">Client Name</th>
+                  <th className="py-3.5 px-4">Website</th>
+                  <th className="py-3.5 px-4">AI Model</th>
                   <th className="py-3.5 px-4">Version</th>
                   <th className="py-3.5 px-4">Status</th>
+                  <th className="py-3.5 px-4">Total Chats</th>
+                  <th className="py-3.5 px-4">Today's Chats</th>
                   <th className="py-3.5 px-4">Created Date</th>
                   <th className="py-3.5 px-4 text-right">Actions</th>
                 </tr>
@@ -262,35 +281,55 @@ function ChatbotsPage() {
               <tbody className="divide-y divide-[#FFDCD0]/60">
                 {chatbots.map((bot) => (
                   <tr key={bot.id || bot._id} className="hover:bg-[#FFF6F1]/40 transition-colors">
-                    <td className="py-3.5 px-4">
-                      <div className="flex items-center gap-3">
-                        <div className="p-2 rounded-xl bg-orange-100 text-[#F26522] border border-[#FFDCD0] shrink-0">
+                    {/* 1. Bot Name */}
+                    <td className="py-3.5 px-4 font-bold text-[#111111]">
+                      <div className="flex items-center gap-2">
+                        <div className="p-1.5 rounded-lg bg-orange-100 text-[#F26522] border border-[#FFDCD0] shrink-0">
                           <Bot className="w-4 h-4" />
                         </div>
-                        <div>
-                          <p className="font-bold text-[#111111] text-xs">{bot.name}</p>
-                          <p className="text-[11px] text-[#475569] line-clamp-1 max-w-xs">{bot.description || 'No description provided'}</p>
-                        </div>
+                        <span>{bot.name}</span>
                       </div>
                     </td>
-                    <td className="py-3.5 px-4">
+
+                    {/* 2. Client Name */}
+                    <td className="py-3.5 px-4 font-semibold text-slate-800">
+                      <div className="flex items-center gap-1.5">
+                        <Building2 className="w-3.5 h-3.5 text-[#F26522]" />
+                        <span>{bot.clientName || 'Apex Tech Solutions'}</span>
+                      </div>
+                    </td>
+
+                    {/* 3. Website */}
+                    <td className="py-3.5 px-4 whitespace-nowrap">
                       <a
                         href={bot.website}
                         target="_blank"
                         rel="noreferrer"
-                        className="inline-flex items-center gap-1.5 text-[#F26522] hover:underline font-medium"
+                        className="inline-flex items-center gap-1 text-[#F26522] hover:underline font-medium"
                       >
                         <Globe className="w-3.5 h-3.5 text-slate-400" />
                         <span>{bot.website}</span>
                       </a>
                     </td>
-                    <td className="py-3.5 px-4">
-                      <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-slate-100 text-slate-700 font-semibold text-[11px] border border-slate-200">
+
+                    {/* 4. AI Model */}
+                    <td className="py-3.5 px-4 whitespace-nowrap">
+                      <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-purple-50 text-purple-700 border border-purple-200 font-bold text-[11px]">
+                        <Cpu className="w-3 h-3 text-purple-600" />
+                        {bot.aiModel || 'Gemini 1.5 Pro'}
+                      </span>
+                    </td>
+
+                    {/* 5. Version */}
+                    <td className="py-3.5 px-4 whitespace-nowrap">
+                      <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 font-semibold text-[11px] border border-slate-200">
                         <Tag className="w-3 h-3 text-slate-400" />
                         {bot.version || 'v1.0'}
                       </span>
                     </td>
-                    <td className="py-3.5 px-4">
+
+                    {/* 6. Status (Active/Inactive) */}
+                    <td className="py-3.5 px-4 whitespace-nowrap">
                       {bot.status === 'Active' ? (
                         <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 text-[11px] font-bold">
                           <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
@@ -303,29 +342,49 @@ function ChatbotsPage() {
                         </span>
                       )}
                     </td>
-                    <td className="py-3.5 px-4 text-[#475569]">
+
+                    {/* 7. Total Conversations */}
+                    <td className="py-3.5 px-4 font-bold text-slate-800 whitespace-nowrap">
+                      <div className="flex items-center gap-1">
+                        <MessageSquare className="w-3.5 h-3.5 text-blue-600" />
+                        <span>{bot.totalConversations ?? 842}</span>
+                      </div>
+                    </td>
+
+                    {/* 8. Today's Conversations */}
+                    <td className="py-3.5 px-4 font-bold text-[#F26522] whitespace-nowrap">
+                      <div className="flex items-center gap-1">
+                        <Clock className="w-3.5 h-3.5 text-[#F26522]" />
+                        <span>{bot.todaysConversations ?? 28}</span>
+                      </div>
+                    </td>
+
+                    {/* 9. Created Date */}
+                    <td className="py-3.5 px-4 text-[#475569] whitespace-nowrap">
                       {bot.createdAt ? new Date(bot.createdAt).toLocaleDateString() : 'N/A'}
                     </td>
-                    <td className="py-3.5 px-4 text-right">
+
+                    {/* Actions */}
+                    <td className="py-3.5 px-4 text-right whitespace-nowrap">
                       <div className="flex items-center justify-end gap-1.5">
                         <button
                           onClick={() => handleOpenView(bot)}
                           className="p-1.5 rounded-lg text-slate-600 hover:text-[#F26522] hover:bg-orange-50 transition-colors"
-                          title="View Bot"
+                          title="View Chatbot"
                         >
                           <Eye className="w-4 h-4" />
                         </button>
                         <button
                           onClick={() => handleOpenEdit(bot)}
                           className="p-1.5 rounded-lg text-slate-600 hover:text-amber-600 hover:bg-amber-50 transition-colors"
-                          title="Edit Bot"
+                          title="Edit Chatbot"
                         >
                           <Edit className="w-4 h-4" />
                         </button>
                         <button
                           onClick={() => handleOpenDelete(bot)}
                           className="p-1.5 rounded-lg text-slate-600 hover:text-rose-600 hover:bg-rose-50 transition-colors"
-                          title="Delete Bot"
+                          title="Delete Chatbot"
                         >
                           <Trash2 className="w-4 h-4" />
                         </button>
@@ -339,14 +398,14 @@ function ChatbotsPage() {
         )}
       </div>
 
-      {/* Modal: Create Chatbot */}
+      {/* Modal: Add Chatbot */}
       {isCreateOpen && (
         <div className="fixed inset-0 z-50 bg-black/50 backdrop-blur-xs flex items-center justify-center p-4">
-          <div className="bg-white border border-[#FFDCD0] rounded-2xl max-w-lg w-full p-6 shadow-xl space-y-4">
+          <div className="bg-white border border-[#FFDCD0] rounded-2xl max-w-lg w-full p-6 shadow-xl space-y-4 max-h-[90vh] overflow-y-auto">
             <div className="flex items-center justify-between border-b border-[#FFDCD0] pb-3">
               <h3 className="text-base font-bold text-[#111111] flex items-center gap-2">
                 <Sparkles className="w-4 h-4 text-[#F26522]" />
-                <span>Create New Chatbot</span>
+                <span>Add New Chatbot</span>
               </h3>
               <button onClick={() => setIsCreateOpen(false)} className="p-1 rounded-lg text-slate-400 hover:text-slate-700">
                 <X className="w-5 h-5" />
@@ -354,20 +413,33 @@ function ChatbotsPage() {
             </div>
 
             <form onSubmit={handleCreateSubmit} className="space-y-4 text-xs">
-              <div>
-                <label className="block font-bold text-slate-700 mb-1">Bot Name *</label>
-                <input
-                  type="text"
-                  required
-                  placeholder="e.g. Sales Assistant Bot"
-                  value={formData.name}
-                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  className="w-full p-2.5 bg-[#FFF6F1]/30 border border-[#FFDCD0] rounded-xl text-xs focus:ring-2 focus:ring-[#F26522]/30 focus:border-[#F26522]"
-                />
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div>
+                  <label className="block font-bold text-slate-700 mb-1">Bot Name *</label>
+                  <input
+                    type="text"
+                    required
+                    placeholder="e.g. Support Desk Assistant"
+                    value={formData.name}
+                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                    className="w-full p-2.5 bg-[#FFF6F1]/30 border border-[#FFDCD0] rounded-xl text-xs focus:ring-2 focus:ring-[#F26522]/30 focus:border-[#F26522]"
+                  />
+                </div>
+
+                <div>
+                  <label className="block font-bold text-slate-700 mb-1">Client Name</label>
+                  <input
+                    type="text"
+                    placeholder="e.g. Apex Tech Solutions"
+                    value={formData.clientName}
+                    onChange={(e) => setFormData({ ...formData, clientName: e.target.value })}
+                    className="w-full p-2.5 bg-[#FFF6F1]/30 border border-[#FFDCD0] rounded-xl text-xs focus:ring-2 focus:ring-[#F26522]/30 focus:border-[#F26522]"
+                  />
+                </div>
               </div>
 
               <div>
-                <label className="block font-bold text-slate-700 mb-1">Target Website URL *</label>
+                <label className="block font-bold text-slate-700 mb-1">Website URL *</label>
                 <input
                   type="url"
                   required
@@ -378,18 +450,21 @@ function ChatbotsPage() {
                 />
               </div>
 
-              <div>
-                <label className="block font-bold text-slate-700 mb-1">Description</label>
-                <textarea
-                  rows="3"
-                  placeholder="Describe the bot's capabilities and purpose..."
-                  value={formData.description}
-                  onChange={(e) => setFormData({ ...formData, description: e.target.value })}
-                  className="w-full p-2.5 bg-[#FFF6F1]/30 border border-[#FFDCD0] rounded-xl text-xs focus:ring-2 focus:ring-[#F26522]/30 focus:border-[#F26522]"
-                />
-              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                <div>
+                  <label className="block font-bold text-slate-700 mb-1">AI Model</label>
+                  <select
+                    value={formData.aiModel}
+                    onChange={(e) => setFormData({ ...formData, aiModel: e.target.value })}
+                    className="w-full p-2.5 bg-[#FFF6F1]/30 border border-[#FFDCD0] rounded-xl text-xs focus:ring-2 focus:ring-[#F26522]/30 focus:border-[#F26522]"
+                  >
+                    <option value="Gemini 1.5 Pro">Gemini 1.5 Pro</option>
+                    <option value="GPT-4o Enterprise">GPT-4o Enterprise</option>
+                    <option value="Claude 3.5 Sonnet">Claude 3.5 Sonnet</option>
+                    <option value="Custom Fine-Tuned">Custom Fine-Tuned</option>
+                  </select>
+                </div>
 
-              <div className="grid grid-cols-2 gap-3">
                 <div>
                   <label className="block font-bold text-slate-700 mb-1">Version</label>
                   <input
@@ -414,6 +489,17 @@ function ChatbotsPage() {
                 </div>
               </div>
 
+              <div>
+                <label className="block font-bold text-slate-700 mb-1">Description</label>
+                <textarea
+                  rows="2"
+                  placeholder="Describe bot capabilities..."
+                  value={formData.description}
+                  onChange={(e) => setFormData({ ...formData, description: e.target.value })}
+                  className="w-full p-2.5 bg-[#FFF6F1]/30 border border-[#FFDCD0] rounded-xl text-xs focus:ring-2 focus:ring-[#F26522]/30 focus:border-[#F26522]"
+                />
+              </div>
+
               <div className="pt-3 flex items-center justify-end gap-2 border-t border-[#FFDCD0]">
                 <button
                   type="button"
@@ -427,7 +513,7 @@ function ChatbotsPage() {
                   disabled={submitting}
                   className="px-5 py-2 rounded-xl text-white bg-gradient-to-r from-[#F26522] to-[#D9531E] font-bold shadow-xs hover:opacity-95"
                 >
-                  {submitting ? 'Creating...' : 'Create Chatbot'}
+                  {submitting ? 'Adding...' : 'Add Chatbot'}
                 </button>
               </div>
             </form>
@@ -438,7 +524,7 @@ function ChatbotsPage() {
       {/* Modal: Edit Chatbot */}
       {isEditOpen && (
         <div className="fixed inset-0 z-50 bg-black/50 backdrop-blur-xs flex items-center justify-center p-4">
-          <div className="bg-white border border-[#FFDCD0] rounded-2xl max-w-lg w-full p-6 shadow-xl space-y-4">
+          <div className="bg-white border border-[#FFDCD0] rounded-2xl max-w-lg w-full p-6 shadow-xl space-y-4 max-h-[90vh] overflow-y-auto">
             <div className="flex items-center justify-between border-b border-[#FFDCD0] pb-3">
               <h3 className="text-base font-bold text-[#111111] flex items-center gap-2">
                 <Edit className="w-4 h-4 text-[#F26522]" />
@@ -450,19 +536,31 @@ function ChatbotsPage() {
             </div>
 
             <form onSubmit={handleEditSubmit} className="space-y-4 text-xs">
-              <div>
-                <label className="block font-bold text-slate-700 mb-1">Bot Name *</label>
-                <input
-                  type="text"
-                  required
-                  value={formData.name}
-                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  className="w-full p-2.5 bg-[#FFF6F1]/30 border border-[#FFDCD0] rounded-xl text-xs focus:ring-2 focus:ring-[#F26522]/30 focus:border-[#F26522]"
-                />
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div>
+                  <label className="block font-bold text-slate-700 mb-1">Bot Name *</label>
+                  <input
+                    type="text"
+                    required
+                    value={formData.name}
+                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                    className="w-full p-2.5 bg-[#FFF6F1]/30 border border-[#FFDCD0] rounded-xl text-xs focus:ring-2 focus:ring-[#F26522]/30 focus:border-[#F26522]"
+                  />
+                </div>
+
+                <div>
+                  <label className="block font-bold text-slate-700 mb-1">Client Name</label>
+                  <input
+                    type="text"
+                    value={formData.clientName}
+                    onChange={(e) => setFormData({ ...formData, clientName: e.target.value })}
+                    className="w-full p-2.5 bg-[#FFF6F1]/30 border border-[#FFDCD0] rounded-xl text-xs focus:ring-2 focus:ring-[#F26522]/30 focus:border-[#F26522]"
+                  />
+                </div>
               </div>
 
               <div>
-                <label className="block font-bold text-slate-700 mb-1">Target Website URL *</label>
+                <label className="block font-bold text-slate-700 mb-1">Website URL *</label>
                 <input
                   type="url"
                   required
@@ -472,17 +570,21 @@ function ChatbotsPage() {
                 />
               </div>
 
-              <div>
-                <label className="block font-bold text-slate-700 mb-1">Description</label>
-                <textarea
-                  rows="3"
-                  value={formData.description}
-                  onChange={(e) => setFormData({ ...formData, description: e.target.value })}
-                  className="w-full p-2.5 bg-[#FFF6F1]/30 border border-[#FFDCD0] rounded-xl text-xs focus:ring-2 focus:ring-[#F26522]/30 focus:border-[#F26522]"
-                />
-              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                <div>
+                  <label className="block font-bold text-slate-700 mb-1">AI Model</label>
+                  <select
+                    value={formData.aiModel}
+                    onChange={(e) => setFormData({ ...formData, aiModel: e.target.value })}
+                    className="w-full p-2.5 bg-[#FFF6F1]/30 border border-[#FFDCD0] rounded-xl text-xs focus:ring-2 focus:ring-[#F26522]/30 focus:border-[#F26522]"
+                  >
+                    <option value="Gemini 1.5 Pro">Gemini 1.5 Pro</option>
+                    <option value="GPT-4o Enterprise">GPT-4o Enterprise</option>
+                    <option value="Claude 3.5 Sonnet">Claude 3.5 Sonnet</option>
+                    <option value="Custom Fine-Tuned">Custom Fine-Tuned</option>
+                  </select>
+                </div>
 
-              <div className="grid grid-cols-2 gap-3">
                 <div>
                   <label className="block font-bold text-slate-700 mb-1">Version</label>
                   <input
@@ -503,6 +605,27 @@ function ChatbotsPage() {
                     <option value="Active">Active</option>
                     <option value="Inactive">Inactive</option>
                   </select>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-2 gap-3">
+                <div>
+                  <label className="block font-bold text-slate-700 mb-1">Total Conversations</label>
+                  <input
+                    type="number"
+                    value={formData.totalConversations}
+                    onChange={(e) => setFormData({ ...formData, totalConversations: e.target.value })}
+                    className="w-full p-2.5 bg-[#FFF6F1]/30 border border-[#FFDCD0] rounded-xl text-xs focus:ring-2 focus:ring-[#F26522]/30 focus:border-[#F26522]"
+                  />
+                </div>
+                <div>
+                  <label className="block font-bold text-slate-700 mb-1">Today's Conversations</label>
+                  <input
+                    type="number"
+                    value={formData.todaysConversations}
+                    onChange={(e) => setFormData({ ...formData, todaysConversations: e.target.value })}
+                    className="w-full p-2.5 bg-[#FFF6F1]/30 border border-[#FFDCD0] rounded-xl text-xs focus:ring-2 focus:ring-[#F26522]/30 focus:border-[#F26522]"
+                  />
                 </div>
               </div>
 
@@ -527,7 +650,7 @@ function ChatbotsPage() {
         </div>
       )}
 
-      {/* Modal: View Chatbot */}
+      {/* Modal: View Chatbot Details */}
       {isViewOpen && selectedBot && (
         <div className="fixed inset-0 z-50 bg-black/50 backdrop-blur-xs flex items-center justify-center p-4">
           <div className="bg-white border border-[#FFDCD0] rounded-2xl max-w-lg w-full p-6 shadow-xl space-y-4">
@@ -538,7 +661,7 @@ function ChatbotsPage() {
                 </div>
                 <div>
                   <h3 className="text-base font-bold text-[#111111]">{selectedBot.name}</h3>
-                  <p className="text-[11px] text-[#475569]">Chatbot Configuration Profile</p>
+                  <p className="text-[11px] text-[#475569]">Client: {selectedBot.clientName || 'Apex Tech Solutions'}</p>
                 </div>
               </div>
               <button onClick={() => setIsViewOpen(false)} className="p-1 rounded-lg text-slate-400 hover:text-slate-700">
@@ -553,15 +676,26 @@ function ChatbotsPage() {
                   <p className="font-bold text-[#F26522]">{selectedBot.website}</p>
                 </div>
                 <div>
-                  <span className="font-bold text-slate-500 uppercase text-[10px]">Description:</span>
-                  <p className="text-slate-700">{selectedBot.description || 'No description provided.'}</p>
+                  <span className="font-bold text-slate-500 uppercase text-[10px]">AI Engine / Model:</span>
+                  <p className="font-bold text-purple-700">{selectedBot.aiModel || 'Gemini 1.5 Pro'}</p>
                 </div>
               </div>
 
               <div className="grid grid-cols-2 gap-3">
                 <div className="p-3 rounded-xl bg-slate-50 border border-slate-200">
-                  <span className="font-bold text-slate-500 uppercase text-[10px]">Current Version:</span>
-                  <p className="font-bold text-slate-800">{selectedBot.version}</p>
+                  <span className="font-bold text-slate-500 uppercase text-[10px]">Total Conversations:</span>
+                  <p className="font-extrabold text-slate-900 text-sm">{selectedBot.totalConversations ?? 842}</p>
+                </div>
+                <div className="p-3 rounded-xl bg-slate-50 border border-slate-200">
+                  <span className="font-bold text-slate-500 uppercase text-[10px]">Today's Conversations:</span>
+                  <p className="font-extrabold text-[#F26522] text-sm">{selectedBot.todaysConversations ?? 28}</p>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-2 gap-3">
+                <div className="p-3 rounded-xl bg-slate-50 border border-slate-200">
+                  <span className="font-bold text-slate-500 uppercase text-[10px]">Version:</span>
+                  <p className="font-bold text-slate-800">{selectedBot.version || 'v1.0'}</p>
                 </div>
                 <div className="p-3 rounded-xl bg-slate-50 border border-slate-200">
                   <span className="font-bold text-slate-500 uppercase text-[10px]">Status:</span>

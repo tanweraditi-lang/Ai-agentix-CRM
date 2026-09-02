@@ -7,37 +7,49 @@ let inMemoryChatbots = [
     id: 'bot_101',
     _id: 'bot_101',
     name: 'Customer Support Bot',
+    clientName: 'Apex Tech Solutions',
     website: 'https://agentix.ai/support',
+    aiModel: 'Gemini 1.5 Pro',
     description: 'Handles 24/7 tier-1 customer inquiries, FAQs, and ticket routing',
     version: 'v2.4',
     status: 'Active',
+    totalConversations: 842,
+    todaysConversations: 28,
     createdAt: new Date('2026-07-15T09:30:00Z'),
   },
   {
     id: 'bot_102',
     _id: 'bot_102',
     name: 'Sales Qualifier Bot',
+    clientName: 'Bright Media Works',
     website: 'https://agentix.ai/sales',
+    aiModel: 'GPT-4o Enterprise',
     description: 'Engages website visitors, captures leads, and schedules demo calls',
     version: 'v1.8',
     status: 'Active',
+    totalConversations: 406,
+    todaysConversations: 14,
     createdAt: new Date('2026-08-01T14:15:00Z'),
   },
   {
     id: 'bot_103',
     _id: 'bot_103',
     name: 'E-commerce Assistant',
+    clientName: 'CloudNet Systems',
     website: 'https://store.agentix.ai',
+    aiModel: 'Claude 3.5 Sonnet',
     description: 'Assists customers with order tracking, product recommendations, and refunds',
     version: 'v1.1',
     status: 'Inactive',
+    totalConversations: 120,
+    todaysConversations: 0,
     createdAt: new Date('2026-08-10T11:00:00Z'),
   },
 ];
 
 // @desc    Get all chatbots (with search & status filter)
 // @route   GET /api/chatbots
-// @access  Private / Public
+// @access  Public / Private
 const getChatbots = async (req, res) => {
   try {
     const { status, search } = req.query;
@@ -56,8 +68,9 @@ const getChatbots = async (req, res) => {
         const searchRegex = new RegExp(cleanSearch, 'i');
         query.$or = [
           { name: searchRegex },
+          { clientName: searchRegex },
           { website: searchRegex },
-          { description: searchRegex },
+          { aiModel: searchRegex },
           { version: searchRegex },
         ];
       }
@@ -65,29 +78,41 @@ const getChatbots = async (req, res) => {
       try {
         let bots = await Chatbot.find(query).sort({ createdAt: -1 });
 
-        // If database is empty, seed demo bots into DB
+        // Seed DB if empty
         if (bots.length === 0 && !safeStatus && !safeSearch) {
           const seeded = await Chatbot.insertMany([
             {
               name: 'Customer Support Bot',
+              clientName: 'Apex Tech Solutions',
               website: 'https://agentix.ai/support',
+              aiModel: 'Gemini 1.5 Pro',
               description: 'Handles 24/7 tier-1 customer inquiries, FAQs, and ticket routing',
               version: 'v2.4',
               status: 'Active',
+              totalConversations: 842,
+              todaysConversations: 28,
             },
             {
               name: 'Sales Qualifier Bot',
+              clientName: 'Bright Media Works',
               website: 'https://agentix.ai/sales',
+              aiModel: 'GPT-4o Enterprise',
               description: 'Engages website visitors, captures leads, and schedules demo calls',
               version: 'v1.8',
               status: 'Active',
+              totalConversations: 406,
+              todaysConversations: 14,
             },
             {
               name: 'E-commerce Assistant',
+              clientName: 'CloudNet Systems',
               website: 'https://store.agentix.ai',
+              aiModel: 'Claude 3.5 Sonnet',
               description: 'Assists customers with order tracking, product recommendations, and refunds',
               version: 'v1.1',
               status: 'Inactive',
+              totalConversations: 120,
+              todaysConversations: 0,
             },
           ]);
           bots = seeded;
@@ -121,8 +146,9 @@ const getChatbots = async (req, res) => {
       result = result.filter(
         b =>
           b.name.toLowerCase().includes(s) ||
+          (b.clientName && b.clientName.toLowerCase().includes(s)) ||
           b.website.toLowerCase().includes(s) ||
-          b.description.toLowerCase().includes(s) ||
+          (b.aiModel && b.aiModel.toLowerCase().includes(s)) ||
           b.version.toLowerCase().includes(s)
       );
     }
@@ -144,7 +170,7 @@ const getChatbots = async (req, res) => {
 
 // @desc    Get single chatbot by ID
 // @route   GET /api/chatbots/:id
-// @access  Private / Public
+// @access  Public / Private
 const getChatbotById = async (req, res) => {
   try {
     const { id } = req.params;
@@ -187,7 +213,7 @@ const getChatbotById = async (req, res) => {
 // @access  Private
 const createChatbot = async (req, res) => {
   try {
-    const { name, website, description, version, status } = req.body;
+    const { name, clientName, website, aiModel, description, version, status, totalConversations, todaysConversations } = req.body;
 
     if (!name || !website) {
       return res.status(400).json({
@@ -202,10 +228,14 @@ const createChatbot = async (req, res) => {
     if (isDbConnected) {
       const created = await Chatbot.create({
         name: name.trim(),
+        clientName: (clientName || 'Apex Tech Solutions').trim(),
         website: website.trim(),
+        aiModel: aiModel || 'Gemini 1.5 Pro',
         description: (description || '').trim(),
         version: version || 'v1.0',
         status: status || 'Active',
+        totalConversations: totalConversations !== undefined ? Number(totalConversations) : 0,
+        todaysConversations: todaysConversations !== undefined ? Number(todaysConversations) : 0,
       });
       const obj = created.toObject ? created.toObject() : created;
       newBot = { ...obj, id: created._id.toString() };
@@ -214,10 +244,14 @@ const createChatbot = async (req, res) => {
         id: 'bot_' + Date.now(),
         _id: 'bot_' + Date.now(),
         name: name.trim(),
+        clientName: (clientName || 'Apex Tech Solutions').trim(),
         website: website.trim(),
+        aiModel: aiModel || 'Gemini 1.5 Pro',
         description: (description || '').trim(),
         version: version || 'v1.0',
         status: status || 'Active',
+        totalConversations: totalConversations !== undefined ? Number(totalConversations) : 0,
+        todaysConversations: todaysConversations !== undefined ? Number(todaysConversations) : 0,
         createdAt: new Date(),
       };
       inMemoryChatbots.unshift(newBot);
@@ -244,17 +278,21 @@ const createChatbot = async (req, res) => {
 const updateChatbot = async (req, res) => {
   try {
     const { id } = req.params;
-    const { name, website, description, version, status } = req.body;
+    const { name, clientName, website, aiModel, description, version, status, totalConversations, todaysConversations } = req.body;
 
     const isDbConnected = mongoose.connection.readyState === 1;
 
     if (isDbConnected && mongoose.Types.ObjectId.isValid(id)) {
       const updateData = {};
       if (name) updateData.name = name.trim();
+      if (clientName) updateData.clientName = clientName.trim();
       if (website) updateData.website = website.trim();
+      if (aiModel) updateData.aiModel = aiModel.trim();
       if (description !== undefined) updateData.description = description.trim();
       if (version) updateData.version = version;
       if (status) updateData.status = status;
+      if (totalConversations !== undefined) updateData.totalConversations = Number(totalConversations);
+      if (todaysConversations !== undefined) updateData.todaysConversations = Number(todaysConversations);
 
       const updated = await Chatbot.findByIdAndUpdate(id, updateData, { new: true });
       if (updated) {
@@ -270,10 +308,14 @@ const updateChatbot = async (req, res) => {
     const idx = inMemoryChatbots.findIndex(b => b.id === id || b._id === id);
     if (idx !== -1) {
       if (name) inMemoryChatbots[idx].name = name.trim();
+      if (clientName) inMemoryChatbots[idx].clientName = clientName.trim();
       if (website) inMemoryChatbots[idx].website = website.trim();
+      if (aiModel) inMemoryChatbots[idx].aiModel = aiModel.trim();
       if (description !== undefined) inMemoryChatbots[idx].description = description.trim();
       if (version) inMemoryChatbots[idx].version = version;
       if (status) inMemoryChatbots[idx].status = status;
+      if (totalConversations !== undefined) inMemoryChatbots[idx].totalConversations = Number(totalConversations);
+      if (todaysConversations !== undefined) inMemoryChatbots[idx].todaysConversations = Number(todaysConversations);
 
       return res.status(200).json({
         success: true,

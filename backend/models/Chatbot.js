@@ -7,10 +7,20 @@ const chatbotSchema = new mongoose.Schema(
       required: [true, 'Bot name is required'],
       trim: true,
     },
+    clientName: {
+      type: String,
+      trim: true,
+      default: 'Apex Tech Solutions',
+    },
     website: {
       type: String,
       required: [true, 'Website URL is required'],
       trim: true,
+    },
+    aiModel: {
+      type: String,
+      trim: true,
+      default: 'Gemini 1.5 Pro',
     },
     description: {
       type: String,
@@ -29,6 +39,14 @@ const chatbotSchema = new mongoose.Schema(
         message: '{VALUE} is not a valid status',
       },
       default: 'Active',
+    },
+    totalConversations: {
+      type: Number,
+      default: 0,
+    },
+    todaysConversations: {
+      type: Number,
+      default: 0,
     },
   },
   {
