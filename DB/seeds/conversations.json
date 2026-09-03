@@ -1,0 +1,752 @@
+[
+  {
+    "visitorName": "Aarav Sharma",
+    "company": "Apex Tech Solutions",
+    "messages": [
+      {
+        "sender": "visitor",
+        "text": "Hi, I need pricing information for your AI Chatbot solution."
+      },
+      {
+        "sender": "bot",
+        "text": "Hello! Our AI Chatbot plans start at ₹15,000/month. Would you like a personalized demo for your company?"
+      },
+      {
+        "sender": "visitor",
+        "text": "Yes, please connect me with your sales team."
+      },
+      {
+        "sender": "bot",
+        "text": "Great! I have notified our sales executive. They will reach out to you shortly."
+      }
+    ],
+    "intent": "AI Chatbot",
+    "status": "Closed",
+    "createdAt": "2026-08-22T17:24:48.353Z"
+  },
+  {
+    "visitorName": "Ananya Iyer",
+    "company": "Bright Media Works",
+    "messages": [
+      {
+        "sender": "visitor",
+        "text": "Can your CRM integrate with WhatsApp for automated lead follow-ups?"
+      },
+      {
+        "sender": "bot",
+        "text": "Yes! Our CRM includes built-in WhatsApp Automation for instant lead alerts, automated follow-ups, and broadcast campaigns."
+      },
+      {
+        "sender": "visitor",
+        "text": "That sounds perfect. How soon can we set this up?"
+      },
+      {
+        "sender": "bot",
+        "text": "Setup usually takes less than 48 hours. Let me schedule a quick discovery call for you."
+      }
+    ],
+    "intent": "CRM Demo",
+    "status": "Active",
+    "createdAt": "2026-08-27T17:24:48.353Z"
+  },
+  {
+    "visitorName": "Vikram Malhotra",
+    "company": "CloudNet Systems",
+    "messages": [
+      {
+        "sender": "visitor",
+        "text": "Looking for custom website development and AI automation."
+      },
+      {
+        "sender": "bot",
+        "text": "We offer full-stack website development integrated with custom AI workflows. May I have your email address?"
+      },
+      {
+        "sender": "visitor",
+        "text": "Sure, it is contact@company.in"
+      },
+      {
+        "sender": "bot",
+        "text": "Thank you! Our technical lead will email you our portfolio and initial proposal."
+      }
+    ],
+    "intent": "Website Development",
+    "status": "Escalated to Agent",
+    "createdAt": "2026-08-31T17:24:48.353Z"
+  },
+  {
+    "visitorName": "Sunita Rao",
+    "company": "Delta Corp Infra",
+    "messages": [
+      {
+        "sender": "visitor",
+        "text": "Hi, I need pricing information for your AI Chatbot solution."
+      },
+      {
+        "sender": "bot",
+        "text": "Hello! Our AI Chatbot plans start at ₹15,000/month. Would you like a personalized demo for your company?"
+      },
+      {
+        "sender": "visitor",
+        "text": "Yes, please connect me with your sales team."
+      },
+      {
+        "sender": "bot",
+        "text": "Great! I have notified our sales executive. They will reach out to you shortly."
+      }
+    ],
+    "intent": "Pricing",
+    "status": "Resolved",
+    "createdAt": "2026-08-31T17:24:48.353Z"
+  },
+  {
+    "visitorName": "Aditya Joshi",
+    "company": "Elevate Global Logistics",
+    "messages": [
+      {
+        "sender": "visitor",
+        "text": "Can your CRM integrate with WhatsApp for automated lead follow-ups?"
+      },
+      {
+        "sender": "bot",
+        "text": "Yes! Our CRM includes built-in WhatsApp Automation for instant lead alerts, automated follow-ups, and broadcast campaigns."
+      },
+      {
+        "sender": "visitor",
+        "text": "That sounds perfect. How soon can we set this up?"
+      },
+      {
+        "sender": "bot",
+        "text": "Setup usually takes less than 48 hours. Let me schedule a quick discovery call for you."
+      }
+    ],
+    "intent": "WhatsApp Automation",
+    "status": "Closed",
+    "createdAt": "2026-08-20T17:24:48.353Z"
+  },
+  {
+    "visitorName": "Kavita Reddy",
+    "company": "FirstTier Tech",
+    "messages": [
+      {
+        "sender": "visitor",
+        "text": "Looking for custom website development and AI automation."
+      },
+      {
+        "sender": "bot",
+        "text": "We offer full-stack website development integrated with custom AI workflows. May I have your email address?"
+      },
+      {
+        "sender": "visitor",
+        "text": "Sure, it is contact@company.in"
+      },
+      {
+        "sender": "bot",
+        "text": "Thank you! Our technical lead will email you our portfolio and initial proposal."
+      }
+    ],
+    "intent": "Support",
+    "status": "Active",
+    "createdAt": "2026-08-25T17:24:48.353Z"
+  },
+  {
+    "visitorName": "Deepak Agarwal",
+    "company": "Greenfield Energy",
+    "messages": [
+      {
+        "sender": "visitor",
+        "text": "Hi, I need pricing information for your AI Chatbot solution."
+      },
+      {
+        "sender": "bot",
+        "text": "Hello! Our AI Chatbot plans start at ₹15,000/month. Would you like a personalized demo for your company?"
+      },
+      {
+        "sender": "visitor",
+        "text": "Yes, please connect me with your sales team."
+      },
+      {
+        "sender": "bot",
+        "text": "Great! I have notified our sales executive. They will reach out to you shortly."
+      }
+    ],
+    "intent": "AI Chatbot",
+    "status": "Escalated to Agent",
+    "createdAt": "2026-08-20T17:24:48.353Z"
+  },
+  {
+    "visitorName": "Pooja Deshmukh",
+    "company": "Horizon Labs",
+    "messages": [
+      {
+        "sender": "visitor",
+        "text": "Can your CRM integrate with WhatsApp for automated lead follow-ups?"
+      },
+      {
+        "sender": "bot",
+        "text": "Yes! Our CRM includes built-in WhatsApp Automation for instant lead alerts, automated follow-ups, and broadcast campaigns."
+      },
+      {
+        "sender": "visitor",
+        "text": "That sounds perfect. How soon can we set this up?"
+      },
+      {
+        "sender": "bot",
+        "text": "Setup usually takes less than 48 hours. Let me schedule a quick discovery call for you."
+      }
+    ],
+    "intent": "CRM Demo",
+    "status": "Resolved",
+    "createdAt": "2026-08-31T17:24:48.353Z"
+  },
+  {
+    "visitorName": "Suresh Kumar",
+    "company": "Innovate Labs",
+    "messages": [
+      {
+        "sender": "visitor",
+        "text": "Looking for custom website development and AI automation."
+      },
+      {
+        "sender": "bot",
+        "text": "We offer full-stack website development integrated with custom AI workflows. May I have your email address?"
+      },
+      {
+        "sender": "visitor",
+        "text": "Sure, it is contact@company.in"
+      },
+      {
+        "sender": "bot",
+        "text": "Thank you! Our technical lead will email you our portfolio and initial proposal."
+      }
+    ],
+    "intent": "Website Development",
+    "status": "Closed",
+    "createdAt": "2026-08-26T17:24:48.353Z"
+  },
+  {
+    "visitorName": "Rajesh Verma",
+    "company": "Nexus Software India",
+    "messages": [
+      {
+        "sender": "visitor",
+        "text": "Hi, I need pricing information for your AI Chatbot solution."
+      },
+      {
+        "sender": "bot",
+        "text": "Hello! Our AI Chatbot plans start at ₹15,000/month. Would you like a personalized demo for your company?"
+      },
+      {
+        "sender": "visitor",
+        "text": "Yes, please connect me with your sales team."
+      },
+      {
+        "sender": "bot",
+        "text": "Great! I have notified our sales executive. They will reach out to you shortly."
+      }
+    ],
+    "intent": "Pricing",
+    "status": "Active",
+    "createdAt": "2026-09-02T17:24:48.353Z"
+  },
+  {
+    "visitorName": "Priyanka Gupta",
+    "company": "Prism Healthcare Tech",
+    "messages": [
+      {
+        "sender": "visitor",
+        "text": "Can your CRM integrate with WhatsApp for automated lead follow-ups?"
+      },
+      {
+        "sender": "bot",
+        "text": "Yes! Our CRM includes built-in WhatsApp Automation for instant lead alerts, automated follow-ups, and broadcast campaigns."
+      },
+      {
+        "sender": "visitor",
+        "text": "That sounds perfect. How soon can we set this up?"
+      },
+      {
+        "sender": "bot",
+        "text": "Setup usually takes less than 48 hours. Let me schedule a quick discovery call for you."
+      }
+    ],
+    "intent": "WhatsApp Automation",
+    "status": "Escalated to Agent",
+    "createdAt": "2026-09-03T17:24:48.353Z"
+  },
+  {
+    "visitorName": "Rohan Mehta",
+    "company": "Quantum Analytics India",
+    "messages": [
+      {
+        "sender": "visitor",
+        "text": "Looking for custom website development and AI automation."
+      },
+      {
+        "sender": "bot",
+        "text": "We offer full-stack website development integrated with custom AI workflows. May I have your email address?"
+      },
+      {
+        "sender": "visitor",
+        "text": "Sure, it is contact@company.in"
+      },
+      {
+        "sender": "bot",
+        "text": "Thank you! Our technical lead will email you our portfolio and initial proposal."
+      }
+    ],
+    "intent": "Support",
+    "status": "Resolved",
+    "createdAt": "2026-08-30T17:24:48.353Z"
+  },
+  {
+    "visitorName": "Swati Nair",
+    "company": "Vertex Infotech",
+    "messages": [
+      {
+        "sender": "visitor",
+        "text": "Hi, I need pricing information for your AI Chatbot solution."
+      },
+      {
+        "sender": "bot",
+        "text": "Hello! Our AI Chatbot plans start at ₹15,000/month. Would you like a personalized demo for your company?"
+      },
+      {
+        "sender": "visitor",
+        "text": "Yes, please connect me with your sales team."
+      },
+      {
+        "sender": "bot",
+        "text": "Great! I have notified our sales executive. They will reach out to you shortly."
+      }
+    ],
+    "intent": "AI Chatbot",
+    "status": "Closed",
+    "createdAt": "2026-09-03T17:24:48.353Z"
+  },
+  {
+    "visitorName": "Amit Patel",
+    "company": "Zenith Enterprise Solutions",
+    "messages": [
+      {
+        "sender": "visitor",
+        "text": "Can your CRM integrate with WhatsApp for automated lead follow-ups?"
+      },
+      {
+        "sender": "bot",
+        "text": "Yes! Our CRM includes built-in WhatsApp Automation for instant lead alerts, automated follow-ups, and broadcast campaigns."
+      },
+      {
+        "sender": "visitor",
+        "text": "That sounds perfect. How soon can we set this up?"
+      },
+      {
+        "sender": "bot",
+        "text": "Setup usually takes less than 48 hours. Let me schedule a quick discovery call for you."
+      }
+    ],
+    "intent": "CRM Demo",
+    "status": "Active",
+    "createdAt": "2026-09-01T17:24:48.353Z"
+  },
+  {
+    "visitorName": "Neha Kulkarni",
+    "company": "Astra Digital Media",
+    "messages": [
+      {
+        "sender": "visitor",
+        "text": "Looking for custom website development and AI automation."
+      },
+      {
+        "sender": "bot",
+        "text": "We offer full-stack website development integrated with custom AI workflows. May I have your email address?"
+      },
+      {
+        "sender": "visitor",
+        "text": "Sure, it is contact@company.in"
+      },
+      {
+        "sender": "bot",
+        "text": "Thank you! Our technical lead will email you our portfolio and initial proposal."
+      }
+    ],
+    "intent": "Website Development",
+    "status": "Escalated to Agent",
+    "createdAt": "2026-08-23T17:24:48.353Z"
+  },
+  {
+    "visitorName": "Vikramaditya Singh",
+    "company": "Synergy Retail Tech",
+    "messages": [
+      {
+        "sender": "visitor",
+        "text": "Hi, I need pricing information for your AI Chatbot solution."
+      },
+      {
+        "sender": "bot",
+        "text": "Hello! Our AI Chatbot plans start at ₹15,000/month. Would you like a personalized demo for your company?"
+      },
+      {
+        "sender": "visitor",
+        "text": "Yes, please connect me with your sales team."
+      },
+      {
+        "sender": "bot",
+        "text": "Great! I have notified our sales executive. They will reach out to you shortly."
+      }
+    ],
+    "intent": "Pricing",
+    "status": "Resolved",
+    "createdAt": "2026-08-29T17:24:48.353Z"
+  },
+  {
+    "visitorName": "Ritu Banerjee",
+    "company": "Omni Channel India",
+    "messages": [
+      {
+        "sender": "visitor",
+        "text": "Can your CRM integrate with WhatsApp for automated lead follow-ups?"
+      },
+      {
+        "sender": "bot",
+        "text": "Yes! Our CRM includes built-in WhatsApp Automation for instant lead alerts, automated follow-ups, and broadcast campaigns."
+      },
+      {
+        "sender": "visitor",
+        "text": "That sounds perfect. How soon can we set this up?"
+      },
+      {
+        "sender": "bot",
+        "text": "Setup usually takes less than 48 hours. Let me schedule a quick discovery call for you."
+      }
+    ],
+    "intent": "WhatsApp Automation",
+    "status": "Closed",
+    "createdAt": "2026-08-21T17:24:48.353Z"
+  },
+  {
+    "visitorName": "Rahul Saxena",
+    "company": "Vayu Renewable Solutions",
+    "messages": [
+      {
+        "sender": "visitor",
+        "text": "Looking for custom website development and AI automation."
+      },
+      {
+        "sender": "bot",
+        "text": "We offer full-stack website development integrated with custom AI workflows. May I have your email address?"
+      },
+      {
+        "sender": "visitor",
+        "text": "Sure, it is contact@company.in"
+      },
+      {
+        "sender": "bot",
+        "text": "Thank you! Our technical lead will email you our portfolio and initial proposal."
+      }
+    ],
+    "intent": "Support",
+    "status": "Active",
+    "createdAt": "2026-08-28T17:24:48.353Z"
+  },
+  {
+    "visitorName": "Priya Sundaram",
+    "company": "Triveni Financial Tech",
+    "messages": [
+      {
+        "sender": "visitor",
+        "text": "Hi, I need pricing information for your AI Chatbot solution."
+      },
+      {
+        "sender": "bot",
+        "text": "Hello! Our AI Chatbot plans start at ₹15,000/month. Would you like a personalized demo for your company?"
+      },
+      {
+        "sender": "visitor",
+        "text": "Yes, please connect me with your sales team."
+      },
+      {
+        "sender": "bot",
+        "text": "Great! I have notified our sales executive. They will reach out to you shortly."
+      }
+    ],
+    "intent": "AI Chatbot",
+    "status": "Escalated to Agent",
+    "createdAt": "2026-08-24T17:24:48.353Z"
+  },
+  {
+    "visitorName": "Siddharth Menon",
+    "company": "Bharat EdTech",
+    "messages": [
+      {
+        "sender": "visitor",
+        "text": "Can your CRM integrate with WhatsApp for automated lead follow-ups?"
+      },
+      {
+        "sender": "bot",
+        "text": "Yes! Our CRM includes built-in WhatsApp Automation for instant lead alerts, automated follow-ups, and broadcast campaigns."
+      },
+      {
+        "sender": "visitor",
+        "text": "That sounds perfect. How soon can we set this up?"
+      },
+      {
+        "sender": "bot",
+        "text": "Setup usually takes less than 48 hours. Let me schedule a quick discovery call for you."
+      }
+    ],
+    "intent": "CRM Demo",
+    "status": "Resolved",
+    "createdAt": "2026-09-03T17:24:48.353Z"
+  },
+  {
+    "visitorName": "Meera Bhat",
+    "company": "Smart Grid India",
+    "messages": [
+      {
+        "sender": "visitor",
+        "text": "Looking for custom website development and AI automation."
+      },
+      {
+        "sender": "bot",
+        "text": "We offer full-stack website development integrated with custom AI workflows. May I have your email address?"
+      },
+      {
+        "sender": "visitor",
+        "text": "Sure, it is contact@company.in"
+      },
+      {
+        "sender": "bot",
+        "text": "Thank you! Our technical lead will email you our portfolio and initial proposal."
+      }
+    ],
+    "intent": "Website Development",
+    "status": "Closed",
+    "createdAt": "2026-08-26T17:24:48.353Z"
+  },
+  {
+    "visitorName": "Manish Chaudhry",
+    "company": "Param AI Labs",
+    "messages": [
+      {
+        "sender": "visitor",
+        "text": "Hi, I need pricing information for your AI Chatbot solution."
+      },
+      {
+        "sender": "bot",
+        "text": "Hello! Our AI Chatbot plans start at ₹15,000/month. Would you like a personalized demo for your company?"
+      },
+      {
+        "sender": "visitor",
+        "text": "Yes, please connect me with your sales team."
+      },
+      {
+        "sender": "bot",
+        "text": "Great! I have notified our sales executive. They will reach out to you shortly."
+      }
+    ],
+    "intent": "Pricing",
+    "status": "Active",
+    "createdAt": "2026-08-23T17:24:48.353Z"
+  },
+  {
+    "visitorName": "Divya Kapoor",
+    "company": "Udaan Logistics",
+    "messages": [
+      {
+        "sender": "visitor",
+        "text": "Can your CRM integrate with WhatsApp for automated lead follow-ups?"
+      },
+      {
+        "sender": "bot",
+        "text": "Yes! Our CRM includes built-in WhatsApp Automation for instant lead alerts, automated follow-ups, and broadcast campaigns."
+      },
+      {
+        "sender": "visitor",
+        "text": "That sounds perfect. How soon can we set this up?"
+      },
+      {
+        "sender": "bot",
+        "text": "Setup usually takes less than 48 hours. Let me schedule a quick discovery call for you."
+      }
+    ],
+    "intent": "WhatsApp Automation",
+    "status": "Escalated to Agent",
+    "createdAt": "2026-09-02T17:24:48.353Z"
+  },
+  {
+    "visitorName": "Sandeep Nambiar",
+    "company": "Samriddhi Microfinance",
+    "messages": [
+      {
+        "sender": "visitor",
+        "text": "Looking for custom website development and AI automation."
+      },
+      {
+        "sender": "bot",
+        "text": "We offer full-stack website development integrated with custom AI workflows. May I have your email address?"
+      },
+      {
+        "sender": "visitor",
+        "text": "Sure, it is contact@company.in"
+      },
+      {
+        "sender": "bot",
+        "text": "Thank you! Our technical lead will email you our portfolio and initial proposal."
+      }
+    ],
+    "intent": "Support",
+    "status": "Resolved",
+    "createdAt": "2026-08-30T17:24:48.353Z"
+  },
+  {
+    "visitorName": "Archana Pandey",
+    "company": "Indus Mobility",
+    "messages": [
+      {
+        "sender": "visitor",
+        "text": "Hi, I need pricing information for your AI Chatbot solution."
+      },
+      {
+        "sender": "bot",
+        "text": "Hello! Our AI Chatbot plans start at ₹15,000/month. Would you like a personalized demo for your company?"
+      },
+      {
+        "sender": "visitor",
+        "text": "Yes, please connect me with your sales team."
+      },
+      {
+        "sender": "bot",
+        "text": "Great! I have notified our sales executive. They will reach out to you shortly."
+      }
+    ],
+    "intent": "AI Chatbot",
+    "status": "Closed",
+    "createdAt": "2026-08-31T17:24:48.353Z"
+  },
+  {
+    "visitorName": "Alok Srivastava",
+    "company": "Kuber Wealth Tech",
+    "messages": [
+      {
+        "sender": "visitor",
+        "text": "Can your CRM integrate with WhatsApp for automated lead follow-ups?"
+      },
+      {
+        "sender": "bot",
+        "text": "Yes! Our CRM includes built-in WhatsApp Automation for instant lead alerts, automated follow-ups, and broadcast campaigns."
+      },
+      {
+        "sender": "visitor",
+        "text": "That sounds perfect. How soon can we set this up?"
+      },
+      {
+        "sender": "bot",
+        "text": "Setup usually takes less than 48 hours. Let me schedule a quick discovery call for you."
+      }
+    ],
+    "intent": "CRM Demo",
+    "status": "Active",
+    "createdAt": "2026-08-22T17:24:48.353Z"
+  },
+  {
+    "visitorName": "Preeti Joshi",
+    "company": "Matrix BioCare",
+    "messages": [
+      {
+        "sender": "visitor",
+        "text": "Looking for custom website development and AI automation."
+      },
+      {
+        "sender": "bot",
+        "text": "We offer full-stack website development integrated with custom AI workflows. May I have your email address?"
+      },
+      {
+        "sender": "visitor",
+        "text": "Sure, it is contact@company.in"
+      },
+      {
+        "sender": "bot",
+        "text": "Thank you! Our technical lead will email you our portfolio and initial proposal."
+      }
+    ],
+    "intent": "Website Development",
+    "status": "Escalated to Agent",
+    "createdAt": "2026-08-24T17:24:48.353Z"
+  },
+  {
+    "visitorName": "Tarun Mittal",
+    "company": "Sahaj FinTech",
+    "messages": [
+      {
+        "sender": "visitor",
+        "text": "Hi, I need pricing information for your AI Chatbot solution."
+      },
+      {
+        "sender": "bot",
+        "text": "Hello! Our AI Chatbot plans start at ₹15,000/month. Would you like a personalized demo for your company?"
+      },
+      {
+        "sender": "visitor",
+        "text": "Yes, please connect me with your sales team."
+      },
+      {
+        "sender": "bot",
+        "text": "Great! I have notified our sales executive. They will reach out to you shortly."
+      }
+    ],
+    "intent": "Pricing",
+    "status": "Resolved",
+    "createdAt": "2026-09-01T17:24:48.353Z"
+  },
+  {
+    "visitorName": "Nisha Shenoy",
+    "company": "Trishul Defense Systems",
+    "messages": [
+      {
+        "sender": "visitor",
+        "text": "Can your CRM integrate with WhatsApp for automated lead follow-ups?"
+      },
+      {
+        "sender": "bot",
+        "text": "Yes! Our CRM includes built-in WhatsApp Automation for instant lead alerts, automated follow-ups, and broadcast campaigns."
+      },
+      {
+        "sender": "visitor",
+        "text": "That sounds perfect. How soon can we set this up?"
+      },
+      {
+        "sender": "bot",
+        "text": "Setup usually takes less than 48 hours. Let me schedule a quick discovery call for you."
+      }
+    ],
+    "intent": "WhatsApp Automation",
+    "status": "Closed",
+    "createdAt": "2026-08-23T17:24:48.353Z"
+  },
+  {
+    "visitorName": "Gaurav Mukherjee",
+    "company": "Agasti BioEnergy",
+    "messages": [
+      {
+        "sender": "visitor",
+        "text": "Looking for custom website development and AI automation."
+      },
+      {
+        "sender": "bot",
+        "text": "We offer full-stack website development integrated with custom AI workflows. May I have your email address?"
+      },
+      {
+        "sender": "visitor",
+        "text": "Sure, it is contact@company.in"
+      },
+      {
+        "sender": "bot",
+        "text": "Thank you! Our technical lead will email you our portfolio and initial proposal."
+      }
+    ],
+    "intent": "Support",
+    "status": "Active",
+    "createdAt": "2026-08-29T17:24:48.353Z"
+  }
+]

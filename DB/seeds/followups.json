@@ -1,0 +1,402 @@
+[
+  {
+    "customerName": "Aarav Sharma",
+    "company": "Apex Tech Solutions",
+    "followupType": "Call",
+    "followupDate": "2026-08-31",
+    "assignedTo": "Rajesh Sharma",
+    "priority": "High",
+    "status": "Scheduled",
+    "remarks": "Discuss custom pricing for enterprise AI Chatbot deployment."
+  },
+  {
+    "customerName": "Ananya Iyer",
+    "company": "Bright Media Works",
+    "followupType": "Email",
+    "followupDate": "2026-09-01",
+    "assignedTo": "Priya Patel",
+    "priority": "Medium",
+    "status": "Completed",
+    "remarks": "Review technical architecture & API rate limits with CTO."
+  },
+  {
+    "customerName": "Vikram Malhotra",
+    "company": "CloudNet Systems",
+    "followupType": "Meeting",
+    "followupDate": "2026-09-09",
+    "assignedTo": "Amit Verma",
+    "priority": "Low",
+    "status": "Pending",
+    "remarks": "Send formal GST compliant proposal and SLA agreement."
+  },
+  {
+    "customerName": "Sunita Rao",
+    "company": "Delta Corp Infra",
+    "followupType": "Product Demo",
+    "followupDate": "2026-09-03",
+    "assignedTo": "Neha Sundaram",
+    "priority": "Urgent",
+    "status": "In Progress",
+    "remarks": "Follow up on security audit documentation approval."
+  },
+  {
+    "customerName": "Aditya Joshi",
+    "company": "Elevate Global Logistics",
+    "followupType": "WhatsApp Check-in",
+    "followupDate": "2026-09-10",
+    "assignedTo": "Rajesh Sharma",
+    "priority": "High",
+    "status": "Scheduled",
+    "remarks": "Product demo scheduled with VP of Engineering & Operations."
+  },
+  {
+    "customerName": "Kavita Reddy",
+    "company": "FirstTier Tech",
+    "followupType": "Call",
+    "followupDate": "2026-09-08",
+    "assignedTo": "Priya Patel",
+    "priority": "Medium",
+    "status": "Completed",
+    "remarks": "Check decision timeline following Q3 budget approval meeting."
+  },
+  {
+    "customerName": "Deepak Agarwal",
+    "company": "Greenfield Energy",
+    "followupType": "Email",
+    "followupDate": "2026-09-01",
+    "assignedTo": "Amit Verma",
+    "priority": "Low",
+    "status": "Pending",
+    "remarks": "Confirm onboarding date and dedicated success manager assignment."
+  },
+  {
+    "customerName": "Pooja Deshmukh",
+    "company": "Horizon Labs",
+    "followupType": "Meeting",
+    "followupDate": "2026-08-30",
+    "assignedTo": "Neha Sundaram",
+    "priority": "Urgent",
+    "status": "In Progress",
+    "remarks": "Address inquiry regarding WhatsApp Business API integration."
+  },
+  {
+    "customerName": "Suresh Kumar",
+    "company": "Innovate Labs",
+    "followupType": "Product Demo",
+    "followupDate": "2026-09-02",
+    "assignedTo": "Rajesh Sharma",
+    "priority": "High",
+    "status": "Scheduled",
+    "remarks": "Discuss custom pricing for enterprise AI Chatbot deployment."
+  },
+  {
+    "customerName": "Rajesh Verma",
+    "company": "Nexus Software India",
+    "followupType": "WhatsApp Check-in",
+    "followupDate": "2026-08-31",
+    "assignedTo": "Priya Patel",
+    "priority": "Medium",
+    "status": "Completed",
+    "remarks": "Review technical architecture & API rate limits with CTO."
+  },
+  {
+    "customerName": "Priyanka Gupta",
+    "company": "Prism Healthcare Tech",
+    "followupType": "Call",
+    "followupDate": "2026-09-09",
+    "assignedTo": "Amit Verma",
+    "priority": "Low",
+    "status": "Pending",
+    "remarks": "Send formal GST compliant proposal and SLA agreement."
+  },
+  {
+    "customerName": "Rohan Mehta",
+    "company": "Quantum Analytics India",
+    "followupType": "Email",
+    "followupDate": "2026-09-11",
+    "assignedTo": "Neha Sundaram",
+    "priority": "Urgent",
+    "status": "In Progress",
+    "remarks": "Follow up on security audit documentation approval."
+  },
+  {
+    "customerName": "Swati Nair",
+    "company": "Vertex Infotech",
+    "followupType": "Meeting",
+    "followupDate": "2026-09-17",
+    "assignedTo": "Rajesh Sharma",
+    "priority": "High",
+    "status": "Scheduled",
+    "remarks": "Product demo scheduled with VP of Engineering & Operations."
+  },
+  {
+    "customerName": "Amit Patel",
+    "company": "Zenith Enterprise Solutions",
+    "followupType": "Product Demo",
+    "followupDate": "2026-09-07",
+    "assignedTo": "Priya Patel",
+    "priority": "Medium",
+    "status": "Completed",
+    "remarks": "Check decision timeline following Q3 budget approval meeting."
+  },
+  {
+    "customerName": "Neha Kulkarni",
+    "company": "Astra Digital Media",
+    "followupType": "WhatsApp Check-in",
+    "followupDate": "2026-09-04",
+    "assignedTo": "Amit Verma",
+    "priority": "Low",
+    "status": "Pending",
+    "remarks": "Confirm onboarding date and dedicated success manager assignment."
+  },
+  {
+    "customerName": "Vikramaditya Singh",
+    "company": "Synergy Retail Tech",
+    "followupType": "Call",
+    "followupDate": "2026-09-08",
+    "assignedTo": "Neha Sundaram",
+    "priority": "Urgent",
+    "status": "In Progress",
+    "remarks": "Address inquiry regarding WhatsApp Business API integration."
+  },
+  {
+    "customerName": "Ritu Banerjee",
+    "company": "Omni Channel India",
+    "followupType": "Email",
+    "followupDate": "2026-09-17",
+    "assignedTo": "Rajesh Sharma",
+    "priority": "High",
+    "status": "Scheduled",
+    "remarks": "Discuss custom pricing for enterprise AI Chatbot deployment."
+  },
+  {
+    "customerName": "Rahul Saxena",
+    "company": "Vayu Renewable Solutions",
+    "followupType": "Meeting",
+    "followupDate": "2026-08-31",
+    "assignedTo": "Priya Patel",
+    "priority": "Medium",
+    "status": "Completed",
+    "remarks": "Review technical architecture & API rate limits with CTO."
+  },
+  {
+    "customerName": "Priya Sundaram",
+    "company": "Triveni Financial Tech",
+    "followupType": "Product Demo",
+    "followupDate": "2026-09-08",
+    "assignedTo": "Amit Verma",
+    "priority": "Low",
+    "status": "Pending",
+    "remarks": "Send formal GST compliant proposal and SLA agreement."
+  },
+  {
+    "customerName": "Siddharth Menon",
+    "company": "Bharat EdTech",
+    "followupType": "WhatsApp Check-in",
+    "followupDate": "2026-09-06",
+    "assignedTo": "Neha Sundaram",
+    "priority": "Urgent",
+    "status": "In Progress",
+    "remarks": "Follow up on security audit documentation approval."
+  },
+  {
+    "customerName": "Meera Bhat",
+    "company": "Smart Grid India",
+    "followupType": "Call",
+    "followupDate": "2026-09-16",
+    "assignedTo": "Rajesh Sharma",
+    "priority": "High",
+    "status": "Scheduled",
+    "remarks": "Product demo scheduled with VP of Engineering & Operations."
+  },
+  {
+    "customerName": "Manish Chaudhry",
+    "company": "Param AI Labs",
+    "followupType": "Email",
+    "followupDate": "2026-09-11",
+    "assignedTo": "Priya Patel",
+    "priority": "Medium",
+    "status": "Completed",
+    "remarks": "Check decision timeline following Q3 budget approval meeting."
+  },
+  {
+    "customerName": "Divya Kapoor",
+    "company": "Udaan Logistics",
+    "followupType": "Meeting",
+    "followupDate": "2026-09-06",
+    "assignedTo": "Amit Verma",
+    "priority": "Low",
+    "status": "Pending",
+    "remarks": "Confirm onboarding date and dedicated success manager assignment."
+  },
+  {
+    "customerName": "Sandeep Nambiar",
+    "company": "Samriddhi Microfinance",
+    "followupType": "Product Demo",
+    "followupDate": "2026-09-12",
+    "assignedTo": "Neha Sundaram",
+    "priority": "Urgent",
+    "status": "In Progress",
+    "remarks": "Address inquiry regarding WhatsApp Business API integration."
+  },
+  {
+    "customerName": "Archana Pandey",
+    "company": "Indus Mobility",
+    "followupType": "WhatsApp Check-in",
+    "followupDate": "2026-09-12",
+    "assignedTo": "Rajesh Sharma",
+    "priority": "High",
+    "status": "Scheduled",
+    "remarks": "Discuss custom pricing for enterprise AI Chatbot deployment."
+  },
+  {
+    "customerName": "Alok Srivastava",
+    "company": "Kuber Wealth Tech",
+    "followupType": "Call",
+    "followupDate": "2026-08-29",
+    "assignedTo": "Priya Patel",
+    "priority": "Medium",
+    "status": "Completed",
+    "remarks": "Review technical architecture & API rate limits with CTO."
+  },
+  {
+    "customerName": "Preeti Joshi",
+    "company": "Matrix BioCare",
+    "followupType": "Email",
+    "followupDate": "2026-09-13",
+    "assignedTo": "Amit Verma",
+    "priority": "Low",
+    "status": "Pending",
+    "remarks": "Send formal GST compliant proposal and SLA agreement."
+  },
+  {
+    "customerName": "Tarun Mittal",
+    "company": "Sahaj FinTech",
+    "followupType": "Meeting",
+    "followupDate": "2026-09-13",
+    "assignedTo": "Neha Sundaram",
+    "priority": "Urgent",
+    "status": "In Progress",
+    "remarks": "Follow up on security audit documentation approval."
+  },
+  {
+    "customerName": "Nisha Shenoy",
+    "company": "Trishul Defense Systems",
+    "followupType": "Product Demo",
+    "followupDate": "2026-09-14",
+    "assignedTo": "Rajesh Sharma",
+    "priority": "High",
+    "status": "Scheduled",
+    "remarks": "Product demo scheduled with VP of Engineering & Operations."
+  },
+  {
+    "customerName": "Gaurav Mukherjee",
+    "company": "Agasti BioEnergy",
+    "followupType": "WhatsApp Check-in",
+    "followupDate": "2026-09-03",
+    "assignedTo": "Priya Patel",
+    "priority": "Medium",
+    "status": "Completed",
+    "remarks": "Check decision timeline following Q3 budget approval meeting."
+  },
+  {
+    "customerName": "Sneha Desai",
+    "company": "Surya Automation",
+    "followupType": "Call",
+    "followupDate": "2026-09-11",
+    "assignedTo": "Amit Verma",
+    "priority": "Low",
+    "status": "Pending",
+    "remarks": "Confirm onboarding date and dedicated success manager assignment."
+  },
+  {
+    "customerName": "Karthik Viswanathan",
+    "company": "Nakshatra Media",
+    "followupType": "Email",
+    "followupDate": "2026-08-29",
+    "assignedTo": "Neha Sundaram",
+    "priority": "Urgent",
+    "status": "In Progress",
+    "remarks": "Address inquiry regarding WhatsApp Business API integration."
+  },
+  {
+    "customerName": "Tanvi Shah",
+    "company": "Banyan Cloud Solutions",
+    "followupType": "Meeting",
+    "followupDate": "2026-09-14",
+    "assignedTo": "Rajesh Sharma",
+    "priority": "High",
+    "status": "Scheduled",
+    "remarks": "Discuss custom pricing for enterprise AI Chatbot deployment."
+  },
+  {
+    "customerName": "Harsh Vardhan",
+    "company": "Jal Tech Innovations",
+    "followupType": "Product Demo",
+    "followupDate": "2026-09-01",
+    "assignedTo": "Priya Patel",
+    "priority": "Medium",
+    "status": "Completed",
+    "remarks": "Review technical architecture & API rate limits with CTO."
+  },
+  {
+    "customerName": "Radhika Pillai",
+    "company": "Tarang Communications",
+    "followupType": "WhatsApp Check-in",
+    "followupDate": "2026-08-29",
+    "assignedTo": "Amit Verma",
+    "priority": "Low",
+    "status": "Pending",
+    "remarks": "Send formal GST compliant proposal and SLA agreement."
+  },
+  {
+    "customerName": "Varun Chawla",
+    "company": "Pragati Cyber Security",
+    "followupType": "Call",
+    "followupDate": "2026-09-02",
+    "assignedTo": "Neha Sundaram",
+    "priority": "Urgent",
+    "status": "In Progress",
+    "remarks": "Follow up on security audit documentation approval."
+  },
+  {
+    "customerName": "Anjali Kulkarni",
+    "company": "Moksha Wellness Tech",
+    "followupType": "Email",
+    "followupDate": "2026-09-05",
+    "assignedTo": "Rajesh Sharma",
+    "priority": "High",
+    "status": "Scheduled",
+    "remarks": "Product demo scheduled with VP of Engineering & Operations."
+  },
+  {
+    "customerName": "Nikhil Sengupta",
+    "company": "Dhruva Aerospace",
+    "followupType": "Meeting",
+    "followupDate": "2026-08-30",
+    "assignedTo": "Priya Patel",
+    "priority": "Medium",
+    "status": "Completed",
+    "remarks": "Check decision timeline following Q3 budget approval meeting."
+  },
+  {
+    "customerName": "Smita Bhattacharya",
+    "company": "Kirloskar Electric Solutions",
+    "followupType": "Product Demo",
+    "followupDate": "2026-08-30",
+    "assignedTo": "Amit Verma",
+    "priority": "Low",
+    "status": "Pending",
+    "remarks": "Confirm onboarding date and dedicated success manager assignment."
+  },
+  {
+    "customerName": "Kunal Hegde",
+    "company": "Srijan Creative Agency",
+    "followupType": "WhatsApp Check-in",
+    "followupDate": "2026-09-13",
+    "assignedTo": "Neha Sundaram",
+    "priority": "Urgent",
+    "status": "In Progress",
+    "remarks": "Address inquiry regarding WhatsApp Business API integration."
+  }
+]

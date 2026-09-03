@@ -1,3 +1,5 @@
+const fs = require('fs');
+const path = require('path');
 const mongoose = require('mongoose');
 const Conversation = require('../models/Conversation');
 const Lead = require('../models/Lead');
@@ -49,10 +51,51 @@ const getConversations = async (req, res) => {
       });
     }
 
+    // Fallback when MongoDB is disconnected: Load from backend/seeds/conversations.json
+    let seedConvs = [];
+    try {
+      const seedPath = path.join(__dirname, '../seeds/conversations.json');
+      if (fs.existsSync(seedPath)) {
+        const raw = fs.readFileSync(seedPath, 'utf8');
+        seedConvs = JSON.parse(raw);
+      }
+    } catch (err) {
+      console.error('Error reading backend/seeds/conversations.json:', err);
+    }
+
+    let filtered = seedConvs.map((c, idx) => ({
+      id: c._id || c.id || `conv_${idx + 1}`,
+      _id: c._id || c.id || `conv_${idx + 1}`,
+      visitorName: c.visitorName || '',
+      visitorEmail: c.visitorEmail || `${(c.visitorName || 'visitor').toLowerCase().replace(/\s+/g, '.')}@example.com`,
+      company: c.company || '',
+      message: c.message || c.question || (c.messages && c.messages[0] ? c.messages[0].text : ''),
+      question: c.question || c.message || (c.messages && c.messages[0] ? c.messages[0].text : ''),
+      botResponse: c.botResponse || (c.messages && c.messages[1] ? c.messages[1].text : 'Thank you for reaching out!'),
+      messages: c.messages || [],
+      status: c.status || 'Pending',
+      assignedAgent: c.assignedAgent || 'AI Bot Agent',
+      conversationTime: c.createdAt || c.conversationTime || new Date().toISOString(),
+    }));
+
+    if (safeStatus && safeStatus.toLowerCase() !== 'all') {
+      filtered = filtered.filter(c => (c.status || '').toLowerCase() === safeStatus.toLowerCase());
+    }
+
+    if (safeSearch) {
+      const s = safeSearch.toLowerCase();
+      filtered = filtered.filter(c =>
+        c.visitorName.toLowerCase().includes(s) ||
+        c.visitorEmail.toLowerCase().includes(s) ||
+        c.company.toLowerCase().includes(s) ||
+        c.message.toLowerCase().includes(s)
+      );
+    }
+
     return res.status(200).json({
       success: true,
-      count: 0,
-      conversations: [],
+      count: filtered.length,
+      conversations: filtered,
     });
   } catch (error) {
     console.error('Error fetching conversations:', error);
@@ -85,6 +128,38 @@ const getConversationById = async (req, res) => {
           },
         });
       }
+    }
+
+    // Fallback when MongoDB disconnected or ID is string seed ID
+    try {
+      const seedPath = path.join(__dirname, '../seeds/conversations.json');
+      if (fs.existsSync(seedPath)) {
+        const raw = fs.readFileSync(seedPath, 'utf8');
+        const seedConvs = JSON.parse(raw);
+        const found = seedConvs.find((c, idx) => (c._id || c.id || `conv_${idx + 1}`) === id);
+        if (found) {
+          const item = {
+            id: found._id || found.id || id,
+            _id: found._id || found.id || id,
+            visitorName: found.visitorName || '',
+            visitorEmail: found.visitorEmail || '',
+            company: found.company || '',
+            message: found.message || found.question || (found.messages && found.messages[0] ? found.messages[0].text : ''),
+            question: found.question || found.message || (found.messages && found.messages[0] ? found.messages[0].text : ''),
+            botResponse: found.botResponse || (found.messages && found.messages[1] ? found.messages[1].text : ''),
+            messages: found.messages || [],
+            status: found.status || 'Pending',
+            assignedAgent: found.assignedAgent || 'AI Bot Agent',
+            conversationTime: found.createdAt || found.conversationTime || new Date().toISOString(),
+          };
+          return res.status(200).json({
+            success: true,
+            conversation: item,
+          });
+        }
+      }
+    } catch (err) {
+      console.error('Error reading backend/seeds/conversations.json for getConversationById:', err);
     }
 
     return res.status(404).json({

@@ -1,3 +1,5 @@
+const fs = require('fs');
+const path = require('path');
 const mongoose = require('mongoose');
 const User = require('../models/User');
 const Lead = require('../models/Lead');
@@ -103,10 +105,50 @@ const getLeads = async (req, res) => {
       });
     }
 
+    // Fallback when MongoDB is disconnected: Load from backend/seeds/leads.json
+    let seedLeads = [];
+    try {
+      const seedPath = path.join(__dirname, '../seeds/leads.json');
+      if (fs.existsSync(seedPath)) {
+        const raw = fs.readFileSync(seedPath, 'utf8');
+        seedLeads = JSON.parse(raw);
+      }
+    } catch (err) {
+      console.error('Error reading backend/seeds/leads.json:', err);
+    }
+
+    let filtered = seedLeads.map((item, idx) => ({
+      id: item._id || item.id || `seed_lead_${idx + 1}`,
+      _id: item._id || item.id || `seed_lead_${idx + 1}`,
+      name: item.name || '',
+      email: item.email || '',
+      phone: item.phone || '',
+      company: item.company || '',
+      serviceInterested: item.serviceInterested || '',
+      status: item.status || 'New',
+      score: item.score || item.leadScore || 85,
+      createdAt: item.createdAt || new Date().toISOString(),
+    }));
+
+    if (safeStatus && safeStatus.toLowerCase() !== 'all') {
+      filtered = filtered.filter(l => l.status.toLowerCase() === safeStatus.toLowerCase());
+    }
+
+    if (safeSearch !== '') {
+      const s = safeSearch.toLowerCase();
+      filtered = filtered.filter(l => 
+        l.name.toLowerCase().includes(s) ||
+        l.email.toLowerCase().includes(s) ||
+        l.company.toLowerCase().includes(s) ||
+        l.phone.toLowerCase().includes(s) ||
+        l.serviceInterested.toLowerCase().includes(s)
+      );
+    }
+
     return res.status(200).json({
       success: true,
-      count: 0,
-      leads: [],
+      count: filtered.length,
+      leads: filtered,
     });
   } catch (error) {
     console.error('Error fetching leads:', error);
@@ -141,6 +183,29 @@ const getLeadById = async (req, res) => {
           },
         });
       }
+    }
+
+    // Fallback when MongoDB disconnected or ID is string seed ID
+    try {
+      const seedPath = path.join(__dirname, '../seeds/leads.json');
+      if (fs.existsSync(seedPath)) {
+        const raw = fs.readFileSync(seedPath, 'utf8');
+        const seedLeads = JSON.parse(raw);
+        const found = seedLeads.find((l, idx) => (l._id || l.id || `seed_lead_${idx + 1}`) === id);
+        if (found) {
+          return res.status(200).json({
+            success: true,
+            lead: {
+              ...found,
+              id: found._id || found.id || id,
+              score: found.score || 85,
+              followups: [],
+            },
+          });
+        }
+      }
+    } catch (err) {
+      console.error('Error reading backend/seeds/leads.json for getLeadById:', err);
     }
 
     return res.status(404).json({

@@ -1,7 +1,12 @@
 const express = require('express');
 const router = express.Router();
-const { loginUser, logoutUser, validateSession, getMe } = require('../controllers/authController');
+const { registerUser, loginUser, logoutUser, validateSession, getMe } = require('../controllers/authController');
 const { protect, authorizeRoles } = require('../middleware/authMiddleware');
+
+// @route   POST /api/auth/register
+// @desc    Register a new user
+// @access  Public
+router.post('/register', registerUser);
 
 // @route   POST /api/auth/login
 // @desc    Authenticate user & return JWT token

@@ -1,3 +1,6 @@
+const fs = require('fs');
+const path = require('path');
+const mongoose = require('mongoose');
 const Followup = require('../models/Followup');
 
 // @desc    Get all follow-ups / tasks
@@ -5,35 +8,58 @@ const Followup = require('../models/Followup');
 // @access  Public (or Protected)
 const getFollowups = async (req, res) => {
   try {
-    const followups = await Followup.find().populate('leadId', 'name company email').sort({ createdAt: -1 });
-    
-    // If DB is empty, provide initial seed items so UI always has default data
-    if (!followups || followups.length === 0) {
-      const defaultItems = [
-        { _id: 'f1', task: 'Follow up on proposal feedback', clientName: 'Acme Corp', time: 'Today at 2:00 PM', status: 'Pending' },
-        { _id: 'f2', task: 'Send contract draft for review', clientName: 'TechNova', time: 'Tomorrow at 10:00 AM', status: 'Upcoming' },
-      ];
-      return res.status(200).json({
-        success: true,
-        count: defaultItems.length,
-        data: defaultItems,
-      });
+    const isDbConnected = mongoose.connection.readyState === 1;
+
+    if (isDbConnected) {
+      const followups = await Followup.find().populate('leadId', 'name company email').sort({ createdAt: -1 });
+      
+      if (followups && followups.length > 0) {
+        return res.status(200).json({
+          success: true,
+          count: followups.length,
+          data: followups,
+          followups,
+        });
+      }
     }
+
+    // Fallback when MongoDB is disconnected or empty: Load from backend/seeds/followups.json
+    let seedFollowups = [];
+    try {
+      const seedPath = path.join(__dirname, '../seeds/followups.json');
+      if (fs.existsSync(seedPath)) {
+        const raw = fs.readFileSync(seedPath, 'utf8');
+        seedFollowups = JSON.parse(raw);
+      }
+    } catch (err) {
+      console.error('Error reading backend/seeds/followups.json:', err);
+    }
+
+    const mappedSeedFollowups = seedFollowups.map((f, idx) => ({
+      id: f._id || f.id || `followup_${idx + 1}`,
+      _id: f._id || f.id || `followup_${idx + 1}`,
+      task: f.task || `${f.followupType || 'Follow-up'} with ${f.customerName || f.clientName || 'Client'}`,
+      clientName: f.customerName || f.clientName || f.company || 'Client',
+      customerName: f.customerName || f.clientName || '',
+      company: f.company || '',
+      time: f.time || f.followupDate || 'Scheduled',
+      status: f.status || 'Pending',
+      priority: f.priority || 'Medium',
+      remarks: f.remarks || '',
+    }));
 
     return res.status(200).json({
       success: true,
-      count: followups.length,
-      data: followups,
+      count: mappedSeedFollowups.length,
+      data: mappedSeedFollowups,
+      followups: mappedSeedFollowups,
     });
   } catch (error) {
     console.error('Error in getFollowups controller:', error);
-    // Fallback response for resilience
-    return res.status(200).json({
-      success: true,
-      data: [
-        { _id: 'f1', task: 'Follow up on proposal feedback', clientName: 'Acme Corp', time: 'Today at 2:00 PM', status: 'Pending' },
-        { _id: 'f2', task: 'Send contract draft for review', clientName: 'TechNova', time: 'Tomorrow at 10:00 AM', status: 'Upcoming' },
-      ],
+    return res.status(500).json({
+      success: false,
+      message: 'Server error fetching followups',
+      error: error.message,
     });
   }
 };

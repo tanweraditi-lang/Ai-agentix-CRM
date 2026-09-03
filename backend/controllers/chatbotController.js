@@ -1,3 +1,5 @@
+const fs = require('fs');
+const path = require('path');
 const mongoose = require('mongoose');
 const Chatbot = require('../models/Chatbot');
 const { logActivity } = require('../utils/activityLogger');
@@ -46,10 +48,51 @@ const getChatbots = async (req, res) => {
       });
     }
 
+    // Fallback when MongoDB is disconnected: Load from backend/seeds/chatbots.json
+    let seedBots = [];
+    try {
+      const seedPath = path.join(__dirname, '../seeds/chatbots.json');
+      if (fs.existsSync(seedPath)) {
+        const raw = fs.readFileSync(seedPath, 'utf8');
+        seedBots = JSON.parse(raw);
+      }
+    } catch (err) {
+      console.error('Error reading backend/seeds/chatbots.json:', err);
+    }
+
+    let filtered = seedBots.map((b, idx) => ({
+      id: b._id || b.id || `bot_${idx + 1}`,
+      _id: b._id || b.id || `bot_${idx + 1}`,
+      name: b.name || b.chatbotName || 'AI Assistant',
+      chatbotName: b.chatbotName || b.name || 'AI Assistant',
+      clientName: b.clientName || 'Enterprise Client',
+      website: b.website || 'https://example.com',
+      aiModel: b.aiModel || b.model || 'Gemini 1.5 Pro',
+      model: b.model || b.aiModel || 'Gemini 1.5 Pro',
+      description: b.description || 'AI Assistant for customer support & sales inquiry.',
+      version: b.version || 'v1.0',
+      status: b.status || 'Active',
+      totalConversations: b.totalConversations || 0,
+      todaysConversations: b.todaysConversations || 0,
+    }));
+
+    if (safeStatus && safeStatus.toLowerCase() !== 'all') {
+      filtered = filtered.filter(b => b.status.toLowerCase() === safeStatus.toLowerCase());
+    }
+
+    if (safeSearch) {
+      const s = safeSearch.toLowerCase();
+      filtered = filtered.filter(b =>
+        b.name.toLowerCase().includes(s) ||
+        b.clientName.toLowerCase().includes(s) ||
+        b.aiModel.toLowerCase().includes(s)
+      );
+    }
+
     return res.status(200).json({
       success: true,
-      count: 0,
-      chatbots: [],
+      count: filtered.length,
+      chatbots: filtered,
     });
   } catch (error) {
     console.error('Error fetching chatbots:', error);
@@ -78,6 +121,39 @@ const getChatbotById = async (req, res) => {
           chatbot: { ...obj, id: bot._id.toString() },
         });
       }
+    }
+
+    // Fallback when MongoDB disconnected or ID is string seed ID
+    try {
+      const seedPath = path.join(__dirname, '../seeds/chatbots.json');
+      if (fs.existsSync(seedPath)) {
+        const raw = fs.readFileSync(seedPath, 'utf8');
+        const seedBots = JSON.parse(raw);
+        const found = seedBots.find((b, idx) => (b._id || b.id || `bot_${idx + 1}`) === id);
+        if (found) {
+          const item = {
+            id: found._id || found.id || id,
+            _id: found._id || found.id || id,
+            name: found.name || found.chatbotName || 'AI Assistant',
+            chatbotName: found.chatbotName || found.name || 'AI Assistant',
+            clientName: found.clientName || 'Enterprise Client',
+            website: found.website || 'https://example.com',
+            aiModel: found.aiModel || found.model || 'Gemini 1.5 Pro',
+            model: found.model || found.aiModel || 'Gemini 1.5 Pro',
+            description: found.description || 'AI Assistant for customer support & sales inquiry.',
+            version: found.version || 'v1.0',
+            status: found.status || 'Active',
+            totalConversations: found.totalConversations || 0,
+            todaysConversations: found.todaysConversations || 0,
+          };
+          return res.status(200).json({
+            success: true,
+            chatbot: item,
+          });
+        }
+      }
+    } catch (err) {
+      console.error('Error reading backend/seeds/chatbots.json for getChatbotById:', err);
     }
 
     return res.status(404).json({

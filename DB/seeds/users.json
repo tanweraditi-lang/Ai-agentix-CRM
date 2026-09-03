@@ -1,0 +1,30 @@
+[
+  {
+    "first_name": "Rajesh",
+    "last_name": "Sharma",
+    "email": "rajesh.sharma@minicrm.in",
+    "role": "admin",
+    "lastLogin": "2026-09-03T17:24:48.353Z"
+  },
+  {
+    "first_name": "Priya",
+    "last_name": "Patel",
+    "email": "priya.patel@minicrm.in",
+    "role": "agent",
+    "lastLogin": "2026-09-03T17:24:48.353Z"
+  },
+  {
+    "first_name": "Amit",
+    "last_name": "Verma",
+    "email": "amit.verma@minicrm.in",
+    "role": "sales_rep",
+    "lastLogin": "2026-09-03T17:24:48.353Z"
+  },
+  {
+    "first_name": "Neha",
+    "last_name": "Sundaram",
+    "email": "neha.sundaram@minicrm.in",
+    "role": "sales_rep",
+    "lastLogin": "2026-09-03T17:24:48.354Z"
+  }
+]

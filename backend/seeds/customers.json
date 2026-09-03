@@ -1,0 +1,272 @@
+[
+  {
+    "name": "Aarav Sharma",
+    "company": "Apex Tech Solutions",
+    "email": "aarav.sharma@apextech.in",
+    "phone": "+91 9876500456",
+    "purchasedService": "AI Chatbot",
+    "customerStatus": "Active",
+    "joinedDate": "2026-06-10"
+  },
+  {
+    "name": "Ananya Iyer",
+    "company": "Bright Media Works",
+    "email": "ananya.iyer@brightmedia.in",
+    "phone": "+91 9876500579",
+    "purchasedService": "CRM Development",
+    "customerStatus": "Active",
+    "joinedDate": "2026-07-03"
+  },
+  {
+    "name": "Vikram Malhotra",
+    "company": "CloudNet Systems",
+    "email": "vikram.malhotra@cloudnet.co.in",
+    "phone": "+91 9876500702",
+    "purchasedService": "Website Development",
+    "customerStatus": "Active",
+    "joinedDate": "2026-06-20"
+  },
+  {
+    "name": "Sunita Rao",
+    "company": "Delta Corp Infra",
+    "email": "sunita.rao@deltacorp.in",
+    "phone": "+91 9876500825",
+    "purchasedService": "Web Application",
+    "customerStatus": "Onboarding",
+    "joinedDate": "2026-06-15"
+  },
+  {
+    "name": "Aditya Joshi",
+    "company": "Elevate Global Logistics",
+    "email": "aditya.joshi@elevate.in",
+    "phone": "+91 9876500948",
+    "purchasedService": "WhatsApp Automation",
+    "customerStatus": "VIP",
+    "joinedDate": "2026-08-02"
+  },
+  {
+    "name": "Kavita Reddy",
+    "company": "FirstTier Tech",
+    "email": "kavita.reddy@firsttier.in",
+    "phone": "+91 9876501071",
+    "purchasedService": "AI Automation",
+    "customerStatus": "Renewal Due",
+    "joinedDate": "2026-08-21"
+  },
+  {
+    "name": "Deepak Agarwal",
+    "company": "Greenfield Energy",
+    "email": "deepak.agarwal@greenfield.co.in",
+    "phone": "+91 9876501194",
+    "purchasedService": "AI Content Creation",
+    "customerStatus": "Active",
+    "joinedDate": "2026-07-24"
+  },
+  {
+    "name": "Pooja Deshmukh",
+    "company": "Horizon Labs",
+    "email": "pooja.deshmukh@horizonlabs.in",
+    "phone": "+91 9876501317",
+    "purchasedService": "AI Image Generation",
+    "customerStatus": "Active",
+    "joinedDate": "2026-06-09"
+  },
+  {
+    "name": "Suresh Kumar",
+    "company": "Innovate Labs",
+    "email": "suresh.kumar@innovatelabs.in",
+    "phone": "+91 9876501440",
+    "purchasedService": "AI Video Generation",
+    "customerStatus": "Active",
+    "joinedDate": "2026-05-02"
+  },
+  {
+    "name": "Rajesh Verma",
+    "company": "Nexus Software India",
+    "email": "rajesh.verma@nexussoft.in",
+    "phone": "+91 9876501563",
+    "purchasedService": "Digital Marketing",
+    "customerStatus": "Onboarding",
+    "joinedDate": "2026-07-27"
+  },
+  {
+    "name": "Priyanka Gupta",
+    "company": "Prism Healthcare Tech",
+    "email": "priyanka.gupta@prismhealth.co.in",
+    "phone": "+91 9876501686",
+    "purchasedService": "AI Chatbot",
+    "customerStatus": "VIP",
+    "joinedDate": "2026-08-04"
+  },
+  {
+    "name": "Rohan Mehta",
+    "company": "Quantum Analytics India",
+    "email": "rohan.mehta@quantumanalytics.in",
+    "phone": "+91 9876501809",
+    "purchasedService": "CRM Development",
+    "customerStatus": "Renewal Due",
+    "joinedDate": "2026-05-31"
+  },
+  {
+    "name": "Swati Nair",
+    "company": "Vertex Infotech",
+    "email": "swati.nair@vertexinfotech.in",
+    "phone": "+91 9876501932",
+    "purchasedService": "Website Development",
+    "customerStatus": "Active",
+    "joinedDate": "2026-08-13"
+  },
+  {
+    "name": "Amit Patel",
+    "company": "Zenith Enterprise Solutions",
+    "email": "amit.patel@zenithenterprise.co.in",
+    "phone": "+91 9876502055",
+    "purchasedService": "Web Application",
+    "customerStatus": "Active",
+    "joinedDate": "2026-08-24"
+  },
+  {
+    "name": "Neha Kulkarni",
+    "company": "Astra Digital Media",
+    "email": "neha.kulkarni@astradigital.in",
+    "phone": "+91 9876502178",
+    "purchasedService": "WhatsApp Automation",
+    "customerStatus": "Active",
+    "joinedDate": "2026-08-18"
+  },
+  {
+    "name": "Vikramaditya Singh",
+    "company": "Synergy Retail Tech",
+    "email": "vikramaditya.singh@synergyretail.in",
+    "phone": "+91 9876502301",
+    "purchasedService": "AI Automation",
+    "customerStatus": "Onboarding",
+    "joinedDate": "2026-06-15"
+  },
+  {
+    "name": "Ritu Banerjee",
+    "company": "Omni Channel India",
+    "email": "ritu.banerjee@omnichannel.co.in",
+    "phone": "+91 9876502424",
+    "purchasedService": "AI Content Creation",
+    "customerStatus": "VIP",
+    "joinedDate": "2026-06-22"
+  },
+  {
+    "name": "Rahul Saxena",
+    "company": "Vayu Renewable Solutions",
+    "email": "rahul.saxena@vayurenewable.in",
+    "phone": "+91 9876502547",
+    "purchasedService": "AI Image Generation",
+    "customerStatus": "Renewal Due",
+    "joinedDate": "2026-07-26"
+  },
+  {
+    "name": "Priya Sundaram",
+    "company": "Triveni Financial Tech",
+    "email": "priya.sundaram@trivenifin.in",
+    "phone": "+91 9876502670",
+    "purchasedService": "AI Video Generation",
+    "customerStatus": "Active",
+    "joinedDate": "2026-05-21"
+  },
+  {
+    "name": "Siddharth Menon",
+    "company": "Bharat EdTech",
+    "email": "siddharth.menon@bharatedtech.in",
+    "phone": "+91 9876502793",
+    "purchasedService": "Digital Marketing",
+    "customerStatus": "Active",
+    "joinedDate": "2026-07-21"
+  },
+  {
+    "name": "Meera Bhat",
+    "company": "Smart Grid India",
+    "email": "meera.bhat@smartgridindia.co.in",
+    "phone": "+91 9876502916",
+    "purchasedService": "AI Chatbot",
+    "customerStatus": "Active",
+    "joinedDate": "2026-07-16"
+  },
+  {
+    "name": "Manish Chaudhry",
+    "company": "Param AI Labs",
+    "email": "manish.chaudhry@paramai.in",
+    "phone": "+91 9876503039",
+    "purchasedService": "CRM Development",
+    "customerStatus": "Onboarding",
+    "joinedDate": "2026-07-23"
+  },
+  {
+    "name": "Divya Kapoor",
+    "company": "Udaan Logistics",
+    "email": "divya.kapoor@udaanlogistics.in",
+    "phone": "+91 9876503162",
+    "purchasedService": "Website Development",
+    "customerStatus": "VIP",
+    "joinedDate": "2026-05-11"
+  },
+  {
+    "name": "Sandeep Nambiar",
+    "company": "Samriddhi Microfinance",
+    "email": "sandeep.nambiar@samriddhi.org.in",
+    "phone": "+91 9876503285",
+    "purchasedService": "Web Application",
+    "customerStatus": "Renewal Due",
+    "joinedDate": "2026-06-08"
+  },
+  {
+    "name": "Archana Pandey",
+    "company": "Indus Mobility",
+    "email": "archana.pandey@indusmobility.co.in",
+    "phone": "+91 9876503408",
+    "purchasedService": "WhatsApp Automation",
+    "customerStatus": "Active",
+    "joinedDate": "2026-05-04"
+  },
+  {
+    "name": "Alok Srivastava",
+    "company": "Kuber Wealth Tech",
+    "email": "alok.srivastava@kuberwealth.in",
+    "phone": "+91 9876503531",
+    "purchasedService": "AI Automation",
+    "customerStatus": "Active",
+    "joinedDate": "2026-06-10"
+  },
+  {
+    "name": "Preeti Joshi",
+    "company": "Matrix BioCare",
+    "email": "preeti.joshi@matrixbiocare.in",
+    "phone": "+91 9876503654",
+    "purchasedService": "AI Content Creation",
+    "customerStatus": "Active",
+    "joinedDate": "2026-05-21"
+  },
+  {
+    "name": "Tarun Mittal",
+    "company": "Sahaj FinTech",
+    "email": "tarun.mittal@sahajfintech.in",
+    "phone": "+91 9876503777",
+    "purchasedService": "AI Image Generation",
+    "customerStatus": "Onboarding",
+    "joinedDate": "2026-05-17"
+  },
+  {
+    "name": "Nisha Shenoy",
+    "company": "Trishul Defense Systems",
+    "email": "nisha.shenoy@trishuldefense.co.in",
+    "phone": "+91 9876503900",
+    "purchasedService": "AI Video Generation",
+    "customerStatus": "VIP",
+    "joinedDate": "2026-06-17"
+  },
+  {
+    "name": "Gaurav Mukherjee",
+    "company": "Agasti BioEnergy",
+    "email": "gaurav.mukherjee@agastibio.in",
+    "phone": "+91 9876504023",
+    "purchasedService": "Digital Marketing",
+    "customerStatus": "Renewal Due",
+    "joinedDate": "2026-06-27"
+  }
+]

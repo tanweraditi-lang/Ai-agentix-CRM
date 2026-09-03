@@ -1,0 +1,402 @@
+[
+  {
+    "name": "Aarav Sharma",
+    "email": "aarav.sharma@apextech.in",
+    "phone": "+91 9876500456",
+    "company": "Apex Tech Solutions",
+    "serviceInterested": "AI Chatbot",
+    "status": "New"
+  },
+  {
+    "name": "Ananya Iyer",
+    "email": "ananya.iyer@brightmedia.in",
+    "phone": "+91 9876500579",
+    "company": "Bright Media Works",
+    "serviceInterested": "CRM Development",
+    "status": "New"
+  },
+  {
+    "name": "Vikram Malhotra",
+    "email": "vikram.malhotra@cloudnet.co.in",
+    "phone": "+91 9876500702",
+    "company": "CloudNet Systems",
+    "serviceInterested": "Website Development",
+    "status": "New"
+  },
+  {
+    "name": "Sunita Rao",
+    "email": "sunita.rao@deltacorp.in",
+    "phone": "+91 9876500825",
+    "company": "Delta Corp Infra",
+    "serviceInterested": "Web Application",
+    "status": "New"
+  },
+  {
+    "name": "Aditya Joshi",
+    "email": "aditya.joshi@elevate.in",
+    "phone": "+91 9876500948",
+    "company": "Elevate Global Logistics",
+    "serviceInterested": "WhatsApp Automation",
+    "status": "New"
+  },
+  {
+    "name": "Kavita Reddy",
+    "email": "kavita.reddy@firsttier.in",
+    "phone": "+91 9876501071",
+    "company": "FirstTier Tech",
+    "serviceInterested": "AI Automation",
+    "status": "New"
+  },
+  {
+    "name": "Deepak Agarwal",
+    "email": "deepak.agarwal@greenfield.co.in",
+    "phone": "+91 9876501194",
+    "company": "Greenfield Energy",
+    "serviceInterested": "AI Content Creation",
+    "status": "New"
+  },
+  {
+    "name": "Pooja Deshmukh",
+    "email": "pooja.deshmukh@horizonlabs.in",
+    "phone": "+91 9876501317",
+    "company": "Horizon Labs",
+    "serviceInterested": "AI Image Generation",
+    "status": "New"
+  },
+  {
+    "name": "Suresh Kumar",
+    "email": "suresh.kumar@innovatelabs.in",
+    "phone": "+91 9876501440",
+    "company": "Innovate Labs",
+    "serviceInterested": "AI Video Generation",
+    "status": "New"
+  },
+  {
+    "name": "Rajesh Verma",
+    "email": "rajesh.verma@nexussoft.in",
+    "phone": "+91 9876501563",
+    "company": "Nexus Software India",
+    "serviceInterested": "Digital Marketing",
+    "status": "New"
+  },
+  {
+    "name": "Priyanka Gupta",
+    "email": "priyanka.gupta@prismhealth.co.in",
+    "phone": "+91 9876501686",
+    "company": "Prism Healthcare Tech",
+    "serviceInterested": "AI Chatbot",
+    "status": "New"
+  },
+  {
+    "name": "Rohan Mehta",
+    "email": "rohan.mehta@quantumanalytics.in",
+    "phone": "+91 9876501809",
+    "company": "Quantum Analytics India",
+    "serviceInterested": "CRM Development",
+    "status": "New"
+  },
+  {
+    "name": "Swati Nair",
+    "email": "swati.nair@vertexinfotech.in",
+    "phone": "+91 9876501932",
+    "company": "Vertex Infotech",
+    "serviceInterested": "Website Development",
+    "status": "Contacted"
+  },
+  {
+    "name": "Amit Patel",
+    "email": "amit.patel@zenithenterprise.co.in",
+    "phone": "+91 9876502055",
+    "company": "Zenith Enterprise Solutions",
+    "serviceInterested": "Web Application",
+    "status": "Contacted"
+  },
+  {
+    "name": "Neha Kulkarni",
+    "email": "neha.kulkarni@astradigital.in",
+    "phone": "+91 9876502178",
+    "company": "Astra Digital Media",
+    "serviceInterested": "WhatsApp Automation",
+    "status": "Contacted"
+  },
+  {
+    "name": "Vikramaditya Singh",
+    "email": "vikramaditya.singh@synergyretail.in",
+    "phone": "+91 9876502301",
+    "company": "Synergy Retail Tech",
+    "serviceInterested": "AI Automation",
+    "status": "Contacted"
+  },
+  {
+    "name": "Ritu Banerjee",
+    "email": "ritu.banerjee@omnichannel.co.in",
+    "phone": "+91 9876502424",
+    "company": "Omni Channel India",
+    "serviceInterested": "AI Content Creation",
+    "status": "Contacted"
+  },
+  {
+    "name": "Rahul Saxena",
+    "email": "rahul.saxena@vayurenewable.in",
+    "phone": "+91 9876502547",
+    "company": "Vayu Renewable Solutions",
+    "serviceInterested": "AI Image Generation",
+    "status": "Contacted"
+  },
+  {
+    "name": "Priya Sundaram",
+    "email": "priya.sundaram@trivenifin.in",
+    "phone": "+91 9876502670",
+    "company": "Triveni Financial Tech",
+    "serviceInterested": "AI Video Generation",
+    "status": "Contacted"
+  },
+  {
+    "name": "Siddharth Menon",
+    "email": "siddharth.menon@bharatedtech.in",
+    "phone": "+91 9876502793",
+    "company": "Bharat EdTech",
+    "serviceInterested": "Digital Marketing",
+    "status": "Contacted"
+  },
+  {
+    "name": "Meera Bhat",
+    "email": "meera.bhat@smartgridindia.co.in",
+    "phone": "+91 9876502916",
+    "company": "Smart Grid India",
+    "serviceInterested": "AI Chatbot",
+    "status": "Contacted"
+  },
+  {
+    "name": "Manish Chaudhry",
+    "email": "manish.chaudhry@paramai.in",
+    "phone": "+91 9876503039",
+    "company": "Param AI Labs",
+    "serviceInterested": "CRM Development",
+    "status": "Contacted"
+  },
+  {
+    "name": "Divya Kapoor",
+    "email": "divya.kapoor@udaanlogistics.in",
+    "phone": "+91 9876503162",
+    "company": "Udaan Logistics",
+    "serviceInterested": "Website Development",
+    "status": "Qualified"
+  },
+  {
+    "name": "Sandeep Nambiar",
+    "email": "sandeep.nambiar@samriddhi.org.in",
+    "phone": "+91 9876503285",
+    "company": "Samriddhi Microfinance",
+    "serviceInterested": "Web Application",
+    "status": "Qualified"
+  },
+  {
+    "name": "Archana Pandey",
+    "email": "archana.pandey@indusmobility.co.in",
+    "phone": "+91 9876503408",
+    "company": "Indus Mobility",
+    "serviceInterested": "WhatsApp Automation",
+    "status": "Qualified"
+  },
+  {
+    "name": "Alok Srivastava",
+    "email": "alok.srivastava@kuberwealth.in",
+    "phone": "+91 9876503531",
+    "company": "Kuber Wealth Tech",
+    "serviceInterested": "AI Automation",
+    "status": "Qualified"
+  },
+  {
+    "name": "Preeti Joshi",
+    "email": "preeti.joshi@matrixbiocare.in",
+    "phone": "+91 9876503654",
+    "company": "Matrix BioCare",
+    "serviceInterested": "AI Content Creation",
+    "status": "Qualified"
+  },
+  {
+    "name": "Tarun Mittal",
+    "email": "tarun.mittal@sahajfintech.in",
+    "phone": "+91 9876503777",
+    "company": "Sahaj FinTech",
+    "serviceInterested": "AI Image Generation",
+    "status": "Qualified"
+  },
+  {
+    "name": "Nisha Shenoy",
+    "email": "nisha.shenoy@trishuldefense.co.in",
+    "phone": "+91 9876503900",
+    "company": "Trishul Defense Systems",
+    "serviceInterested": "AI Video Generation",
+    "status": "Qualified"
+  },
+  {
+    "name": "Gaurav Mukherjee",
+    "email": "gaurav.mukherjee@agastibio.in",
+    "phone": "+91 9876504023",
+    "company": "Agasti BioEnergy",
+    "serviceInterested": "Digital Marketing",
+    "status": "Qualified"
+  },
+  {
+    "name": "Sneha Desai",
+    "email": "sneha.desai@suryaauto.co.in",
+    "phone": "+91 9876504146",
+    "company": "Surya Automation",
+    "serviceInterested": "AI Chatbot",
+    "status": "Qualified"
+  },
+  {
+    "name": "Karthik Viswanathan",
+    "email": "karthik.viswanathan@nakshatramedia.in",
+    "phone": "+91 9876504269",
+    "company": "Nakshatra Media",
+    "serviceInterested": "CRM Development",
+    "status": "In Negotiation"
+  },
+  {
+    "name": "Tanvi Shah",
+    "email": "tanvi.shah@banyancloud.in",
+    "phone": "+91 9876504392",
+    "company": "Banyan Cloud Solutions",
+    "serviceInterested": "Website Development",
+    "status": "In Negotiation"
+  },
+  {
+    "name": "Harsh Vardhan",
+    "email": "harsh.vardhan@jaltech.co.in",
+    "phone": "+91 9876504515",
+    "company": "Jal Tech Innovations",
+    "serviceInterested": "Web Application",
+    "status": "In Negotiation"
+  },
+  {
+    "name": "Radhika Pillai",
+    "email": "radhika.pillai@tarangcomms.in",
+    "phone": "+91 9876504638",
+    "company": "Tarang Communications",
+    "serviceInterested": "WhatsApp Automation",
+    "status": "In Negotiation"
+  },
+  {
+    "name": "Varun Chawla",
+    "email": "varun.chawla@pragatisecurity.in",
+    "phone": "+91 9876504761",
+    "company": "Pragati Cyber Security",
+    "serviceInterested": "AI Automation",
+    "status": "In Negotiation"
+  },
+  {
+    "name": "Anjali Kulkarni",
+    "email": "anjali.kulkarni@mokshawellness.in",
+    "phone": "+91 9876504884",
+    "company": "Moksha Wellness Tech",
+    "serviceInterested": "AI Content Creation",
+    "status": "In Negotiation"
+  },
+  {
+    "name": "Nikhil Sengupta",
+    "email": "nikhil.sengupta@dhruvaaerospace.co.in",
+    "phone": "+91 9876505007",
+    "company": "Dhruva Aerospace",
+    "serviceInterested": "AI Image Generation",
+    "status": "In Negotiation"
+  },
+  {
+    "name": "Smita Bhattacharya",
+    "email": "smita.bhattacharya@kirloskarsolutions.in",
+    "phone": "+91 9876505130",
+    "company": "Kirloskar Electric Solutions",
+    "serviceInterested": "AI Video Generation",
+    "status": "In Negotiation"
+  },
+  {
+    "name": "Kunal Hegde",
+    "email": "kunal.hegde@srijancreative.in",
+    "phone": "+91 9876505253",
+    "company": "Srijan Creative Agency",
+    "serviceInterested": "Digital Marketing",
+    "status": "Converted"
+  },
+  {
+    "name": "Bhavna Bajaj",
+    "email": "bhavna.bajaj@varunamaritime.co.in",
+    "phone": "+91 9876505376",
+    "company": "Varuna Maritime Tech",
+    "serviceInterested": "AI Chatbot",
+    "status": "Converted"
+  },
+  {
+    "name": "Ishan Singhal",
+    "email": "ishan.singhal@tathasturetail.in",
+    "phone": "+91 9876505499",
+    "company": "Tathastu Retail Solutions",
+    "serviceInterested": "CRM Development",
+    "status": "Converted"
+  },
+  {
+    "name": "Nidhi Mahajan",
+    "email": "nidhi.mahajan@chetanahealth.in",
+    "phone": "+91 9876505622",
+    "company": "Chetana Health Tech",
+    "serviceInterested": "Website Development",
+    "status": "Converted"
+  },
+  {
+    "name": "Mayank Rastogi",
+    "email": "mayank.rastogi@lokmatdigital.co.in",
+    "phone": "+91 9876505745",
+    "company": "Lokmat Digital Media",
+    "serviceInterested": "Web Application",
+    "status": "Converted"
+  },
+  {
+    "name": "Shweta Dutta",
+    "email": "shweta.dutta@shresthaconsulting.in",
+    "phone": "+91 9876505868",
+    "company": "Shrestha Consultancy",
+    "serviceInterested": "WhatsApp Automation",
+    "status": "Converted"
+  },
+  {
+    "name": "Deepak Chopra",
+    "email": "deepak.chopra@antarikshai.in",
+    "phone": "+91 9876505991",
+    "company": "Antariksh AI Labs",
+    "serviceInterested": "AI Automation",
+    "status": "Converted"
+  },
+  {
+    "name": "Pooja Venkat",
+    "email": "pooja.venkat@mangalenergy.co.in",
+    "phone": "+91 9876506114",
+    "company": "Mangal Green Energy",
+    "serviceInterested": "AI Content Creation",
+    "status": "Lost"
+  },
+  {
+    "name": "Sameer Ahuja",
+    "email": "sameer.ahuja@samarthtech.in",
+    "phone": "+91 9876506237",
+    "company": "Samarth Enterprise Tech",
+    "serviceInterested": "AI Image Generation",
+    "status": "Lost"
+  },
+  {
+    "name": "Ruchi Tripathi",
+    "email": "ruchi.tripathi@vistardata.in",
+    "phone": "+91 9876506360",
+    "company": "Vistar Data Labs",
+    "serviceInterested": "AI Video Generation",
+    "status": "Lost"
+  },
+  {
+    "name": "Vivek Kaushik",
+    "email": "vivek.kaushik@nirmalwater.co.in",
+    "phone": "+91 9876506483",
+    "company": "Nirmal Water Tech",
+    "serviceInterested": "Digital Marketing",
+    "status": "Lost"
+  }
+]

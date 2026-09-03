@@ -1,0 +1,20 @@
+[
+  {
+    "chatbotName": "Website Assistant",
+    "model": "gpt-4o-mini",
+    "status": "Active",
+    "totalConversations": 1420
+  },
+  {
+    "chatbotName": "Sales Assistant",
+    "model": "gpt-4o",
+    "status": "Active",
+    "totalConversations": 890
+  },
+  {
+    "chatbotName": "Support Assistant",
+    "model": "claude-3-5-sonnet",
+    "status": "Active",
+    "totalConversations": 630
+  }
+]

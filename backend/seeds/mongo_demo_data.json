@@ -1,0 +1,2859 @@
+{
+  "users": [
+    {
+      "first_name": "Rajesh",
+      "last_name": "Sharma",
+      "email": "rajesh.sharma@minicrm.in",
+      "role": "admin",
+      "lastLogin": "2026-09-03T17:24:48.353Z"
+    },
+    {
+      "first_name": "Priya",
+      "last_name": "Patel",
+      "email": "priya.patel@minicrm.in",
+      "role": "agent",
+      "lastLogin": "2026-09-03T17:24:48.353Z"
+    },
+    {
+      "first_name": "Amit",
+      "last_name": "Verma",
+      "email": "amit.verma@minicrm.in",
+      "role": "sales_rep",
+      "lastLogin": "2026-09-03T17:24:48.353Z"
+    },
+    {
+      "first_name": "Neha",
+      "last_name": "Sundaram",
+      "email": "neha.sundaram@minicrm.in",
+      "role": "sales_rep",
+      "lastLogin": "2026-09-03T17:24:48.354Z"
+    }
+  ],
+  "leads": [
+    {
+      "name": "Aarav Sharma",
+      "email": "aarav.sharma@apextech.in",
+      "phone": "+91 9876500456",
+      "company": "Apex Tech Solutions",
+      "serviceInterested": "AI Chatbot",
+      "status": "New"
+    },
+    {
+      "name": "Ananya Iyer",
+      "email": "ananya.iyer@brightmedia.in",
+      "phone": "+91 9876500579",
+      "company": "Bright Media Works",
+      "serviceInterested": "CRM Development",
+      "status": "New"
+    },
+    {
+      "name": "Vikram Malhotra",
+      "email": "vikram.malhotra@cloudnet.co.in",
+      "phone": "+91 9876500702",
+      "company": "CloudNet Systems",
+      "serviceInterested": "Website Development",
+      "status": "New"
+    },
+    {
+      "name": "Sunita Rao",
+      "email": "sunita.rao@deltacorp.in",
+      "phone": "+91 9876500825",
+      "company": "Delta Corp Infra",
+      "serviceInterested": "Web Application",
+      "status": "New"
+    },
+    {
+      "name": "Aditya Joshi",
+      "email": "aditya.joshi@elevate.in",
+      "phone": "+91 9876500948",
+      "company": "Elevate Global Logistics",
+      "serviceInterested": "WhatsApp Automation",
+      "status": "New"
+    },
+    {
+      "name": "Kavita Reddy",
+      "email": "kavita.reddy@firsttier.in",
+      "phone": "+91 9876501071",
+      "company": "FirstTier Tech",
+      "serviceInterested": "AI Automation",
+      "status": "New"
+    },
+    {
+      "name": "Deepak Agarwal",
+      "email": "deepak.agarwal@greenfield.co.in",
+      "phone": "+91 9876501194",
+      "company": "Greenfield Energy",
+      "serviceInterested": "AI Content Creation",
+      "status": "New"
+    },
+    {
+      "name": "Pooja Deshmukh",
+      "email": "pooja.deshmukh@horizonlabs.in",
+      "phone": "+91 9876501317",
+      "company": "Horizon Labs",
+      "serviceInterested": "AI Image Generation",
+      "status": "New"
+    },
+    {
+      "name": "Suresh Kumar",
+      "email": "suresh.kumar@innovatelabs.in",
+      "phone": "+91 9876501440",
+      "company": "Innovate Labs",
+      "serviceInterested": "AI Video Generation",
+      "status": "New"
+    },
+    {
+      "name": "Rajesh Verma",
+      "email": "rajesh.verma@nexussoft.in",
+      "phone": "+91 9876501563",
+      "company": "Nexus Software India",
+      "serviceInterested": "Digital Marketing",
+      "status": "New"
+    },
+    {
+      "name": "Priyanka Gupta",
+      "email": "priyanka.gupta@prismhealth.co.in",
+      "phone": "+91 9876501686",
+      "company": "Prism Healthcare Tech",
+      "serviceInterested": "AI Chatbot",
+      "status": "New"
+    },
+    {
+      "name": "Rohan Mehta",
+      "email": "rohan.mehta@quantumanalytics.in",
+      "phone": "+91 9876501809",
+      "company": "Quantum Analytics India",
+      "serviceInterested": "CRM Development",
+      "status": "New"
+    },
+    {
+      "name": "Swati Nair",
+      "email": "swati.nair@vertexinfotech.in",
+      "phone": "+91 9876501932",
+      "company": "Vertex Infotech",
+      "serviceInterested": "Website Development",
+      "status": "Contacted"
+    },
+    {
+      "name": "Amit Patel",
+      "email": "amit.patel@zenithenterprise.co.in",
+      "phone": "+91 9876502055",
+      "company": "Zenith Enterprise Solutions",
+      "serviceInterested": "Web Application",
+      "status": "Contacted"
+    },
+    {
+      "name": "Neha Kulkarni",
+      "email": "neha.kulkarni@astradigital.in",
+      "phone": "+91 9876502178",
+      "company": "Astra Digital Media",
+      "serviceInterested": "WhatsApp Automation",
+      "status": "Contacted"
+    },
+    {
+      "name": "Vikramaditya Singh",
+      "email": "vikramaditya.singh@synergyretail.in",
+      "phone": "+91 9876502301",
+      "company": "Synergy Retail Tech",
+      "serviceInterested": "AI Automation",
+      "status": "Contacted"
+    },
+    {
+      "name": "Ritu Banerjee",
+      "email": "ritu.banerjee@omnichannel.co.in",
+      "phone": "+91 9876502424",
+      "company": "Omni Channel India",
+      "serviceInterested": "AI Content Creation",
+      "status": "Contacted"
+    },
+    {
+      "name": "Rahul Saxena",
+      "email": "rahul.saxena@vayurenewable.in",
+      "phone": "+91 9876502547",
+      "company": "Vayu Renewable Solutions",
+      "serviceInterested": "AI Image Generation",
+      "status": "Contacted"
+    },
+    {
+      "name": "Priya Sundaram",
+      "email": "priya.sundaram@trivenifin.in",
+      "phone": "+91 9876502670",
+      "company": "Triveni Financial Tech",
+      "serviceInterested": "AI Video Generation",
+      "status": "Contacted"
+    },
+    {
+      "name": "Siddharth Menon",
+      "email": "siddharth.menon@bharatedtech.in",
+      "phone": "+91 9876502793",
+      "company": "Bharat EdTech",
+      "serviceInterested": "Digital Marketing",
+      "status": "Contacted"
+    },
+    {
+      "name": "Meera Bhat",
+      "email": "meera.bhat@smartgridindia.co.in",
+      "phone": "+91 9876502916",
+      "company": "Smart Grid India",
+      "serviceInterested": "AI Chatbot",
+      "status": "Contacted"
+    },
+    {
+      "name": "Manish Chaudhry",
+      "email": "manish.chaudhry@paramai.in",
+      "phone": "+91 9876503039",
+      "company": "Param AI Labs",
+      "serviceInterested": "CRM Development",
+      "status": "Contacted"
+    },
+    {
+      "name": "Divya Kapoor",
+      "email": "divya.kapoor@udaanlogistics.in",
+      "phone": "+91 9876503162",
+      "company": "Udaan Logistics",
+      "serviceInterested": "Website Development",
+      "status": "Qualified"
+    },
+    {
+      "name": "Sandeep Nambiar",
+      "email": "sandeep.nambiar@samriddhi.org.in",
+      "phone": "+91 9876503285",
+      "company": "Samriddhi Microfinance",
+      "serviceInterested": "Web Application",
+      "status": "Qualified"
+    },
+    {
+      "name": "Archana Pandey",
+      "email": "archana.pandey@indusmobility.co.in",
+      "phone": "+91 9876503408",
+      "company": "Indus Mobility",
+      "serviceInterested": "WhatsApp Automation",
+      "status": "Qualified"
+    },
+    {
+      "name": "Alok Srivastava",
+      "email": "alok.srivastava@kuberwealth.in",
+      "phone": "+91 9876503531",
+      "company": "Kuber Wealth Tech",
+      "serviceInterested": "AI Automation",
+      "status": "Qualified"
+    },
+    {
+      "name": "Preeti Joshi",
+      "email": "preeti.joshi@matrixbiocare.in",
+      "phone": "+91 9876503654",
+      "company": "Matrix BioCare",
+      "serviceInterested": "AI Content Creation",
+      "status": "Qualified"
+    },
+    {
+      "name": "Tarun Mittal",
+      "email": "tarun.mittal@sahajfintech.in",
+      "phone": "+91 9876503777",
+      "company": "Sahaj FinTech",
+      "serviceInterested": "AI Image Generation",
+      "status": "Qualified"
+    },
+    {
+      "name": "Nisha Shenoy",
+      "email": "nisha.shenoy@trishuldefense.co.in",
+      "phone": "+91 9876503900",
+      "company": "Trishul Defense Systems",
+      "serviceInterested": "AI Video Generation",
+      "status": "Qualified"
+    },
+    {
+      "name": "Gaurav Mukherjee",
+      "email": "gaurav.mukherjee@agastibio.in",
+      "phone": "+91 9876504023",
+      "company": "Agasti BioEnergy",
+      "serviceInterested": "Digital Marketing",
+      "status": "Qualified"
+    },
+    {
+      "name": "Sneha Desai",
+      "email": "sneha.desai@suryaauto.co.in",
+      "phone": "+91 9876504146",
+      "company": "Surya Automation",
+      "serviceInterested": "AI Chatbot",
+      "status": "Qualified"
+    },
+    {
+      "name": "Karthik Viswanathan",
+      "email": "karthik.viswanathan@nakshatramedia.in",
+      "phone": "+91 9876504269",
+      "company": "Nakshatra Media",
+      "serviceInterested": "CRM Development",
+      "status": "In Negotiation"
+    },
+    {
+      "name": "Tanvi Shah",
+      "email": "tanvi.shah@banyancloud.in",
+      "phone": "+91 9876504392",
+      "company": "Banyan Cloud Solutions",
+      "serviceInterested": "Website Development",
+      "status": "In Negotiation"
+    },
+    {
+      "name": "Harsh Vardhan",
+      "email": "harsh.vardhan@jaltech.co.in",
+      "phone": "+91 9876504515",
+      "company": "Jal Tech Innovations",
+      "serviceInterested": "Web Application",
+      "status": "In Negotiation"
+    },
+    {
+      "name": "Radhika Pillai",
+      "email": "radhika.pillai@tarangcomms.in",
+      "phone": "+91 9876504638",
+      "company": "Tarang Communications",
+      "serviceInterested": "WhatsApp Automation",
+      "status": "In Negotiation"
+    },
+    {
+      "name": "Varun Chawla",
+      "email": "varun.chawla@pragatisecurity.in",
+      "phone": "+91 9876504761",
+      "company": "Pragati Cyber Security",
+      "serviceInterested": "AI Automation",
+      "status": "In Negotiation"
+    },
+    {
+      "name": "Anjali Kulkarni",
+      "email": "anjali.kulkarni@mokshawellness.in",
+      "phone": "+91 9876504884",
+      "company": "Moksha Wellness Tech",
+      "serviceInterested": "AI Content Creation",
+      "status": "In Negotiation"
+    },
+    {
+      "name": "Nikhil Sengupta",
+      "email": "nikhil.sengupta@dhruvaaerospace.co.in",
+      "phone": "+91 9876505007",
+      "company": "Dhruva Aerospace",
+      "serviceInterested": "AI Image Generation",
+      "status": "In Negotiation"
+    },
+    {
+      "name": "Smita Bhattacharya",
+      "email": "smita.bhattacharya@kirloskarsolutions.in",
+      "phone": "+91 9876505130",
+      "company": "Kirloskar Electric Solutions",
+      "serviceInterested": "AI Video Generation",
+      "status": "In Negotiation"
+    },
+    {
+      "name": "Kunal Hegde",
+      "email": "kunal.hegde@srijancreative.in",
+      "phone": "+91 9876505253",
+      "company": "Srijan Creative Agency",
+      "serviceInterested": "Digital Marketing",
+      "status": "Converted"
+    },
+    {
+      "name": "Bhavna Bajaj",
+      "email": "bhavna.bajaj@varunamaritime.co.in",
+      "phone": "+91 9876505376",
+      "company": "Varuna Maritime Tech",
+      "serviceInterested": "AI Chatbot",
+      "status": "Converted"
+    },
+    {
+      "name": "Ishan Singhal",
+      "email": "ishan.singhal@tathasturetail.in",
+      "phone": "+91 9876505499",
+      "company": "Tathastu Retail Solutions",
+      "serviceInterested": "CRM Development",
+      "status": "Converted"
+    },
+    {
+      "name": "Nidhi Mahajan",
+      "email": "nidhi.mahajan@chetanahealth.in",
+      "phone": "+91 9876505622",
+      "company": "Chetana Health Tech",
+      "serviceInterested": "Website Development",
+      "status": "Converted"
+    },
+    {
+      "name": "Mayank Rastogi",
+      "email": "mayank.rastogi@lokmatdigital.co.in",
+      "phone": "+91 9876505745",
+      "company": "Lokmat Digital Media",
+      "serviceInterested": "Web Application",
+      "status": "Converted"
+    },
+    {
+      "name": "Shweta Dutta",
+      "email": "shweta.dutta@shresthaconsulting.in",
+      "phone": "+91 9876505868",
+      "company": "Shrestha Consultancy",
+      "serviceInterested": "WhatsApp Automation",
+      "status": "Converted"
+    },
+    {
+      "name": "Deepak Chopra",
+      "email": "deepak.chopra@antarikshai.in",
+      "phone": "+91 9876505991",
+      "company": "Antariksh AI Labs",
+      "serviceInterested": "AI Automation",
+      "status": "Converted"
+    },
+    {
+      "name": "Pooja Venkat",
+      "email": "pooja.venkat@mangalenergy.co.in",
+      "phone": "+91 9876506114",
+      "company": "Mangal Green Energy",
+      "serviceInterested": "AI Content Creation",
+      "status": "Lost"
+    },
+    {
+      "name": "Sameer Ahuja",
+      "email": "sameer.ahuja@samarthtech.in",
+      "phone": "+91 9876506237",
+      "company": "Samarth Enterprise Tech",
+      "serviceInterested": "AI Image Generation",
+      "status": "Lost"
+    },
+    {
+      "name": "Ruchi Tripathi",
+      "email": "ruchi.tripathi@vistardata.in",
+      "phone": "+91 9876506360",
+      "company": "Vistar Data Labs",
+      "serviceInterested": "AI Video Generation",
+      "status": "Lost"
+    },
+    {
+      "name": "Vivek Kaushik",
+      "email": "vivek.kaushik@nirmalwater.co.in",
+      "phone": "+91 9876506483",
+      "company": "Nirmal Water Tech",
+      "serviceInterested": "Digital Marketing",
+      "status": "Lost"
+    }
+  ],
+  "customers": [
+    {
+      "name": "Aarav Sharma",
+      "company": "Apex Tech Solutions",
+      "email": "aarav.sharma@apextech.in",
+      "phone": "+91 9876500456",
+      "purchasedService": "AI Chatbot",
+      "customerStatus": "Active",
+      "joinedDate": "2026-06-10"
+    },
+    {
+      "name": "Ananya Iyer",
+      "company": "Bright Media Works",
+      "email": "ananya.iyer@brightmedia.in",
+      "phone": "+91 9876500579",
+      "purchasedService": "CRM Development",
+      "customerStatus": "Active",
+      "joinedDate": "2026-07-03"
+    },
+    {
+      "name": "Vikram Malhotra",
+      "company": "CloudNet Systems",
+      "email": "vikram.malhotra@cloudnet.co.in",
+      "phone": "+91 9876500702",
+      "purchasedService": "Website Development",
+      "customerStatus": "Active",
+      "joinedDate": "2026-06-20"
+    },
+    {
+      "name": "Sunita Rao",
+      "company": "Delta Corp Infra",
+      "email": "sunita.rao@deltacorp.in",
+      "phone": "+91 9876500825",
+      "purchasedService": "Web Application",
+      "customerStatus": "Onboarding",
+      "joinedDate": "2026-06-15"
+    },
+    {
+      "name": "Aditya Joshi",
+      "company": "Elevate Global Logistics",
+      "email": "aditya.joshi@elevate.in",
+      "phone": "+91 9876500948",
+      "purchasedService": "WhatsApp Automation",
+      "customerStatus": "VIP",
+      "joinedDate": "2026-08-02"
+    },
+    {
+      "name": "Kavita Reddy",
+      "company": "FirstTier Tech",
+      "email": "kavita.reddy@firsttier.in",
+      "phone": "+91 9876501071",
+      "purchasedService": "AI Automation",
+      "customerStatus": "Renewal Due",
+      "joinedDate": "2026-08-21"
+    },
+    {
+      "name": "Deepak Agarwal",
+      "company": "Greenfield Energy",
+      "email": "deepak.agarwal@greenfield.co.in",
+      "phone": "+91 9876501194",
+      "purchasedService": "AI Content Creation",
+      "customerStatus": "Active",
+      "joinedDate": "2026-07-24"
+    },
+    {
+      "name": "Pooja Deshmukh",
+      "company": "Horizon Labs",
+      "email": "pooja.deshmukh@horizonlabs.in",
+      "phone": "+91 9876501317",
+      "purchasedService": "AI Image Generation",
+      "customerStatus": "Active",
+      "joinedDate": "2026-06-09"
+    },
+    {
+      "name": "Suresh Kumar",
+      "company": "Innovate Labs",
+      "email": "suresh.kumar@innovatelabs.in",
+      "phone": "+91 9876501440",
+      "purchasedService": "AI Video Generation",
+      "customerStatus": "Active",
+      "joinedDate": "2026-05-02"
+    },
+    {
+      "name": "Rajesh Verma",
+      "company": "Nexus Software India",
+      "email": "rajesh.verma@nexussoft.in",
+      "phone": "+91 9876501563",
+      "purchasedService": "Digital Marketing",
+      "customerStatus": "Onboarding",
+      "joinedDate": "2026-07-27"
+    },
+    {
+      "name": "Priyanka Gupta",
+      "company": "Prism Healthcare Tech",
+      "email": "priyanka.gupta@prismhealth.co.in",
+      "phone": "+91 9876501686",
+      "purchasedService": "AI Chatbot",
+      "customerStatus": "VIP",
+      "joinedDate": "2026-08-04"
+    },
+    {
+      "name": "Rohan Mehta",
+      "company": "Quantum Analytics India",
+      "email": "rohan.mehta@quantumanalytics.in",
+      "phone": "+91 9876501809",
+      "purchasedService": "CRM Development",
+      "customerStatus": "Renewal Due",
+      "joinedDate": "2026-05-31"
+    },
+    {
+      "name": "Swati Nair",
+      "company": "Vertex Infotech",
+      "email": "swati.nair@vertexinfotech.in",
+      "phone": "+91 9876501932",
+      "purchasedService": "Website Development",
+      "customerStatus": "Active",
+      "joinedDate": "2026-08-13"
+    },
+    {
+      "name": "Amit Patel",
+      "company": "Zenith Enterprise Solutions",
+      "email": "amit.patel@zenithenterprise.co.in",
+      "phone": "+91 9876502055",
+      "purchasedService": "Web Application",
+      "customerStatus": "Active",
+      "joinedDate": "2026-08-24"
+    },
+    {
+      "name": "Neha Kulkarni",
+      "company": "Astra Digital Media",
+      "email": "neha.kulkarni@astradigital.in",
+      "phone": "+91 9876502178",
+      "purchasedService": "WhatsApp Automation",
+      "customerStatus": "Active",
+      "joinedDate": "2026-08-18"
+    },
+    {
+      "name": "Vikramaditya Singh",
+      "company": "Synergy Retail Tech",
+      "email": "vikramaditya.singh@synergyretail.in",
+      "phone": "+91 9876502301",
+      "purchasedService": "AI Automation",
+      "customerStatus": "Onboarding",
+      "joinedDate": "2026-06-15"
+    },
+    {
+      "name": "Ritu Banerjee",
+      "company": "Omni Channel India",
+      "email": "ritu.banerjee@omnichannel.co.in",
+      "phone": "+91 9876502424",
+      "purchasedService": "AI Content Creation",
+      "customerStatus": "VIP",
+      "joinedDate": "2026-06-22"
+    },
+    {
+      "name": "Rahul Saxena",
+      "company": "Vayu Renewable Solutions",
+      "email": "rahul.saxena@vayurenewable.in",
+      "phone": "+91 9876502547",
+      "purchasedService": "AI Image Generation",
+      "customerStatus": "Renewal Due",
+      "joinedDate": "2026-07-26"
+    },
+    {
+      "name": "Priya Sundaram",
+      "company": "Triveni Financial Tech",
+      "email": "priya.sundaram@trivenifin.in",
+      "phone": "+91 9876502670",
+      "purchasedService": "AI Video Generation",
+      "customerStatus": "Active",
+      "joinedDate": "2026-05-21"
+    },
+    {
+      "name": "Siddharth Menon",
+      "company": "Bharat EdTech",
+      "email": "siddharth.menon@bharatedtech.in",
+      "phone": "+91 9876502793",
+      "purchasedService": "Digital Marketing",
+      "customerStatus": "Active",
+      "joinedDate": "2026-07-21"
+    },
+    {
+      "name": "Meera Bhat",
+      "company": "Smart Grid India",
+      "email": "meera.bhat@smartgridindia.co.in",
+      "phone": "+91 9876502916",
+      "purchasedService": "AI Chatbot",
+      "customerStatus": "Active",
+      "joinedDate": "2026-07-16"
+    },
+    {
+      "name": "Manish Chaudhry",
+      "company": "Param AI Labs",
+      "email": "manish.chaudhry@paramai.in",
+      "phone": "+91 9876503039",
+      "purchasedService": "CRM Development",
+      "customerStatus": "Onboarding",
+      "joinedDate": "2026-07-23"
+    },
+    {
+      "name": "Divya Kapoor",
+      "company": "Udaan Logistics",
+      "email": "divya.kapoor@udaanlogistics.in",
+      "phone": "+91 9876503162",
+      "purchasedService": "Website Development",
+      "customerStatus": "VIP",
+      "joinedDate": "2026-05-11"
+    },
+    {
+      "name": "Sandeep Nambiar",
+      "company": "Samriddhi Microfinance",
+      "email": "sandeep.nambiar@samriddhi.org.in",
+      "phone": "+91 9876503285",
+      "purchasedService": "Web Application",
+      "customerStatus": "Renewal Due",
+      "joinedDate": "2026-06-08"
+    },
+    {
+      "name": "Archana Pandey",
+      "company": "Indus Mobility",
+      "email": "archana.pandey@indusmobility.co.in",
+      "phone": "+91 9876503408",
+      "purchasedService": "WhatsApp Automation",
+      "customerStatus": "Active",
+      "joinedDate": "2026-05-04"
+    },
+    {
+      "name": "Alok Srivastava",
+      "company": "Kuber Wealth Tech",
+      "email": "alok.srivastava@kuberwealth.in",
+      "phone": "+91 9876503531",
+      "purchasedService": "AI Automation",
+      "customerStatus": "Active",
+      "joinedDate": "2026-06-10"
+    },
+    {
+      "name": "Preeti Joshi",
+      "company": "Matrix BioCare",
+      "email": "preeti.joshi@matrixbiocare.in",
+      "phone": "+91 9876503654",
+      "purchasedService": "AI Content Creation",
+      "customerStatus": "Active",
+      "joinedDate": "2026-05-21"
+    },
+    {
+      "name": "Tarun Mittal",
+      "company": "Sahaj FinTech",
+      "email": "tarun.mittal@sahajfintech.in",
+      "phone": "+91 9876503777",
+      "purchasedService": "AI Image Generation",
+      "customerStatus": "Onboarding",
+      "joinedDate": "2026-05-17"
+    },
+    {
+      "name": "Nisha Shenoy",
+      "company": "Trishul Defense Systems",
+      "email": "nisha.shenoy@trishuldefense.co.in",
+      "phone": "+91 9876503900",
+      "purchasedService": "AI Video Generation",
+      "customerStatus": "VIP",
+      "joinedDate": "2026-06-17"
+    },
+    {
+      "name": "Gaurav Mukherjee",
+      "company": "Agasti BioEnergy",
+      "email": "gaurav.mukherjee@agastibio.in",
+      "phone": "+91 9876504023",
+      "purchasedService": "Digital Marketing",
+      "customerStatus": "Renewal Due",
+      "joinedDate": "2026-06-27"
+    }
+  ],
+  "followups": [
+    {
+      "customerName": "Aarav Sharma",
+      "company": "Apex Tech Solutions",
+      "followupType": "Call",
+      "followupDate": "2026-08-31",
+      "assignedTo": "Rajesh Sharma",
+      "priority": "High",
+      "status": "Scheduled",
+      "remarks": "Discuss custom pricing for enterprise AI Chatbot deployment."
+    },
+    {
+      "customerName": "Ananya Iyer",
+      "company": "Bright Media Works",
+      "followupType": "Email",
+      "followupDate": "2026-09-01",
+      "assignedTo": "Priya Patel",
+      "priority": "Medium",
+      "status": "Completed",
+      "remarks": "Review technical architecture & API rate limits with CTO."
+    },
+    {
+      "customerName": "Vikram Malhotra",
+      "company": "CloudNet Systems",
+      "followupType": "Meeting",
+      "followupDate": "2026-09-09",
+      "assignedTo": "Amit Verma",
+      "priority": "Low",
+      "status": "Pending",
+      "remarks": "Send formal GST compliant proposal and SLA agreement."
+    },
+    {
+      "customerName": "Sunita Rao",
+      "company": "Delta Corp Infra",
+      "followupType": "Product Demo",
+      "followupDate": "2026-09-03",
+      "assignedTo": "Neha Sundaram",
+      "priority": "Urgent",
+      "status": "In Progress",
+      "remarks": "Follow up on security audit documentation approval."
+    },
+    {
+      "customerName": "Aditya Joshi",
+      "company": "Elevate Global Logistics",
+      "followupType": "WhatsApp Check-in",
+      "followupDate": "2026-09-10",
+      "assignedTo": "Rajesh Sharma",
+      "priority": "High",
+      "status": "Scheduled",
+      "remarks": "Product demo scheduled with VP of Engineering & Operations."
+    },
+    {
+      "customerName": "Kavita Reddy",
+      "company": "FirstTier Tech",
+      "followupType": "Call",
+      "followupDate": "2026-09-08",
+      "assignedTo": "Priya Patel",
+      "priority": "Medium",
+      "status": "Completed",
+      "remarks": "Check decision timeline following Q3 budget approval meeting."
+    },
+    {
+      "customerName": "Deepak Agarwal",
+      "company": "Greenfield Energy",
+      "followupType": "Email",
+      "followupDate": "2026-09-01",
+      "assignedTo": "Amit Verma",
+      "priority": "Low",
+      "status": "Pending",
+      "remarks": "Confirm onboarding date and dedicated success manager assignment."
+    },
+    {
+      "customerName": "Pooja Deshmukh",
+      "company": "Horizon Labs",
+      "followupType": "Meeting",
+      "followupDate": "2026-08-30",
+      "assignedTo": "Neha Sundaram",
+      "priority": "Urgent",
+      "status": "In Progress",
+      "remarks": "Address inquiry regarding WhatsApp Business API integration."
+    },
+    {
+      "customerName": "Suresh Kumar",
+      "company": "Innovate Labs",
+      "followupType": "Product Demo",
+      "followupDate": "2026-09-02",
+      "assignedTo": "Rajesh Sharma",
+      "priority": "High",
+      "status": "Scheduled",
+      "remarks": "Discuss custom pricing for enterprise AI Chatbot deployment."
+    },
+    {
+      "customerName": "Rajesh Verma",
+      "company": "Nexus Software India",
+      "followupType": "WhatsApp Check-in",
+      "followupDate": "2026-08-31",
+      "assignedTo": "Priya Patel",
+      "priority": "Medium",
+      "status": "Completed",
+      "remarks": "Review technical architecture & API rate limits with CTO."
+    },
+    {
+      "customerName": "Priyanka Gupta",
+      "company": "Prism Healthcare Tech",
+      "followupType": "Call",
+      "followupDate": "2026-09-09",
+      "assignedTo": "Amit Verma",
+      "priority": "Low",
+      "status": "Pending",
+      "remarks": "Send formal GST compliant proposal and SLA agreement."
+    },
+    {
+      "customerName": "Rohan Mehta",
+      "company": "Quantum Analytics India",
+      "followupType": "Email",
+      "followupDate": "2026-09-11",
+      "assignedTo": "Neha Sundaram",
+      "priority": "Urgent",
+      "status": "In Progress",
+      "remarks": "Follow up on security audit documentation approval."
+    },
+    {
+      "customerName": "Swati Nair",
+      "company": "Vertex Infotech",
+      "followupType": "Meeting",
+      "followupDate": "2026-09-17",
+      "assignedTo": "Rajesh Sharma",
+      "priority": "High",
+      "status": "Scheduled",
+      "remarks": "Product demo scheduled with VP of Engineering & Operations."
+    },
+    {
+      "customerName": "Amit Patel",
+      "company": "Zenith Enterprise Solutions",
+      "followupType": "Product Demo",
+      "followupDate": "2026-09-07",
+      "assignedTo": "Priya Patel",
+      "priority": "Medium",
+      "status": "Completed",
+      "remarks": "Check decision timeline following Q3 budget approval meeting."
+    },
+    {
+      "customerName": "Neha Kulkarni",
+      "company": "Astra Digital Media",
+      "followupType": "WhatsApp Check-in",
+      "followupDate": "2026-09-04",
+      "assignedTo": "Amit Verma",
+      "priority": "Low",
+      "status": "Pending",
+      "remarks": "Confirm onboarding date and dedicated success manager assignment."
+    },
+    {
+      "customerName": "Vikramaditya Singh",
+      "company": "Synergy Retail Tech",
+      "followupType": "Call",
+      "followupDate": "2026-09-08",
+      "assignedTo": "Neha Sundaram",
+      "priority": "Urgent",
+      "status": "In Progress",
+      "remarks": "Address inquiry regarding WhatsApp Business API integration."
+    },
+    {
+      "customerName": "Ritu Banerjee",
+      "company": "Omni Channel India",
+      "followupType": "Email",
+      "followupDate": "2026-09-17",
+      "assignedTo": "Rajesh Sharma",
+      "priority": "High",
+      "status": "Scheduled",
+      "remarks": "Discuss custom pricing for enterprise AI Chatbot deployment."
+    },
+    {
+      "customerName": "Rahul Saxena",
+      "company": "Vayu Renewable Solutions",
+      "followupType": "Meeting",
+      "followupDate": "2026-08-31",
+      "assignedTo": "Priya Patel",
+      "priority": "Medium",
+      "status": "Completed",
+      "remarks": "Review technical architecture & API rate limits with CTO."
+    },
+    {
+      "customerName": "Priya Sundaram",
+      "company": "Triveni Financial Tech",
+      "followupType": "Product Demo",
+      "followupDate": "2026-09-08",
+      "assignedTo": "Amit Verma",
+      "priority": "Low",
+      "status": "Pending",
+      "remarks": "Send formal GST compliant proposal and SLA agreement."
+    },
+    {
+      "customerName": "Siddharth Menon",
+      "company": "Bharat EdTech",
+      "followupType": "WhatsApp Check-in",
+      "followupDate": "2026-09-06",
+      "assignedTo": "Neha Sundaram",
+      "priority": "Urgent",
+      "status": "In Progress",
+      "remarks": "Follow up on security audit documentation approval."
+    },
+    {
+      "customerName": "Meera Bhat",
+      "company": "Smart Grid India",
+      "followupType": "Call",
+      "followupDate": "2026-09-16",
+      "assignedTo": "Rajesh Sharma",
+      "priority": "High",
+      "status": "Scheduled",
+      "remarks": "Product demo scheduled with VP of Engineering & Operations."
+    },
+    {
+      "customerName": "Manish Chaudhry",
+      "company": "Param AI Labs",
+      "followupType": "Email",
+      "followupDate": "2026-09-11",
+      "assignedTo": "Priya Patel",
+      "priority": "Medium",
+      "status": "Completed",
+      "remarks": "Check decision timeline following Q3 budget approval meeting."
+    },
+    {
+      "customerName": "Divya Kapoor",
+      "company": "Udaan Logistics",
+      "followupType": "Meeting",
+      "followupDate": "2026-09-06",
+      "assignedTo": "Amit Verma",
+      "priority": "Low",
+      "status": "Pending",
+      "remarks": "Confirm onboarding date and dedicated success manager assignment."
+    },
+    {
+      "customerName": "Sandeep Nambiar",
+      "company": "Samriddhi Microfinance",
+      "followupType": "Product Demo",
+      "followupDate": "2026-09-12",
+      "assignedTo": "Neha Sundaram",
+      "priority": "Urgent",
+      "status": "In Progress",
+      "remarks": "Address inquiry regarding WhatsApp Business API integration."
+    },
+    {
+      "customerName": "Archana Pandey",
+      "company": "Indus Mobility",
+      "followupType": "WhatsApp Check-in",
+      "followupDate": "2026-09-12",
+      "assignedTo": "Rajesh Sharma",
+      "priority": "High",
+      "status": "Scheduled",
+      "remarks": "Discuss custom pricing for enterprise AI Chatbot deployment."
+    },
+    {
+      "customerName": "Alok Srivastava",
+      "company": "Kuber Wealth Tech",
+      "followupType": "Call",
+      "followupDate": "2026-08-29",
+      "assignedTo": "Priya Patel",
+      "priority": "Medium",
+      "status": "Completed",
+      "remarks": "Review technical architecture & API rate limits with CTO."
+    },
+    {
+      "customerName": "Preeti Joshi",
+      "company": "Matrix BioCare",
+      "followupType": "Email",
+      "followupDate": "2026-09-13",
+      "assignedTo": "Amit Verma",
+      "priority": "Low",
+      "status": "Pending",
+      "remarks": "Send formal GST compliant proposal and SLA agreement."
+    },
+    {
+      "customerName": "Tarun Mittal",
+      "company": "Sahaj FinTech",
+      "followupType": "Meeting",
+      "followupDate": "2026-09-13",
+      "assignedTo": "Neha Sundaram",
+      "priority": "Urgent",
+      "status": "In Progress",
+      "remarks": "Follow up on security audit documentation approval."
+    },
+    {
+      "customerName": "Nisha Shenoy",
+      "company": "Trishul Defense Systems",
+      "followupType": "Product Demo",
+      "followupDate": "2026-09-14",
+      "assignedTo": "Rajesh Sharma",
+      "priority": "High",
+      "status": "Scheduled",
+      "remarks": "Product demo scheduled with VP of Engineering & Operations."
+    },
+    {
+      "customerName": "Gaurav Mukherjee",
+      "company": "Agasti BioEnergy",
+      "followupType": "WhatsApp Check-in",
+      "followupDate": "2026-09-03",
+      "assignedTo": "Priya Patel",
+      "priority": "Medium",
+      "status": "Completed",
+      "remarks": "Check decision timeline following Q3 budget approval meeting."
+    },
+    {
+      "customerName": "Sneha Desai",
+      "company": "Surya Automation",
+      "followupType": "Call",
+      "followupDate": "2026-09-11",
+      "assignedTo": "Amit Verma",
+      "priority": "Low",
+      "status": "Pending",
+      "remarks": "Confirm onboarding date and dedicated success manager assignment."
+    },
+    {
+      "customerName": "Karthik Viswanathan",
+      "company": "Nakshatra Media",
+      "followupType": "Email",
+      "followupDate": "2026-08-29",
+      "assignedTo": "Neha Sundaram",
+      "priority": "Urgent",
+      "status": "In Progress",
+      "remarks": "Address inquiry regarding WhatsApp Business API integration."
+    },
+    {
+      "customerName": "Tanvi Shah",
+      "company": "Banyan Cloud Solutions",
+      "followupType": "Meeting",
+      "followupDate": "2026-09-14",
+      "assignedTo": "Rajesh Sharma",
+      "priority": "High",
+      "status": "Scheduled",
+      "remarks": "Discuss custom pricing for enterprise AI Chatbot deployment."
+    },
+    {
+      "customerName": "Harsh Vardhan",
+      "company": "Jal Tech Innovations",
+      "followupType": "Product Demo",
+      "followupDate": "2026-09-01",
+      "assignedTo": "Priya Patel",
+      "priority": "Medium",
+      "status": "Completed",
+      "remarks": "Review technical architecture & API rate limits with CTO."
+    },
+    {
+      "customerName": "Radhika Pillai",
+      "company": "Tarang Communications",
+      "followupType": "WhatsApp Check-in",
+      "followupDate": "2026-08-29",
+      "assignedTo": "Amit Verma",
+      "priority": "Low",
+      "status": "Pending",
+      "remarks": "Send formal GST compliant proposal and SLA agreement."
+    },
+    {
+      "customerName": "Varun Chawla",
+      "company": "Pragati Cyber Security",
+      "followupType": "Call",
+      "followupDate": "2026-09-02",
+      "assignedTo": "Neha Sundaram",
+      "priority": "Urgent",
+      "status": "In Progress",
+      "remarks": "Follow up on security audit documentation approval."
+    },
+    {
+      "customerName": "Anjali Kulkarni",
+      "company": "Moksha Wellness Tech",
+      "followupType": "Email",
+      "followupDate": "2026-09-05",
+      "assignedTo": "Rajesh Sharma",
+      "priority": "High",
+      "status": "Scheduled",
+      "remarks": "Product demo scheduled with VP of Engineering & Operations."
+    },
+    {
+      "customerName": "Nikhil Sengupta",
+      "company": "Dhruva Aerospace",
+      "followupType": "Meeting",
+      "followupDate": "2026-08-30",
+      "assignedTo": "Priya Patel",
+      "priority": "Medium",
+      "status": "Completed",
+      "remarks": "Check decision timeline following Q3 budget approval meeting."
+    },
+    {
+      "customerName": "Smita Bhattacharya",
+      "company": "Kirloskar Electric Solutions",
+      "followupType": "Product Demo",
+      "followupDate": "2026-08-30",
+      "assignedTo": "Amit Verma",
+      "priority": "Low",
+      "status": "Pending",
+      "remarks": "Confirm onboarding date and dedicated success manager assignment."
+    },
+    {
+      "customerName": "Kunal Hegde",
+      "company": "Srijan Creative Agency",
+      "followupType": "WhatsApp Check-in",
+      "followupDate": "2026-09-13",
+      "assignedTo": "Neha Sundaram",
+      "priority": "Urgent",
+      "status": "In Progress",
+      "remarks": "Address inquiry regarding WhatsApp Business API integration."
+    }
+  ],
+  "conversations": [
+    {
+      "visitorName": "Aarav Sharma",
+      "company": "Apex Tech Solutions",
+      "messages": [
+        {
+          "sender": "visitor",
+          "text": "Hi, I need pricing information for your AI Chatbot solution."
+        },
+        {
+          "sender": "bot",
+          "text": "Hello! Our AI Chatbot plans start at ₹15,000/month. Would you like a personalized demo for your company?"
+        },
+        {
+          "sender": "visitor",
+          "text": "Yes, please connect me with your sales team."
+        },
+        {
+          "sender": "bot",
+          "text": "Great! I have notified our sales executive. They will reach out to you shortly."
+        }
+      ],
+      "intent": "AI Chatbot",
+      "status": "Closed",
+      "createdAt": "2026-08-22T17:24:48.353Z"
+    },
+    {
+      "visitorName": "Ananya Iyer",
+      "company": "Bright Media Works",
+      "messages": [
+        {
+          "sender": "visitor",
+          "text": "Can your CRM integrate with WhatsApp for automated lead follow-ups?"
+        },
+        {
+          "sender": "bot",
+          "text": "Yes! Our CRM includes built-in WhatsApp Automation for instant lead alerts, automated follow-ups, and broadcast campaigns."
+        },
+        {
+          "sender": "visitor",
+          "text": "That sounds perfect. How soon can we set this up?"
+        },
+        {
+          "sender": "bot",
+          "text": "Setup usually takes less than 48 hours. Let me schedule a quick discovery call for you."
+        }
+      ],
+      "intent": "CRM Demo",
+      "status": "Active",
+      "createdAt": "2026-08-27T17:24:48.353Z"
+    },
+    {
+      "visitorName": "Vikram Malhotra",
+      "company": "CloudNet Systems",
+      "messages": [
+        {
+          "sender": "visitor",
+          "text": "Looking for custom website development and AI automation."
+        },
+        {
+          "sender": "bot",
+          "text": "We offer full-stack website development integrated with custom AI workflows. May I have your email address?"
+        },
+        {
+          "sender": "visitor",
+          "text": "Sure, it is contact@company.in"
+        },
+        {
+          "sender": "bot",
+          "text": "Thank you! Our technical lead will email you our portfolio and initial proposal."
+        }
+      ],
+      "intent": "Website Development",
+      "status": "Escalated to Agent",
+      "createdAt": "2026-08-31T17:24:48.353Z"
+    },
+    {
+      "visitorName": "Sunita Rao",
+      "company": "Delta Corp Infra",
+      "messages": [
+        {
+          "sender": "visitor",
+          "text": "Hi, I need pricing information for your AI Chatbot solution."
+        },
+        {
+          "sender": "bot",
+          "text": "Hello! Our AI Chatbot plans start at ₹15,000/month. Would you like a personalized demo for your company?"
+        },
+        {
+          "sender": "visitor",
+          "text": "Yes, please connect me with your sales team."
+        },
+        {
+          "sender": "bot",
+          "text": "Great! I have notified our sales executive. They will reach out to you shortly."
+        }
+      ],
+      "intent": "Pricing",
+      "status": "Resolved",
+      "createdAt": "2026-08-31T17:24:48.353Z"
+    },
+    {
+      "visitorName": "Aditya Joshi",
+      "company": "Elevate Global Logistics",
+      "messages": [
+        {
+          "sender": "visitor",
+          "text": "Can your CRM integrate with WhatsApp for automated lead follow-ups?"
+        },
+        {
+          "sender": "bot",
+          "text": "Yes! Our CRM includes built-in WhatsApp Automation for instant lead alerts, automated follow-ups, and broadcast campaigns."
+        },
+        {
+          "sender": "visitor",
+          "text": "That sounds perfect. How soon can we set this up?"
+        },
+        {
+          "sender": "bot",
+          "text": "Setup usually takes less than 48 hours. Let me schedule a quick discovery call for you."
+        }
+      ],
+      "intent": "WhatsApp Automation",
+      "status": "Closed",
+      "createdAt": "2026-08-20T17:24:48.353Z"
+    },
+    {
+      "visitorName": "Kavita Reddy",
+      "company": "FirstTier Tech",
+      "messages": [
+        {
+          "sender": "visitor",
+          "text": "Looking for custom website development and AI automation."
+        },
+        {
+          "sender": "bot",
+          "text": "We offer full-stack website development integrated with custom AI workflows. May I have your email address?"
+        },
+        {
+          "sender": "visitor",
+          "text": "Sure, it is contact@company.in"
+        },
+        {
+          "sender": "bot",
+          "text": "Thank you! Our technical lead will email you our portfolio and initial proposal."
+        }
+      ],
+      "intent": "Support",
+      "status": "Active",
+      "createdAt": "2026-08-25T17:24:48.353Z"
+    },
+    {
+      "visitorName": "Deepak Agarwal",
+      "company": "Greenfield Energy",
+      "messages": [
+        {
+          "sender": "visitor",
+          "text": "Hi, I need pricing information for your AI Chatbot solution."
+        },
+        {
+          "sender": "bot",
+          "text": "Hello! Our AI Chatbot plans start at ₹15,000/month. Would you like a personalized demo for your company?"
+        },
+        {
+          "sender": "visitor",
+          "text": "Yes, please connect me with your sales team."
+        },
+        {
+          "sender": "bot",
+          "text": "Great! I have notified our sales executive. They will reach out to you shortly."
+        }
+      ],
+      "intent": "AI Chatbot",
+      "status": "Escalated to Agent",
+      "createdAt": "2026-08-20T17:24:48.353Z"
+    },
+    {
+      "visitorName": "Pooja Deshmukh",
+      "company": "Horizon Labs",
+      "messages": [
+        {
+          "sender": "visitor",
+          "text": "Can your CRM integrate with WhatsApp for automated lead follow-ups?"
+        },
+        {
+          "sender": "bot",
+          "text": "Yes! Our CRM includes built-in WhatsApp Automation for instant lead alerts, automated follow-ups, and broadcast campaigns."
+        },
+        {
+          "sender": "visitor",
+          "text": "That sounds perfect. How soon can we set this up?"
+        },
+        {
+          "sender": "bot",
+          "text": "Setup usually takes less than 48 hours. Let me schedule a quick discovery call for you."
+        }
+      ],
+      "intent": "CRM Demo",
+      "status": "Resolved",
+      "createdAt": "2026-08-31T17:24:48.353Z"
+    },
+    {
+      "visitorName": "Suresh Kumar",
+      "company": "Innovate Labs",
+      "messages": [
+        {
+          "sender": "visitor",
+          "text": "Looking for custom website development and AI automation."
+        },
+        {
+          "sender": "bot",
+          "text": "We offer full-stack website development integrated with custom AI workflows. May I have your email address?"
+        },
+        {
+          "sender": "visitor",
+          "text": "Sure, it is contact@company.in"
+        },
+        {
+          "sender": "bot",
+          "text": "Thank you! Our technical lead will email you our portfolio and initial proposal."
+        }
+      ],
+      "intent": "Website Development",
+      "status": "Closed",
+      "createdAt": "2026-08-26T17:24:48.353Z"
+    },
+    {
+      "visitorName": "Rajesh Verma",
+      "company": "Nexus Software India",
+      "messages": [
+        {
+          "sender": "visitor",
+          "text": "Hi, I need pricing information for your AI Chatbot solution."
+        },
+        {
+          "sender": "bot",
+          "text": "Hello! Our AI Chatbot plans start at ₹15,000/month. Would you like a personalized demo for your company?"
+        },
+        {
+          "sender": "visitor",
+          "text": "Yes, please connect me with your sales team."
+        },
+        {
+          "sender": "bot",
+          "text": "Great! I have notified our sales executive. They will reach out to you shortly."
+        }
+      ],
+      "intent": "Pricing",
+      "status": "Active",
+      "createdAt": "2026-09-02T17:24:48.353Z"
+    },
+    {
+      "visitorName": "Priyanka Gupta",
+      "company": "Prism Healthcare Tech",
+      "messages": [
+        {
+          "sender": "visitor",
+          "text": "Can your CRM integrate with WhatsApp for automated lead follow-ups?"
+        },
+        {
+          "sender": "bot",
+          "text": "Yes! Our CRM includes built-in WhatsApp Automation for instant lead alerts, automated follow-ups, and broadcast campaigns."
+        },
+        {
+          "sender": "visitor",
+          "text": "That sounds perfect. How soon can we set this up?"
+        },
+        {
+          "sender": "bot",
+          "text": "Setup usually takes less than 48 hours. Let me schedule a quick discovery call for you."
+        }
+      ],
+      "intent": "WhatsApp Automation",
+      "status": "Escalated to Agent",
+      "createdAt": "2026-09-03T17:24:48.353Z"
+    },
+    {
+      "visitorName": "Rohan Mehta",
+      "company": "Quantum Analytics India",
+      "messages": [
+        {
+          "sender": "visitor",
+          "text": "Looking for custom website development and AI automation."
+        },
+        {
+          "sender": "bot",
+          "text": "We offer full-stack website development integrated with custom AI workflows. May I have your email address?"
+        },
+        {
+          "sender": "visitor",
+          "text": "Sure, it is contact@company.in"
+        },
+        {
+          "sender": "bot",
+          "text": "Thank you! Our technical lead will email you our portfolio and initial proposal."
+        }
+      ],
+      "intent": "Support",
+      "status": "Resolved",
+      "createdAt": "2026-08-30T17:24:48.353Z"
+    },
+    {
+      "visitorName": "Swati Nair",
+      "company": "Vertex Infotech",
+      "messages": [
+        {
+          "sender": "visitor",
+          "text": "Hi, I need pricing information for your AI Chatbot solution."
+        },
+        {
+          "sender": "bot",
+          "text": "Hello! Our AI Chatbot plans start at ₹15,000/month. Would you like a personalized demo for your company?"
+        },
+        {
+          "sender": "visitor",
+          "text": "Yes, please connect me with your sales team."
+        },
+        {
+          "sender": "bot",
+          "text": "Great! I have notified our sales executive. They will reach out to you shortly."
+        }
+      ],
+      "intent": "AI Chatbot",
+      "status": "Closed",
+      "createdAt": "2026-09-03T17:24:48.353Z"
+    },
+    {
+      "visitorName": "Amit Patel",
+      "company": "Zenith Enterprise Solutions",
+      "messages": [
+        {
+          "sender": "visitor",
+          "text": "Can your CRM integrate with WhatsApp for automated lead follow-ups?"
+        },
+        {
+          "sender": "bot",
+          "text": "Yes! Our CRM includes built-in WhatsApp Automation for instant lead alerts, automated follow-ups, and broadcast campaigns."
+        },
+        {
+          "sender": "visitor",
+          "text": "That sounds perfect. How soon can we set this up?"
+        },
+        {
+          "sender": "bot",
+          "text": "Setup usually takes less than 48 hours. Let me schedule a quick discovery call for you."
+        }
+      ],
+      "intent": "CRM Demo",
+      "status": "Active",
+      "createdAt": "2026-09-01T17:24:48.353Z"
+    },
+    {
+      "visitorName": "Neha Kulkarni",
+      "company": "Astra Digital Media",
+      "messages": [
+        {
+          "sender": "visitor",
+          "text": "Looking for custom website development and AI automation."
+        },
+        {
+          "sender": "bot",
+          "text": "We offer full-stack website development integrated with custom AI workflows. May I have your email address?"
+        },
+        {
+          "sender": "visitor",
+          "text": "Sure, it is contact@company.in"
+        },
+        {
+          "sender": "bot",
+          "text": "Thank you! Our technical lead will email you our portfolio and initial proposal."
+        }
+      ],
+      "intent": "Website Development",
+      "status": "Escalated to Agent",
+      "createdAt": "2026-08-23T17:24:48.353Z"
+    },
+    {
+      "visitorName": "Vikramaditya Singh",
+      "company": "Synergy Retail Tech",
+      "messages": [
+        {
+          "sender": "visitor",
+          "text": "Hi, I need pricing information for your AI Chatbot solution."
+        },
+        {
+          "sender": "bot",
+          "text": "Hello! Our AI Chatbot plans start at ₹15,000/month. Would you like a personalized demo for your company?"
+        },
+        {
+          "sender": "visitor",
+          "text": "Yes, please connect me with your sales team."
+        },
+        {
+          "sender": "bot",
+          "text": "Great! I have notified our sales executive. They will reach out to you shortly."
+        }
+      ],
+      "intent": "Pricing",
+      "status": "Resolved",
+      "createdAt": "2026-08-29T17:24:48.353Z"
+    },
+    {
+      "visitorName": "Ritu Banerjee",
+      "company": "Omni Channel India",
+      "messages": [
+        {
+          "sender": "visitor",
+          "text": "Can your CRM integrate with WhatsApp for automated lead follow-ups?"
+        },
+        {
+          "sender": "bot",
+          "text": "Yes! Our CRM includes built-in WhatsApp Automation for instant lead alerts, automated follow-ups, and broadcast campaigns."
+        },
+        {
+          "sender": "visitor",
+          "text": "That sounds perfect. How soon can we set this up?"
+        },
+        {
+          "sender": "bot",
+          "text": "Setup usually takes less than 48 hours. Let me schedule a quick discovery call for you."
+        }
+      ],
+      "intent": "WhatsApp Automation",
+      "status": "Closed",
+      "createdAt": "2026-08-21T17:24:48.353Z"
+    },
+    {
+      "visitorName": "Rahul Saxena",
+      "company": "Vayu Renewable Solutions",
+      "messages": [
+        {
+          "sender": "visitor",
+          "text": "Looking for custom website development and AI automation."
+        },
+        {
+          "sender": "bot",
+          "text": "We offer full-stack website development integrated with custom AI workflows. May I have your email address?"
+        },
+        {
+          "sender": "visitor",
+          "text": "Sure, it is contact@company.in"
+        },
+        {
+          "sender": "bot",
+          "text": "Thank you! Our technical lead will email you our portfolio and initial proposal."
+        }
+      ],
+      "intent": "Support",
+      "status": "Active",
+      "createdAt": "2026-08-28T17:24:48.353Z"
+    },
+    {
+      "visitorName": "Priya Sundaram",
+      "company": "Triveni Financial Tech",
+      "messages": [
+        {
+          "sender": "visitor",
+          "text": "Hi, I need pricing information for your AI Chatbot solution."
+        },
+        {
+          "sender": "bot",
+          "text": "Hello! Our AI Chatbot plans start at ₹15,000/month. Would you like a personalized demo for your company?"
+        },
+        {
+          "sender": "visitor",
+          "text": "Yes, please connect me with your sales team."
+        },
+        {
+          "sender": "bot",
+          "text": "Great! I have notified our sales executive. They will reach out to you shortly."
+        }
+      ],
+      "intent": "AI Chatbot",
+      "status": "Escalated to Agent",
+      "createdAt": "2026-08-24T17:24:48.353Z"
+    },
+    {
+      "visitorName": "Siddharth Menon",
+      "company": "Bharat EdTech",
+      "messages": [
+        {
+          "sender": "visitor",
+          "text": "Can your CRM integrate with WhatsApp for automated lead follow-ups?"
+        },
+        {
+          "sender": "bot",
+          "text": "Yes! Our CRM includes built-in WhatsApp Automation for instant lead alerts, automated follow-ups, and broadcast campaigns."
+        },
+        {
+          "sender": "visitor",
+          "text": "That sounds perfect. How soon can we set this up?"
+        },
+        {
+          "sender": "bot",
+          "text": "Setup usually takes less than 48 hours. Let me schedule a quick discovery call for you."
+        }
+      ],
+      "intent": "CRM Demo",
+      "status": "Resolved",
+      "createdAt": "2026-09-03T17:24:48.353Z"
+    },
+    {
+      "visitorName": "Meera Bhat",
+      "company": "Smart Grid India",
+      "messages": [
+        {
+          "sender": "visitor",
+          "text": "Looking for custom website development and AI automation."
+        },
+        {
+          "sender": "bot",
+          "text": "We offer full-stack website development integrated with custom AI workflows. May I have your email address?"
+        },
+        {
+          "sender": "visitor",
+          "text": "Sure, it is contact@company.in"
+        },
+        {
+          "sender": "bot",
+          "text": "Thank you! Our technical lead will email you our portfolio and initial proposal."
+        }
+      ],
+      "intent": "Website Development",
+      "status": "Closed",
+      "createdAt": "2026-08-26T17:24:48.353Z"
+    },
+    {
+      "visitorName": "Manish Chaudhry",
+      "company": "Param AI Labs",
+      "messages": [
+        {
+          "sender": "visitor",
+          "text": "Hi, I need pricing information for your AI Chatbot solution."
+        },
+        {
+          "sender": "bot",
+          "text": "Hello! Our AI Chatbot plans start at ₹15,000/month. Would you like a personalized demo for your company?"
+        },
+        {
+          "sender": "visitor",
+          "text": "Yes, please connect me with your sales team."
+        },
+        {
+          "sender": "bot",
+          "text": "Great! I have notified our sales executive. They will reach out to you shortly."
+        }
+      ],
+      "intent": "Pricing",
+      "status": "Active",
+      "createdAt": "2026-08-23T17:24:48.353Z"
+    },
+    {
+      "visitorName": "Divya Kapoor",
+      "company": "Udaan Logistics",
+      "messages": [
+        {
+          "sender": "visitor",
+          "text": "Can your CRM integrate with WhatsApp for automated lead follow-ups?"
+        },
+        {
+          "sender": "bot",
+          "text": "Yes! Our CRM includes built-in WhatsApp Automation for instant lead alerts, automated follow-ups, and broadcast campaigns."
+        },
+        {
+          "sender": "visitor",
+          "text": "That sounds perfect. How soon can we set this up?"
+        },
+        {
+          "sender": "bot",
+          "text": "Setup usually takes less than 48 hours. Let me schedule a quick discovery call for you."
+        }
+      ],
+      "intent": "WhatsApp Automation",
+      "status": "Escalated to Agent",
+      "createdAt": "2026-09-02T17:24:48.353Z"
+    },
+    {
+      "visitorName": "Sandeep Nambiar",
+      "company": "Samriddhi Microfinance",
+      "messages": [
+        {
+          "sender": "visitor",
+          "text": "Looking for custom website development and AI automation."
+        },
+        {
+          "sender": "bot",
+          "text": "We offer full-stack website development integrated with custom AI workflows. May I have your email address?"
+        },
+        {
+          "sender": "visitor",
+          "text": "Sure, it is contact@company.in"
+        },
+        {
+          "sender": "bot",
+          "text": "Thank you! Our technical lead will email you our portfolio and initial proposal."
+        }
+      ],
+      "intent": "Support",
+      "status": "Resolved",
+      "createdAt": "2026-08-30T17:24:48.353Z"
+    },
+    {
+      "visitorName": "Archana Pandey",
+      "company": "Indus Mobility",
+      "messages": [
+        {
+          "sender": "visitor",
+          "text": "Hi, I need pricing information for your AI Chatbot solution."
+        },
+        {
+          "sender": "bot",
+          "text": "Hello! Our AI Chatbot plans start at ₹15,000/month. Would you like a personalized demo for your company?"
+        },
+        {
+          "sender": "visitor",
+          "text": "Yes, please connect me with your sales team."
+        },
+        {
+          "sender": "bot",
+          "text": "Great! I have notified our sales executive. They will reach out to you shortly."
+        }
+      ],
+      "intent": "AI Chatbot",
+      "status": "Closed",
+      "createdAt": "2026-08-31T17:24:48.353Z"
+    },
+    {
+      "visitorName": "Alok Srivastava",
+      "company": "Kuber Wealth Tech",
+      "messages": [
+        {
+          "sender": "visitor",
+          "text": "Can your CRM integrate with WhatsApp for automated lead follow-ups?"
+        },
+        {
+          "sender": "bot",
+          "text": "Yes! Our CRM includes built-in WhatsApp Automation for instant lead alerts, automated follow-ups, and broadcast campaigns."
+        },
+        {
+          "sender": "visitor",
+          "text": "That sounds perfect. How soon can we set this up?"
+        },
+        {
+          "sender": "bot",
+          "text": "Setup usually takes less than 48 hours. Let me schedule a quick discovery call for you."
+        }
+      ],
+      "intent": "CRM Demo",
+      "status": "Active",
+      "createdAt": "2026-08-22T17:24:48.353Z"
+    },
+    {
+      "visitorName": "Preeti Joshi",
+      "company": "Matrix BioCare",
+      "messages": [
+        {
+          "sender": "visitor",
+          "text": "Looking for custom website development and AI automation."
+        },
+        {
+          "sender": "bot",
+          "text": "We offer full-stack website development integrated with custom AI workflows. May I have your email address?"
+        },
+        {
+          "sender": "visitor",
+          "text": "Sure, it is contact@company.in"
+        },
+        {
+          "sender": "bot",
+          "text": "Thank you! Our technical lead will email you our portfolio and initial proposal."
+        }
+      ],
+      "intent": "Website Development",
+      "status": "Escalated to Agent",
+      "createdAt": "2026-08-24T17:24:48.353Z"
+    },
+    {
+      "visitorName": "Tarun Mittal",
+      "company": "Sahaj FinTech",
+      "messages": [
+        {
+          "sender": "visitor",
+          "text": "Hi, I need pricing information for your AI Chatbot solution."
+        },
+        {
+          "sender": "bot",
+          "text": "Hello! Our AI Chatbot plans start at ₹15,000/month. Would you like a personalized demo for your company?"
+        },
+        {
+          "sender": "visitor",
+          "text": "Yes, please connect me with your sales team."
+        },
+        {
+          "sender": "bot",
+          "text": "Great! I have notified our sales executive. They will reach out to you shortly."
+        }
+      ],
+      "intent": "Pricing",
+      "status": "Resolved",
+      "createdAt": "2026-09-01T17:24:48.353Z"
+    },
+    {
+      "visitorName": "Nisha Shenoy",
+      "company": "Trishul Defense Systems",
+      "messages": [
+        {
+          "sender": "visitor",
+          "text": "Can your CRM integrate with WhatsApp for automated lead follow-ups?"
+        },
+        {
+          "sender": "bot",
+          "text": "Yes! Our CRM includes built-in WhatsApp Automation for instant lead alerts, automated follow-ups, and broadcast campaigns."
+        },
+        {
+          "sender": "visitor",
+          "text": "That sounds perfect. How soon can we set this up?"
+        },
+        {
+          "sender": "bot",
+          "text": "Setup usually takes less than 48 hours. Let me schedule a quick discovery call for you."
+        }
+      ],
+      "intent": "WhatsApp Automation",
+      "status": "Closed",
+      "createdAt": "2026-08-23T17:24:48.353Z"
+    },
+    {
+      "visitorName": "Gaurav Mukherjee",
+      "company": "Agasti BioEnergy",
+      "messages": [
+        {
+          "sender": "visitor",
+          "text": "Looking for custom website development and AI automation."
+        },
+        {
+          "sender": "bot",
+          "text": "We offer full-stack website development integrated with custom AI workflows. May I have your email address?"
+        },
+        {
+          "sender": "visitor",
+          "text": "Sure, it is contact@company.in"
+        },
+        {
+          "sender": "bot",
+          "text": "Thank you! Our technical lead will email you our portfolio and initial proposal."
+        }
+      ],
+      "intent": "Support",
+      "status": "Active",
+      "createdAt": "2026-08-29T17:24:48.353Z"
+    }
+  ],
+  "chatbots": [
+    {
+      "chatbotName": "Website Assistant",
+      "model": "gpt-4o-mini",
+      "status": "Active",
+      "totalConversations": 1420
+    },
+    {
+      "chatbotName": "Sales Assistant",
+      "model": "gpt-4o",
+      "status": "Active",
+      "totalConversations": 890
+    },
+    {
+      "chatbotName": "Support Assistant",
+      "model": "claude-3-5-sonnet",
+      "status": "Active",
+      "totalConversations": 630
+    }
+  ],
+  "activities": [
+    {
+      "activityType": "Lead Created",
+      "subject": "Lead Created for Apex Tech Solutions",
+      "description": "Agent Rajesh Sharma performed action [Lead Created] for lead Aarav Sharma (aarav.sharma@apextech.in).",
+      "performedBy": "Rajesh Sharma",
+      "targetCompany": "Apex Tech Solutions",
+      "timestamp": "2026-08-31T14:24:48.354Z"
+    },
+    {
+      "activityType": "Lead Updated",
+      "subject": "Lead Updated for Bright Media Works",
+      "description": "Agent Priya Patel performed action [Lead Updated] for lead Ananya Iyer (ananya.iyer@brightmedia.in).",
+      "performedBy": "Priya Patel",
+      "targetCompany": "Bright Media Works",
+      "timestamp": "2026-08-31T15:09:48.354Z"
+    },
+    {
+      "activityType": "Customer Converted",
+      "subject": "Customer Converted for CloudNet Systems",
+      "description": "Agent Amit Verma performed action [Customer Converted] for lead Vikram Malhotra (vikram.malhotra@cloudnet.co.in).",
+      "performedBy": "Amit Verma",
+      "targetCompany": "CloudNet Systems",
+      "timestamp": "2026-08-31T15:54:48.354Z"
+    },
+    {
+      "activityType": "Follow-up Scheduled",
+      "subject": "Follow-up Scheduled for Delta Corp Infra",
+      "description": "Agent Neha Sundaram performed action [Follow-up Scheduled] for lead Sunita Rao (sunita.rao@deltacorp.in).",
+      "performedBy": "Neha Sundaram",
+      "targetCompany": "Delta Corp Infra",
+      "timestamp": "2026-08-31T16:39:48.354Z"
+    },
+    {
+      "activityType": "Chat Started",
+      "subject": "Chat Started for Elevate Global Logistics",
+      "description": "Agent Rajesh Sharma performed action [Chat Started] for lead Aditya Joshi (aditya.joshi@elevate.in).",
+      "performedBy": "Rajesh Sharma",
+      "targetCompany": "Elevate Global Logistics",
+      "timestamp": "2026-08-31T17:24:48.354Z"
+    },
+    {
+      "activityType": "Customer Assigned",
+      "subject": "Customer Assigned for FirstTier Tech",
+      "description": "Agent Priya Patel performed action [Customer Assigned] for lead Kavita Reddy (kavita.reddy@firsttier.in).",
+      "performedBy": "Priya Patel",
+      "targetCompany": "FirstTier Tech",
+      "timestamp": "2026-08-31T18:09:48.354Z"
+    },
+    {
+      "activityType": "Note Added",
+      "subject": "Note Added for Greenfield Energy",
+      "description": "Agent Amit Verma performed action [Note Added] for lead Deepak Agarwal (deepak.agarwal@greenfield.co.in).",
+      "performedBy": "Amit Verma",
+      "targetCompany": "Greenfield Energy",
+      "timestamp": "2026-08-31T18:54:48.354Z"
+    },
+    {
+      "activityType": "Proposal Sent",
+      "subject": "Proposal Sent for Horizon Labs",
+      "description": "Agent Neha Sundaram performed action [Proposal Sent] for lead Pooja Deshmukh (pooja.deshmukh@horizonlabs.in).",
+      "performedBy": "Neha Sundaram",
+      "targetCompany": "Horizon Labs",
+      "timestamp": "2026-08-31T19:39:48.354Z"
+    },
+    {
+      "activityType": "Call Completed",
+      "subject": "Call Completed for Innovate Labs",
+      "description": "Agent Rajesh Sharma performed action [Call Completed] for lead Suresh Kumar (suresh.kumar@innovatelabs.in).",
+      "performedBy": "Rajesh Sharma",
+      "targetCompany": "Innovate Labs",
+      "timestamp": "2026-08-31T20:24:48.354Z"
+    },
+    {
+      "activityType": "Email Sent",
+      "subject": "Email Sent for Nexus Software India",
+      "description": "Agent Priya Patel performed action [Email Sent] for lead Rajesh Verma (rajesh.verma@nexussoft.in).",
+      "performedBy": "Priya Patel",
+      "targetCompany": "Nexus Software India",
+      "timestamp": "2026-08-31T21:09:48.354Z"
+    },
+    {
+      "activityType": "Lead Created",
+      "subject": "Lead Created for Prism Healthcare Tech",
+      "description": "Agent Amit Verma performed action [Lead Created] for lead Priyanka Gupta (priyanka.gupta@prismhealth.co.in).",
+      "performedBy": "Amit Verma",
+      "targetCompany": "Prism Healthcare Tech",
+      "timestamp": "2026-08-31T21:54:48.354Z"
+    },
+    {
+      "activityType": "Lead Updated",
+      "subject": "Lead Updated for Quantum Analytics India",
+      "description": "Agent Neha Sundaram performed action [Lead Updated] for lead Rohan Mehta (rohan.mehta@quantumanalytics.in).",
+      "performedBy": "Neha Sundaram",
+      "targetCompany": "Quantum Analytics India",
+      "timestamp": "2026-08-31T22:39:48.354Z"
+    },
+    {
+      "activityType": "Customer Converted",
+      "subject": "Customer Converted for Vertex Infotech",
+      "description": "Agent Rajesh Sharma performed action [Customer Converted] for lead Swati Nair (swati.nair@vertexinfotech.in).",
+      "performedBy": "Rajesh Sharma",
+      "targetCompany": "Vertex Infotech",
+      "timestamp": "2026-08-31T23:24:48.354Z"
+    },
+    {
+      "activityType": "Follow-up Scheduled",
+      "subject": "Follow-up Scheduled for Zenith Enterprise Solutions",
+      "description": "Agent Priya Patel performed action [Follow-up Scheduled] for lead Amit Patel (amit.patel@zenithenterprise.co.in).",
+      "performedBy": "Priya Patel",
+      "targetCompany": "Zenith Enterprise Solutions",
+      "timestamp": "2026-09-01T00:09:48.354Z"
+    },
+    {
+      "activityType": "Chat Started",
+      "subject": "Chat Started for Astra Digital Media",
+      "description": "Agent Amit Verma performed action [Chat Started] for lead Neha Kulkarni (neha.kulkarni@astradigital.in).",
+      "performedBy": "Amit Verma",
+      "targetCompany": "Astra Digital Media",
+      "timestamp": "2026-09-01T00:54:48.354Z"
+    },
+    {
+      "activityType": "Customer Assigned",
+      "subject": "Customer Assigned for Synergy Retail Tech",
+      "description": "Agent Neha Sundaram performed action [Customer Assigned] for lead Vikramaditya Singh (vikramaditya.singh@synergyretail.in).",
+      "performedBy": "Neha Sundaram",
+      "targetCompany": "Synergy Retail Tech",
+      "timestamp": "2026-09-01T01:39:48.354Z"
+    },
+    {
+      "activityType": "Note Added",
+      "subject": "Note Added for Omni Channel India",
+      "description": "Agent Rajesh Sharma performed action [Note Added] for lead Ritu Banerjee (ritu.banerjee@omnichannel.co.in).",
+      "performedBy": "Rajesh Sharma",
+      "targetCompany": "Omni Channel India",
+      "timestamp": "2026-09-01T02:24:48.354Z"
+    },
+    {
+      "activityType": "Proposal Sent",
+      "subject": "Proposal Sent for Vayu Renewable Solutions",
+      "description": "Agent Priya Patel performed action [Proposal Sent] for lead Rahul Saxena (rahul.saxena@vayurenewable.in).",
+      "performedBy": "Priya Patel",
+      "targetCompany": "Vayu Renewable Solutions",
+      "timestamp": "2026-09-01T03:09:48.354Z"
+    },
+    {
+      "activityType": "Call Completed",
+      "subject": "Call Completed for Triveni Financial Tech",
+      "description": "Agent Amit Verma performed action [Call Completed] for lead Priya Sundaram (priya.sundaram@trivenifin.in).",
+      "performedBy": "Amit Verma",
+      "targetCompany": "Triveni Financial Tech",
+      "timestamp": "2026-09-01T03:54:48.354Z"
+    },
+    {
+      "activityType": "Email Sent",
+      "subject": "Email Sent for Bharat EdTech",
+      "description": "Agent Neha Sundaram performed action [Email Sent] for lead Siddharth Menon (siddharth.menon@bharatedtech.in).",
+      "performedBy": "Neha Sundaram",
+      "targetCompany": "Bharat EdTech",
+      "timestamp": "2026-09-01T04:39:48.354Z"
+    },
+    {
+      "activityType": "Lead Created",
+      "subject": "Lead Created for Smart Grid India",
+      "description": "Agent Rajesh Sharma performed action [Lead Created] for lead Meera Bhat (meera.bhat@smartgridindia.co.in).",
+      "performedBy": "Rajesh Sharma",
+      "targetCompany": "Smart Grid India",
+      "timestamp": "2026-09-01T05:24:48.354Z"
+    },
+    {
+      "activityType": "Lead Updated",
+      "subject": "Lead Updated for Param AI Labs",
+      "description": "Agent Priya Patel performed action [Lead Updated] for lead Manish Chaudhry (manish.chaudhry@paramai.in).",
+      "performedBy": "Priya Patel",
+      "targetCompany": "Param AI Labs",
+      "timestamp": "2026-09-01T06:09:48.354Z"
+    },
+    {
+      "activityType": "Customer Converted",
+      "subject": "Customer Converted for Udaan Logistics",
+      "description": "Agent Amit Verma performed action [Customer Converted] for lead Divya Kapoor (divya.kapoor@udaanlogistics.in).",
+      "performedBy": "Amit Verma",
+      "targetCompany": "Udaan Logistics",
+      "timestamp": "2026-09-01T06:54:48.354Z"
+    },
+    {
+      "activityType": "Follow-up Scheduled",
+      "subject": "Follow-up Scheduled for Samriddhi Microfinance",
+      "description": "Agent Neha Sundaram performed action [Follow-up Scheduled] for lead Sandeep Nambiar (sandeep.nambiar@samriddhi.org.in).",
+      "performedBy": "Neha Sundaram",
+      "targetCompany": "Samriddhi Microfinance",
+      "timestamp": "2026-09-01T07:39:48.354Z"
+    },
+    {
+      "activityType": "Chat Started",
+      "subject": "Chat Started for Indus Mobility",
+      "description": "Agent Rajesh Sharma performed action [Chat Started] for lead Archana Pandey (archana.pandey@indusmobility.co.in).",
+      "performedBy": "Rajesh Sharma",
+      "targetCompany": "Indus Mobility",
+      "timestamp": "2026-09-01T08:24:48.354Z"
+    },
+    {
+      "activityType": "Customer Assigned",
+      "subject": "Customer Assigned for Kuber Wealth Tech",
+      "description": "Agent Priya Patel performed action [Customer Assigned] for lead Alok Srivastava (alok.srivastava@kuberwealth.in).",
+      "performedBy": "Priya Patel",
+      "targetCompany": "Kuber Wealth Tech",
+      "timestamp": "2026-09-01T09:09:48.354Z"
+    },
+    {
+      "activityType": "Note Added",
+      "subject": "Note Added for Matrix BioCare",
+      "description": "Agent Amit Verma performed action [Note Added] for lead Preeti Joshi (preeti.joshi@matrixbiocare.in).",
+      "performedBy": "Amit Verma",
+      "targetCompany": "Matrix BioCare",
+      "timestamp": "2026-09-01T09:54:48.354Z"
+    },
+    {
+      "activityType": "Proposal Sent",
+      "subject": "Proposal Sent for Sahaj FinTech",
+      "description": "Agent Neha Sundaram performed action [Proposal Sent] for lead Tarun Mittal (tarun.mittal@sahajfintech.in).",
+      "performedBy": "Neha Sundaram",
+      "targetCompany": "Sahaj FinTech",
+      "timestamp": "2026-09-01T10:39:48.354Z"
+    },
+    {
+      "activityType": "Call Completed",
+      "subject": "Call Completed for Trishul Defense Systems",
+      "description": "Agent Rajesh Sharma performed action [Call Completed] for lead Nisha Shenoy (nisha.shenoy@trishuldefense.co.in).",
+      "performedBy": "Rajesh Sharma",
+      "targetCompany": "Trishul Defense Systems",
+      "timestamp": "2026-09-01T11:24:48.354Z"
+    },
+    {
+      "activityType": "Email Sent",
+      "subject": "Email Sent for Agasti BioEnergy",
+      "description": "Agent Priya Patel performed action [Email Sent] for lead Gaurav Mukherjee (gaurav.mukherjee@agastibio.in).",
+      "performedBy": "Priya Patel",
+      "targetCompany": "Agasti BioEnergy",
+      "timestamp": "2026-09-01T12:09:48.354Z"
+    },
+    {
+      "activityType": "Lead Created",
+      "subject": "Lead Created for Surya Automation",
+      "description": "Agent Amit Verma performed action [Lead Created] for lead Sneha Desai (sneha.desai@suryaauto.co.in).",
+      "performedBy": "Amit Verma",
+      "targetCompany": "Surya Automation",
+      "timestamp": "2026-09-01T12:54:48.354Z"
+    },
+    {
+      "activityType": "Lead Updated",
+      "subject": "Lead Updated for Nakshatra Media",
+      "description": "Agent Neha Sundaram performed action [Lead Updated] for lead Karthik Viswanathan (karthik.viswanathan@nakshatramedia.in).",
+      "performedBy": "Neha Sundaram",
+      "targetCompany": "Nakshatra Media",
+      "timestamp": "2026-09-01T13:39:48.354Z"
+    },
+    {
+      "activityType": "Customer Converted",
+      "subject": "Customer Converted for Banyan Cloud Solutions",
+      "description": "Agent Rajesh Sharma performed action [Customer Converted] for lead Tanvi Shah (tanvi.shah@banyancloud.in).",
+      "performedBy": "Rajesh Sharma",
+      "targetCompany": "Banyan Cloud Solutions",
+      "timestamp": "2026-09-01T14:24:48.354Z"
+    },
+    {
+      "activityType": "Follow-up Scheduled",
+      "subject": "Follow-up Scheduled for Jal Tech Innovations",
+      "description": "Agent Priya Patel performed action [Follow-up Scheduled] for lead Harsh Vardhan (harsh.vardhan@jaltech.co.in).",
+      "performedBy": "Priya Patel",
+      "targetCompany": "Jal Tech Innovations",
+      "timestamp": "2026-09-01T15:09:48.354Z"
+    },
+    {
+      "activityType": "Chat Started",
+      "subject": "Chat Started for Tarang Communications",
+      "description": "Agent Amit Verma performed action [Chat Started] for lead Radhika Pillai (radhika.pillai@tarangcomms.in).",
+      "performedBy": "Amit Verma",
+      "targetCompany": "Tarang Communications",
+      "timestamp": "2026-09-01T15:54:48.354Z"
+    },
+    {
+      "activityType": "Customer Assigned",
+      "subject": "Customer Assigned for Pragati Cyber Security",
+      "description": "Agent Neha Sundaram performed action [Customer Assigned] for lead Varun Chawla (varun.chawla@pragatisecurity.in).",
+      "performedBy": "Neha Sundaram",
+      "targetCompany": "Pragati Cyber Security",
+      "timestamp": "2026-09-01T16:39:48.354Z"
+    },
+    {
+      "activityType": "Note Added",
+      "subject": "Note Added for Moksha Wellness Tech",
+      "description": "Agent Rajesh Sharma performed action [Note Added] for lead Anjali Kulkarni (anjali.kulkarni@mokshawellness.in).",
+      "performedBy": "Rajesh Sharma",
+      "targetCompany": "Moksha Wellness Tech",
+      "timestamp": "2026-09-01T17:24:48.354Z"
+    },
+    {
+      "activityType": "Proposal Sent",
+      "subject": "Proposal Sent for Dhruva Aerospace",
+      "description": "Agent Priya Patel performed action [Proposal Sent] for lead Nikhil Sengupta (nikhil.sengupta@dhruvaaerospace.co.in).",
+      "performedBy": "Priya Patel",
+      "targetCompany": "Dhruva Aerospace",
+      "timestamp": "2026-09-01T18:09:48.354Z"
+    },
+    {
+      "activityType": "Call Completed",
+      "subject": "Call Completed for Kirloskar Electric Solutions",
+      "description": "Agent Amit Verma performed action [Call Completed] for lead Smita Bhattacharya (smita.bhattacharya@kirloskarsolutions.in).",
+      "performedBy": "Amit Verma",
+      "targetCompany": "Kirloskar Electric Solutions",
+      "timestamp": "2026-09-01T18:54:48.354Z"
+    },
+    {
+      "activityType": "Email Sent",
+      "subject": "Email Sent for Srijan Creative Agency",
+      "description": "Agent Neha Sundaram performed action [Email Sent] for lead Kunal Hegde (kunal.hegde@srijancreative.in).",
+      "performedBy": "Neha Sundaram",
+      "targetCompany": "Srijan Creative Agency",
+      "timestamp": "2026-09-01T19:39:48.354Z"
+    },
+    {
+      "activityType": "Lead Created",
+      "subject": "Lead Created for Varuna Maritime Tech",
+      "description": "Agent Rajesh Sharma performed action [Lead Created] for lead Bhavna Bajaj (bhavna.bajaj@varunamaritime.co.in).",
+      "performedBy": "Rajesh Sharma",
+      "targetCompany": "Varuna Maritime Tech",
+      "timestamp": "2026-09-01T20:24:48.354Z"
+    },
+    {
+      "activityType": "Lead Updated",
+      "subject": "Lead Updated for Tathastu Retail Solutions",
+      "description": "Agent Priya Patel performed action [Lead Updated] for lead Ishan Singhal (ishan.singhal@tathasturetail.in).",
+      "performedBy": "Priya Patel",
+      "targetCompany": "Tathastu Retail Solutions",
+      "timestamp": "2026-09-01T21:09:48.354Z"
+    },
+    {
+      "activityType": "Customer Converted",
+      "subject": "Customer Converted for Chetana Health Tech",
+      "description": "Agent Amit Verma performed action [Customer Converted] for lead Nidhi Mahajan (nidhi.mahajan@chetanahealth.in).",
+      "performedBy": "Amit Verma",
+      "targetCompany": "Chetana Health Tech",
+      "timestamp": "2026-09-01T21:54:48.354Z"
+    },
+    {
+      "activityType": "Follow-up Scheduled",
+      "subject": "Follow-up Scheduled for Lokmat Digital Media",
+      "description": "Agent Neha Sundaram performed action [Follow-up Scheduled] for lead Mayank Rastogi (mayank.rastogi@lokmatdigital.co.in).",
+      "performedBy": "Neha Sundaram",
+      "targetCompany": "Lokmat Digital Media",
+      "timestamp": "2026-09-01T22:39:48.354Z"
+    },
+    {
+      "activityType": "Chat Started",
+      "subject": "Chat Started for Shrestha Consultancy",
+      "description": "Agent Rajesh Sharma performed action [Chat Started] for lead Shweta Dutta (shweta.dutta@shresthaconsulting.in).",
+      "performedBy": "Rajesh Sharma",
+      "targetCompany": "Shrestha Consultancy",
+      "timestamp": "2026-09-01T23:24:48.354Z"
+    },
+    {
+      "activityType": "Customer Assigned",
+      "subject": "Customer Assigned for Antariksh AI Labs",
+      "description": "Agent Priya Patel performed action [Customer Assigned] for lead Deepak Chopra (deepak.chopra@antarikshai.in).",
+      "performedBy": "Priya Patel",
+      "targetCompany": "Antariksh AI Labs",
+      "timestamp": "2026-09-02T00:09:48.354Z"
+    },
+    {
+      "activityType": "Note Added",
+      "subject": "Note Added for Mangal Green Energy",
+      "description": "Agent Amit Verma performed action [Note Added] for lead Pooja Venkat (pooja.venkat@mangalenergy.co.in).",
+      "performedBy": "Amit Verma",
+      "targetCompany": "Mangal Green Energy",
+      "timestamp": "2026-09-02T00:54:48.354Z"
+    },
+    {
+      "activityType": "Proposal Sent",
+      "subject": "Proposal Sent for Samarth Enterprise Tech",
+      "description": "Agent Neha Sundaram performed action [Proposal Sent] for lead Sameer Ahuja (sameer.ahuja@samarthtech.in).",
+      "performedBy": "Neha Sundaram",
+      "targetCompany": "Samarth Enterprise Tech",
+      "timestamp": "2026-09-02T01:39:48.354Z"
+    },
+    {
+      "activityType": "Call Completed",
+      "subject": "Call Completed for Vistar Data Labs",
+      "description": "Agent Rajesh Sharma performed action [Call Completed] for lead Ruchi Tripathi (ruchi.tripathi@vistardata.in).",
+      "performedBy": "Rajesh Sharma",
+      "targetCompany": "Vistar Data Labs",
+      "timestamp": "2026-09-02T02:24:48.354Z"
+    },
+    {
+      "activityType": "Email Sent",
+      "subject": "Email Sent for Nirmal Water Tech",
+      "description": "Agent Priya Patel performed action [Email Sent] for lead Vivek Kaushik (vivek.kaushik@nirmalwater.co.in).",
+      "performedBy": "Priya Patel",
+      "targetCompany": "Nirmal Water Tech",
+      "timestamp": "2026-09-02T03:09:48.354Z"
+    },
+    {
+      "activityType": "Lead Created",
+      "subject": "Lead Created for Apex Tech Solutions",
+      "description": "Agent Amit Verma performed action [Lead Created] for lead Aarav Sharma (aarav.sharma@apextech.in).",
+      "performedBy": "Amit Verma",
+      "targetCompany": "Apex Tech Solutions",
+      "timestamp": "2026-09-02T03:54:48.354Z"
+    },
+    {
+      "activityType": "Lead Updated",
+      "subject": "Lead Updated for Bright Media Works",
+      "description": "Agent Neha Sundaram performed action [Lead Updated] for lead Ananya Iyer (ananya.iyer@brightmedia.in).",
+      "performedBy": "Neha Sundaram",
+      "targetCompany": "Bright Media Works",
+      "timestamp": "2026-09-02T04:39:48.354Z"
+    },
+    {
+      "activityType": "Customer Converted",
+      "subject": "Customer Converted for CloudNet Systems",
+      "description": "Agent Rajesh Sharma performed action [Customer Converted] for lead Vikram Malhotra (vikram.malhotra@cloudnet.co.in).",
+      "performedBy": "Rajesh Sharma",
+      "targetCompany": "CloudNet Systems",
+      "timestamp": "2026-09-02T05:24:48.354Z"
+    },
+    {
+      "activityType": "Follow-up Scheduled",
+      "subject": "Follow-up Scheduled for Delta Corp Infra",
+      "description": "Agent Priya Patel performed action [Follow-up Scheduled] for lead Sunita Rao (sunita.rao@deltacorp.in).",
+      "performedBy": "Priya Patel",
+      "targetCompany": "Delta Corp Infra",
+      "timestamp": "2026-09-02T06:09:48.354Z"
+    },
+    {
+      "activityType": "Chat Started",
+      "subject": "Chat Started for Elevate Global Logistics",
+      "description": "Agent Amit Verma performed action [Chat Started] for lead Aditya Joshi (aditya.joshi@elevate.in).",
+      "performedBy": "Amit Verma",
+      "targetCompany": "Elevate Global Logistics",
+      "timestamp": "2026-09-02T06:54:48.354Z"
+    },
+    {
+      "activityType": "Customer Assigned",
+      "subject": "Customer Assigned for FirstTier Tech",
+      "description": "Agent Neha Sundaram performed action [Customer Assigned] for lead Kavita Reddy (kavita.reddy@firsttier.in).",
+      "performedBy": "Neha Sundaram",
+      "targetCompany": "FirstTier Tech",
+      "timestamp": "2026-09-02T07:39:48.354Z"
+    },
+    {
+      "activityType": "Note Added",
+      "subject": "Note Added for Greenfield Energy",
+      "description": "Agent Rajesh Sharma performed action [Note Added] for lead Deepak Agarwal (deepak.agarwal@greenfield.co.in).",
+      "performedBy": "Rajesh Sharma",
+      "targetCompany": "Greenfield Energy",
+      "timestamp": "2026-09-02T08:24:48.354Z"
+    },
+    {
+      "activityType": "Proposal Sent",
+      "subject": "Proposal Sent for Horizon Labs",
+      "description": "Agent Priya Patel performed action [Proposal Sent] for lead Pooja Deshmukh (pooja.deshmukh@horizonlabs.in).",
+      "performedBy": "Priya Patel",
+      "targetCompany": "Horizon Labs",
+      "timestamp": "2026-09-02T09:09:48.354Z"
+    },
+    {
+      "activityType": "Call Completed",
+      "subject": "Call Completed for Innovate Labs",
+      "description": "Agent Amit Verma performed action [Call Completed] for lead Suresh Kumar (suresh.kumar@innovatelabs.in).",
+      "performedBy": "Amit Verma",
+      "targetCompany": "Innovate Labs",
+      "timestamp": "2026-09-02T09:54:48.354Z"
+    },
+    {
+      "activityType": "Email Sent",
+      "subject": "Email Sent for Nexus Software India",
+      "description": "Agent Neha Sundaram performed action [Email Sent] for lead Rajesh Verma (rajesh.verma@nexussoft.in).",
+      "performedBy": "Neha Sundaram",
+      "targetCompany": "Nexus Software India",
+      "timestamp": "2026-09-02T10:39:48.354Z"
+    },
+    {
+      "activityType": "Lead Created",
+      "subject": "Lead Created for Prism Healthcare Tech",
+      "description": "Agent Rajesh Sharma performed action [Lead Created] for lead Priyanka Gupta (priyanka.gupta@prismhealth.co.in).",
+      "performedBy": "Rajesh Sharma",
+      "targetCompany": "Prism Healthcare Tech",
+      "timestamp": "2026-09-02T11:24:48.354Z"
+    },
+    {
+      "activityType": "Lead Updated",
+      "subject": "Lead Updated for Quantum Analytics India",
+      "description": "Agent Priya Patel performed action [Lead Updated] for lead Rohan Mehta (rohan.mehta@quantumanalytics.in).",
+      "performedBy": "Priya Patel",
+      "targetCompany": "Quantum Analytics India",
+      "timestamp": "2026-09-02T12:09:48.354Z"
+    },
+    {
+      "activityType": "Customer Converted",
+      "subject": "Customer Converted for Vertex Infotech",
+      "description": "Agent Amit Verma performed action [Customer Converted] for lead Swati Nair (swati.nair@vertexinfotech.in).",
+      "performedBy": "Amit Verma",
+      "targetCompany": "Vertex Infotech",
+      "timestamp": "2026-09-02T12:54:48.354Z"
+    },
+    {
+      "activityType": "Follow-up Scheduled",
+      "subject": "Follow-up Scheduled for Zenith Enterprise Solutions",
+      "description": "Agent Neha Sundaram performed action [Follow-up Scheduled] for lead Amit Patel (amit.patel@zenithenterprise.co.in).",
+      "performedBy": "Neha Sundaram",
+      "targetCompany": "Zenith Enterprise Solutions",
+      "timestamp": "2026-09-02T13:39:48.354Z"
+    },
+    {
+      "activityType": "Chat Started",
+      "subject": "Chat Started for Astra Digital Media",
+      "description": "Agent Rajesh Sharma performed action [Chat Started] for lead Neha Kulkarni (neha.kulkarni@astradigital.in).",
+      "performedBy": "Rajesh Sharma",
+      "targetCompany": "Astra Digital Media",
+      "timestamp": "2026-09-02T14:24:48.354Z"
+    },
+    {
+      "activityType": "Customer Assigned",
+      "subject": "Customer Assigned for Synergy Retail Tech",
+      "description": "Agent Priya Patel performed action [Customer Assigned] for lead Vikramaditya Singh (vikramaditya.singh@synergyretail.in).",
+      "performedBy": "Priya Patel",
+      "targetCompany": "Synergy Retail Tech",
+      "timestamp": "2026-09-02T15:09:48.354Z"
+    },
+    {
+      "activityType": "Note Added",
+      "subject": "Note Added for Omni Channel India",
+      "description": "Agent Amit Verma performed action [Note Added] for lead Ritu Banerjee (ritu.banerjee@omnichannel.co.in).",
+      "performedBy": "Amit Verma",
+      "targetCompany": "Omni Channel India",
+      "timestamp": "2026-09-02T15:54:48.354Z"
+    },
+    {
+      "activityType": "Proposal Sent",
+      "subject": "Proposal Sent for Vayu Renewable Solutions",
+      "description": "Agent Neha Sundaram performed action [Proposal Sent] for lead Rahul Saxena (rahul.saxena@vayurenewable.in).",
+      "performedBy": "Neha Sundaram",
+      "targetCompany": "Vayu Renewable Solutions",
+      "timestamp": "2026-09-02T16:39:48.354Z"
+    },
+    {
+      "activityType": "Call Completed",
+      "subject": "Call Completed for Triveni Financial Tech",
+      "description": "Agent Rajesh Sharma performed action [Call Completed] for lead Priya Sundaram (priya.sundaram@trivenifin.in).",
+      "performedBy": "Rajesh Sharma",
+      "targetCompany": "Triveni Financial Tech",
+      "timestamp": "2026-09-02T17:24:48.354Z"
+    },
+    {
+      "activityType": "Email Sent",
+      "subject": "Email Sent for Bharat EdTech",
+      "description": "Agent Priya Patel performed action [Email Sent] for lead Siddharth Menon (siddharth.menon@bharatedtech.in).",
+      "performedBy": "Priya Patel",
+      "targetCompany": "Bharat EdTech",
+      "timestamp": "2026-09-02T18:09:48.354Z"
+    },
+    {
+      "activityType": "Lead Created",
+      "subject": "Lead Created for Smart Grid India",
+      "description": "Agent Amit Verma performed action [Lead Created] for lead Meera Bhat (meera.bhat@smartgridindia.co.in).",
+      "performedBy": "Amit Verma",
+      "targetCompany": "Smart Grid India",
+      "timestamp": "2026-09-02T18:54:48.354Z"
+    },
+    {
+      "activityType": "Lead Updated",
+      "subject": "Lead Updated for Param AI Labs",
+      "description": "Agent Neha Sundaram performed action [Lead Updated] for lead Manish Chaudhry (manish.chaudhry@paramai.in).",
+      "performedBy": "Neha Sundaram",
+      "targetCompany": "Param AI Labs",
+      "timestamp": "2026-09-02T19:39:48.354Z"
+    },
+    {
+      "activityType": "Customer Converted",
+      "subject": "Customer Converted for Udaan Logistics",
+      "description": "Agent Rajesh Sharma performed action [Customer Converted] for lead Divya Kapoor (divya.kapoor@udaanlogistics.in).",
+      "performedBy": "Rajesh Sharma",
+      "targetCompany": "Udaan Logistics",
+      "timestamp": "2026-09-02T20:24:48.354Z"
+    },
+    {
+      "activityType": "Follow-up Scheduled",
+      "subject": "Follow-up Scheduled for Samriddhi Microfinance",
+      "description": "Agent Priya Patel performed action [Follow-up Scheduled] for lead Sandeep Nambiar (sandeep.nambiar@samriddhi.org.in).",
+      "performedBy": "Priya Patel",
+      "targetCompany": "Samriddhi Microfinance",
+      "timestamp": "2026-09-02T21:09:48.354Z"
+    },
+    {
+      "activityType": "Chat Started",
+      "subject": "Chat Started for Indus Mobility",
+      "description": "Agent Amit Verma performed action [Chat Started] for lead Archana Pandey (archana.pandey@indusmobility.co.in).",
+      "performedBy": "Amit Verma",
+      "targetCompany": "Indus Mobility",
+      "timestamp": "2026-09-02T21:54:48.354Z"
+    },
+    {
+      "activityType": "Customer Assigned",
+      "subject": "Customer Assigned for Kuber Wealth Tech",
+      "description": "Agent Neha Sundaram performed action [Customer Assigned] for lead Alok Srivastava (alok.srivastava@kuberwealth.in).",
+      "performedBy": "Neha Sundaram",
+      "targetCompany": "Kuber Wealth Tech",
+      "timestamp": "2026-09-02T22:39:48.354Z"
+    },
+    {
+      "activityType": "Note Added",
+      "subject": "Note Added for Matrix BioCare",
+      "description": "Agent Rajesh Sharma performed action [Note Added] for lead Preeti Joshi (preeti.joshi@matrixbiocare.in).",
+      "performedBy": "Rajesh Sharma",
+      "targetCompany": "Matrix BioCare",
+      "timestamp": "2026-09-02T23:24:48.354Z"
+    },
+    {
+      "activityType": "Proposal Sent",
+      "subject": "Proposal Sent for Sahaj FinTech",
+      "description": "Agent Priya Patel performed action [Proposal Sent] for lead Tarun Mittal (tarun.mittal@sahajfintech.in).",
+      "performedBy": "Priya Patel",
+      "targetCompany": "Sahaj FinTech",
+      "timestamp": "2026-09-03T00:09:48.354Z"
+    },
+    {
+      "activityType": "Call Completed",
+      "subject": "Call Completed for Trishul Defense Systems",
+      "description": "Agent Amit Verma performed action [Call Completed] for lead Nisha Shenoy (nisha.shenoy@trishuldefense.co.in).",
+      "performedBy": "Amit Verma",
+      "targetCompany": "Trishul Defense Systems",
+      "timestamp": "2026-09-03T00:54:48.354Z"
+    },
+    {
+      "activityType": "Email Sent",
+      "subject": "Email Sent for Agasti BioEnergy",
+      "description": "Agent Neha Sundaram performed action [Email Sent] for lead Gaurav Mukherjee (gaurav.mukherjee@agastibio.in).",
+      "performedBy": "Neha Sundaram",
+      "targetCompany": "Agasti BioEnergy",
+      "timestamp": "2026-09-03T01:39:48.354Z"
+    },
+    {
+      "activityType": "Lead Created",
+      "subject": "Lead Created for Surya Automation",
+      "description": "Agent Rajesh Sharma performed action [Lead Created] for lead Sneha Desai (sneha.desai@suryaauto.co.in).",
+      "performedBy": "Rajesh Sharma",
+      "targetCompany": "Surya Automation",
+      "timestamp": "2026-09-03T02:24:48.354Z"
+    },
+    {
+      "activityType": "Lead Updated",
+      "subject": "Lead Updated for Nakshatra Media",
+      "description": "Agent Priya Patel performed action [Lead Updated] for lead Karthik Viswanathan (karthik.viswanathan@nakshatramedia.in).",
+      "performedBy": "Priya Patel",
+      "targetCompany": "Nakshatra Media",
+      "timestamp": "2026-09-03T03:09:48.354Z"
+    },
+    {
+      "activityType": "Customer Converted",
+      "subject": "Customer Converted for Banyan Cloud Solutions",
+      "description": "Agent Amit Verma performed action [Customer Converted] for lead Tanvi Shah (tanvi.shah@banyancloud.in).",
+      "performedBy": "Amit Verma",
+      "targetCompany": "Banyan Cloud Solutions",
+      "timestamp": "2026-09-03T03:54:48.354Z"
+    },
+    {
+      "activityType": "Follow-up Scheduled",
+      "subject": "Follow-up Scheduled for Jal Tech Innovations",
+      "description": "Agent Neha Sundaram performed action [Follow-up Scheduled] for lead Harsh Vardhan (harsh.vardhan@jaltech.co.in).",
+      "performedBy": "Neha Sundaram",
+      "targetCompany": "Jal Tech Innovations",
+      "timestamp": "2026-09-03T04:39:48.354Z"
+    },
+    {
+      "activityType": "Chat Started",
+      "subject": "Chat Started for Tarang Communications",
+      "description": "Agent Rajesh Sharma performed action [Chat Started] for lead Radhika Pillai (radhika.pillai@tarangcomms.in).",
+      "performedBy": "Rajesh Sharma",
+      "targetCompany": "Tarang Communications",
+      "timestamp": "2026-09-03T05:24:48.354Z"
+    },
+    {
+      "activityType": "Customer Assigned",
+      "subject": "Customer Assigned for Pragati Cyber Security",
+      "description": "Agent Priya Patel performed action [Customer Assigned] for lead Varun Chawla (varun.chawla@pragatisecurity.in).",
+      "performedBy": "Priya Patel",
+      "targetCompany": "Pragati Cyber Security",
+      "timestamp": "2026-09-03T06:09:48.354Z"
+    },
+    {
+      "activityType": "Note Added",
+      "subject": "Note Added for Moksha Wellness Tech",
+      "description": "Agent Amit Verma performed action [Note Added] for lead Anjali Kulkarni (anjali.kulkarni@mokshawellness.in).",
+      "performedBy": "Amit Verma",
+      "targetCompany": "Moksha Wellness Tech",
+      "timestamp": "2026-09-03T06:54:48.354Z"
+    },
+    {
+      "activityType": "Proposal Sent",
+      "subject": "Proposal Sent for Dhruva Aerospace",
+      "description": "Agent Neha Sundaram performed action [Proposal Sent] for lead Nikhil Sengupta (nikhil.sengupta@dhruvaaerospace.co.in).",
+      "performedBy": "Neha Sundaram",
+      "targetCompany": "Dhruva Aerospace",
+      "timestamp": "2026-09-03T07:39:48.354Z"
+    },
+    {
+      "activityType": "Call Completed",
+      "subject": "Call Completed for Kirloskar Electric Solutions",
+      "description": "Agent Rajesh Sharma performed action [Call Completed] for lead Smita Bhattacharya (smita.bhattacharya@kirloskarsolutions.in).",
+      "performedBy": "Rajesh Sharma",
+      "targetCompany": "Kirloskar Electric Solutions",
+      "timestamp": "2026-09-03T08:24:48.354Z"
+    },
+    {
+      "activityType": "Email Sent",
+      "subject": "Email Sent for Srijan Creative Agency",
+      "description": "Agent Priya Patel performed action [Email Sent] for lead Kunal Hegde (kunal.hegde@srijancreative.in).",
+      "performedBy": "Priya Patel",
+      "targetCompany": "Srijan Creative Agency",
+      "timestamp": "2026-09-03T09:09:48.354Z"
+    },
+    {
+      "activityType": "Lead Created",
+      "subject": "Lead Created for Varuna Maritime Tech",
+      "description": "Agent Amit Verma performed action [Lead Created] for lead Bhavna Bajaj (bhavna.bajaj@varunamaritime.co.in).",
+      "performedBy": "Amit Verma",
+      "targetCompany": "Varuna Maritime Tech",
+      "timestamp": "2026-09-03T09:54:48.354Z"
+    },
+    {
+      "activityType": "Lead Updated",
+      "subject": "Lead Updated for Tathastu Retail Solutions",
+      "description": "Agent Neha Sundaram performed action [Lead Updated] for lead Ishan Singhal (ishan.singhal@tathasturetail.in).",
+      "performedBy": "Neha Sundaram",
+      "targetCompany": "Tathastu Retail Solutions",
+      "timestamp": "2026-09-03T10:39:48.354Z"
+    },
+    {
+      "activityType": "Customer Converted",
+      "subject": "Customer Converted for Chetana Health Tech",
+      "description": "Agent Rajesh Sharma performed action [Customer Converted] for lead Nidhi Mahajan (nidhi.mahajan@chetanahealth.in).",
+      "performedBy": "Rajesh Sharma",
+      "targetCompany": "Chetana Health Tech",
+      "timestamp": "2026-09-03T11:24:48.354Z"
+    },
+    {
+      "activityType": "Follow-up Scheduled",
+      "subject": "Follow-up Scheduled for Lokmat Digital Media",
+      "description": "Agent Priya Patel performed action [Follow-up Scheduled] for lead Mayank Rastogi (mayank.rastogi@lokmatdigital.co.in).",
+      "performedBy": "Priya Patel",
+      "targetCompany": "Lokmat Digital Media",
+      "timestamp": "2026-09-03T12:09:48.354Z"
+    },
+    {
+      "activityType": "Chat Started",
+      "subject": "Chat Started for Shrestha Consultancy",
+      "description": "Agent Amit Verma performed action [Chat Started] for lead Shweta Dutta (shweta.dutta@shresthaconsulting.in).",
+      "performedBy": "Amit Verma",
+      "targetCompany": "Shrestha Consultancy",
+      "timestamp": "2026-09-03T12:54:48.354Z"
+    },
+    {
+      "activityType": "Customer Assigned",
+      "subject": "Customer Assigned for Antariksh AI Labs",
+      "description": "Agent Neha Sundaram performed action [Customer Assigned] for lead Deepak Chopra (deepak.chopra@antarikshai.in).",
+      "performedBy": "Neha Sundaram",
+      "targetCompany": "Antariksh AI Labs",
+      "timestamp": "2026-09-03T13:39:48.354Z"
+    },
+    {
+      "activityType": "Note Added",
+      "subject": "Note Added for Mangal Green Energy",
+      "description": "Agent Rajesh Sharma performed action [Note Added] for lead Pooja Venkat (pooja.venkat@mangalenergy.co.in).",
+      "performedBy": "Rajesh Sharma",
+      "targetCompany": "Mangal Green Energy",
+      "timestamp": "2026-09-03T14:24:48.354Z"
+    },
+    {
+      "activityType": "Proposal Sent",
+      "subject": "Proposal Sent for Samarth Enterprise Tech",
+      "description": "Agent Priya Patel performed action [Proposal Sent] for lead Sameer Ahuja (sameer.ahuja@samarthtech.in).",
+      "performedBy": "Priya Patel",
+      "targetCompany": "Samarth Enterprise Tech",
+      "timestamp": "2026-09-03T15:09:48.354Z"
+    },
+    {
+      "activityType": "Call Completed",
+      "subject": "Call Completed for Vistar Data Labs",
+      "description": "Agent Amit Verma performed action [Call Completed] for lead Ruchi Tripathi (ruchi.tripathi@vistardata.in).",
+      "performedBy": "Amit Verma",
+      "targetCompany": "Vistar Data Labs",
+      "timestamp": "2026-09-03T15:54:48.354Z"
+    },
+    {
+      "activityType": "Email Sent",
+      "subject": "Email Sent for Nirmal Water Tech",
+      "description": "Agent Neha Sundaram performed action [Email Sent] for lead Vivek Kaushik (vivek.kaushik@nirmalwater.co.in).",
+      "performedBy": "Neha Sundaram",
+      "targetCompany": "Nirmal Water Tech",
+      "timestamp": "2026-09-03T16:39:48.354Z"
+    }
+  ],
+  "notes": [
+    {
+      "leadName": "Aarav Sharma",
+      "company": "Apex Tech Solutions",
+      "author": "Rajesh Sharma",
+      "content": "Client requested formal proposal with breakdown by Friday.",
+      "createdAt": "2026-08-19T17:24:48.354Z"
+    },
+    {
+      "leadName": "Ananya Iyer",
+      "company": "Bright Media Works",
+      "author": "Priya Patel",
+      "content": "Interested in AI Chatbot enterprise package with custom LLM fine-tuning.",
+      "createdAt": "2026-08-17T17:24:48.354Z"
+    },
+    {
+      "leadName": "Vikram Malhotra",
+      "company": "CloudNet Systems",
+      "author": "Amit Verma",
+      "content": "Follow-up call completed; decision maker on vacation until next Tuesday.",
+      "createdAt": "2026-08-17T17:24:48.354Z"
+    },
+    {
+      "leadName": "Sunita Rao",
+      "company": "Delta Corp Infra",
+      "author": "Neha Sundaram",
+      "content": "Conducted live product demo with VP of Sales & Marketing team.",
+      "createdAt": "2026-08-17T17:24:48.354Z"
+    },
+    {
+      "leadName": "Aditya Joshi",
+      "company": "Elevate Global Logistics",
+      "author": "Rajesh Sharma",
+      "content": "Requested GST invoice details and annual maintenance SLA contract.",
+      "createdAt": "2026-08-28T17:24:48.354Z"
+    },
+    {
+      "leadName": "Kavita Reddy",
+      "company": "FirstTier Tech",
+      "author": "Priya Patel",
+      "content": "Prospect compared pricing with local competitor; offered 10% annual billing discount.",
+      "createdAt": "2026-08-11T17:24:48.354Z"
+    },
+    {
+      "leadName": "Deepak Agarwal",
+      "company": "Greenfield Energy",
+      "author": "Amit Verma",
+      "content": "Lead qualified. High priority deal expecting closing by end of Q3.",
+      "createdAt": "2026-08-23T17:24:48.354Z"
+    },
+    {
+      "leadName": "Pooja Deshmukh",
+      "company": "Horizon Labs",
+      "author": "Neha Sundaram",
+      "content": "Security team approved SOC2 compliance documentation.",
+      "createdAt": "2026-08-06T17:24:48.354Z"
+    },
+    {
+      "leadName": "Suresh Kumar",
+      "company": "Innovate Labs",
+      "author": "Rajesh Sharma",
+      "content": "Onboarding session scheduled for Mumbai regional office team.",
+      "createdAt": "2026-09-01T17:24:48.354Z"
+    },
+    {
+      "leadName": "Rajesh Verma",
+      "company": "Nexus Software India",
+      "author": "Priya Patel",
+      "content": "Requested WhatsApp API sandbox access for internal developer testing.",
+      "createdAt": "2026-08-09T17:24:48.354Z"
+    },
+    {
+      "leadName": "Priyanka Gupta",
+      "company": "Prism Healthcare Tech",
+      "author": "Amit Verma",
+      "content": "Client requested formal proposal with breakdown by Friday.",
+      "createdAt": "2026-09-01T17:24:48.354Z"
+    },
+    {
+      "leadName": "Rohan Mehta",
+      "company": "Quantum Analytics India",
+      "author": "Neha Sundaram",
+      "content": "Interested in AI Chatbot enterprise package with custom LLM fine-tuning.",
+      "createdAt": "2026-08-17T17:24:48.354Z"
+    },
+    {
+      "leadName": "Swati Nair",
+      "company": "Vertex Infotech",
+      "author": "Rajesh Sharma",
+      "content": "Follow-up call completed; decision maker on vacation until next Tuesday.",
+      "createdAt": "2026-08-28T17:24:48.354Z"
+    },
+    {
+      "leadName": "Amit Patel",
+      "company": "Zenith Enterprise Solutions",
+      "author": "Priya Patel",
+      "content": "Conducted live product demo with VP of Sales & Marketing team.",
+      "createdAt": "2026-08-14T17:24:48.354Z"
+    },
+    {
+      "leadName": "Neha Kulkarni",
+      "company": "Astra Digital Media",
+      "author": "Amit Verma",
+      "content": "Requested GST invoice details and annual maintenance SLA contract.",
+      "createdAt": "2026-08-06T17:24:48.354Z"
+    },
+    {
+      "leadName": "Vikramaditya Singh",
+      "company": "Synergy Retail Tech",
+      "author": "Neha Sundaram",
+      "content": "Prospect compared pricing with local competitor; offered 10% annual billing discount.",
+      "createdAt": "2026-08-10T17:24:48.354Z"
+    },
+    {
+      "leadName": "Ritu Banerjee",
+      "company": "Omni Channel India",
+      "author": "Rajesh Sharma",
+      "content": "Lead qualified. High priority deal expecting closing by end of Q3.",
+      "createdAt": "2026-08-11T17:24:48.354Z"
+    },
+    {
+      "leadName": "Rahul Saxena",
+      "company": "Vayu Renewable Solutions",
+      "author": "Priya Patel",
+      "content": "Security team approved SOC2 compliance documentation.",
+      "createdAt": "2026-08-27T17:24:48.354Z"
+    },
+    {
+      "leadName": "Priya Sundaram",
+      "company": "Triveni Financial Tech",
+      "author": "Amit Verma",
+      "content": "Onboarding session scheduled for Mumbai regional office team.",
+      "createdAt": "2026-08-19T17:24:48.354Z"
+    },
+    {
+      "leadName": "Siddharth Menon",
+      "company": "Bharat EdTech",
+      "author": "Neha Sundaram",
+      "content": "Requested WhatsApp API sandbox access for internal developer testing.",
+      "createdAt": "2026-08-13T17:24:48.354Z"
+    },
+    {
+      "leadName": "Meera Bhat",
+      "company": "Smart Grid India",
+      "author": "Rajesh Sharma",
+      "content": "Client requested formal proposal with breakdown by Friday.",
+      "createdAt": "2026-08-18T17:24:48.354Z"
+    },
+    {
+      "leadName": "Manish Chaudhry",
+      "company": "Param AI Labs",
+      "author": "Priya Patel",
+      "content": "Interested in AI Chatbot enterprise package with custom LLM fine-tuning.",
+      "createdAt": "2026-08-23T17:24:48.354Z"
+    },
+    {
+      "leadName": "Divya Kapoor",
+      "company": "Udaan Logistics",
+      "author": "Amit Verma",
+      "content": "Follow-up call completed; decision maker on vacation until next Tuesday.",
+      "createdAt": "2026-08-31T17:24:48.354Z"
+    },
+    {
+      "leadName": "Sandeep Nambiar",
+      "company": "Samriddhi Microfinance",
+      "author": "Neha Sundaram",
+      "content": "Conducted live product demo with VP of Sales & Marketing team.",
+      "createdAt": "2026-08-23T17:24:48.354Z"
+    },
+    {
+      "leadName": "Archana Pandey",
+      "company": "Indus Mobility",
+      "author": "Rajesh Sharma",
+      "content": "Requested GST invoice details and annual maintenance SLA contract.",
+      "createdAt": "2026-08-18T17:24:48.354Z"
+    }
+  ]
+}

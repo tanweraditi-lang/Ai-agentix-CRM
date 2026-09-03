@@ -1,0 +1,802 @@
+[
+  {
+    "activityType": "Lead Created",
+    "subject": "Lead Created for Apex Tech Solutions",
+    "description": "Agent Rajesh Sharma performed action [Lead Created] for lead Aarav Sharma (aarav.sharma@apextech.in).",
+    "performedBy": "Rajesh Sharma",
+    "targetCompany": "Apex Tech Solutions",
+    "timestamp": "2026-08-31T14:24:48.354Z"
+  },
+  {
+    "activityType": "Lead Updated",
+    "subject": "Lead Updated for Bright Media Works",
+    "description": "Agent Priya Patel performed action [Lead Updated] for lead Ananya Iyer (ananya.iyer@brightmedia.in).",
+    "performedBy": "Priya Patel",
+    "targetCompany": "Bright Media Works",
+    "timestamp": "2026-08-31T15:09:48.354Z"
+  },
+  {
+    "activityType": "Customer Converted",
+    "subject": "Customer Converted for CloudNet Systems",
+    "description": "Agent Amit Verma performed action [Customer Converted] for lead Vikram Malhotra (vikram.malhotra@cloudnet.co.in).",
+    "performedBy": "Amit Verma",
+    "targetCompany": "CloudNet Systems",
+    "timestamp": "2026-08-31T15:54:48.354Z"
+  },
+  {
+    "activityType": "Follow-up Scheduled",
+    "subject": "Follow-up Scheduled for Delta Corp Infra",
+    "description": "Agent Neha Sundaram performed action [Follow-up Scheduled] for lead Sunita Rao (sunita.rao@deltacorp.in).",
+    "performedBy": "Neha Sundaram",
+    "targetCompany": "Delta Corp Infra",
+    "timestamp": "2026-08-31T16:39:48.354Z"
+  },
+  {
+    "activityType": "Chat Started",
+    "subject": "Chat Started for Elevate Global Logistics",
+    "description": "Agent Rajesh Sharma performed action [Chat Started] for lead Aditya Joshi (aditya.joshi@elevate.in).",
+    "performedBy": "Rajesh Sharma",
+    "targetCompany": "Elevate Global Logistics",
+    "timestamp": "2026-08-31T17:24:48.354Z"
+  },
+  {
+    "activityType": "Customer Assigned",
+    "subject": "Customer Assigned for FirstTier Tech",
+    "description": "Agent Priya Patel performed action [Customer Assigned] for lead Kavita Reddy (kavita.reddy@firsttier.in).",
+    "performedBy": "Priya Patel",
+    "targetCompany": "FirstTier Tech",
+    "timestamp": "2026-08-31T18:09:48.354Z"
+  },
+  {
+    "activityType": "Note Added",
+    "subject": "Note Added for Greenfield Energy",
+    "description": "Agent Amit Verma performed action [Note Added] for lead Deepak Agarwal (deepak.agarwal@greenfield.co.in).",
+    "performedBy": "Amit Verma",
+    "targetCompany": "Greenfield Energy",
+    "timestamp": "2026-08-31T18:54:48.354Z"
+  },
+  {
+    "activityType": "Proposal Sent",
+    "subject": "Proposal Sent for Horizon Labs",
+    "description": "Agent Neha Sundaram performed action [Proposal Sent] for lead Pooja Deshmukh (pooja.deshmukh@horizonlabs.in).",
+    "performedBy": "Neha Sundaram",
+    "targetCompany": "Horizon Labs",
+    "timestamp": "2026-08-31T19:39:48.354Z"
+  },
+  {
+    "activityType": "Call Completed",
+    "subject": "Call Completed for Innovate Labs",
+    "description": "Agent Rajesh Sharma performed action [Call Completed] for lead Suresh Kumar (suresh.kumar@innovatelabs.in).",
+    "performedBy": "Rajesh Sharma",
+    "targetCompany": "Innovate Labs",
+    "timestamp": "2026-08-31T20:24:48.354Z"
+  },
+  {
+    "activityType": "Email Sent",
+    "subject": "Email Sent for Nexus Software India",
+    "description": "Agent Priya Patel performed action [Email Sent] for lead Rajesh Verma (rajesh.verma@nexussoft.in).",
+    "performedBy": "Priya Patel",
+    "targetCompany": "Nexus Software India",
+    "timestamp": "2026-08-31T21:09:48.354Z"
+  },
+  {
+    "activityType": "Lead Created",
+    "subject": "Lead Created for Prism Healthcare Tech",
+    "description": "Agent Amit Verma performed action [Lead Created] for lead Priyanka Gupta (priyanka.gupta@prismhealth.co.in).",
+    "performedBy": "Amit Verma",
+    "targetCompany": "Prism Healthcare Tech",
+    "timestamp": "2026-08-31T21:54:48.354Z"
+  },
+  {
+    "activityType": "Lead Updated",
+    "subject": "Lead Updated for Quantum Analytics India",
+    "description": "Agent Neha Sundaram performed action [Lead Updated] for lead Rohan Mehta (rohan.mehta@quantumanalytics.in).",
+    "performedBy": "Neha Sundaram",
+    "targetCompany": "Quantum Analytics India",
+    "timestamp": "2026-08-31T22:39:48.354Z"
+  },
+  {
+    "activityType": "Customer Converted",
+    "subject": "Customer Converted for Vertex Infotech",
+    "description": "Agent Rajesh Sharma performed action [Customer Converted] for lead Swati Nair (swati.nair@vertexinfotech.in).",
+    "performedBy": "Rajesh Sharma",
+    "targetCompany": "Vertex Infotech",
+    "timestamp": "2026-08-31T23:24:48.354Z"
+  },
+  {
+    "activityType": "Follow-up Scheduled",
+    "subject": "Follow-up Scheduled for Zenith Enterprise Solutions",
+    "description": "Agent Priya Patel performed action [Follow-up Scheduled] for lead Amit Patel (amit.patel@zenithenterprise.co.in).",
+    "performedBy": "Priya Patel",
+    "targetCompany": "Zenith Enterprise Solutions",
+    "timestamp": "2026-09-01T00:09:48.354Z"
+  },
+  {
+    "activityType": "Chat Started",
+    "subject": "Chat Started for Astra Digital Media",
+    "description": "Agent Amit Verma performed action [Chat Started] for lead Neha Kulkarni (neha.kulkarni@astradigital.in).",
+    "performedBy": "Amit Verma",
+    "targetCompany": "Astra Digital Media",
+    "timestamp": "2026-09-01T00:54:48.354Z"
+  },
+  {
+    "activityType": "Customer Assigned",
+    "subject": "Customer Assigned for Synergy Retail Tech",
+    "description": "Agent Neha Sundaram performed action [Customer Assigned] for lead Vikramaditya Singh (vikramaditya.singh@synergyretail.in).",
+    "performedBy": "Neha Sundaram",
+    "targetCompany": "Synergy Retail Tech",
+    "timestamp": "2026-09-01T01:39:48.354Z"
+  },
+  {
+    "activityType": "Note Added",
+    "subject": "Note Added for Omni Channel India",
+    "description": "Agent Rajesh Sharma performed action [Note Added] for lead Ritu Banerjee (ritu.banerjee@omnichannel.co.in).",
+    "performedBy": "Rajesh Sharma",
+    "targetCompany": "Omni Channel India",
+    "timestamp": "2026-09-01T02:24:48.354Z"
+  },
+  {
+    "activityType": "Proposal Sent",
+    "subject": "Proposal Sent for Vayu Renewable Solutions",
+    "description": "Agent Priya Patel performed action [Proposal Sent] for lead Rahul Saxena (rahul.saxena@vayurenewable.in).",
+    "performedBy": "Priya Patel",
+    "targetCompany": "Vayu Renewable Solutions",
+    "timestamp": "2026-09-01T03:09:48.354Z"
+  },
+  {
+    "activityType": "Call Completed",
+    "subject": "Call Completed for Triveni Financial Tech",
+    "description": "Agent Amit Verma performed action [Call Completed] for lead Priya Sundaram (priya.sundaram@trivenifin.in).",
+    "performedBy": "Amit Verma",
+    "targetCompany": "Triveni Financial Tech",
+    "timestamp": "2026-09-01T03:54:48.354Z"
+  },
+  {
+    "activityType": "Email Sent",
+    "subject": "Email Sent for Bharat EdTech",
+    "description": "Agent Neha Sundaram performed action [Email Sent] for lead Siddharth Menon (siddharth.menon@bharatedtech.in).",
+    "performedBy": "Neha Sundaram",
+    "targetCompany": "Bharat EdTech",
+    "timestamp": "2026-09-01T04:39:48.354Z"
+  },
+  {
+    "activityType": "Lead Created",
+    "subject": "Lead Created for Smart Grid India",
+    "description": "Agent Rajesh Sharma performed action [Lead Created] for lead Meera Bhat (meera.bhat@smartgridindia.co.in).",
+    "performedBy": "Rajesh Sharma",
+    "targetCompany": "Smart Grid India",
+    "timestamp": "2026-09-01T05:24:48.354Z"
+  },
+  {
+    "activityType": "Lead Updated",
+    "subject": "Lead Updated for Param AI Labs",
+    "description": "Agent Priya Patel performed action [Lead Updated] for lead Manish Chaudhry (manish.chaudhry@paramai.in).",
+    "performedBy": "Priya Patel",
+    "targetCompany": "Param AI Labs",
+    "timestamp": "2026-09-01T06:09:48.354Z"
+  },
+  {
+    "activityType": "Customer Converted",
+    "subject": "Customer Converted for Udaan Logistics",
+    "description": "Agent Amit Verma performed action [Customer Converted] for lead Divya Kapoor (divya.kapoor@udaanlogistics.in).",
+    "performedBy": "Amit Verma",
+    "targetCompany": "Udaan Logistics",
+    "timestamp": "2026-09-01T06:54:48.354Z"
+  },
+  {
+    "activityType": "Follow-up Scheduled",
+    "subject": "Follow-up Scheduled for Samriddhi Microfinance",
+    "description": "Agent Neha Sundaram performed action [Follow-up Scheduled] for lead Sandeep Nambiar (sandeep.nambiar@samriddhi.org.in).",
+    "performedBy": "Neha Sundaram",
+    "targetCompany": "Samriddhi Microfinance",
+    "timestamp": "2026-09-01T07:39:48.354Z"
+  },
+  {
+    "activityType": "Chat Started",
+    "subject": "Chat Started for Indus Mobility",
+    "description": "Agent Rajesh Sharma performed action [Chat Started] for lead Archana Pandey (archana.pandey@indusmobility.co.in).",
+    "performedBy": "Rajesh Sharma",
+    "targetCompany": "Indus Mobility",
+    "timestamp": "2026-09-01T08:24:48.354Z"
+  },
+  {
+    "activityType": "Customer Assigned",
+    "subject": "Customer Assigned for Kuber Wealth Tech",
+    "description": "Agent Priya Patel performed action [Customer Assigned] for lead Alok Srivastava (alok.srivastava@kuberwealth.in).",
+    "performedBy": "Priya Patel",
+    "targetCompany": "Kuber Wealth Tech",
+    "timestamp": "2026-09-01T09:09:48.354Z"
+  },
+  {
+    "activityType": "Note Added",
+    "subject": "Note Added for Matrix BioCare",
+    "description": "Agent Amit Verma performed action [Note Added] for lead Preeti Joshi (preeti.joshi@matrixbiocare.in).",
+    "performedBy": "Amit Verma",
+    "targetCompany": "Matrix BioCare",
+    "timestamp": "2026-09-01T09:54:48.354Z"
+  },
+  {
+    "activityType": "Proposal Sent",
+    "subject": "Proposal Sent for Sahaj FinTech",
+    "description": "Agent Neha Sundaram performed action [Proposal Sent] for lead Tarun Mittal (tarun.mittal@sahajfintech.in).",
+    "performedBy": "Neha Sundaram",
+    "targetCompany": "Sahaj FinTech",
+    "timestamp": "2026-09-01T10:39:48.354Z"
+  },
+  {
+    "activityType": "Call Completed",
+    "subject": "Call Completed for Trishul Defense Systems",
+    "description": "Agent Rajesh Sharma performed action [Call Completed] for lead Nisha Shenoy (nisha.shenoy@trishuldefense.co.in).",
+    "performedBy": "Rajesh Sharma",
+    "targetCompany": "Trishul Defense Systems",
+    "timestamp": "2026-09-01T11:24:48.354Z"
+  },
+  {
+    "activityType": "Email Sent",
+    "subject": "Email Sent for Agasti BioEnergy",
+    "description": "Agent Priya Patel performed action [Email Sent] for lead Gaurav Mukherjee (gaurav.mukherjee@agastibio.in).",
+    "performedBy": "Priya Patel",
+    "targetCompany": "Agasti BioEnergy",
+    "timestamp": "2026-09-01T12:09:48.354Z"
+  },
+  {
+    "activityType": "Lead Created",
+    "subject": "Lead Created for Surya Automation",
+    "description": "Agent Amit Verma performed action [Lead Created] for lead Sneha Desai (sneha.desai@suryaauto.co.in).",
+    "performedBy": "Amit Verma",
+    "targetCompany": "Surya Automation",
+    "timestamp": "2026-09-01T12:54:48.354Z"
+  },
+  {
+    "activityType": "Lead Updated",
+    "subject": "Lead Updated for Nakshatra Media",
+    "description": "Agent Neha Sundaram performed action [Lead Updated] for lead Karthik Viswanathan (karthik.viswanathan@nakshatramedia.in).",
+    "performedBy": "Neha Sundaram",
+    "targetCompany": "Nakshatra Media",
+    "timestamp": "2026-09-01T13:39:48.354Z"
+  },
+  {
+    "activityType": "Customer Converted",
+    "subject": "Customer Converted for Banyan Cloud Solutions",
+    "description": "Agent Rajesh Sharma performed action [Customer Converted] for lead Tanvi Shah (tanvi.shah@banyancloud.in).",
+    "performedBy": "Rajesh Sharma",
+    "targetCompany": "Banyan Cloud Solutions",
+    "timestamp": "2026-09-01T14:24:48.354Z"
+  },
+  {
+    "activityType": "Follow-up Scheduled",
+    "subject": "Follow-up Scheduled for Jal Tech Innovations",
+    "description": "Agent Priya Patel performed action [Follow-up Scheduled] for lead Harsh Vardhan (harsh.vardhan@jaltech.co.in).",
+    "performedBy": "Priya Patel",
+    "targetCompany": "Jal Tech Innovations",
+    "timestamp": "2026-09-01T15:09:48.354Z"
+  },
+  {
+    "activityType": "Chat Started",
+    "subject": "Chat Started for Tarang Communications",
+    "description": "Agent Amit Verma performed action [Chat Started] for lead Radhika Pillai (radhika.pillai@tarangcomms.in).",
+    "performedBy": "Amit Verma",
+    "targetCompany": "Tarang Communications",
+    "timestamp": "2026-09-01T15:54:48.354Z"
+  },
+  {
+    "activityType": "Customer Assigned",
+    "subject": "Customer Assigned for Pragati Cyber Security",
+    "description": "Agent Neha Sundaram performed action [Customer Assigned] for lead Varun Chawla (varun.chawla@pragatisecurity.in).",
+    "performedBy": "Neha Sundaram",
+    "targetCompany": "Pragati Cyber Security",
+    "timestamp": "2026-09-01T16:39:48.354Z"
+  },
+  {
+    "activityType": "Note Added",
+    "subject": "Note Added for Moksha Wellness Tech",
+    "description": "Agent Rajesh Sharma performed action [Note Added] for lead Anjali Kulkarni (anjali.kulkarni@mokshawellness.in).",
+    "performedBy": "Rajesh Sharma",
+    "targetCompany": "Moksha Wellness Tech",
+    "timestamp": "2026-09-01T17:24:48.354Z"
+  },
+  {
+    "activityType": "Proposal Sent",
+    "subject": "Proposal Sent for Dhruva Aerospace",
+    "description": "Agent Priya Patel performed action [Proposal Sent] for lead Nikhil Sengupta (nikhil.sengupta@dhruvaaerospace.co.in).",
+    "performedBy": "Priya Patel",
+    "targetCompany": "Dhruva Aerospace",
+    "timestamp": "2026-09-01T18:09:48.354Z"
+  },
+  {
+    "activityType": "Call Completed",
+    "subject": "Call Completed for Kirloskar Electric Solutions",
+    "description": "Agent Amit Verma performed action [Call Completed] for lead Smita Bhattacharya (smita.bhattacharya@kirloskarsolutions.in).",
+    "performedBy": "Amit Verma",
+    "targetCompany": "Kirloskar Electric Solutions",
+    "timestamp": "2026-09-01T18:54:48.354Z"
+  },
+  {
+    "activityType": "Email Sent",
+    "subject": "Email Sent for Srijan Creative Agency",
+    "description": "Agent Neha Sundaram performed action [Email Sent] for lead Kunal Hegde (kunal.hegde@srijancreative.in).",
+    "performedBy": "Neha Sundaram",
+    "targetCompany": "Srijan Creative Agency",
+    "timestamp": "2026-09-01T19:39:48.354Z"
+  },
+  {
+    "activityType": "Lead Created",
+    "subject": "Lead Created for Varuna Maritime Tech",
+    "description": "Agent Rajesh Sharma performed action [Lead Created] for lead Bhavna Bajaj (bhavna.bajaj@varunamaritime.co.in).",
+    "performedBy": "Rajesh Sharma",
+    "targetCompany": "Varuna Maritime Tech",
+    "timestamp": "2026-09-01T20:24:48.354Z"
+  },
+  {
+    "activityType": "Lead Updated",
+    "subject": "Lead Updated for Tathastu Retail Solutions",
+    "description": "Agent Priya Patel performed action [Lead Updated] for lead Ishan Singhal (ishan.singhal@tathasturetail.in).",
+    "performedBy": "Priya Patel",
+    "targetCompany": "Tathastu Retail Solutions",
+    "timestamp": "2026-09-01T21:09:48.354Z"
+  },
+  {
+    "activityType": "Customer Converted",
+    "subject": "Customer Converted for Chetana Health Tech",
+    "description": "Agent Amit Verma performed action [Customer Converted] for lead Nidhi Mahajan (nidhi.mahajan@chetanahealth.in).",
+    "performedBy": "Amit Verma",
+    "targetCompany": "Chetana Health Tech",
+    "timestamp": "2026-09-01T21:54:48.354Z"
+  },
+  {
+    "activityType": "Follow-up Scheduled",
+    "subject": "Follow-up Scheduled for Lokmat Digital Media",
+    "description": "Agent Neha Sundaram performed action [Follow-up Scheduled] for lead Mayank Rastogi (mayank.rastogi@lokmatdigital.co.in).",
+    "performedBy": "Neha Sundaram",
+    "targetCompany": "Lokmat Digital Media",
+    "timestamp": "2026-09-01T22:39:48.354Z"
+  },
+  {
+    "activityType": "Chat Started",
+    "subject": "Chat Started for Shrestha Consultancy",
+    "description": "Agent Rajesh Sharma performed action [Chat Started] for lead Shweta Dutta (shweta.dutta@shresthaconsulting.in).",
+    "performedBy": "Rajesh Sharma",
+    "targetCompany": "Shrestha Consultancy",
+    "timestamp": "2026-09-01T23:24:48.354Z"
+  },
+  {
+    "activityType": "Customer Assigned",
+    "subject": "Customer Assigned for Antariksh AI Labs",
+    "description": "Agent Priya Patel performed action [Customer Assigned] for lead Deepak Chopra (deepak.chopra@antarikshai.in).",
+    "performedBy": "Priya Patel",
+    "targetCompany": "Antariksh AI Labs",
+    "timestamp": "2026-09-02T00:09:48.354Z"
+  },
+  {
+    "activityType": "Note Added",
+    "subject": "Note Added for Mangal Green Energy",
+    "description": "Agent Amit Verma performed action [Note Added] for lead Pooja Venkat (pooja.venkat@mangalenergy.co.in).",
+    "performedBy": "Amit Verma",
+    "targetCompany": "Mangal Green Energy",
+    "timestamp": "2026-09-02T00:54:48.354Z"
+  },
+  {
+    "activityType": "Proposal Sent",
+    "subject": "Proposal Sent for Samarth Enterprise Tech",
+    "description": "Agent Neha Sundaram performed action [Proposal Sent] for lead Sameer Ahuja (sameer.ahuja@samarthtech.in).",
+    "performedBy": "Neha Sundaram",
+    "targetCompany": "Samarth Enterprise Tech",
+    "timestamp": "2026-09-02T01:39:48.354Z"
+  },
+  {
+    "activityType": "Call Completed",
+    "subject": "Call Completed for Vistar Data Labs",
+    "description": "Agent Rajesh Sharma performed action [Call Completed] for lead Ruchi Tripathi (ruchi.tripathi@vistardata.in).",
+    "performedBy": "Rajesh Sharma",
+    "targetCompany": "Vistar Data Labs",
+    "timestamp": "2026-09-02T02:24:48.354Z"
+  },
+  {
+    "activityType": "Email Sent",
+    "subject": "Email Sent for Nirmal Water Tech",
+    "description": "Agent Priya Patel performed action [Email Sent] for lead Vivek Kaushik (vivek.kaushik@nirmalwater.co.in).",
+    "performedBy": "Priya Patel",
+    "targetCompany": "Nirmal Water Tech",
+    "timestamp": "2026-09-02T03:09:48.354Z"
+  },
+  {
+    "activityType": "Lead Created",
+    "subject": "Lead Created for Apex Tech Solutions",
+    "description": "Agent Amit Verma performed action [Lead Created] for lead Aarav Sharma (aarav.sharma@apextech.in).",
+    "performedBy": "Amit Verma",
+    "targetCompany": "Apex Tech Solutions",
+    "timestamp": "2026-09-02T03:54:48.354Z"
+  },
+  {
+    "activityType": "Lead Updated",
+    "subject": "Lead Updated for Bright Media Works",
+    "description": "Agent Neha Sundaram performed action [Lead Updated] for lead Ananya Iyer (ananya.iyer@brightmedia.in).",
+    "performedBy": "Neha Sundaram",
+    "targetCompany": "Bright Media Works",
+    "timestamp": "2026-09-02T04:39:48.354Z"
+  },
+  {
+    "activityType": "Customer Converted",
+    "subject": "Customer Converted for CloudNet Systems",
+    "description": "Agent Rajesh Sharma performed action [Customer Converted] for lead Vikram Malhotra (vikram.malhotra@cloudnet.co.in).",
+    "performedBy": "Rajesh Sharma",
+    "targetCompany": "CloudNet Systems",
+    "timestamp": "2026-09-02T05:24:48.354Z"
+  },
+  {
+    "activityType": "Follow-up Scheduled",
+    "subject": "Follow-up Scheduled for Delta Corp Infra",
+    "description": "Agent Priya Patel performed action [Follow-up Scheduled] for lead Sunita Rao (sunita.rao@deltacorp.in).",
+    "performedBy": "Priya Patel",
+    "targetCompany": "Delta Corp Infra",
+    "timestamp": "2026-09-02T06:09:48.354Z"
+  },
+  {
+    "activityType": "Chat Started",
+    "subject": "Chat Started for Elevate Global Logistics",
+    "description": "Agent Amit Verma performed action [Chat Started] for lead Aditya Joshi (aditya.joshi@elevate.in).",
+    "performedBy": "Amit Verma",
+    "targetCompany": "Elevate Global Logistics",
+    "timestamp": "2026-09-02T06:54:48.354Z"
+  },
+  {
+    "activityType": "Customer Assigned",
+    "subject": "Customer Assigned for FirstTier Tech",
+    "description": "Agent Neha Sundaram performed action [Customer Assigned] for lead Kavita Reddy (kavita.reddy@firsttier.in).",
+    "performedBy": "Neha Sundaram",
+    "targetCompany": "FirstTier Tech",
+    "timestamp": "2026-09-02T07:39:48.354Z"
+  },
+  {
+    "activityType": "Note Added",
+    "subject": "Note Added for Greenfield Energy",
+    "description": "Agent Rajesh Sharma performed action [Note Added] for lead Deepak Agarwal (deepak.agarwal@greenfield.co.in).",
+    "performedBy": "Rajesh Sharma",
+    "targetCompany": "Greenfield Energy",
+    "timestamp": "2026-09-02T08:24:48.354Z"
+  },
+  {
+    "activityType": "Proposal Sent",
+    "subject": "Proposal Sent for Horizon Labs",
+    "description": "Agent Priya Patel performed action [Proposal Sent] for lead Pooja Deshmukh (pooja.deshmukh@horizonlabs.in).",
+    "performedBy": "Priya Patel",
+    "targetCompany": "Horizon Labs",
+    "timestamp": "2026-09-02T09:09:48.354Z"
+  },
+  {
+    "activityType": "Call Completed",
+    "subject": "Call Completed for Innovate Labs",
+    "description": "Agent Amit Verma performed action [Call Completed] for lead Suresh Kumar (suresh.kumar@innovatelabs.in).",
+    "performedBy": "Amit Verma",
+    "targetCompany": "Innovate Labs",
+    "timestamp": "2026-09-02T09:54:48.354Z"
+  },
+  {
+    "activityType": "Email Sent",
+    "subject": "Email Sent for Nexus Software India",
+    "description": "Agent Neha Sundaram performed action [Email Sent] for lead Rajesh Verma (rajesh.verma@nexussoft.in).",
+    "performedBy": "Neha Sundaram",
+    "targetCompany": "Nexus Software India",
+    "timestamp": "2026-09-02T10:39:48.354Z"
+  },
+  {
+    "activityType": "Lead Created",
+    "subject": "Lead Created for Prism Healthcare Tech",
+    "description": "Agent Rajesh Sharma performed action [Lead Created] for lead Priyanka Gupta (priyanka.gupta@prismhealth.co.in).",
+    "performedBy": "Rajesh Sharma",
+    "targetCompany": "Prism Healthcare Tech",
+    "timestamp": "2026-09-02T11:24:48.354Z"
+  },
+  {
+    "activityType": "Lead Updated",
+    "subject": "Lead Updated for Quantum Analytics India",
+    "description": "Agent Priya Patel performed action [Lead Updated] for lead Rohan Mehta (rohan.mehta@quantumanalytics.in).",
+    "performedBy": "Priya Patel",
+    "targetCompany": "Quantum Analytics India",
+    "timestamp": "2026-09-02T12:09:48.354Z"
+  },
+  {
+    "activityType": "Customer Converted",
+    "subject": "Customer Converted for Vertex Infotech",
+    "description": "Agent Amit Verma performed action [Customer Converted] for lead Swati Nair (swati.nair@vertexinfotech.in).",
+    "performedBy": "Amit Verma",
+    "targetCompany": "Vertex Infotech",
+    "timestamp": "2026-09-02T12:54:48.354Z"
+  },
+  {
+    "activityType": "Follow-up Scheduled",
+    "subject": "Follow-up Scheduled for Zenith Enterprise Solutions",
+    "description": "Agent Neha Sundaram performed action [Follow-up Scheduled] for lead Amit Patel (amit.patel@zenithenterprise.co.in).",
+    "performedBy": "Neha Sundaram",
+    "targetCompany": "Zenith Enterprise Solutions",
+    "timestamp": "2026-09-02T13:39:48.354Z"
+  },
+  {
+    "activityType": "Chat Started",
+    "subject": "Chat Started for Astra Digital Media",
+    "description": "Agent Rajesh Sharma performed action [Chat Started] for lead Neha Kulkarni (neha.kulkarni@astradigital.in).",
+    "performedBy": "Rajesh Sharma",
+    "targetCompany": "Astra Digital Media",
+    "timestamp": "2026-09-02T14:24:48.354Z"
+  },
+  {
+    "activityType": "Customer Assigned",
+    "subject": "Customer Assigned for Synergy Retail Tech",
+    "description": "Agent Priya Patel performed action [Customer Assigned] for lead Vikramaditya Singh (vikramaditya.singh@synergyretail.in).",
+    "performedBy": "Priya Patel",
+    "targetCompany": "Synergy Retail Tech",
+    "timestamp": "2026-09-02T15:09:48.354Z"
+  },
+  {
+    "activityType": "Note Added",
+    "subject": "Note Added for Omni Channel India",
+    "description": "Agent Amit Verma performed action [Note Added] for lead Ritu Banerjee (ritu.banerjee@omnichannel.co.in).",
+    "performedBy": "Amit Verma",
+    "targetCompany": "Omni Channel India",
+    "timestamp": "2026-09-02T15:54:48.354Z"
+  },
+  {
+    "activityType": "Proposal Sent",
+    "subject": "Proposal Sent for Vayu Renewable Solutions",
+    "description": "Agent Neha Sundaram performed action [Proposal Sent] for lead Rahul Saxena (rahul.saxena@vayurenewable.in).",
+    "performedBy": "Neha Sundaram",
+    "targetCompany": "Vayu Renewable Solutions",
+    "timestamp": "2026-09-02T16:39:48.354Z"
+  },
+  {
+    "activityType": "Call Completed",
+    "subject": "Call Completed for Triveni Financial Tech",
+    "description": "Agent Rajesh Sharma performed action [Call Completed] for lead Priya Sundaram (priya.sundaram@trivenifin.in).",
+    "performedBy": "Rajesh Sharma",
+    "targetCompany": "Triveni Financial Tech",
+    "timestamp": "2026-09-02T17:24:48.354Z"
+  },
+  {
+    "activityType": "Email Sent",
+    "subject": "Email Sent for Bharat EdTech",
+    "description": "Agent Priya Patel performed action [Email Sent] for lead Siddharth Menon (siddharth.menon@bharatedtech.in).",
+    "performedBy": "Priya Patel",
+    "targetCompany": "Bharat EdTech",
+    "timestamp": "2026-09-02T18:09:48.354Z"
+  },
+  {
+    "activityType": "Lead Created",
+    "subject": "Lead Created for Smart Grid India",
+    "description": "Agent Amit Verma performed action [Lead Created] for lead Meera Bhat (meera.bhat@smartgridindia.co.in).",
+    "performedBy": "Amit Verma",
+    "targetCompany": "Smart Grid India",
+    "timestamp": "2026-09-02T18:54:48.354Z"
+  },
+  {
+    "activityType": "Lead Updated",
+    "subject": "Lead Updated for Param AI Labs",
+    "description": "Agent Neha Sundaram performed action [Lead Updated] for lead Manish Chaudhry (manish.chaudhry@paramai.in).",
+    "performedBy": "Neha Sundaram",
+    "targetCompany": "Param AI Labs",
+    "timestamp": "2026-09-02T19:39:48.354Z"
+  },
+  {
+    "activityType": "Customer Converted",
+    "subject": "Customer Converted for Udaan Logistics",
+    "description": "Agent Rajesh Sharma performed action [Customer Converted] for lead Divya Kapoor (divya.kapoor@udaanlogistics.in).",
+    "performedBy": "Rajesh Sharma",
+    "targetCompany": "Udaan Logistics",
+    "timestamp": "2026-09-02T20:24:48.354Z"
+  },
+  {
+    "activityType": "Follow-up Scheduled",
+    "subject": "Follow-up Scheduled for Samriddhi Microfinance",
+    "description": "Agent Priya Patel performed action [Follow-up Scheduled] for lead Sandeep Nambiar (sandeep.nambiar@samriddhi.org.in).",
+    "performedBy": "Priya Patel",
+    "targetCompany": "Samriddhi Microfinance",
+    "timestamp": "2026-09-02T21:09:48.354Z"
+  },
+  {
+    "activityType": "Chat Started",
+    "subject": "Chat Started for Indus Mobility",
+    "description": "Agent Amit Verma performed action [Chat Started] for lead Archana Pandey (archana.pandey@indusmobility.co.in).",
+    "performedBy": "Amit Verma",
+    "targetCompany": "Indus Mobility",
+    "timestamp": "2026-09-02T21:54:48.354Z"
+  },
+  {
+    "activityType": "Customer Assigned",
+    "subject": "Customer Assigned for Kuber Wealth Tech",
+    "description": "Agent Neha Sundaram performed action [Customer Assigned] for lead Alok Srivastava (alok.srivastava@kuberwealth.in).",
+    "performedBy": "Neha Sundaram",
+    "targetCompany": "Kuber Wealth Tech",
+    "timestamp": "2026-09-02T22:39:48.354Z"
+  },
+  {
+    "activityType": "Note Added",
+    "subject": "Note Added for Matrix BioCare",
+    "description": "Agent Rajesh Sharma performed action [Note Added] for lead Preeti Joshi (preeti.joshi@matrixbiocare.in).",
+    "performedBy": "Rajesh Sharma",
+    "targetCompany": "Matrix BioCare",
+    "timestamp": "2026-09-02T23:24:48.354Z"
+  },
+  {
+    "activityType": "Proposal Sent",
+    "subject": "Proposal Sent for Sahaj FinTech",
+    "description": "Agent Priya Patel performed action [Proposal Sent] for lead Tarun Mittal (tarun.mittal@sahajfintech.in).",
+    "performedBy": "Priya Patel",
+    "targetCompany": "Sahaj FinTech",
+    "timestamp": "2026-09-03T00:09:48.354Z"
+  },
+  {
+    "activityType": "Call Completed",
+    "subject": "Call Completed for Trishul Defense Systems",
+    "description": "Agent Amit Verma performed action [Call Completed] for lead Nisha Shenoy (nisha.shenoy@trishuldefense.co.in).",
+    "performedBy": "Amit Verma",
+    "targetCompany": "Trishul Defense Systems",
+    "timestamp": "2026-09-03T00:54:48.354Z"
+  },
+  {
+    "activityType": "Email Sent",
+    "subject": "Email Sent for Agasti BioEnergy",
+    "description": "Agent Neha Sundaram performed action [Email Sent] for lead Gaurav Mukherjee (gaurav.mukherjee@agastibio.in).",
+    "performedBy": "Neha Sundaram",
+    "targetCompany": "Agasti BioEnergy",
+    "timestamp": "2026-09-03T01:39:48.354Z"
+  },
+  {
+    "activityType": "Lead Created",
+    "subject": "Lead Created for Surya Automation",
+    "description": "Agent Rajesh Sharma performed action [Lead Created] for lead Sneha Desai (sneha.desai@suryaauto.co.in).",
+    "performedBy": "Rajesh Sharma",
+    "targetCompany": "Surya Automation",
+    "timestamp": "2026-09-03T02:24:48.354Z"
+  },
+  {
+    "activityType": "Lead Updated",
+    "subject": "Lead Updated for Nakshatra Media",
+    "description": "Agent Priya Patel performed action [Lead Updated] for lead Karthik Viswanathan (karthik.viswanathan@nakshatramedia.in).",
+    "performedBy": "Priya Patel",
+    "targetCompany": "Nakshatra Media",
+    "timestamp": "2026-09-03T03:09:48.354Z"
+  },
+  {
+    "activityType": "Customer Converted",
+    "subject": "Customer Converted for Banyan Cloud Solutions",
+    "description": "Agent Amit Verma performed action [Customer Converted] for lead Tanvi Shah (tanvi.shah@banyancloud.in).",
+    "performedBy": "Amit Verma",
+    "targetCompany": "Banyan Cloud Solutions",
+    "timestamp": "2026-09-03T03:54:48.354Z"
+  },
+  {
+    "activityType": "Follow-up Scheduled",
+    "subject": "Follow-up Scheduled for Jal Tech Innovations",
+    "description": "Agent Neha Sundaram performed action [Follow-up Scheduled] for lead Harsh Vardhan (harsh.vardhan@jaltech.co.in).",
+    "performedBy": "Neha Sundaram",
+    "targetCompany": "Jal Tech Innovations",
+    "timestamp": "2026-09-03T04:39:48.354Z"
+  },
+  {
+    "activityType": "Chat Started",
+    "subject": "Chat Started for Tarang Communications",
+    "description": "Agent Rajesh Sharma performed action [Chat Started] for lead Radhika Pillai (radhika.pillai@tarangcomms.in).",
+    "performedBy": "Rajesh Sharma",
+    "targetCompany": "Tarang Communications",
+    "timestamp": "2026-09-03T05:24:48.354Z"
+  },
+  {
+    "activityType": "Customer Assigned",
+    "subject": "Customer Assigned for Pragati Cyber Security",
+    "description": "Agent Priya Patel performed action [Customer Assigned] for lead Varun Chawla (varun.chawla@pragatisecurity.in).",
+    "performedBy": "Priya Patel",
+    "targetCompany": "Pragati Cyber Security",
+    "timestamp": "2026-09-03T06:09:48.354Z"
+  },
+  {
+    "activityType": "Note Added",
+    "subject": "Note Added for Moksha Wellness Tech",
+    "description": "Agent Amit Verma performed action [Note Added] for lead Anjali Kulkarni (anjali.kulkarni@mokshawellness.in).",
+    "performedBy": "Amit Verma",
+    "targetCompany": "Moksha Wellness Tech",
+    "timestamp": "2026-09-03T06:54:48.354Z"
+  },
+  {
+    "activityType": "Proposal Sent",
+    "subject": "Proposal Sent for Dhruva Aerospace",
+    "description": "Agent Neha Sundaram performed action [Proposal Sent] for lead Nikhil Sengupta (nikhil.sengupta@dhruvaaerospace.co.in).",
+    "performedBy": "Neha Sundaram",
+    "targetCompany": "Dhruva Aerospace",
+    "timestamp": "2026-09-03T07:39:48.354Z"
+  },
+  {
+    "activityType": "Call Completed",
+    "subject": "Call Completed for Kirloskar Electric Solutions",
+    "description": "Agent Rajesh Sharma performed action [Call Completed] for lead Smita Bhattacharya (smita.bhattacharya@kirloskarsolutions.in).",
+    "performedBy": "Rajesh Sharma",
+    "targetCompany": "Kirloskar Electric Solutions",
+    "timestamp": "2026-09-03T08:24:48.354Z"
+  },
+  {
+    "activityType": "Email Sent",
+    "subject": "Email Sent for Srijan Creative Agency",
+    "description": "Agent Priya Patel performed action [Email Sent] for lead Kunal Hegde (kunal.hegde@srijancreative.in).",
+    "performedBy": "Priya Patel",
+    "targetCompany": "Srijan Creative Agency",
+    "timestamp": "2026-09-03T09:09:48.354Z"
+  },
+  {
+    "activityType": "Lead Created",
+    "subject": "Lead Created for Varuna Maritime Tech",
+    "description": "Agent Amit Verma performed action [Lead Created] for lead Bhavna Bajaj (bhavna.bajaj@varunamaritime.co.in).",
+    "performedBy": "Amit Verma",
+    "targetCompany": "Varuna Maritime Tech",
+    "timestamp": "2026-09-03T09:54:48.354Z"
+  },
+  {
+    "activityType": "Lead Updated",
+    "subject": "Lead Updated for Tathastu Retail Solutions",
+    "description": "Agent Neha Sundaram performed action [Lead Updated] for lead Ishan Singhal (ishan.singhal@tathasturetail.in).",
+    "performedBy": "Neha Sundaram",
+    "targetCompany": "Tathastu Retail Solutions",
+    "timestamp": "2026-09-03T10:39:48.354Z"
+  },
+  {
+    "activityType": "Customer Converted",
+    "subject": "Customer Converted for Chetana Health Tech",
+    "description": "Agent Rajesh Sharma performed action [Customer Converted] for lead Nidhi Mahajan (nidhi.mahajan@chetanahealth.in).",
+    "performedBy": "Rajesh Sharma",
+    "targetCompany": "Chetana Health Tech",
+    "timestamp": "2026-09-03T11:24:48.354Z"
+  },
+  {
+    "activityType": "Follow-up Scheduled",
+    "subject": "Follow-up Scheduled for Lokmat Digital Media",
+    "description": "Agent Priya Patel performed action [Follow-up Scheduled] for lead Mayank Rastogi (mayank.rastogi@lokmatdigital.co.in).",
+    "performedBy": "Priya Patel",
+    "targetCompany": "Lokmat Digital Media",
+    "timestamp": "2026-09-03T12:09:48.354Z"
+  },
+  {
+    "activityType": "Chat Started",
+    "subject": "Chat Started for Shrestha Consultancy",
+    "description": "Agent Amit Verma performed action [Chat Started] for lead Shweta Dutta (shweta.dutta@shresthaconsulting.in).",
+    "performedBy": "Amit Verma",
+    "targetCompany": "Shrestha Consultancy",
+    "timestamp": "2026-09-03T12:54:48.354Z"
+  },
+  {
+    "activityType": "Customer Assigned",
+    "subject": "Customer Assigned for Antariksh AI Labs",
+    "description": "Agent Neha Sundaram performed action [Customer Assigned] for lead Deepak Chopra (deepak.chopra@antarikshai.in).",
+    "performedBy": "Neha Sundaram",
+    "targetCompany": "Antariksh AI Labs",
+    "timestamp": "2026-09-03T13:39:48.354Z"
+  },
+  {
+    "activityType": "Note Added",
+    "subject": "Note Added for Mangal Green Energy",
+    "description": "Agent Rajesh Sharma performed action [Note Added] for lead Pooja Venkat (pooja.venkat@mangalenergy.co.in).",
+    "performedBy": "Rajesh Sharma",
+    "targetCompany": "Mangal Green Energy",
+    "timestamp": "2026-09-03T14:24:48.354Z"
+  },
+  {
+    "activityType": "Proposal Sent",
+    "subject": "Proposal Sent for Samarth Enterprise Tech",
+    "description": "Agent Priya Patel performed action [Proposal Sent] for lead Sameer Ahuja (sameer.ahuja@samarthtech.in).",
+    "performedBy": "Priya Patel",
+    "targetCompany": "Samarth Enterprise Tech",
+    "timestamp": "2026-09-03T15:09:48.354Z"
+  },
+  {
+    "activityType": "Call Completed",
+    "subject": "Call Completed for Vistar Data Labs",
+    "description": "Agent Amit Verma performed action [Call Completed] for lead Ruchi Tripathi (ruchi.tripathi@vistardata.in).",
+    "performedBy": "Amit Verma",
+    "targetCompany": "Vistar Data Labs",
+    "timestamp": "2026-09-03T15:54:48.354Z"
+  },
+  {
+    "activityType": "Email Sent",
+    "subject": "Email Sent for Nirmal Water Tech",
+    "description": "Agent Neha Sundaram performed action [Email Sent] for lead Vivek Kaushik (vivek.kaushik@nirmalwater.co.in).",
+    "performedBy": "Neha Sundaram",
+    "targetCompany": "Nirmal Water Tech",
+    "timestamp": "2026-09-03T16:39:48.354Z"
+  }
+]

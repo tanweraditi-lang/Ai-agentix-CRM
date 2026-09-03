@@ -1,3 +1,5 @@
+const fs = require('fs');
+const path = require('path');
 const mongoose = require('mongoose');
 const Lead = require('../models/Lead');
 const Customer = require('../models/Customer');
@@ -136,6 +138,54 @@ const getDashboardMetrics = async (req, res) => {
 
       // 6. Fetch real recent activities from Activity collection
       recentActivities = await getRecentActivities(10);
+    } else {
+      // Fallback when MongoDB is disconnected: compute metrics from backend/seeds/*.json
+      try {
+        const loadSeed = (file) => {
+          const p = path.join(__dirname, '../seeds', file);
+          return fs.existsSync(p) ? JSON.parse(fs.readFileSync(p, 'utf8')) : [];
+        };
+
+        const leads = loadSeed('leads.json');
+        const customers = loadSeed('customers.json');
+        const followups = loadSeed('followups.json');
+        const chatbots = loadSeed('chatbots.json');
+        const convs = loadSeed('conversations.json');
+        const acts = loadSeed('activities.json');
+
+        totalLeads = leads.length;
+        newLeads = leads.filter(l => l.status === 'New').length;
+        convertedLeads = leads.filter(l => l.status === 'Converted').length;
+        lostLeads = leads.filter(l => l.status === 'Lost').length;
+        contactedLeads = leads.filter(l => l.status === 'Contacted').length;
+        qualifiedLeads = leads.filter(l => l.status === 'Qualified').length;
+        negotiationLeads = leads.filter(l => l.status === 'In Negotiation').length;
+
+        totalCustomers = customers.length;
+        pendingFollowups = followups.filter(f => f.status === 'Pending' || f.status === 'Scheduled').length;
+        activeChatbots = chatbots.filter(b => (b.status || '').toLowerCase() === 'active').length;
+        totalChatbots = chatbots.length;
+
+        totalConversations = convs.length;
+        resolvedByAI = convs.filter(c => c.status === 'Closed' || c.status === 'Resolved').length;
+        escalatedToHuman = convs.filter(c => c.status === 'Escalated').length;
+        pendingConversations = convs.filter(c => c.status === 'Pending' || c.status === 'Open').length;
+        todaysConversations = convs.length;
+
+        conversionRate = totalLeads > 0 ? Number(((totalCustomers / totalLeads) * 100).toFixed(1)) : 0;
+
+        recentActivities = acts.slice(0, 10).map((a, idx) => ({
+          id: a._id || a.id || `act_${idx + 1}`,
+          type: (a.activityType || 'crm_event').toLowerCase().replace(/\s+/g, '_'),
+          title: a.subject || a.activityType || 'CRM Event',
+          description: a.description || '',
+          user: a.performedBy || 'System Admin',
+          time: 'Recently',
+          date: a.timestamp || new Date().toISOString(),
+        }));
+      } catch (seedErr) {
+        console.error('Error computing dashboard metrics from seed files:', seedErr);
+      }
     }
 
     return res.status(200).json({

@@ -1,0 +1,177 @@
+[
+  {
+    "leadName": "Aarav Sharma",
+    "company": "Apex Tech Solutions",
+    "author": "Rajesh Sharma",
+    "content": "Client requested formal proposal with breakdown by Friday.",
+    "createdAt": "2026-08-19T17:24:48.354Z"
+  },
+  {
+    "leadName": "Ananya Iyer",
+    "company": "Bright Media Works",
+    "author": "Priya Patel",
+    "content": "Interested in AI Chatbot enterprise package with custom LLM fine-tuning.",
+    "createdAt": "2026-08-17T17:24:48.354Z"
+  },
+  {
+    "leadName": "Vikram Malhotra",
+    "company": "CloudNet Systems",
+    "author": "Amit Verma",
+    "content": "Follow-up call completed; decision maker on vacation until next Tuesday.",
+    "createdAt": "2026-08-17T17:24:48.354Z"
+  },
+  {
+    "leadName": "Sunita Rao",
+    "company": "Delta Corp Infra",
+    "author": "Neha Sundaram",
+    "content": "Conducted live product demo with VP of Sales & Marketing team.",
+    "createdAt": "2026-08-17T17:24:48.354Z"
+  },
+  {
+    "leadName": "Aditya Joshi",
+    "company": "Elevate Global Logistics",
+    "author": "Rajesh Sharma",
+    "content": "Requested GST invoice details and annual maintenance SLA contract.",
+    "createdAt": "2026-08-28T17:24:48.354Z"
+  },
+  {
+    "leadName": "Kavita Reddy",
+    "company": "FirstTier Tech",
+    "author": "Priya Patel",
+    "content": "Prospect compared pricing with local competitor; offered 10% annual billing discount.",
+    "createdAt": "2026-08-11T17:24:48.354Z"
+  },
+  {
+    "leadName": "Deepak Agarwal",
+    "company": "Greenfield Energy",
+    "author": "Amit Verma",
+    "content": "Lead qualified. High priority deal expecting closing by end of Q3.",
+    "createdAt": "2026-08-23T17:24:48.354Z"
+  },
+  {
+    "leadName": "Pooja Deshmukh",
+    "company": "Horizon Labs",
+    "author": "Neha Sundaram",
+    "content": "Security team approved SOC2 compliance documentation.",
+    "createdAt": "2026-08-06T17:24:48.354Z"
+  },
+  {
+    "leadName": "Suresh Kumar",
+    "company": "Innovate Labs",
+    "author": "Rajesh Sharma",
+    "content": "Onboarding session scheduled for Mumbai regional office team.",
+    "createdAt": "2026-09-01T17:24:48.354Z"
+  },
+  {
+    "leadName": "Rajesh Verma",
+    "company": "Nexus Software India",
+    "author": "Priya Patel",
+    "content": "Requested WhatsApp API sandbox access for internal developer testing.",
+    "createdAt": "2026-08-09T17:24:48.354Z"
+  },
+  {
+    "leadName": "Priyanka Gupta",
+    "company": "Prism Healthcare Tech",
+    "author": "Amit Verma",
+    "content": "Client requested formal proposal with breakdown by Friday.",
+    "createdAt": "2026-09-01T17:24:48.354Z"
+  },
+  {
+    "leadName": "Rohan Mehta",
+    "company": "Quantum Analytics India",
+    "author": "Neha Sundaram",
+    "content": "Interested in AI Chatbot enterprise package with custom LLM fine-tuning.",
+    "createdAt": "2026-08-17T17:24:48.354Z"
+  },
+  {
+    "leadName": "Swati Nair",
+    "company": "Vertex Infotech",
+    "author": "Rajesh Sharma",
+    "content": "Follow-up call completed; decision maker on vacation until next Tuesday.",
+    "createdAt": "2026-08-28T17:24:48.354Z"
+  },
+  {
+    "leadName": "Amit Patel",
+    "company": "Zenith Enterprise Solutions",
+    "author": "Priya Patel",
+    "content": "Conducted live product demo with VP of Sales & Marketing team.",
+    "createdAt": "2026-08-14T17:24:48.354Z"
+  },
+  {
+    "leadName": "Neha Kulkarni",
+    "company": "Astra Digital Media",
+    "author": "Amit Verma",
+    "content": "Requested GST invoice details and annual maintenance SLA contract.",
+    "createdAt": "2026-08-06T17:24:48.354Z"
+  },
+  {
+    "leadName": "Vikramaditya Singh",
+    "company": "Synergy Retail Tech",
+    "author": "Neha Sundaram",
+    "content": "Prospect compared pricing with local competitor; offered 10% annual billing discount.",
+    "createdAt": "2026-08-10T17:24:48.354Z"
+  },
+  {
+    "leadName": "Ritu Banerjee",
+    "company": "Omni Channel India",
+    "author": "Rajesh Sharma",
+    "content": "Lead qualified. High priority deal expecting closing by end of Q3.",
+    "createdAt": "2026-08-11T17:24:48.354Z"
+  },
+  {
+    "leadName": "Rahul Saxena",
+    "company": "Vayu Renewable Solutions",
+    "author": "Priya Patel",
+    "content": "Security team approved SOC2 compliance documentation.",
+    "createdAt": "2026-08-27T17:24:48.354Z"
+  },
+  {
+    "leadName": "Priya Sundaram",
+    "company": "Triveni Financial Tech",
+    "author": "Amit Verma",
+    "content": "Onboarding session scheduled for Mumbai regional office team.",
+    "createdAt": "2026-08-19T17:24:48.354Z"
+  },
+  {
+    "leadName": "Siddharth Menon",
+    "company": "Bharat EdTech",
+    "author": "Neha Sundaram",
+    "content": "Requested WhatsApp API sandbox access for internal developer testing.",
+    "createdAt": "2026-08-13T17:24:48.354Z"
+  },
+  {
+    "leadName": "Meera Bhat",
+    "company": "Smart Grid India",
+    "author": "Rajesh Sharma",
+    "content": "Client requested formal proposal with breakdown by Friday.",
+    "createdAt": "2026-08-18T17:24:48.354Z"
+  },
+  {
+    "leadName": "Manish Chaudhry",
+    "company": "Param AI Labs",
+    "author": "Priya Patel",
+    "content": "Interested in AI Chatbot enterprise package with custom LLM fine-tuning.",
+    "createdAt": "2026-08-23T17:24:48.354Z"
+  },
+  {
+    "leadName": "Divya Kapoor",
+    "company": "Udaan Logistics",
+    "author": "Amit Verma",
+    "content": "Follow-up call completed; decision maker on vacation until next Tuesday.",
+    "createdAt": "2026-08-31T17:24:48.354Z"
+  },
+  {
+    "leadName": "Sandeep Nambiar",
+    "company": "Samriddhi Microfinance",
+    "author": "Neha Sundaram",
+    "content": "Conducted live product demo with VP of Sales & Marketing team.",
+    "createdAt": "2026-08-23T17:24:48.354Z"
+  },
+  {
+    "leadName": "Archana Pandey",
+    "company": "Indus Mobility",
+    "author": "Rajesh Sharma",
+    "content": "Requested GST invoice details and annual maintenance SLA contract.",
+    "createdAt": "2026-08-18T17:24:48.354Z"
+  }
+]
