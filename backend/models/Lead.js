@@ -21,6 +21,26 @@ const leadSchema = new mongoose.Schema(
       type: String,
       trim: true,
     },
+    industry: {
+      type: String,
+      trim: true,
+      default: 'Technology',
+    },
+    city: {
+      type: String,
+      trim: true,
+      default: 'Mumbai',
+    },
+    country: {
+      type: String,
+      trim: true,
+      default: 'India',
+    },
+    leadSource: {
+      type: String,
+      trim: true,
+      default: 'Website Form',
+    },
     serviceInterested: {
       type: String,
       required: [true, 'Service interested is required'],
@@ -33,6 +53,10 @@ const leadSchema = new mongoose.Schema(
         message: '{VALUE} is not a valid lead status',
       },
       default: 'New',
+    },
+    score: {
+      type: Number,
+      default: 85,
     },
     assignedUser: {
       type: mongoose.Schema.Types.ObjectId,

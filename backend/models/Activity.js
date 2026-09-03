@@ -7,6 +7,16 @@ const activitySchema = new mongoose.Schema(
       ref: 'Lead',
       default: null,
     },
+    customerId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Customer',
+      default: null,
+    },
+    targetCompany: {
+      type: String,
+      trim: true,
+      default: '',
+    },
     action: {
       type: String,
       required: [true, 'Action name is required'],

@@ -12,6 +12,29 @@ const followupSchema = new mongoose.Schema(
       trim: true,
       default: 'General Client',
     },
+    customerName: {
+      type: String,
+      trim: true,
+    },
+    company: {
+      type: String,
+      trim: true,
+    },
+    followupType: {
+      type: String,
+      trim: true,
+      default: 'Call',
+    },
+    priority: {
+      type: String,
+      enum: ['High', 'Medium', 'Low'],
+      default: 'Medium',
+    },
+    remarks: {
+      type: String,
+      trim: true,
+      default: '',
+    },
     leadId: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Lead',
@@ -39,7 +62,7 @@ const followupSchema = new mongoose.Schema(
     status: {
       type: String,
       enum: {
-        values: ['Pending', 'Upcoming', 'Completed', 'Cancelled'],
+        values: ['Pending', 'Upcoming', 'Completed', 'Cancelled', 'Overdue'],
         message: '{VALUE} is not a valid follow-up status',
       },
       default: 'Pending',

@@ -40,6 +40,12 @@ const chatbotSchema = new mongoose.Schema(
       },
       default: 'Active',
     },
+    platform: {
+      type: String,
+      trim: true,
+      enum: ['Website', 'WhatsApp', 'Facebook', 'Instagram'],
+      default: 'Website',
+    },
     totalConversations: {
       type: Number,
       default: 0,
@@ -47,6 +53,22 @@ const chatbotSchema = new mongoose.Schema(
     todaysConversations: {
       type: Number,
       default: 0,
+    },
+    resolutionRate: {
+      type: String,
+      default: '94.5%',
+    },
+    avgResponseTime: {
+      type: String,
+      default: '1.2s',
+    },
+    successRate: {
+      type: String,
+      default: '96.0%',
+    },
+    escalations: {
+      type: Number,
+      default: 12,
     },
   },
   {

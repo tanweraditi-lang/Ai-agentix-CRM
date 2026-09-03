@@ -13,6 +13,22 @@ const conversationSchema = new mongoose.Schema(
       trim: true,
       lowercase: true,
     },
+    company: {
+      type: String,
+      trim: true,
+      default: '',
+    },
+    platform: {
+      type: String,
+      trim: true,
+      enum: ['Website', 'WhatsApp', 'Facebook', 'Instagram'],
+      default: 'Website',
+    },
+    intent: {
+      type: String,
+      trim: true,
+      default: 'General Inquiry',
+    },
     message: {
       type: String,
       trim: true,
@@ -30,7 +46,7 @@ const conversationSchema = new mongoose.Schema(
     status: {
       type: String,
       enum: {
-        values: ['Resolved', 'Escalated', 'Pending'],
+        values: ['Resolved', 'Escalated', 'Pending', 'Closed'],
         message: '{VALUE} is not a valid conversation status',
       },
       default: 'Pending',
